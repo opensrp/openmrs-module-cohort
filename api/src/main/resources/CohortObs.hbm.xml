@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping>
+    <class name="org.openmrs.module.cohort.CohortObs" table="cohort_obs">
+        <id name="obsId" type="int" column="obs_id" unsaved-value="0">
+            <generator class="native"/>
+        </id>
+        <many-to-one name="cohort" class="org.openmrs.module.cohort.CohortM"
+                     column="cohort" not-null="true" cascade="all"/>
+        <many-to-one name="concept" class="org.openmrs.Concept" not-null="true" column="concept_id"/>
+        <many-to-one name="encounterId" class="org.openmrs.module.cohort.CohortEncounter"
+                     column="encounterId" not-null="true" cascade="all"/>
+        <many-to-one name="location" class="org.openmrs.Location"
+                     column="location" not-null="true" cascade="all"/>
+        <property name="obsDateTime" type="java.util.Date"/>
+        <many-to-one name="obsGroup" class="org.openmrs.module.cohort.CohortObs" column="obs_group_id" insert="true"
+                     update="true"/>
+        <property name="accessionNumber" type="java.lang.String"
+                  column="accession_number" length="255"/>
+        <property name="valueGroupId" type="java.lang.Integer"
+                  column="value_group_id" length="11"/>
+        <many-to-one name="valueCoded" class="org.openmrs.Concept" column="value_coded"/>
+        <many-to-one name="valueCodedName" class="org.openmrs.ConceptName" column="value_coded_name_id"/>
+        <property name="valueDatetime" type="java.util.Date"
+                  column="value_datetime" length="19"/>
+        <property name="valueNumeric" type="double"
+                  column="value_numeric" length="22"/>
+        <property name="valueModifier" type="java.lang.String"
+                  column="value_modifier" length="2"/>
+        <property name="valueText" type="java.lang.String"
+                  column="value_text" length="65535"/>
+        <property name="valueComplex" type="java.lang.String"
+                  column="value_complex" length="255"/>
+        <property name="comment" type="java.lang.String"
+                  column="comments" length="255"/>
+        <property name="dateCreated" type="java.util.Date"
+                  column="date_created" not-null="true" length="19"/>
+        <many-to-one name="creator" class="org.openmrs.User" not-null="true"/>
+        <property name="voided" type="java.lang.Boolean" column="voided" length="1" not-null="true"/>
+        <many-to-one name="voidedBy" class="org.openmrs.User" column="voided_by"/>
+        <property name="dateVoided" type="java.util.Date"
+                  column="date_voided" length="19"/>
+        <property name="voidReason" type="java.lang.String"
+                  column="void_reason" length="255"/>
+        <property name="uuid" type="java.lang.String"
+                  length="38" unique="true"/>
+        <set name="groupMembers" inverse="true" cascade="all" order-by="obs_id"
+             access="field" batch-size="25">
+            <key column="obs_group_id"/>
+            <one-to-many class="org.openmrs.module.cohort.CohortObs"/>
+        </set>
+    </class>
+</hibernate-mapping>

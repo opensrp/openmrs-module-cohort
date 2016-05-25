@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping>
+    <class name="org.openmrs.module.cohort.CohortAttributeType" table="cohort_attributes_type">
+        <id name="cohortAttributeTypeId" type="java.lang.Integer" column="cohort_attribute_type_id">
+            <generator class="native"></generator>
+        </id>
+        <property name="name" type="java.lang.String" length="200"></property>
+        <property name="description" type="java.lang.String" length="40"/>
+        <property name="format" type="java.lang.String" length="200"></property>
+        <property name="uuid" type="java.lang.String"
+                  length="38" unique="true"/>
+        <property name="voided" type="java.lang.Boolean" column="voided" length="1" not-null="true"/>
+        <property name="voidReason" type="java.lang.String"
+                  column="void_reason" length="255"/>
+    </class>
+</hibernate-mapping>

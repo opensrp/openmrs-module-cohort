@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping>
+    <class name="org.openmrs.module.cohort.CohortRole" table="cohort_role">
+        <id name="cohortRoleId" type="java.lang.Integer" column="cohort_role_id">
+            <generator class="native"/>
+        </id>
+        <property name="name" type="java.lang.String" length="40"/>
+        <many-to-one name="cohortType" class="org.openmrs.module.cohort.CohortType"
+                     column="cohortType" not-null="true" cascade="all"/>
+        <property name="uuid" type="java.lang.String"
+                  length="38" unique="true"/>
+    </class>
+</hibernate-mapping>

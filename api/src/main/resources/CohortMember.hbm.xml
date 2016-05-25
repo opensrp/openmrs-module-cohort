@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping>
+    <class name="org.openmrs.module.cohort.CohortMember" table="cohort_cmember">
+        <id name="cohortMemberId" type="java.lang.Integer" column="cohort_member_id">
+            <generator class="native"/>
+        </id>
+        <discriminator column="cohort_member_id" insert="false"/>
+        <many-to-one name="person" class="org.openmrs.Person" column="person" not-null="true" cascade="all"/>
+        <many-to-one name="cohort" class="org.openmrs.module.cohort.CohortM"
+                     column="cohort" not-null="true" cascade="all"/>
+        <many-to-one name="role" class="org.openmrs.module.cohort.CohortRole" column="role" not-null="true"
+                     cascade="all"/>
+        <property name="startDate" type="java.util.Date" length="40"/>
+        <property name="endDate" type="java.util.Date" length="40"/>
+        <property name="head" type="java.lang.Boolean" column="isHead" length="1" not-null="true"/>
+        <property name="uuid" type="java.lang.String"
+                  length="38" unique="true"/>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping>
+    <class name="org.openmrs.module.cohort.CohortEncounter" table="cohort_encounter">
+        <id name="encounterId" type="int" column="encounter_id" unsaved-value="0">
+            <generator class="native"/>
+        </id>
+        <many-to-one name="cohort" class="org.openmrs.module.cohort.CohortM"
+                     column="ecohort" not-null="true" cascade="all"/>
+        <many-to-one name="encounterType" class="org.openmrs.EncounterType"
+                     column="encounterType" not-null="true" cascade="all"/>
+        <many-to-one name="location" class="org.openmrs.Location"
+                     column="location" not-null="true" cascade="all"/>
+        <many-to-one name="form" class="org.openmrs.Form"
+                     column="form" not-null="true" cascade="all"/>
+        <many-to-one name="visit" class="org.openmrs.module.cohort.CohortVisit"
+                     column="visit" not-null="true" cascade="all"/>
+        <property name="encounterDateTime" type="java.util.Date"/>
+        <property name="uuid" type="java.lang.String"
+                  length="38" unique="true"/>
+        <property name="voided" type="java.lang.Boolean" column="voided" length="1" not-null="true"/>
+        <property name="voidReason" type="java.lang.String"
+                  column="void_reason" length="255"/>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,1 @@
+The purpose is to manage cohort related data cohorts, cohort types cohort attributes cohort attribute types cohort members cohort member attribute cohort member attribute type Using REST to allow external system integration with cohort module Cohort Management can be performed in two ways Simple Cohorts for single entities Cohorts including groups or collections like households
