@@ -1,8 +1,5 @@
 <%@ include file="/WEB-INF/template/include.jsp" %>
 <%@ include file="/WEB-INF/template/header.jsp" %>
-<!--
-<%@ include file="resources/module_style.css" %>
--->
 
 <%@ include file="template/localHeader.jsp" %>
 <h3>Manage Cohort Attributes Type</h3>
