@@ -1,0 +1,187 @@
+/*General Page CSS */
+
+* {
+    outline: 0 !important;
+}
+
+body {
+    font-family: "Lato", sans-serif;
+    background: #eeeeee;
+    padding-top: 130px;
+    position: relative;
+}
+
+p {
+    margin: 0 0 15px;
+}
+
+p.lead {
+    font-weight: 300;
+}
+
+strong {
+    font-weight: 700;
+}
+
+a {
+    color: #363363;
+}
+
+a:hover {
+    color: #007aff !important;
+    text-decoration: underline;
+}
+
+ul.no-style {
+    list-style: none;
+    padding: 0;
+    margin-left: 0;
+}
+
+li {
+    margin-bottom: 5px;
+}
+
+blockquote {
+    padding-bottom: 4px;
+    margin-bottom: 30px;
+}
+
+blockquote p {
+    margin-bottom: 10px;
+}
+
+/*Page defaults and header*/
+
+.top-options {
+    padding-top: 10px;
+}
+
+.cohort-search {
+    margin-left: 10px;
+    width: 77% !important;
+}
+
+.add-cohorts-button {
+    margin-left: 25px;
+}
+
+.add-cohorts-button > a > i {
+    padding-top: 6px;
+}
+
+.add-cohorts-button span {
+    position:absolute;
+    padding-left:12px;
+    margin-top:4px;
+    font-size: 22px;
+}
+
+.cohort-box-container {
+    max-width: 275px;
+    background: white;
+    padding-left: 45px;
+    border: 1px solid #e6e6e6;
+    text-align: left;
+}
+
+.group-cohort-box-container {
+    background: white;
+    padding-left: 50px;
+    border: 1px solid #e6e6e6;
+}
+
+.form-inline {
+    padding-top: 2px;
+}
+
+/*successful search*/
+
+.successful-search-body {
+    padding-top: 20px;
+}
+
+.table-container a {
+    text-decoration: underline;
+}
+
+.thead-inverse th {
+    color: #fff;
+    background-color: #373a3c;
+    font-size: 12px;
+}
+
+.thead-inverse th h4 {
+    margin: 0 0 0 0;
+    font-weight: 700;
+}
+
+.details-container {
+    min-height: 285px;
+    background: white;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.cohort-name {
+    text-align: center;
+}
+
+.cohort-name h2 span {
+    font-weight: 700;
+}
+
+.cohort-name h2 {
+    margin-top: 0 !important;
+    padding-bottom: 10px
+}
+
+
+.cohort-description-heading h4 {
+    background-color: #373a3c;
+    color: white;
+    text-align: left;
+    padding: 9px 10px 8px 10px;
+    font-weight: 700;
+    margin-top: 2px;
+    margin-bottom: 1px;
+}
+
+.cohort-description-content {
+    padding: 10px 10px 10px 10px;
+    background: white;
+    overflow-y: scroll;
+    height: 195px;
+    border: 1px solid #e6e6e6;
+}
+
+.add-cohort-attributes-and-encounters-box-container {
+    background: white;
+    padding-left: 5px;
+    border: 1px solid #e6e6e6;
+}
+
+.add-cohort-attributes-and-encounters-button {
+    margin-left: 5px;
+}
+
+.add-cohort-attributes-and-encounters-button> a > i {
+    padding-top: 5px;
+}
+
+.add-cohort-attributes-and-encounters-button span {
+    position:absolute;
+    padding-left:5px;
+    margin-top:5px;
+    font-size: 17px;
+}
+
+.box-1-right {
+    margin-top: 50px;
+    margin-right: 10px;
+    width: 100%;
+}
+
+.box-2-right {
+    margin-top: 50px;
+    padding-right: 0px;
+}
