@@ -775,9 +775,11 @@ public class HibernateCohortDAO implements CohortDAO {
 	
 	@Override
 	public List<CohortMember> findCohortMembersByCohortId (Integer cohortId) {
-		List<CohortMember> cohortMembers = null;
-		Criteria criteria = (Criteria) sessionFactory.getCurrentSession().createCriteria(CohortMember.class);
-		criteria.add(Restrictions.ilike("cohort", cohortId.toString(), MatchMode.START));
-		return criteria.list();
+		Session session = sessionFactory.getCurrentSession();
+		return session.createQuery("from CohortMember where cohort ='" +cohortId+ "'").list();
+//		List<CohortMember> cohortMembers = null;
+//		Criteria criteria = (Criteria) sessionFactory.getCurrentSession().createCriteria(CohortMember.class);
+//		criteria.add(Restrictions.ilike("cohort", cohortId.toString(), MatchMode.START));
+//		return criteria.list();
 	}
 }

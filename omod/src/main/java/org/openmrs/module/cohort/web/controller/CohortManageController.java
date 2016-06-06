@@ -14,6 +14,7 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -23,12 +24,15 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.openmrs.Cohort;
 import org.openmrs.Location;
 import org.openmrs.api.LocationService;
 import org.openmrs.api.context.Context;
+import org.openmrs.module.cohort.CohortEncounter;
 import org.openmrs.module.cohort.CohortM;
 import org.openmrs.module.cohort.CohortMember;
 import org.openmrs.module.cohort.CohortType;
+import org.openmrs.module.cohort.CohortVisit;
 import org.openmrs.module.cohort.api.CohortService;
 import org.openmrs.web.WebConstants;
 import org.springframework.stereotype.Controller;
@@ -57,24 +61,27 @@ public class CohortManageController {
 		CohortService service = Context.getService(CohortService.class);
 		if ("search".equals(request.getParameter("search"))) {
 			List<CohortM> cohortsFound = service.findCohorts(cohort_name);
-			List<HashMap<String, String>> allCohortData = new ArrayList<HashMap<String, String>>();
-			for (CohortM currentCohort : cohortsFound) {
-				HashMap<String, String> currentCohortData = new HashMap<String, String>();
-				currentCohortData.put("name", currentCohort.getName());
-				currentCohortData.put("id", currentCohort.getId().toString());
-				currentCohortData.put("program", currentCohort.getCohortProgram().getName());
-				currentCohortData.put("location", currentCohort.getClocation().toString());
-				currentCohortData.put("startDate", currentCohort.getStartDate().toString());
-				currentCohortData.put("endDate", currentCohort.getEndDate().toString());
-				currentCohortData.put("description", currentCohort.getDescription());
-				allCohortData.add(currentCohortData);
+			if(cohortsFound.size() != 0) {
+				model.addAttribute("cohortExists", "true");
+			} else {
+				model.addAttribute("cohortExists", "false");
+			} 
+			List<List<CohortMember>> cohortMembers = new ArrayList<List<CohortMember>>();
+//			List<List<CohortEncounter>> cohortEncounters = new ArrayList<List<CohortEncounter>>();
+			model.addAttribute("cohortList", cohortsFound);
+			for (int i = 0; i < cohortsFound.size(); i++) {
+				CohortM currentCohort = cohortsFound.get(i);
+				cohortMembers.add(service.findCohortMembersByCohortId(currentCohort.getCohortId()));
+//				cohortEncounters.add(service.getEncountersByCohort(currentCohort));
 			}
-			/* for(int i=0;i<list1.size();i++)
-			 {
-			 CohortM c=list1.get(i);
-			 a=service.getCount(c.getName());
-			 }*/
-			model.addAttribute("cohortData", allCohortData);
+			model.addAttribute("memberList", cohortMembers);
+//			model.addAttribute("encounterList", cohortEncounters);
+//			 for(int i=0;i<list1.size();i++)
+//			 {
+//			 CohortM c=list1.get(i);
+//			 a=service.getCount(c.getName());
+//			 }
+//			
 			//  model.addAttribute("cohortmodule",a);
 			for (int i = 0; i < cohortsFound.size(); i++) {
 				cohort = cohortsFound.get(i);

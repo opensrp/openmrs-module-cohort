@@ -1,6 +1,8 @@
 
 /* MEDIA CAROUSEL */
 $(document).ready(function () {
+    
+    /*MEDIA CAROUSEL*/
     $('#productsCarouselXs').carousel({
         interval: 4000
     })
@@ -24,8 +26,11 @@ $(document).ready(function () {
         else {
             $(this).siblings(':first').children(':first-child').clone().appendTo($(this));
         }
-
     });
-});
+    /*MEDIA CAROUSEL ENDS */
 
-/*MEDIA CAROUSEL ENDS */
+    $(".carousel-inner div:first").addClass('active'); //Enables carousel correctly
+
+    $("#cohort-dashboard-link").removeAttr('href');
+    
+});
