@@ -12,6 +12,7 @@ package org.openmrs.module.cohort.web.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -55,20 +56,29 @@ public class CohortManageController {
 		//Long a=0L;
 		CohortService service = Context.getService(CohortService.class);
 		if ("search".equals(request.getParameter("search"))) {
-			List<CohortM> list1 = service.findCohorts(cohort_name);
-			for(int i = 0; i < list1.size(); i++) {
-				model.addAttribute("cohortDateCreation" + i, list1.get(0).getDateCreated());
+			List<CohortM> cohortsFound = service.findCohorts(cohort_name);
+			List<HashMap<String, String>> allCohortData = new ArrayList<HashMap<String, String>>();
+			for (CohortM currentCohort : cohortsFound) {
+				HashMap<String, String> currentCohortData = new HashMap<String, String>();
+				currentCohortData.put("name", currentCohort.getName());
+				currentCohortData.put("id", currentCohort.getId().toString());
+				currentCohortData.put("program", currentCohort.getCohortProgram().getName());
+				currentCohortData.put("location", currentCohort.getClocation().toString());
+				currentCohortData.put("startDate", currentCohort.getStartDate().toString());
+				currentCohortData.put("endDate", currentCohort.getEndDate().toString());
+				currentCohortData.put("description", currentCohort.getDescription());
+				allCohortData.add(currentCohortData);
 			}
-		/* for(int i=0;i<list1.size();i++)
-	     {
-	     CohortM c=list1.get(i);
-	     a=service.getCount(c.getName());
-	     }*/
-			model.addAttribute("CohortList", list1);
+			/* for(int i=0;i<list1.size();i++)
+			 {
+			 CohortM c=list1.get(i);
+			 a=service.getCount(c.getName());
+			 }*/
+			model.addAttribute("cohortData", allCohortData);
 			//  model.addAttribute("cohortmodule",a);
-			for (int i = 0; i < list1.size(); i++) {
-				cohort = list1.get(i);
-				if (cohort.isGroupCohort() == true) {
+			for (int i = 0; i < cohortsFound.size(); i++) {
+				cohort = cohortsFound.get(i);
+				if (cohort.isGroupCohort()) {
 					model.addAttribute("htmlformId", 2);
 				} else {
 					model.addAttribute("htmlformId", 1);

@@ -25,10 +25,10 @@
                 </form>
             </div>
             <div class="col-sm-2 create-cohort-button">
-                    <a class="btn btn-default" href="addcohort.form">
-                        <i class="fa fa-plus fa-2x" aria-hidden="true"></i>
-                        <span><spring:message code="cohort.createcohort"/></span>
-                    </a>
+                <a class="btn btn-default" href="addcohort.form">
+                    <i class="fa fa-plus fa-2x" aria-hidden="true"></i>
+                    <span><spring:message code="cohort.createcohort"/></span>
+                </a>
             </div>
             <div class="col-sm-2 create-group-cohort-button">
                 <a class="btn btn-default" href="groupcohort.form">
@@ -41,14 +41,7 @@
 </section>
 
 <%--<c:if test="${cohortExists == true}">--%>
-
-<% for(int i = 0; i < CohortList.size(); i+=1) { %>
-<tr>
-    <td><%=CohortList.get(i).getFestivalName()%></td>
-</tr>
-<% } %>
-
-<c:forEach var="ls" items="${CohortList}" varStatus="status">
+<c:forEach var="datamap" items="${cohortData}" varStatus="status">
     <section class="successful-search-body">
         <div class="container" >
             <div class="row">
@@ -64,23 +57,23 @@
                             <tbody>
                             <tr>
                                 <th scope="row">Cohort Name</th>
-                                <td><a href="${pageContext.request.contextPath}/module/cohort/editcohort.form?cid=${ls.cohortId}">${ls.name}</a></td>
+                                <td><a href="${pageContext.request.contextPath}/module/cohort/editcohort.form?cid=${datamap['id']}">${datamap['name']}</a></td>
                             </tr>
                             <tr>
                                 <th scope="row">Cohort Program</th>
-                                <td>${ls.cohortProgram.name}</td>
+                                <td>${datamap['program']}</td>
                             </tr>
                             <tr>
                                 <th scope="row">Location</th>
-                                <td>${ls.clocation}</td>
+                                <td>${datamap['location']}</td>
                             </tr>
                             <tr>
                                 <th scope="row">Start Date</th>
-                                <td>${ls.startDate}</td>
+                                <td>${datamap['startDate']}</td>
                             </tr>
                             <tr>
                                 <th scope="row">End Date</th>
-                                <td>${ls.endDate}</td>
+                                <td>${datamap['endDate']}</td>
                             </tr>
                             </tbody>
                         </table>
@@ -89,7 +82,7 @@
                 <div class="col-sm-3">
                     <div class="cohort-name">
                         <h2>
-                            <span>${ls.cohortType.name}</span>
+                            <span>${datamap['name']}</span>
                         </h2>
                     </div>
                     <div class="row">
@@ -98,13 +91,13 @@
                                 <h4>Description</h4>
                             </div>
                             <div class="cohort-description-content">
-                                    ${ls.description}
+                                    ${datamap['description']}
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-sm-3">
-
+                    <!--Visits and Encounters here -->
                 </div>
                 <div class="col-sm-2">
                     <div class="box-right">
@@ -122,16 +115,16 @@
                 </div>
             </div>
         </div>
-        
+
         <!--User media carousel-->
-        
+
         <div class="container carousel-outer">
             <div class="row">
                 <div class="col-sm-2">
                     <div class="cohort-description-heading users-heading">
                         <h4>Cohort Members</h4>
                     </div>
-                </div> 
+                </div>
             </div>
             <div class='row'>
                 <div class='col-sm-12'>
@@ -149,43 +142,43 @@
                                                 <li>
                                                     <table class="table table-hover person-details-table">
                                                         <tbody>
-                                                            <tr>
-                                                                <span class="person-attribute-label"><strong>Name</strong>:</span>
-                                                                <span class="person-detail-label">Shreyans  Sheth</span>   
-                                                            </tr>
-                                                            <li role="separator" class="divider"></li>
+                                                        <tr>
+                                                            <span class="person-attribute-label"><strong>Name</strong>:</span>
+                                                            <span class="person-detail-label">Shreyans  Sheth</span>
+                                                        </tr>
+                                                <li role="separator" class="divider"></li>
 
-                                                            <tr>
-                                                                <span class="person-attribute-label"><strong>Cohort Id</strong>:</span>
-                                                                <span class="person-detail-label">123</span>
-                                                            </tr>
-                                                            <li role="separator" class="divider"></li>
-            
-            
-                                                            <tr>
-                                                                <span class="person-attribute-label"><strong>Start Date</strong>:</span>
-                                                                <span class="person-detail-label">12/2/13</span>
-                                                            </tr>
-                                                            <li role="separator" class="divider"></li>
-                                                
-                                                            <tr>
-                                                                <span class="person-attribute-label"><strong>End Date</strong>:</span>
-                                                                <span class="person-detail-label">14/12/19</span>
-                                                            </tr>
-                                                            <li role="separator" class="divider"></li>
-                                                
-                                                            <tr>
-                                                                <span class="person-attribute-label"><strong>Role</strong>:</span>
-                                                                <span class="person-detail-label">Doctor</span>
-                                                            </tr>
-                                                        
-                                                        </tbody>
-                                                    </table>
+                                                <tr>
+                                                    <span class="person-attribute-label"><strong>Cohort Id</strong>:</span>
+                                                    <span class="person-detail-label">123</span>
+                                                </tr>
+                                                <li role="separator" class="divider"></li>
+
+
+                                                <tr>
+                                                    <span class="person-attribute-label"><strong>Start Date</strong>:</span>
+                                                    <span class="person-detail-label">12/2/13</span>
+                                                </tr>
+                                                <li role="separator" class="divider"></li>
+
+                                                <tr>
+                                                    <span class="person-attribute-label"><strong>End Date</strong>:</span>
+                                                    <span class="person-detail-label">14/12/19</span>
+                                                </tr>
+                                                <li role="separator" class="divider"></li>
+
+                                                <tr>
+                                                    <span class="person-attribute-label"><strong>Role</strong>:</span>
+                                                    <span class="person-detail-label">Doctor</span>
+                                                </tr>
+
+                                                </tbody>
+                                                </table>
                                                 </li>
                                             </ul>
                                         </div>
                                         <a class="male thumbnail" href="#"></a>
-                                        <h3 class="member-name"> Member 1</h3>
+                                        <h3 class="member-name"> Patient 1</h3>
                                     </div>
                                 </div>
                                 <div class="item">
@@ -235,7 +228,7 @@
                                             </ul>
                                         </div>
                                         <a class="male thumbnail" href="#"></a>
-                                        <h3 class="member-name"> Member 2</h3>
+                                        <h3 class="member-name"> Patient 2</h3>
                                     </div>
                                 </div>
                                 <div class="item">
@@ -285,7 +278,7 @@
                                             </ul>
                                         </div>
                                         <a class="female thumbnail" href="#"></a>
-                                        <h3 class="member-name"> Member 3</h3>
+                                        <h3 class="member-name"> Patient 3</h3>
                                     </div>
                                 </div>
                                 <div class="item">
@@ -335,7 +328,7 @@
                                             </ul>
                                         </div>
                                         <a class="female thumbnail" href="#"></a>
-                                        <h3 class="member-name"> Member 4</h3>
+                                        <h3 class="member-name"> Patient 4</h3>
                                     </div>
                                 </div>
                                 <div class="item">
@@ -385,7 +378,7 @@
                                             </ul>
                                         </div>
                                         <a class="male thumbnail" href="#"></a>
-                                        <h3 class="member-name"> Member 5</h3>
+                                        <h3 class="member-name"> Patient 5</h3>
                                     </div>
                                 </div>
                                 <div class="item">
@@ -435,7 +428,7 @@
                                             </ul>
                                         </div>
                                         <a class="male thumbnail" href="#"></a>
-                                        <h3 class="member-name"> Member 6</h3>
+                                        <h3 class="member-name"> Patient 6</h3>
                                     </div>
                                 </div>
 
@@ -447,7 +440,7 @@
                 </div>
             </div>
         </div>
-        
+
     </section>
 </c:forEach>
 <%--</c:if>--%>

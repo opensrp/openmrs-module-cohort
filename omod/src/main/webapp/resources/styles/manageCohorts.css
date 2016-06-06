@@ -28,7 +28,7 @@ a {
 }
 
 a:hover {
-    color: #007aff !important;
+    color: #007aff;
     text-decoration: underline;
 }
 
@@ -123,6 +123,14 @@ blockquote p {
     font-weight: 700;
 }
 
+tr th {
+    padding: 12px 12px 12px 12px !important;
+}
+
+tr td {
+    padding: 12px 12px 12px 12px !important;
+}
+
 .details-container {
     min-height: 285px;
     background: white;
@@ -198,7 +206,7 @@ blockquote p {
 }
 
 .jumbotron {
-    padding: 40px 20px 45px 40px !important;
+    padding: 40px 20px 15px 40px !important;
     background-color: white; !important;
 }
 
@@ -250,7 +258,7 @@ blockquote p {
 
 .thumbnail
 {
-    width: 200px !important;
+    width: 185px !important;
     height: 200px !important;
 }
 
