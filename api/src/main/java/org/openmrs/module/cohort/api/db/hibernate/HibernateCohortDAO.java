@@ -772,4 +772,12 @@ public class HibernateCohortDAO implements CohortDAO {
 		criteria.add(Restrictions.ilike("location", location, MatchMode.START));
 		return criteria.list();
 	}
+	
+	@Override
+	public List<CohortMember> findCohortMembersByCohortId (Integer cohortId) {
+		List<CohortMember> cohortMembers = null;
+		Criteria criteria = (Criteria) sessionFactory.getCurrentSession().createCriteria(CohortMember.class);
+		criteria.add(Restrictions.ilike("cohort", cohortId.toString(), MatchMode.START));
+		return criteria.list();
+	}
 }

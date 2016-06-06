@@ -12,9 +12,9 @@
 <section class="top-options">
     <div class="container">
         <div class="row">
-            <div class="col-xs-4">
+            <div class="col-sm-7">
                 <form class="form-inline" id="login" method="get">
-                    <input class="form-control" type="submit" id="search" name="search" value="search">
+                    <input class="btn btn-default form-control" type="submit" id="search" name="search" value="search">
                     <spring:bind path="cohortmodule.name">
                         <input class="form-control cohort-search" type="text" id="name" name="name" value="${status.value}" placeholder="Cohort Search"
                                required>
@@ -24,17 +24,17 @@
                     </spring:bind>
                 </form>
             </div>
-            <div class="col-xs-4">
-                <div class="add-cohorts-button cohort-box-container btn-default">
-                    <a href="addcohort.form"><i class="fa fa-plus-square-o fa-2x" aria-hidden="true"></i>
-                        <span><spring:message code="cohort.createcohort"/> </a>
-                </div>
+            <div class="col-sm-2 create-cohort-button">
+                    <a class="btn btn-default" href="addcohort.form">
+                        <i class="fa fa-plus fa-2x" aria-hidden="true"></i>
+                        <span><spring:message code="cohort.createcohort"/></span>
+                    </a>
             </div>
-            <div class="col-xs-4">
-                <div class="add-cohorts-button group-cohort-box-container btn-default">
-                    <a href="groupcohort.form"><i class="fa fa-plus-square-o fa-2x" aria-hidden="true"></i>
-                        <span>Create Group Cohort </span></a>
-                </div>
+            <div class="col-sm-2 create-group-cohort-button">
+                <a class="btn btn-default" href="groupcohort.form">
+                    <i class="fa fa-plus fa-2x" aria-hidden="true"></i>
+                    <span>Create Group Cohort</span>
+                </a>
             </div>
         </div>
     </div>
@@ -46,7 +46,7 @@
     <section class="successful-search-body">
         <div class="container" >
             <div class="row">
-                <div class="col-xs-4">
+                <div class="col-sm-4">
                     <div class="table-container details-container">
                         <table class="table">
                             <thead class="thead-inverse">
@@ -80,14 +80,14 @@
                         </table>
                     </div>
                 </div>
-                <div class="col-xs-3">
+                <div class="col-sm-3">
                     <div class="cohort-name">
                         <h2>
                             <span>${ls.cohortType.name}</span>
                         </h2>
                     </div>
                     <div class="row">
-                        <div class="col-xs-10 col-xs-offset-1">
+                        <div class="col-sm-10 col-sm-offset-1">
                             <div class="cohort-description-heading">
                                 <h4>Description</h4>
                             </div>
@@ -97,26 +97,111 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xs-3">
+                <div class="col-sm-3">
 
                 </div>
-                <div class="col-xs-2">
-                    <div class="box-1-right">
-                        <div class="add-cohort-attributes-and-encounters-button add-cohort-attributes-and-encounters-box-container btn-default">
-                            <a href="${pageContext.request.contextPath}/module/cohort/addcohortattributes.form?ca=${ls.cohortId}"><i class="fa fa-dot-circle-o fa-2x" aria-hidden="true"></i>
-                                <span>Add Attribute</span></a>
-                        </div>
+                <div class="col-sm-2">
+                    <div class="box-right">
+                        <a class="btn btn-primary" href="${pageContext.request.contextPath}/module/cohort/addcohortattributes.form?ca=${ls.cohortId}"><i class="fa fa-dot-circle-o fa-2x" aria-hidden="true"></i>
+                            <span class="desc-1">Add Attribute</span></a>
                     </div>
-                    <div class="box-2-right">
-                        <div class="add-cohort-attributes-and-encounters-button add-cohort-attributes-and-encounters-box-container btn-default">
-                            <a  href="${pageContext.request.contextPath}/module/cohort/htmlFormEntry.form?coh=${ls.cohortId}&htmlformId=${htmlformId}"><i class="fa fa-check-square-o fa-2x" aria-hidden="true"></i>
-                                <span>Add Encounter</span>
-                            </a>
+                    <div class="box-right">
+                        <a class="btn btn-primary" href="${pageContext.request.contextPath}/module/cohort/htmlFormEntry.form?coh=${ls.cohortId}&htmlformId=${htmlformId}"><i class="fa fa-check-square-o fa-2x" aria-hidden="true"></i>
+                            <span class="desc-2">Add Encounter</span></a>
+                    </div>
+                    <div class="box-right">
+                        <a class="btn btn-primary" href="${pageContext.request.contextPath}/module/cohort/cpatients.form?cpid=${ls.cohortId}">
+                            <i class="fa fa-user-plus fa-2x" aria-hidden="true"></i><span class="desc-3"> Add Member</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!--User media carousel-->
+        
+        <div class="container carousel-outer">
+            <div class="row">
+                <div class="col-sm-2">
+                    <div class="cohort-description-heading">
+                        <h4>Cohort Members</h4>
+                    </div>
+                </div> 
+            </div>
+            <div class='row'>
+                <div class='col-sm-12'>
+                    <div class="jumbotron carousel slide media-carousel" id="media">
+                        <div class="carousel slide media-carousel" id="eventCarousel" data-interval="0">
+                            <div class="carousel-inner onebyone-carosel">
+                                <div class="item  active">
+                                    <div class="col-sm-3">
+                                        <div class="dropdown">
+                                            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                                Dropdown
+                                                <span class="caret"></span>
+                                            </button>
+                                            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                                <li>
+                                                    <table id="myTable" class="table table-hover">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Name</th>
+                                                                <th>Cohort Id</th>
+                                                                <th>Start Date</th>
+                                                                <th>End Date</th>
+                                                                <th>Role</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>Shreyans Sheth</td>
+                                                                <td>2</td>
+                                                                <td>24/45/567</td>
+                                                                <td>24/45/567</td>
+                                                                <td> Head and stuff </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <a class="male thumbnail" href="#"></a>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="col-sm-3">
+                                        <a class="male thumbnail" href="#"></a>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="col-sm-3">
+                                        <a class="female thumbnail" href="#"></a>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="col-sm-3">
+                                        <a class="female thumbnail" href="#"></a>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="col-sm-3">
+                                        <a class="male thumbnail" href="#"></a>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="col-sm-3">
+                                        <a class="male thumbnail" href="#"></a>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <a data-slide="prev" href="#eventCarousel" class="left carousel-control"><i class="fa fa-caret-left fa-4x" aria-hidden="true"></i></a>
+                            <a data-slide="next" href="#eventCarousel" class="right carousel-control"><i class="fa fa-caret-right fa-4x" aria-hidden="true"></i></a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        
     </section>
 </c:forEach>
 <%--</c:if>--%>
@@ -126,6 +211,7 @@
 <!--Script includes for new UI -->
 <openmrs:htmlInclude file="/moduleResources/cohort/scripts/jquery.js" />
 <openmrs:htmlInclude file="/moduleResources/cohort/bootstrap/js/bootstrap.js" />
+<openmrs:htmlInclude file="/moduleResources/cohort/scripts/manageCohorts.js" />
 <!--END-->
 
 

@@ -39,19 +39,19 @@
     </div>
     <div class="container-fluid main-nav clearfix">
         <div class="row">
-            <div class="col-xs-2 col-xs-offset-1 nav">
+            <div class="col-sm-2 col-sm-offset-1 nav">
                 <ul class="nav admin-back">
                     <li><a href="index.html"> <i class="fa fa-arrow-left fa-lg" aria-hidden="true"> </i ><span class="navbar-label">Adminstration </span></a> </li>
                 </ul>
             </div>
-            <div class="col-xs-2 nav">
+            <div class="col-sm-2 nav">
                 <ul class="nav admin-back">
                     <div class="module-label">
                         <li> <i  class="fa fa-users fa-lg" aria-hidden="true"> </i ><span class="navbar-label">Cohort Module </span></li>
                     </div>
                 </ul>
             </div>
-            <div class="col-xs-7">
+            <div class="col-sm-7">
                 <ul class="nav">
                     <li class="item-1"><a id="cohort-dashboard-link" href="index.html"> <i id="cohort-dashboard-icon" class="fa fa-dashboard fa-lg" aria-hidden="true"> </i ><span class="navbar-label">Dashboard </span></a> </li>
                     <li class="item-2"><a id="cohort-search-link" href="index.html"> <i id="cohort-search-icon" class="fa fa-search fa-lg" aria-hidden="true"> </i><span class="navbar-label"> Search </span></a> </li>

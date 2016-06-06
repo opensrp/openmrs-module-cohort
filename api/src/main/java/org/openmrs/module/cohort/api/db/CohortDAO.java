@@ -212,4 +212,5 @@ public interface CohortDAO {
 	public List<CohortEncounter> getEncounters(String query, Integer cohortId, Integer start, Integer length,
 			boolean includeVoided);
 	
+	public List<CohortMember> findCohortMembersByCohortId (Integer cohortId);
 }

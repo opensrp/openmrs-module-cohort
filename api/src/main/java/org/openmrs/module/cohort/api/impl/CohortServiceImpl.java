@@ -600,6 +600,11 @@ public class CohortServiceImpl extends BaseOpenmrsService implements
 	public List<CohortEncounter> findCohortEncounter(String cohort, String location) {
 		return dao.findCohortEncounter(cohort, location);
 	}
+	
+	@Override
+	public List<CohortMember> findCohortMembersByCohortId (Integer cohortId) {
+		return dao.findCohortMembersByCohortId(cohortId);
+	}
 }
 
 	

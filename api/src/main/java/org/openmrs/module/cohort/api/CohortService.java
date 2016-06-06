@@ -238,4 +238,6 @@ public interface CohortService extends OpenmrsService {
 	public List<CohortObs> getObservations(List<CohortM> whom, List<CohortEncounter> encounters, List<Concept> questions,
 			List<Concept> answers, List<Location> locations, List<String> sort,
 			Integer mostRecentN, Integer obsGroupId, Date fromDate, Date toDate, boolean includeVoidedObs);
+	
+	public List<CohortMember> findCohortMembersByCohortId (Integer cohortId);
 }
