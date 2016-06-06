@@ -42,6 +42,12 @@
 
 <%--<c:if test="${cohortExists == true}">--%>
 
+<% for(int i = 0; i < CohortList.size(); i+=1) { %>
+<tr>
+    <td><%=CohortList.get(i).getFestivalName()%></td>
+</tr>
+<% } %>
+
 <c:forEach var="ls" items="${CohortList}" varStatus="status">
     <section class="successful-search-body">
         <div class="container" >
@@ -122,7 +128,7 @@
         <div class="container carousel-outer">
             <div class="row">
                 <div class="col-sm-2">
-                    <div class="cohort-description-heading">
+                    <div class="cohort-description-heading users-heading">
                         <h4>Cohort Members</h4>
                     </div>
                 </div> 
@@ -145,7 +151,7 @@
                                                         <tbody>
                                                             <tr>
                                                                 <span class="person-attribute-label"><strong>Name</strong>:</span>
-                                                                <span class="person-detail-label">Shreyans Ketan Sheth</span>   
+                                                                <span class="person-detail-label">Shreyans  Sheth</span>   
                                                             </tr>
                                                             <li role="separator" class="divider"></li>
 
@@ -179,6 +185,7 @@
                                             </ul>
                                         </div>
                                         <a class="male thumbnail" href="#"></a>
+                                        <h3 class="member-name"> Member 1</h3>
                                     </div>
                                 </div>
                                 <div class="item">
@@ -194,7 +201,7 @@
                                                         <tbody>
                                                         <tr>
                                                             <span class="person-attribute-label"><strong>Name</strong>:</span>
-                                                            <span class="person-detail-label">Shreyans Ketan Sheth</span>
+                                                            <span class="person-detail-label">Shreyans  Sheth</span>
                                                         </tr>
                                                 <li role="separator" class="divider"></li>
 
@@ -228,6 +235,7 @@
                                             </ul>
                                         </div>
                                         <a class="male thumbnail" href="#"></a>
+                                        <h3 class="member-name"> Member 2</h3>
                                     </div>
                                 </div>
                                 <div class="item">
@@ -243,7 +251,7 @@
                                                         <tbody>
                                                         <tr>
                                                             <span class="person-attribute-label"><strong>Name</strong>:</span>
-                                                            <span class="person-detail-label">Shreyans Ketan Sheth</span>
+                                                            <span class="person-detail-label">Shreyans  Sheth</span>
                                                         </tr>
                                                 <li role="separator" class="divider"></li>
 
@@ -277,6 +285,7 @@
                                             </ul>
                                         </div>
                                         <a class="female thumbnail" href="#"></a>
+                                        <h3 class="member-name"> Member 3</h3>
                                     </div>
                                 </div>
                                 <div class="item">
@@ -292,7 +301,7 @@
                                                         <tbody>
                                                         <tr>
                                                             <span class="person-attribute-label"><strong>Name</strong>:</span>
-                                                            <span class="person-detail-label">Shreyans Ketan Sheth</span>
+                                                            <span class="person-detail-label">Shreyans  Sheth</span>
                                                         </tr>
                                                 <li role="separator" class="divider"></li>
 
@@ -326,6 +335,7 @@
                                             </ul>
                                         </div>
                                         <a class="female thumbnail" href="#"></a>
+                                        <h3 class="member-name"> Member 4</h3>
                                     </div>
                                 </div>
                                 <div class="item">
@@ -341,7 +351,7 @@
                                                         <tbody>
                                                         <tr>
                                                             <span class="person-attribute-label"><strong>Name</strong>:</span>
-                                                            <span class="person-detail-label">Shreyans Ketan Sheth</span>
+                                                            <span class="person-detail-label">Shreyans  Sheth</span>
                                                         </tr>
                                                 <li role="separator" class="divider"></li>
 
@@ -375,6 +385,7 @@
                                             </ul>
                                         </div>
                                         <a class="male thumbnail" href="#"></a>
+                                        <h3 class="member-name"> Member 5</h3>
                                     </div>
                                 </div>
                                 <div class="item">
@@ -390,7 +401,7 @@
                                                         <tbody>
                                                         <tr>
                                                             <span class="person-attribute-label"><strong>Name</strong>:</span>
-                                                            <span class="person-detail-label">Shreyans Ketan Sheth</span>
+                                                            <span class="person-detail-label">Shreyans  Sheth</span>
                                                         </tr>
                                                 <li role="separator" class="divider"></li>
 
@@ -424,6 +435,7 @@
                                             </ul>
                                         </div>
                                         <a class="male thumbnail" href="#"></a>
+                                        <h3 class="member-name"> Member 6</h3>
                                     </div>
                                 </div>
 

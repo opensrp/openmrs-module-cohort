@@ -83,7 +83,7 @@ blockquote p {
 }
 
 .create-group-cohort-button {
-    margin-left: 40px;
+    margin-left: 5px;
     width: 80px;
 }
 
@@ -168,32 +168,37 @@ blockquote p {
 }
 
 .box-right .desc-1{
-    padding-right: 20px;
     padding-left:5px;
-    font-size: 20px;
-    vertical-align: 5%;
+    font-size: 17px;
+    vertical-align: 10%;
+    font-weight: bold;
+    margin-right: 17px;
 }
 
 .box-right .desc-2{
-    padding-right:2px;
     padding-left:5px;
-    font-size: 20px;
-    vertical-align: 5%;
+    font-size: 17px;
+    vertical-align: 10%;
+    font-weight: bold;
 }
 
 .box-right .desc-3{
-    padding-right: 15px;
     padding-left:5px;
-    font-size: 20px;
-    vertical-align: 5%;
+    font-size: 17px;
+    vertical-align: 10%;
+    font-weight: bold;
+    margin-right: 13px;
 }
 
 /******************************* USER MEDIA CAROUSEL *******************************/
 
 
+.users-heading {
+    padding-top: 20px ;
+}
+
 .jumbotron {
-    margin-top: 10px;
-    padding: 30px 20px 30px 20px !important;
+    padding: 40px 20px 45px 40px !important;
     background-color: white; !important;
 }
 
@@ -204,21 +209,21 @@ blockquote p {
     background-image: none;
     height: 40px;
     width : 40px;
-    margin-top: 50px
+    margin-top: 90px
 }
 /* Next button  */
 .media-carousel .carousel-control.right
 {
-    right: -12px !important;
+    right: 12px !important;
     background-image: none;
     height: 40px;
     width : 40px;
-    margin-top: 50px
+    margin-top: 90px
 }
 /* Changes the position of the indicators */
 .media-carousel .carousel-indicators
 {
-    right: 50%;
+    right: -12px !important;
     top: auto;
     bottom: 0px;
     margin-right: -19px;
@@ -245,7 +250,7 @@ blockquote p {
 
 .thumbnail
 {
-    width: 185px !important;
+    width: 200px !important;
     height: 200px !important;
 }
 
@@ -261,6 +266,10 @@ blockquote p {
 }
 
 .person-detail-label {
-    padding-left: 5px;
+    padding-left: 3px;
     padding-right: 8px;
+}
+
+.member-name {
+    text-align: center;
 }

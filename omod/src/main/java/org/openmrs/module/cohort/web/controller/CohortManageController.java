@@ -56,7 +56,9 @@ public class CohortManageController {
 		CohortService service = Context.getService(CohortService.class);
 		if ("search".equals(request.getParameter("search"))) {
 			List<CohortM> list1 = service.findCohorts(cohort_name);
-			service.findCohortMember().get(0).getPerson().getGender();
+			for(int i = 0; i < list1.size(); i++) {
+				model.addAttribute("cohortDateCreation" + i, list1.get(0).getDateCreated());
+			}
 		/* for(int i=0;i<list1.size();i++)
 	     {
 	     CohortM c=list1.get(i);
