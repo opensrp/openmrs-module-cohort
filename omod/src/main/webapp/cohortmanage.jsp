@@ -135,30 +135,44 @@
                                 <div class="item  active">
                                     <div class="col-sm-3">
                                         <div class="dropdown">
-                                            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                                Dropdown
+                                            <button class="btn dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                                <i class="fa fa-info-circle" aria-hidden="true"></i> Details
                                                 <span class="caret"></span>
                                             </button>
                                             <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                                                 <li>
-                                                    <table id="myTable" class="table table-hover">
-                                                        <thead>
-                                                            <tr>
-                                                                <th>Name</th>
-                                                                <th>Cohort Id</th>
-                                                                <th>Start Date</th>
-                                                                <th>End Date</th>
-                                                                <th>Role</th>
-                                                            </tr>
-                                                        </thead>
+                                                    <table class="table table-hover person-details-table">
                                                         <tbody>
                                                             <tr>
-                                                                <td>Shreyans Sheth</td>
-                                                                <td>2</td>
-                                                                <td>24/45/567</td>
-                                                                <td>24/45/567</td>
-                                                                <td> Head and stuff </td>
+                                                                <span class="person-attribute-label"><strong>Name</strong>:</span>
+                                                                <span class="person-detail-label">Shreyans Ketan Sheth</span>   
                                                             </tr>
+                                                            <li role="separator" class="divider"></li>
+
+                                                            <tr>
+                                                                <span class="person-attribute-label"><strong>Cohort Id</strong>:</span>
+                                                                <span class="person-detail-label">123</span>
+                                                            </tr>
+                                                            <li role="separator" class="divider"></li>
+            
+            
+                                                            <tr>
+                                                                <span class="person-attribute-label"><strong>Start Date</strong>:</span>
+                                                                <span class="person-detail-label">12/2/13</span>
+                                                            </tr>
+                                                            <li role="separator" class="divider"></li>
+                                                
+                                                            <tr>
+                                                                <span class="person-attribute-label"><strong>End Date</strong>:</span>
+                                                                <span class="person-detail-label">14/12/19</span>
+                                                            </tr>
+                                                            <li role="separator" class="divider"></li>
+                                                
+                                                            <tr>
+                                                                <span class="person-attribute-label"><strong>Role</strong>:</span>
+                                                                <span class="person-detail-label">Doctor</span>
+                                                            </tr>
+                                                        
                                                         </tbody>
                                                     </table>
                                                 </li>
@@ -169,26 +183,246 @@
                                 </div>
                                 <div class="item">
                                     <div class="col-sm-3">
+                                        <div class="dropdown">
+                                            <button class="btn dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                                <i class="fa fa-info-circle" aria-hidden="true"></i> Details
+                                                <span class="caret"></span>
+                                            </button>
+                                            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                                <li>
+                                                    <table class="table table-hover person-details-table">
+                                                        <tbody>
+                                                        <tr>
+                                                            <span class="person-attribute-label"><strong>Name</strong>:</span>
+                                                            <span class="person-detail-label">Shreyans Ketan Sheth</span>
+                                                        </tr>
+                                                <li role="separator" class="divider"></li>
+
+                                                <tr>
+                                                    <span class="person-attribute-label"><strong>Cohort Id</strong>:</span>
+                                                    <span class="person-detail-label">123</span>
+                                                </tr>
+                                                <li role="separator" class="divider"></li>
+
+
+                                                <tr>
+                                                    <span class="person-attribute-label"><strong>Start Date</strong>:</span>
+                                                    <span class="person-detail-label">12/2/13</span>
+                                                </tr>
+                                                <li role="separator" class="divider"></li>
+
+                                                <tr>
+                                                    <span class="person-attribute-label"><strong>End Date</strong>:</span>
+                                                    <span class="person-detail-label">14/12/19</span>
+                                                </tr>
+                                                <li role="separator" class="divider"></li>
+
+                                                <tr>
+                                                    <span class="person-attribute-label"><strong>Role</strong>:</span>
+                                                    <span class="person-detail-label">Doctor</span>
+                                                </tr>
+
+                                                </tbody>
+                                                </table>
+                                                </li>
+                                            </ul>
+                                        </div>
                                         <a class="male thumbnail" href="#"></a>
                                     </div>
                                 </div>
                                 <div class="item">
                                     <div class="col-sm-3">
+                                        <div class="dropdown">
+                                            <button class="btn dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                                <i class="fa fa-info-circle" aria-hidden="true"></i> Details
+                                                <span class="caret"></span>
+                                            </button>
+                                            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                                <li>
+                                                    <table class="table table-hover person-details-table">
+                                                        <tbody>
+                                                        <tr>
+                                                            <span class="person-attribute-label"><strong>Name</strong>:</span>
+                                                            <span class="person-detail-label">Shreyans Ketan Sheth</span>
+                                                        </tr>
+                                                <li role="separator" class="divider"></li>
+
+                                                <tr>
+                                                    <span class="person-attribute-label"><strong>Cohort Id</strong>:</span>
+                                                    <span class="person-detail-label">123</span>
+                                                </tr>
+                                                <li role="separator" class="divider"></li>
+
+
+                                                <tr>
+                                                    <span class="person-attribute-label"><strong>Start Date</strong>:</span>
+                                                    <span class="person-detail-label">12/2/13</span>
+                                                </tr>
+                                                <li role="separator" class="divider"></li>
+
+                                                <tr>
+                                                    <span class="person-attribute-label"><strong>End Date</strong>:</span>
+                                                    <span class="person-detail-label">14/12/19</span>
+                                                </tr>
+                                                <li role="separator" class="divider"></li>
+
+                                                <tr>
+                                                    <span class="person-attribute-label"><strong>Role</strong>:</span>
+                                                    <span class="person-detail-label">Doctor</span>
+                                                </tr>
+
+                                                </tbody>
+                                                </table>
+                                                </li>
+                                            </ul>
+                                        </div>
                                         <a class="female thumbnail" href="#"></a>
                                     </div>
                                 </div>
                                 <div class="item">
                                     <div class="col-sm-3">
+                                        <div class="dropdown">
+                                            <button class="btn dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                                <i class="fa fa-info-circle" aria-hidden="true"></i> Details
+                                                <span class="caret"></span>
+                                            </button>
+                                            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                                <li>
+                                                    <table class="table table-hover person-details-table">
+                                                        <tbody>
+                                                        <tr>
+                                                            <span class="person-attribute-label"><strong>Name</strong>:</span>
+                                                            <span class="person-detail-label">Shreyans Ketan Sheth</span>
+                                                        </tr>
+                                                <li role="separator" class="divider"></li>
+
+                                                <tr>
+                                                    <span class="person-attribute-label"><strong>Cohort Id</strong>:</span>
+                                                    <span class="person-detail-label">123</span>
+                                                </tr>
+                                                <li role="separator" class="divider"></li>
+
+
+                                                <tr>
+                                                    <span class="person-attribute-label"><strong>Start Date</strong>:</span>
+                                                    <span class="person-detail-label">12/2/13</span>
+                                                </tr>
+                                                <li role="separator" class="divider"></li>
+
+                                                <tr>
+                                                    <span class="person-attribute-label"><strong>End Date</strong>:</span>
+                                                    <span class="person-detail-label">14/12/19</span>
+                                                </tr>
+                                                <li role="separator" class="divider"></li>
+
+                                                <tr>
+                                                    <span class="person-attribute-label"><strong>Role</strong>:</span>
+                                                    <span class="person-detail-label">Doctor</span>
+                                                </tr>
+
+                                                </tbody>
+                                                </table>
+                                                </li>
+                                            </ul>
+                                        </div>
                                         <a class="female thumbnail" href="#"></a>
                                     </div>
                                 </div>
                                 <div class="item">
                                     <div class="col-sm-3">
+                                        <div class="dropdown">
+                                            <button class="btn dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                                <i class="fa fa-info-circle" aria-hidden="true"></i> Details
+                                                <span class="caret"></span>
+                                            </button>
+                                            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                                <li>
+                                                    <table class="table table-hover person-details-table">
+                                                        <tbody>
+                                                        <tr>
+                                                            <span class="person-attribute-label"><strong>Name</strong>:</span>
+                                                            <span class="person-detail-label">Shreyans Ketan Sheth</span>
+                                                        </tr>
+                                                <li role="separator" class="divider"></li>
+
+                                                <tr>
+                                                    <span class="person-attribute-label"><strong>Cohort Id</strong>:</span>
+                                                    <span class="person-detail-label">123</span>
+                                                </tr>
+                                                <li role="separator" class="divider"></li>
+
+
+                                                <tr>
+                                                    <span class="person-attribute-label"><strong>Start Date</strong>:</span>
+                                                    <span class="person-detail-label">12/2/13</span>
+                                                </tr>
+                                                <li role="separator" class="divider"></li>
+
+                                                <tr>
+                                                    <span class="person-attribute-label"><strong>End Date</strong>:</span>
+                                                    <span class="person-detail-label">14/12/19</span>
+                                                </tr>
+                                                <li role="separator" class="divider"></li>
+
+                                                <tr>
+                                                    <span class="person-attribute-label"><strong>Role</strong>:</span>
+                                                    <span class="person-detail-label">Doctor</span>
+                                                </tr>
+
+                                                </tbody>
+                                                </table>
+                                                </li>
+                                            </ul>
+                                        </div>
                                         <a class="male thumbnail" href="#"></a>
                                     </div>
                                 </div>
                                 <div class="item">
                                     <div class="col-sm-3">
+                                        <div class="dropdown">
+                                            <button class="btn dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                                <i class="fa fa-info-circle" aria-hidden="true"></i> Details
+                                                <span class="caret"></span>
+                                            </button>
+                                            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                                <li>
+                                                    <table class="table table-hover person-details-table">
+                                                        <tbody>
+                                                        <tr>
+                                                            <span class="person-attribute-label"><strong>Name</strong>:</span>
+                                                            <span class="person-detail-label">Shreyans Ketan Sheth</span>
+                                                        </tr>
+                                                <li role="separator" class="divider"></li>
+
+                                                <tr>
+                                                    <span class="person-attribute-label"><strong>Cohort Id</strong>:</span>
+                                                    <span class="person-detail-label">123</span>
+                                                </tr>
+                                                <li role="separator" class="divider"></li>
+
+
+                                                <tr>
+                                                    <span class="person-attribute-label"><strong>Start Date</strong>:</span>
+                                                    <span class="person-detail-label">12/2/13</span>
+                                                </tr>
+                                                <li role="separator" class="divider"></li>
+
+                                                <tr>
+                                                    <span class="person-attribute-label"><strong>End Date</strong>:</span>
+                                                    <span class="person-detail-label">14/12/19</span>
+                                                </tr>
+                                                <li role="separator" class="divider"></li>
+
+                                                <tr>
+                                                    <span class="person-attribute-label"><strong>Role</strong>:</span>
+                                                    <span class="person-detail-label">Doctor</span>
+                                                </tr>
+
+                                                </tbody>
+                                                </table>
+                                                </li>
+                                            </ul>
+                                        </div>
                                         <a class="male thumbnail" href="#"></a>
                                     </div>
                                 </div>
