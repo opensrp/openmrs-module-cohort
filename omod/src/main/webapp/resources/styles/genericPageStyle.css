@@ -1,0 +1,52 @@
+/******************************* GENERAL PAGE CSS *******************************/
+
+* {
+    outline: 0 !important;
+}
+
+body {
+    font-family: "Lato", sans-serif;
+    background: #eeeeee;
+    padding-top: 130px;
+    position: relative;
+}
+
+p {
+    margin: 0 0 15px;
+}
+
+p.lead {
+    font-weight: 300;
+}
+
+strong {
+    font-weight: 700;
+}
+
+a {
+    color: #333;
+}
+
+/*a:hover {*/
+    /*color: #007aff ;*/
+    /*text-decoration: underline;*/
+/*}*/
+
+ul.no-style {
+    list-style: none;
+    padding: 0;
+    margin-left: 0;
+}
+
+li {
+    margin-bottom: 5px;
+}
+
+blockquote {
+    padding-bottom: 4px;
+    margin-bottom: 30px;
+}
+
+blockquote p {
+    margin-bottom: 10px;
+}

@@ -40,11 +40,10 @@ public class AdminList extends AdministrationSectionExt {
 	 */
 	public Map<String, String> getLinks() {
 		LinkedHashMap<String, String> map = new LinkedHashMap<String, String>();
-		map.put("/module/cohort/cohortmanage.form", "Manage Cohorts");
-		map.put("/module/cohort/configurecohortmetadata.form", "Configure Cohort MetaData");
-		map.put("/module/cohort/cohortenc.form", "Manage Cohort Encounters");
-		map.put("/module/cohort/visitmanage.form", "Manage Cohort Visit");
-		map.put("/module/cohort/cohortobs.form", "Manage Cohort Observations");
+		map.put("/module/cohort/cohortDashboard.form", "Cohort Dashboard");
+		map.put("/module/cohort/patientSearch.form", "Cohort Patient Search");
+		map.put("/module/cohort/cohortSearch.form", "Cohort Search");
+		map.put("/module/cohort/manageCohorts.form", "Manage Cohorts and Metadata");
 		return map;
 	}
 	

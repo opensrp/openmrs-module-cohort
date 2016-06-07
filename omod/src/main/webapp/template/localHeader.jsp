@@ -5,9 +5,9 @@
             code="admin.title.short"/></a></li>
 
     <li
-            <c:if test='<%= request.getRequestURI().contains("/cohortmanage") %>'>class="active"</c:if>>
+            <c:if test='<%= request.getRequestURI().contains("/cohortDashboard") %>'>class="active"</c:if>>
         <a
-                href="${pageContext.request.contextPath}/module/cohort/cohortmanage.form">Manage Cohorts</a>
+                href="${pageContext.request.contextPath}/module/cohort/cohortDashboard.form">Manage Cohorts</a>
     </li>
     <li
             <c:if test='<%= request.getRequestURI().contains("/configurecohortmetadata") %>'>class="active"</c:if>>

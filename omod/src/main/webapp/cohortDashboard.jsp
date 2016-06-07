@@ -2,8 +2,9 @@
 
 <%@ include file="/WEB-INF/template/include.jsp" %>
 <%@ include file="template/header.jsp" %>
-<openmrs:htmlInclude file="/moduleResources/cohort/styles/manageCohorts.css" />
-<title><openmrs:message code="openmrs.title"/></title> <!--set page title-->
+<openmrs:htmlInclude file="/moduleResources/cohort/styles/cohortDashboard.css" />
+<openmrs:htmlInclude file="/moduleResources/cohort/styles/genericPageStyle.css" />
+<title>Cohort Dashboard</title> <!--set page title-->
 </head>
 <%@ include file="template/navbar.jsp" %>
 
@@ -219,99 +220,10 @@
             </div>
         </div>
     </div>
-    
-    
 </c:if>
+
 <!--Script includes for new UI -->
 <openmrs:htmlInclude file="/moduleResources/cohort/scripts/jquery.js" />
 <openmrs:htmlInclude file="/moduleResources/cohort/bootstrap/js/bootstrap.js" />
-<openmrs:htmlInclude file="/moduleResources/cohort/scripts/manageCohorts.js" />
+<openmrs:htmlInclude file="/moduleResources/cohort/scripts/cohortDashboard.js" />
 <!--END-->
-
-
-<%--<!--LEGACY CODE -->--%>
-
-
-<%--<%@ include file="/WEB-INF/template/include.jsp" %>--%>
-<%--<%@ include file="/WEB-INF/template/header.jsp" %>--%>
-
-<%--<%@ include file="template/localHeader.jsp" %>--%>
-<%--<h3>Manage Cohort </h3>--%>
-<%--<a href="addcohort.form"><spring:message code="cohort.createcohort"/></a>--%>
-<%--<a href="groupcohort.form">Create Group Cohort</a>--%>
-<%--<br/>--%>
-<%--<br/>--%>
-<%--<div>--%>
-<%--<b class="boxHeader"><spring:message code="cohort.findcohort"/></b>--%>
-<%--<div class="box">--%>
-<%--<!--   <div class="searchWidgetContainer" id="createCohort">--%>
-<%--</div>--%>
-<%---->--%>
-<%--<form id="login" method="get">--%>
-<%--<spring:bind path="cohortmodule.name">--%>
-<%--<spring:message--%>
-<%--code="cohort.searchcohorts"/> :<input type="text" id="name" name="name" value="${status.value}" placeholder="Search..."--%>
-<%--required>--%>
-<%--<c:if test="${status.errorMessage != ''}"><span class="error">${status.errorMessage}</span></c:if>--%>
-<%--</spring:bind>--%>
-<%--<input type="submit" id="search" name="search" value="search">--%>
-<%--</form>--%>
-<%--</div>--%>
-<%--</div>--%>
-<%--<div class="box">--%>
-<%--<div>--%>
-<%--<table class="tableStlye">--%>
-<%--<thead>--%>
-<%--<tr>--%>
-<%--<th class="thStyle" id="thStyle">Cohort Name</th>--%>
-<%--<th class="thStyle" id="thStyle">Description</th>--%>
-<%--<th class="thStyle" id="thStyle">Cohort Type</th>--%>
-<%--<th class="thStyle" id="thStyle">Cohort Program</th>--%>
-<%--<th class="thStyle" id="thStyle">Location</th>--%>
-<%--<th class="thStyle" id="thStyle">Start Date</th>--%>
-<%--<th class="thStyle" id="thStyle">End Date</th>--%>
-<%--</tr>--%>
-<%--</thead>--%>
-<%--<tbody>--%>
-<%--<c:forEach var="ls" items="${CohortList}" varStatus="status">--%>
-<%--<tr class='${status.index % 2 == 0 ? "oddRow" : "evenRow" }'>--%>
-<%--<td class="tdStyle">--%>
-<%--<a href="${pageContext.request.contextPath}/module/cohort/editcohort.form?cid=${cohort.cohortId}">${cohort.name}</a>--%>
-<%--</td>--%>
-<%--<td class="tdStyle">--%>
-<%--${cohort.description}--%>
-<%--</td>--%>
-<%--<td class="tdStyle">--%>
-<%--${cohort.cohortType.name}--%>
-<%--</td>--%>
-<%--<td class="tdStyle">--%>
-<%--${cohort.cohortProgram.name}--%>
-<%--</td>--%>
-<%--<td class="tdStyle">--%>
-<%--${cohort.clocation}--%>
-<%--</td>--%>
-<%--<td class="tdStyle">--%>
-<%--${cohort.startDate}--%>
-<%--</td>--%>
-<%--<td class="tdStyle">--%>
-<%--${cohort.endDate}--%>
-<%--</td>--%>
-<%--<td class="tdStyle">--%>
-<%--<a href="${pageContext.request.contextPath}/module/cohort/addcohortattributes.form?ca=${cohort.cohortId}">Add--%>
-<%--Attribute</a>--%>
-<%--</td>--%>
-<%--<td class="tdStyle">--%>
-<%--<a href="${pageContext.request.contextPath}/module/cohort/cpatients.form?cpid=${cohort.cohortId}">Add--%>
-<%--Cohort Member</a>--%>
-<%--</td>--%>
-<%--<td class="tdStyle">--%>
-<%--<a href="${pageContext.request.contextPath}/module/cohort/htmlFormEntry.form?coh=${cohort.cohortId}&htmlformId=${htmlformId}">Add--%>
-<%--Encounter</a>--%>
-<%--</td>--%>
-<%--</tr>--%>
-<%--</c:forEach>--%>
-<%--</tbody>--%>
-<%--</table>--%>
-<%--</div>--%>
-<%--</div>--%>
-<%--<%@ include file="/WEB-INF/template/footer.jsp" %>--%>
