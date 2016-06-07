@@ -29,7 +29,7 @@ $(document).ready(function () {
     });
     /*MEDIA CAROUSEL ENDS */
 
-    $(".carousel-inner div:first").addClass('active'); //Enables carousel correctly
+    $(".carousel-inner div:first-child").addClass('active'); //Enables carousel correctly
 
     $("#cohort-dashboard-link").removeAttr('href');
     
