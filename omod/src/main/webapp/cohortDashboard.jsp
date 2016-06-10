@@ -142,7 +142,7 @@
                                         <div class="item">
                                             <div class="col-sm-3">
                                                 <div class="dropdown">
-                                                    <button class="btn dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                                    <button class="btn dropdown-toggle" type="button" id="dropdownMenu1" aria-haspopup="true" aria-expanded="true">
                                                         <i class="fa fa-info-circle" aria-hidden="true"></i> Details
                                                         <span class="caret"></span>
                                                     </button>

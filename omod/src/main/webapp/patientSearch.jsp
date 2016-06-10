@@ -6,19 +6,104 @@
 </head>
 <openmrs:htmlInclude file="/moduleResources/cohort/styles/genericPageStyle.css" />
 <openmrs:htmlInclude file="/moduleResources/cohort/styles/patientSearch.css" />
+<openmrs:htmlInclude file="/moduleResources/cohort/styles/jquery.typeahead.css" />
 <%@ include file="template/navbar.jsp" %>
 
 <!--Code body here -->
 <div class="container">
     <div class="row">
-        <div class="col-xs-12">
-            <h1>${msg}</h1>
+        <div class="col-sm-8 col-sm-offset-2">
+            <h2 style="text-align: center">Patient Search</h2>
+        </div>
+        <div class="col-sm-5">
+            
+            <form>
+                
+                <fieldset class="form-group">
+                    <label for="patientName">Patient Name</label>
+                    <div class="typeahead__container">
+                       <span class="typeahead__query">
+                                <input id="patientName" class="form-control js-typeahead-input" type="search" autofocus autocomplete="off" placeholder="Patient Name">
+                       </span>
+                    </div>
+                </fieldset>
+                
+                
+                <fieldset class="form-group">
+                    <label for="exampleInputPassword1">Password</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                </fieldset>
+                
+                <fieldset class="form-group">
+                    <label for="exampleSelect1">Example select</label>
+                    <select class="form-control" id="exampleSelect1">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                </fieldset>
+                <fieldset class="form-group">
+                    <label for="exampleSelect2">Example multiple select</label>
+                    <select multiple class="form-control" id="exampleSelect2">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                </fieldset>
+                <fieldset class="form-group">
+                    <label for="exampleTextarea">Example textarea</label>
+                    <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
+                </fieldset>
+                <fieldset class="form-group">
+                    <label for="exampleInputFile">File input</label>
+                    <input type="file" class="form-control-file" id="exampleInputFile">
+                    <small class="text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
+                </fieldset>
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+                        Option one is this and that&mdash;be sure to include why it's great
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                        Option two can be something else and selecting it will deselect option one
+                    </label>
+                </div>
+                <div class="radio disabled">
+                    <label>
+                        <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3" disabled>
+                        Option three is disabled
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox"> Check me out
+                    </label>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+            
         </div>
     </div>
 </div>
 
-<!--Script includes for new UI -->
+
+
+<!--jQuery-->
 <openmrs:htmlInclude file="/moduleResources/cohort/scripts/jquery.js" />
+<!--Bootstrap JS -->
 <openmrs:htmlInclude file="/moduleResources/cohort/bootstrap/js/bootstrap.js" />
+<!--Typeahead JS -->
+<openmrs:htmlInclude file="/moduleResources/cohort/scripts/jquery.typeahead.js" />
+<!-- File JS -->
 <openmrs:htmlInclude file="/moduleResources/cohort/scripts/patientSearch.js" />
+
+
+
 <!--END-->

@@ -247,3 +247,7 @@ hr {
     font-style: italic;
     color: rgba(190, 1, 11, 0.85);
 }
+
+.item .col-sm-3 {
+    width: 220px;
+}
