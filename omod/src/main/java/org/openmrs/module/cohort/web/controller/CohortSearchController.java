@@ -50,11 +50,11 @@ import org.springframework.web.servlet.ModelAndView;
  * The main controller.
  */
 @Controller
-public class PatientSearchController {
+public class CohortSearchController {
 	
 	protected final Log log = LogFactory.getLog(getClass());
 	
-	@RequestMapping(value = "/module/cohort/patientSearch", method = RequestMethod.GET)
+	@RequestMapping(value = "/module/cohort/cohortSearch", method = RequestMethod.GET)
 	public void manage(HttpSession httpSession, HttpServletRequest request, ModelMap model) {
 	}
 }

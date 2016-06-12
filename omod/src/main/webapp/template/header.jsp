@@ -24,12 +24,15 @@
     <openmrs:htmlInclude file="/dwr/engine.js" />
     <openmrs:htmlInclude file="/scripts/html-sanitizer-min.js" />
     <openmrs:htmlInclude file="/dwr/interface/DWRAlertService.js" />
+    <!--jQuery-->
+    <openmrs:htmlInclude file="/moduleResources/cohort/scripts/libraries/jquery.js" />
+    <!--Bootstrap-->
+    <openmrs:htmlInclude file="/moduleResources/cohort/bootstrap/js/bootstrap.js" />
     
     <!--Style includes for new UI -->
     <openmrs:htmlInclude file="/moduleResources/cohort/bootstrap/css/bootstrap.css" />
-    <openmrs:htmlInclude file="/moduleResources/cohort/styles/navbar.css" />
-    <openmrs:htmlInclude file="/moduleResources/cohort/bootstrap/css/bootstrap.css" />
     <openmrs:htmlInclude file="/moduleResources/cohort/font-awesome/css/font-awesome.css" />
+    <openmrs:htmlInclude file="/moduleResources/cohort/styles/navbar.css" />
     <!--END-->
     
     <link rel="shortcut icon" type="image/ico" href="<openmrs:contextPath/><spring:theme code='favicon' />">

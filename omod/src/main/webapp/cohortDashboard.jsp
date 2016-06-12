@@ -2,7 +2,7 @@
 
 <%@ include file="/WEB-INF/template/include.jsp" %>
 <%@ include file="template/header.jsp" %>
-<openmrs:htmlInclude file="/moduleResources/cohort/styles/cohortDashboard.css" />
+<openmrs:htmlInclude file="/moduleResources/cohort/styles/pages/cohortDashboard.css" />
 <openmrs:htmlInclude file="/moduleResources/cohort/styles/genericPageStyle.css" />
 <title>Cohort Dashboard</title> <!--set page title-->
 </head>
@@ -222,8 +222,6 @@
     </div>
 </c:if>
 
-<!--Script includes for new UI -->
-<openmrs:htmlInclude file="/moduleResources/cohort/scripts/jquery.js" />
-<openmrs:htmlInclude file="/moduleResources/cohort/bootstrap/js/bootstrap.js" />
-<openmrs:htmlInclude file="/moduleResources/cohort/scripts/cohortDashboard.js" />
+
+<openmrs:htmlInclude file="/moduleResources/cohort/scripts/pages/cohortDashboard.js" />
 <!--END-->

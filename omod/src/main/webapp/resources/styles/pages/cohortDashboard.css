@@ -194,12 +194,12 @@ tr td {
 }
 
 .carousel .male {
-    background-image: url(../images/male_avatar.png);
+    background-image: url(../../images/male_avatar.png);
 }
 
 
 .carousel .female {
-    background-image: url(../images/female_avatar.png);
+    background-image: url(../../images/female_avatar.png);
 }
 
 
