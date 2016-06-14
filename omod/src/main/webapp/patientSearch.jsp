@@ -10,9 +10,14 @@
 
 <!--Code body here -->
 <div class="container">
-    <div class="row">
-        <div class="col-sm-5 col-sm-offset-4 heading">
-            <h2 style="text-align: center"><span>Patient Search</span></h2>
+        <div class="row">
+            <div class="col-sm-4 col-sm-offset-4">
+                <div class="jumbotron">
+                    <div class="container">
+                        <h2 >Patient Search</h2>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="col-sm-6">
             <div class="patient-form-heading">
@@ -51,10 +56,10 @@
 
                     <li>
                         <fieldset class="form-group">
-                            <h4>Cohort Program</h4>
+                            <h4>Cohort Name</h4>
                             <div class="typeahead__container">
                                 <span class="typeahead__query">
-                                   <input id="cohortProgram" class="form-control js-typeahead-input" type="search" autofocus autocomplete="off" placeholder="Enter Cohort Program">
+                                   <input id="cohortName" class="form-control js-typeahead-input" type="search" autofocus autocomplete="off" placeholder="Enter Cohort Program">
                                 </span>
                             </div>
                         </fieldset>
@@ -97,7 +102,7 @@
                     <thead class="thead-inverse">
                         <tr>
                             <th><h4>Search</h4></th>
-                            <th class="second-header"><h4>Details</h4></th>
+                            <th class="second-header"><h4>Results</h4></th>
                             <th></th>
                         </tr>
                     </thead>

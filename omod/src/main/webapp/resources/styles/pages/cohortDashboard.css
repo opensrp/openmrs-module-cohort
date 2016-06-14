@@ -166,6 +166,11 @@ tr td {
     width : 40px;
     margin-top: 90px
 }
+
+.media-carousel .carousel-control.left i {
+    font-size: 75px;
+}
+
 /* Next button  */
 .media-carousel .carousel-control.right
 {
@@ -175,6 +180,11 @@ tr td {
     width : 40px;
     margin-top: 90px
 }
+
+.media-carousel .carousel-control.right i {
+    font-size: 75px;
+}
+
 /* Changes the position of the indicators */
 .media-carousel .carousel-indicators
 {
@@ -246,8 +256,4 @@ hr {
 .not-found {
     font-style: italic;
     color: rgba(190, 1, 11, 0.85);
-}
-
-.item .col-sm-3 {
-    width: 220px;
 }

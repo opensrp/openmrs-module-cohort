@@ -3,43 +3,19 @@ $(document).ready(function () {
 });
 
 
-
-//Code for slider
-$(function() {
-    $( "#slider-range" ).slider({
-        range: true,
-        min: 0,
-        max: 100,
-        values: [ 0, 100 ],
-        slide: function( event, ui ) {
-            $( "#amount" ).val( "" + ui.values[ 0 ] + " - " + ui.values[ 1 ] );
-        }
+$(function () {
+    $("#datepicker").datepicker({
+        changeMonth: true,
+        changeYear: true
     });
-    $( "#amount" ).val( "" + $( "#slider-range" ).slider( "values", 0 ) +
-        " - " + $( "#slider-range" ).slider( "values", 1 ) );
 });
 
 
 /* Code for Autocomplete feature */
 
-var patientNames = [];
 var locations =[];
 
 // Functions to get Data using REST
-function getPatientNames() {
-    $.ajax({
-        url: '/openmrs/ws/rest/v1/patient/?q='+$('#patientName').val(),
-        type: 'GET',
-        success: function(data){
-            var JSONString = JSON.stringify(data);
-            var details = JSON.parse(JSONString).results;
-            patientNames = [];
-            for (var i = 0; i < details.length; i++) {
-                patientNames.push(details[i].display.split('-')[1].trim());
-            }
-        }
-    });
-}
 
 function getLocations() {
     $.ajax({
@@ -57,13 +33,6 @@ function getLocations() {
 }
 
 // Autocomplete driver methods
-
-$('#patientName').on('input',function(){
-    getPatientNames();
-    $('#patientName').typeahead({
-        source: patientNames
-    });
-});
 
 $('#location').on('input',function(){
     getLocations();

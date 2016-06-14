@@ -103,3 +103,19 @@ tr td {
     padding-top: 10px;
 }
 
+
+.jumbotron {
+    padding-top: 0!important;
+    padding-bottom: 0 ;
+    margin-bottom: 1px;
+    margin-top: 5px;
+    background: #3d3b6c;
+    border: 1px solid #ccc;
+    text-align: center;
+    border-radius: 2px !important;
+}
+
+.jumbotron h2{
+    padding-bottom: 7px !important;
+    color: #f6faf8;
+}
