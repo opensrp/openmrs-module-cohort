@@ -81,7 +81,7 @@ public class CohortDashboardController {
 //			 a=service.getCount(c.getName());
 //			 }
 //			
-			//  model.addAttribute("cohortmodule",a);
+//			model.addAttribute("cohortmodule",a);
 			for (int i = 0; i < cohortsFound.size(); i++) {
 				cohort = cohortsFound.get(i);
 				if (cohort.isGroupCohort()) {

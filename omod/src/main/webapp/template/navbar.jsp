@@ -70,7 +70,33 @@
                             <%--<span class="navbar-label"> Search <span class="caret"></span></span>--%>
                         <%--</a> --%>
                     </li>
-                    <li class="item-3"><a class="btn-default" id="cohort-manage-link" href="index.html"> <i id="cohort-manage-icon" class="fa fa-indent fa-lg" aria-hidden="true"> </i><span class="navbar-label"> Management </span></a> </li>
+                    <li class="item-3">
+                        <div class="dropdown">
+                            <a id="management-label-nav" class="dropdown-toggle" type="button" data-toggle="dropdown">
+                                <i id="cohort-manage-icon" class="fa fa-indent fa-lg" aria-hidden="true" style="display: block;"> </i>
+                                <span class="navbar-label"> Management <span class="caret"></span></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="addCohort.form"><h4>Add Cohort</h4></a></li>
+                                <li><a href="cohortSearch.form"><h4>Add Group Cohort</h4></a></li>
+
+                                <li role="separator" class="divider"></li>
+
+                                <li><a href="patientSearch.form"><h4>Edit Cohort</h4></a></li>
+
+                                <li role="separator" class="divider"></li>
+
+                                <li><a href="patientSearch.form"><h4>Cohort Metadata</h4></a></li>
+
+                                <li role="separator" class="divider"></li>
+
+                                <li><a href="patientSearch.form"><h4>Cohort Encounters</h4></a></li>
+                                <li><a href="patientSearch.form"><h4>Cohort Observations</h4></a></li>
+                                
+                                
+                            </ul>
+                        </div>
+                    </li>
                 </ul>
             </div>
         </div>

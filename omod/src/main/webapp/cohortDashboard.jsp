@@ -26,7 +26,7 @@
                 </form>
             </div>
             <div class="col-sm-2 create-cohort-button">
-                <a class="btn btn-default" href="addcohort.form">
+                <a class="btn btn-default" href="addCohort.form">
                     <i class="fa fa-plus fa-2x" aria-hidden="true"></i>
                     <span><spring:message code="cohort.createcohort"/></span>
                 </a>

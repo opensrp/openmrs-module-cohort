@@ -6,7 +6,7 @@
 
 <%@ include file="template/localHeader.jsp" %>
 <h3>Manage Cohort </h3>
-<a href="addcohort.form"><spring:message code="cohort.createcohort"/></a>
+<a href="addCohort.form"><spring:message code="cohort.createcohort"/></a>
 <a href="groupcohort.form">Create Group Cohort</a>
 <br/>
 <br/>
