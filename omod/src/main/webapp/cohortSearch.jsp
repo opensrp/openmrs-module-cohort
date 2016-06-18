@@ -8,7 +8,7 @@
 <openmrs:htmlInclude file="/moduleResources/cohort/styles/libraries/jquery.typeahead.css" />
 <%@ include file="template/navbar.jsp" %>
 
-<!--Code body here -->
+<body>
 <div class="container">
     <div class="row">
 
@@ -162,6 +162,8 @@
     </div>
 </div>
 </div>
+
+</body>
 
 
 

@@ -10,6 +10,7 @@
 
 <!--Code body here -->
 
+<body>
 <section class="top-options">
     <div class="container">
         <div class="row">
@@ -106,7 +107,7 @@
                     </div>
                     <div class="col-sm-2">
                         <div class="box-right">
-                            <a class="btn btn-primary" href="${pageContext.request.contextPath}/module/cohort/addcohortattributes.form?ca=${cohort.cohortId}"><i class="fa fa-dot-circle-o fa-2x" aria-hidden="true"></i>
+                            <a class="btn btn-primary" href="${pageContext.request.contextPath}/module/cohort/addCohortAttributes.form?ca=${cohort.cohortId}"><i class="fa fa-dot-circle-o fa-2x" aria-hidden="true"></i>
                                 <span class="desc-1">Add Attribute</span></a>
                         </div>
                         <div class="box-right">
@@ -222,6 +223,7 @@
     </div>
 </c:if>
 
+</body>
 
 <openmrs:htmlInclude file="/moduleResources/cohort/scripts/pages/cohortDashboard.js" />
 <!--END-->

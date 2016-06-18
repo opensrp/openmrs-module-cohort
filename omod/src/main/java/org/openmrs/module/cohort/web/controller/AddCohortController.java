@@ -83,7 +83,7 @@ public class AddCohortController {
 	Set set1 = new HashSet();
 	
 	
-	@RequestMapping(value = "/module/cohort/addcohort", method = RequestMethod.GET)
+	@RequestMapping(value = "/module/cohort/addCohort", method = RequestMethod.GET)
 	public void manage(ModelMap model) {
 		model.addAttribute("cohortmodule", new CohortM());
 		List<String> cohorttype = new ArrayList<String>();
@@ -106,7 +106,7 @@ public class AddCohortController {
 		model.addAttribute("formats1", cohortprg);
 	}
 	
-	@RequestMapping(value = "module/cohort/addcohort.form", method = RequestMethod.POST)
+	@RequestMapping(value = "module/cohort/addCohort.form", method = RequestMethod.POST)
 	public String onSubmit(WebRequest request, HttpSession httpSession, HttpServletRequest request1,
 			@RequestParam(required = false, value = "name") String cohort_name,
 			@RequestParam(required = false, value = "description") String description,
@@ -128,7 +128,7 @@ public class AddCohortController {
 		if (errors.hasErrors()) {
 			System.out.println("BR has errors: " + errors.getErrorCount());
 			System.out.println(errors.getAllErrors());
-			return "/module/cohort/addcohort";
+			return "/module/cohort/addCohort";
 		} else {
 				 /*try {
 	 				java.util.Date start = new SimpleDateFormat("yyyy/MM/dd HH:mm", Locale.ENGLISH).parse(start_date);
@@ -160,7 +160,7 @@ public class AddCohortController {
 			if ("Next".equalsIgnoreCase(request.getParameter("next"))) {
 				departmentService.saveCohort(cohortmodule);
 				httpSession.setAttribute(WebConstants.OPENMRS_MSG_ATTR, "insertion success");
-				String redirectUrl = "/module/cohort/addcohortattributes.form?ca=" + cohortmodule.getCohortId();
+				String redirectUrl = "/module/cohort/addCohortAttributes.form?ca=" + cohortmodule.getCohortId();
 				return "redirect:" + redirectUrl;
 			}
 			
@@ -344,7 +344,7 @@ public class AddCohortController {
 			service1.saveCohort(cohortmodule);
 			service1.saveCPatient(cohortmember);
 			httpSession.setAttribute(WebConstants.OPENMRS_MSG_ATTR, "insertion success");
-			String redirectUrl = "/module/cohort/addcohortattributes.form?ca=" + cohortmodule.getCohortId();
+			String redirectUrl = "/module/cohort/addCohortAttributes.form?ca=" + cohortmodule.getCohortId();
 			return "redirect:" + redirectUrl;
 		}
 		return null;

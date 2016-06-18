@@ -65,7 +65,7 @@ public class AddCohortAttributesController {
 	// CohortAttributeType a=new CohortAttributeType();
 	// CohortM m=new CohortM();
 	
-	@RequestMapping(value = "/module/cohort/addcohortattributes", method = RequestMethod.GET)
+	@RequestMapping(value = "/module/cohort/addCohortAttributes", method = RequestMethod.GET)
 	public void manage(@RequestParam(required = false, value = "ca") Integer id, WebRequest request, ModelMap model, @ModelAttribute("cohortatt") CohortAttribute cohortattribute) {
 		int a = 0;
 		CohortM cohort = null;
@@ -100,7 +100,7 @@ public class AddCohortAttributesController {
 		
 	}
 	
-	@RequestMapping(value = "/module/cohort/addcohortattributes.form", method = RequestMethod.POST)
+	@RequestMapping(value = "/module/cohort/addCohortAttributes.form", method = RequestMethod.POST)
 	public String onSubmit(WebRequest request, HttpSession httpSession, ModelMap model,
 			@RequestParam(required = false, value = "cohortAttributeTypeId") Integer cohort_attribute_type,
 			@RequestParam(required = false, value = "selectedvalue") String description,

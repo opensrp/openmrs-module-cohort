@@ -66,7 +66,7 @@
                             ${ls.endDate}
                     </td>
                     <td class="tdStyle">
-                        <a href="${pageContext.request.contextPath}/module/cohort/addcohortattributes.form?ca=${ls.cohortId}">Add
+                        <a href="${pageContext.request.contextPath}/module/cohort/addCohortAttributes.form?ca=${ls.cohortId}">Add
                             Attribute</a>
                     </td>
                     <td class="tdStyle">

@@ -6,6 +6,7 @@
 <openmrs:htmlInclude file="/moduleResources/cohort/styles/pages/addCohortAttributes.css" />
 <%@ include file="template/navbar.jsp" %>
 
+<body>
 <div class="container">
     <div class="row">
         <div class="col-sm-4">
@@ -35,21 +36,21 @@
                         </fieldset>
                         <br/><br/>
                     </li>
-                    
+
                     <li class="list-unstyled">
                         <input type="hidden" name="ca" value="${cohortatt.cohort.cohortId}"/>
                         <h4>Value:
-                        <spring:bind path="cohortatt.value">
-                            <openmrs:fieldGen
-                                    type="${cohortatt.cohortAttributeType.format}"
-                                    formFieldName="selectedvalue"
-                                    val="${selectedvalue}"
-                                    parameters="optionHeader=[blank]|showAnswers=${attrType.foreignKey}|isNullable=false"/> <%-- isNullable=false so booleans don't have 'unknown' radiobox --%>
-                        </spring:bind> </h4>
+                            <spring:bind path="cohortatt.value">
+                                <openmrs:fieldGen
+                                        type="${cohortatt.cohortAttributeType.format}"
+                                        formFieldName="selectedvalue"
+                                        val="${selectedvalue}"
+                                        parameters="optionHeader=[blank]|showAnswers=${attrType.foreignKey}|isNullable=false"/> <%-- isNullable=false so booleans don't have 'unknown' radiobox --%>
+                            </spring:bind> </h4>
                         <br/>
                         <br/>
                     </li>
-                    
+
                     <li class="list-unstyled">
                         <input class="btn btn-primary" type="submit" value="Add Cohort Attribute" id="add" name="add"/>
                         <br/>
@@ -59,16 +60,16 @@
                     <li class="list-unstyled">
                         <input class="btn btn-default" type="submit" value="Next" id="next" name="next"/>
                     </li>
-                    
+
                 </ul>
             </form>
         </div>
     </div>
 </div>
+</body>
 
-
-<!--Script includes for new UI -->
-<openmrs:htmlInclude file="/moduleResources/cohort/scripts/jquery.js" />
-<openmrs:htmlInclude file="/moduleResources/cohort/bootstrap/js/bootstrap.js" />
-<%--<openmrs:htmlInclude file="/moduleResources/cohort/scripts/patientSearch.js" />--%>
-<!--END-->
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#management-label-nav').css({color: '#007aff'});
+    });
+</script>

@@ -2,7 +2,7 @@
 <%@ include file="/WEB-INF/template/header.jsp" %>
 <%@ include file="template/localHeader.jsp" %>
 <h3>Manage Cohort Attributes</h3>
-<a href="addcohortattributes.form"><spring:message code="cohort.createcohortatt"/></a>
+<a href="addCohortAttributes.form"><spring:message code="cohort.createcohortatt"/></a>
 <br/>
 <div>
     <b class="boxHeader"><spring:message code="cohort.findcohortatt"/></b>

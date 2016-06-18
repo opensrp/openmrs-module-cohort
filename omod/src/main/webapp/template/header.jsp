@@ -24,9 +24,9 @@
     <openmrs:htmlInclude file="/dwr/engine.js" />
     <openmrs:htmlInclude file="/scripts/html-sanitizer-min.js" />
     <openmrs:htmlInclude file="/dwr/interface/DWRAlertService.js" />
-    <!--jQuery-->
+    
+    <!--new JS includes-->
     <openmrs:htmlInclude file="/moduleResources/cohort/scripts/libraries/jquery.js" />
-    <!--Bootstrap-->
     <openmrs:htmlInclude file="/moduleResources/cohort/bootstrap/js/bootstrap.js" />
     
     <!--Style includes for new UI -->

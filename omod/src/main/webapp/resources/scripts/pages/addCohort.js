@@ -1,6 +1,5 @@
 $(document).ready(function () {
-    $('#startDate').set
-
+    $('#management-label-nav').css({color: '#007aff'});
 });
 
 $(function () {

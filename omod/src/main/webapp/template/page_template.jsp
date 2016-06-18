@@ -11,7 +11,5 @@
 
 
 <!--Script includes for new UI -->
-<openmrs:htmlInclude file="/moduleResources/cohort/scripts/jquery.js" />
-<openmrs:htmlInclude file="/moduleResources/cohort/bootstrap/js/bootstrap.js" />
 <%--<openmrs:htmlInclude file="/moduleResources/cohort/scripts/pages/patientSearch.js" />--%>
 <!--END-->
