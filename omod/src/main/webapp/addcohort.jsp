@@ -44,7 +44,7 @@
                         <br/>
 
                         <li>
-                            <fieldset class="form-group" class="form-group">
+                            <fieldset class="form-group">
                                 <spring:bind path="cohortmodule.cohortProgram">
                                     <h4>Cohort Program:</h4>
                                     <select name="format1" id="format1" class="form-control">

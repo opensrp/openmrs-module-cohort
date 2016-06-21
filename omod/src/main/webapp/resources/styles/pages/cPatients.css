@@ -1,0 +1,28 @@
+.form-container {
+    margin-bottom: 20px;
+    background: white;
+    padding: 20px 20px 20px 20px;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    color: #0f0f0f;
+    width: 100%;
+}
+
+h4 {
+    display: inline-block;
+}
+
+.form-group {
+    padding: 8px 0 8px 0;
+    width: 85% !important;
+}
+
+.heading span {
+    font-size: 18px;
+    color: #f1f5f3;
+    background-color: #373a3c;
+    font-weight: 700;
+    padding: 10px 30px 10px 20px;
+}
+
+
