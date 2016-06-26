@@ -262,6 +262,10 @@ hr {
     color: rgba(190, 1, 11, 0.85);
 }
 
+.not-found-container {
+    padding-left: 0 !important;
+}
+
 hr {
     border: none;
     height: 3px;
