@@ -78,7 +78,7 @@
     <br/>
     <br/>
     <input type="submit" value="EditCohort" id="submit"/><br/><br/>
-    <a href="cpatients.form?cpid=${cohortmodule.cohortId}">Add Patients</a><br/> <br/>
+    <a href="cPatients.form?cpid=${cohortmodule.cohortId}">Add Patients</a><br/> <br/>
     Void Cohort<br/><br/>
     Reason:<input type="text" name="voidReason" id="voidReason" size="25" value="${status.value}"/> <br/> <br/>
     <input type="submit" value="void" id="void" name="void"/><br/><br/>

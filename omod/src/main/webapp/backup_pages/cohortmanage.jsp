@@ -70,7 +70,7 @@
                             Attribute</a>
                     </td>
                     <td class="tdStyle">
-                        <a href="${pageContext.request.contextPath}/module/cohort/cpatients.form?cpid=${ls.cohortId}">Add
+                        <a href="${pageContext.request.contextPath}/module/cohort/cPatients.form?cpid=${ls.cohortId}">Add
                             Cohort Member</a>
                     </td>
                     <td class="tdStyle">

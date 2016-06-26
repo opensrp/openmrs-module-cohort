@@ -25,4 +25,14 @@ h4 {
     padding: 10px 30px 10px 20px;
 }
 
+#startDate {
+    width: 45%;
+}
 
+#endDate {
+    width: 45%;
+}
+
+#role-dropdown {
+    width: 70%;
+}

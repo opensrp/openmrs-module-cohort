@@ -16,6 +16,7 @@
         <div class="row">
             <div class="col-sm-7">
                 <form class="form-inline" id="login" method="get">
+                    <%--<label for="search">Search</label>--%>
                     <input class="btn btn-default form-control" type="submit" id="search" name="search" value="search">
                     <spring:bind path="cohortmodule.name">
                         <input class="form-control cohort-search" type="text" id="name" name="name" value="${status.value}" placeholder="Cohort Search"
@@ -27,13 +28,13 @@
                 </form>
             </div>
             <div class="col-sm-2 create-cohort-button">
-                <a class="btn btn-default" href="addCohort.form">
+                <a class="btn btn-primary" href="addCohort.form">
                     <i class="fa fa-plus fa-2x" aria-hidden="true"></i>
                     <span><spring:message code="cohort.createcohort"/></span>
                 </a>
             </div>
             <div class="col-sm-2 create-group-cohort-button">
-                <a class="btn btn-default" href="groupcohort.form">
+                <a class="btn btn-primary" href="groupcohort.form">
                     <i class="fa fa-plus fa-2x" aria-hidden="true"></i>
                     <span>Create Group Cohort</span>
                 </a>
@@ -107,15 +108,15 @@
                     </div>
                     <div class="col-sm-2">
                         <div class="box-right">
-                            <a class="btn btn-primary" href="${pageContext.request.contextPath}/module/cohort/addCohortAttributes.form?ca=${cohort.cohortId}"><i class="fa fa-dot-circle-o fa-2x" aria-hidden="true"></i>
+                            <a class="btn btn-default" href="${pageContext.request.contextPath}/module/cohort/addCohortAttributes.form?ca=${cohort.cohortId}"><i class="fa fa-dot-circle-o fa-2x" aria-hidden="true"></i>
                                 <span class="desc-1">Add Attribute</span></a>
                         </div>
                         <div class="box-right">
-                            <a class="btn btn-primary" href="${pageContext.request.contextPath}/module/cohort/htmlFormEntry.form?coh=${cohort.cohortId}&htmlformId=${htmlformId}"><i class="fa fa-check-square-o fa-2x" aria-hidden="true"></i>
+                            <a class="btn btn-default" href="${pageContext.request.contextPath}/module/cohort/htmlFormEntry.form?coh=${cohort.cohortId}&htmlformId=${htmlformId}"><i class="fa fa-check-square-o fa-2x" aria-hidden="true"></i>
                                 <span class="desc-2">Add Encounter</span></a>
                         </div>
                         <div class="box-right">
-                            <a class="btn btn-primary" href="${pageContext.request.contextPath}/module/cohort/cpatients.form?cpid=${cohort.cohortId}">
+                            <a class="btn btn-default" href="${pageContext.request.contextPath}/module/cohort/cPatients.form?cpid=${cohort.cohortId}">
                                 <i class="fa fa-user-plus fa-2x" aria-hidden="true"></i><span class="desc-3"> Add Member</span></a>
                         </div>
                     </div>
@@ -209,7 +210,9 @@
             </div>
     
         </section>
-        <hr />
+        <br/>
+        <hr/>
+        <br/>
     </c:forEach>
 </c:if>
 

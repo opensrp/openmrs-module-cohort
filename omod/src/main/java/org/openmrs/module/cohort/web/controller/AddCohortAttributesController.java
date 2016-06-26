@@ -127,7 +127,7 @@ public class AddCohortAttributesController {
 		if ("Next".equalsIgnoreCase(request.getParameter("next"))) {
 			departmentService.saveCohortAttributes(cohortattribute);
 			httpSession.setAttribute(WebConstants.OPENMRS_MSG_ATTR, "insertion success");
-			String redirectUrl = "/module/cohort/cpatients.form?cpid=" + cohortattribute.getCohort().getCohortId();
+			String redirectUrl = "/module/cohort/cPatients.form?cpid=" + cohortattribute.getCohort().getCohortId();
 			return "redirect:" + redirectUrl;
 		}
 		return null;

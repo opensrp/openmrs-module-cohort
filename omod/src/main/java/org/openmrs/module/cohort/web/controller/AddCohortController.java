@@ -174,7 +174,7 @@ public class AddCohortController {
 		return null;
 	}
 	
-	@RequestMapping(value = "/module/cohort/cpatients.form", method = RequestMethod.GET)
+	@RequestMapping(value = "/module/cohort/cPatients.form", method = RequestMethod.GET)
 	public void manage1(ModelMap model, HttpSession httpSession, HttpServletRequest request, @RequestParam("cpid") Integer id, @ModelAttribute("cpatient") CohortMember cohort) {
 		//model.addAttribute("cpatient",new CohortMember());
 		List<String> type = new ArrayList<String>();
@@ -203,7 +203,7 @@ public class AddCohortController {
 		
 	}
 	
-	@RequestMapping(value = "module/cohort/cpatients.form", method = RequestMethod.POST)
+	@RequestMapping(value = "module/cohort/cPatients.form", method = RequestMethod.POST)
 	public void onClick(WebRequest request, HttpSession httpSession, ModelMap model,
 			@RequestParam(required = false, value = "type") String type,
 			@RequestParam(required = false, value = "startDate") String startDate,
