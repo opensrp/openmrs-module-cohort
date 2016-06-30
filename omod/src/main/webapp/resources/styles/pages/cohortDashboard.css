@@ -14,12 +14,12 @@
 
 .cohort-search {
     margin-left: 5px;
-    width: 85% !important;
+    width: 80% !important;
     min-height: 45px !important;
 }
 
 .create-cohort-button {
-    width: 250px;
+    width: 225px;
 }
 
 .create-cohort-button a {
@@ -75,15 +75,17 @@
 }
 
 tr th {
-    padding: 10px 10px 10px 10px !important;
+    padding: 15px 10px 10px 10px !important;
+    font-size: 135%
 }
 
 tr td {
-    padding: 10px 10px 10px 10px !important;
+    padding: 15px 10px 10px 10px !important;
+    font-size: 115%
 }
 
 .details-container {
-    min-height: 288px;
+    min-height: 285px;
     background: white;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
@@ -269,5 +271,20 @@ hr {
 hr {
     border: none;
     height: 3px;
-    background-color: #333; /* Modern Browsers */
+    background-color: #333;
+}
+
+.name-header{
+    background: #373a3c !important;
+}
+
+.name-container h4 {
+    color: white;
+}
+
+.name-container h3 {
+    padding: 8px 8px 8px 10px;
+    background: white;
+    color:#333;
+    border: 1px solid #ddd;
 }

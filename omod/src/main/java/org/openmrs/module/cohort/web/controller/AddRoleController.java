@@ -80,7 +80,7 @@ public class AddRoleController {
 	List<Patient> list1 = new ArrayList();
 	Set set1 = new HashSet();
 	
-	@RequestMapping(value = "/module/cohort/arole", method = RequestMethod.GET)
+	@RequestMapping(value = "/module/cohort/addRole", method = RequestMethod.GET)
 	public void manage(ModelMap model) {
 		model.addAttribute("cohortrole", new CohortRole());
 		List<String> cohorttype = new ArrayList<String>();
@@ -93,7 +93,7 @@ public class AddRoleController {
 		model.addAttribute("formats", cohorttype);
 	}
 	
-	@RequestMapping(value = "module/cohort/arole.form", method = RequestMethod.POST)
+	@RequestMapping(value = "module/cohort/addRole.form", method = RequestMethod.POST)
 	public String onSubmit(WebRequest request, HttpSession httpSession, HttpServletRequest request1,
 			@RequestParam(required = false, value = "name") String cohort_name,
 			@ModelAttribute("cohortrole") CohortRole cohortrole, BindingResult errors, ModelMap model) {
@@ -109,7 +109,7 @@ public class AddRoleController {
 		if (errors.hasErrors()) {
 			System.out.println("BR has errors: " + errors.getErrorCount());
 			System.out.println(errors.getAllErrors());
-			return "/module/cohort/arole";
+			return "/module/cohort/addRole";
 		}
 		if (cohort_name.length() > 20) {
 			httpSession.setAttribute(WebConstants.OPENMRS_MSG_ATTR, "name cannot be greater than 20");

@@ -2,7 +2,7 @@
 <%@ include file="/WEB-INF/template/header.jsp" %>
 <%@ include file="template/localHeader.jsp" %>
 <h3>Manage Cohort Type</h3>
-<a href="addcohorttype.form"><spring:message code="cohort.createcohorttypes"/> </a>
+<a href="addCohortType.form"><spring:message code="cohort.createcohorttypes"/> </a>
 <br/>
 <br/>
 <div>

@@ -68,7 +68,7 @@ public class AddCohortMemberAttributesController {
 	protected final Log log = LogFactory.getLog(getClass());
 	private SessionStatus status;
 	
-	@RequestMapping(value = "/module/cohort/addcohortmemberattribute", method = RequestMethod.GET)
+	@RequestMapping(value = "/module/cohort/addCohortMemberAttribute", method = RequestMethod.GET)
 	public void manage(@RequestParam(required = false, value = "cma") Integer id, WebRequest request, ModelMap model, @ModelAttribute("cohortatt") CohortMemberAttribute cohortattribute) {
 		int a = 0;
 		CohortMember cohort = null;
@@ -95,7 +95,7 @@ public class AddCohortMemberAttributesController {
 		model.addAttribute("selectedvalue", request.getParameter("selectedvalue"));
 	}
 	
-	@RequestMapping(value = "/module/cohort/addcohortmemberattribute.form", method = RequestMethod.POST)
+	@RequestMapping(value = "/module/cohort/addCohortMemberAttribute.form", method = RequestMethod.POST)
 	public ModelAndView onSubmit(WebRequest request, HttpSession httpSession, ModelMap model,
 			@RequestParam(required = false, value = "cohortMemberAttributeTypeId") Integer cohort_attribute_type,
 			@RequestParam(required = false, value = "selectedvalue") String description,

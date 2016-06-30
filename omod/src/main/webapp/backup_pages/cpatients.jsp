@@ -41,7 +41,7 @@
     <br/>
     <br/>
     <input type="submit" value="Add Cohort Member" id="add" name="add"/><br/><br/>
-    <a href="addcohortmemberattribute.form?cma=${cpatient.cohortMemberId}">Add Cohort Member Attribute</a>
+    <a href="addCohortMemberAttribute.form?cma=${cpatient.cohortMemberId}">Add Cohort Member Attribute</a>
 </form>
 <%@ include file="/WEB-INF/template/footer.jsp" %>
 

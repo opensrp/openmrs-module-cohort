@@ -2,11 +2,11 @@
 
 <%@ include file="/WEB-INF/template/include.jsp" %>
 <%@ include file="template/header.jsp" %>
-<title>Patient Search</title> <!--set page title-->
+    <title>Add Cohort</title> <!--set page title-->
 </head>
 <openmrs:htmlInclude file="/moduleResources/cohort/styles/genericPageStyle.css" />
 <openmrs:htmlInclude file="/moduleResources/cohort/styles/libraries/jquery-ui.css" />
-<openmrs:htmlInclude file="/moduleResources/cohort/styles/pages/addCohort.css" />
+<openmrs:htmlInclude file="/moduleResources/cohort/styles/pages/genericAddPageStyling.css" />
 <%@ include file="template/navbar.jsp" %>
 
 <div class="container">
@@ -20,7 +20,7 @@
                         <li>
                             <fieldset class="form-group">
                                 <spring:bind path="cohortmodule.name">
-                                    <h4><spring:message code="cohort.cohortname"/> :</h4>
+                                    <h4><spring:message code="cohort.cohortname"/> </h4>
                                     <input class="form-control" type="text" name="name" id="name" size="25" value="${status.value}"/>
                                     <c:if test="${status.errorMessage != ''}"><span class="error">${status.errorMessage}</span></c:if>
                                 </spring:bind>
@@ -30,7 +30,7 @@
                         
                         <li>
                             <fieldset class="form-group">
-                                <h4>Cohort Type:</h4>
+                                <h4>Cohort Type</h4>
                                 <select class="form-control" name="format" id="format">
                                     <option value=""></option>
                                     <c:forEach var="format" items="${formats}">
@@ -46,7 +46,7 @@
                         <li>
                             <fieldset class="form-group">
                                 <spring:bind path="cohortmodule.cohortProgram">
-                                    <h4>Cohort Program:</h4>
+                                    <h4>Cohort Program</h4>
                                     <select name="format1" id="format1" class="form-control">
                                         <option value=""></option>
                                         <c:forEach var="format1" items="${formats1}">
@@ -63,7 +63,7 @@
                         <li>
                             <fieldset class="form-group">
                                 <spring:bind path="cohortmodule.description">
-                                    <h4><spring:message code="cohort.cohortdescription"/> :</h4>
+                                    <h4><spring:message code="cohort.cohortdescription"/> </h4>
                                     <textarea class="form-control" rows="4" name="description" id="description" cols="50" value="${status.value}"></textarea>
                                     <c:if test="${status.errorMessage != ''}"><span class="error">${status.errorMessage}</span></c:if>
                                 </spring:bind>
@@ -74,7 +74,7 @@
                         <li>
                             <fieldset class="form-group">
                                 <spring:bind path="cohortmodule.startDate">
-                                   <h4> <spring:message code="cohort.startdate"/> :</h4>
+                                   <h4> <spring:message code="cohort.startdate"/> </h4>
                                     <input class="form-control" type="text" name="startDate" size="10"
                                            id="startDate" value="${status.value}"/><i style="font-weight: normal; font-size: 0.8em;">(<openmrs:message
                                         code="general.format"/>: <openmrs:datePattern/>)</i>
@@ -87,7 +87,7 @@
                         <li>
                             <fieldset class="form-group">
                                 <spring:bind path="cohortmodule.endDate">
-                                    <h4><spring:message code="cohort.enddate"/> :</h4>
+                                    <h4><spring:message code="cohort.enddate"/> </h4>
                                     <input class="form-control" type="text" name="endDate" size="10" onFocus="showCalendar(this,60)"
                                            id="endDate" value="${status.value}"/><i style="font-weight: normal; font-size: 0.8em;">(<openmrs:message
                                         code="general.format"/>: <openmrs:datePattern/>)</i>
@@ -101,7 +101,7 @@
                         <li>
                             <fieldset class="form-group">
                                 <spring:bind path="cohortmodule.clocation">
-                                    <h4><spring:message code="cohort.location"/> :</h4>
+                                    <h4><spring:message code="cohort.location"/> </h4>
                                     <select class="form-control" name="location" id="location">
                                         <option value=""></option>
                                         <c:forEach var="location" items="${locations}">
@@ -114,18 +114,20 @@
                             </fieldset>
                         </li>
                         
+                        <br/>
+                        <div class="button-container">
+                            <input class="btn btn-primary" type="submit" value="Save and Skip" id="submit"/><br/><br/>
+                        </div>
+                        
+                        <div class="button-container">
+                            <input class="btn btn-default" type="submit" value="Next" id="next" name="next">
+                        </div>
+                        
                     </ul>
 
                     <br/>
                     <br/>
-
-                    <div class="button-container">
-                        <input class="btn btn-primary" type="submit" value="Save and Skip" id="submit"/><br/><br/>
-                    </div>
-
-                    <div class="button-container">
-                        <input class="btn btn-default" type="submit" value="Next" id="next" name="next">
-                    </div>
+                    
                     
                     
                 </form>

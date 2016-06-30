@@ -62,7 +62,7 @@ public class AddCohortAttributesTypeController {
 	@Qualifier("addCohortAttributeTypeValidator")
 	private Validator validator;
 	
-	@RequestMapping(value = "/module/cohort/addcohortattributestype", method = RequestMethod.GET)
+	@RequestMapping(value = "/module/cohort/addCohortAttributesType", method = RequestMethod.GET)
 	public void manage(ModelMap model) {
 		model.addAttribute("cohortattributes", new CohortAttributeType());
 		List<String> formats = new ArrayList<String>(FieldGenHandlerFactory.getSingletonInstance().getHandlers().keySet());
@@ -73,7 +73,7 @@ public class AddCohortAttributesTypeController {
 		model.addAttribute("formats", formats);
 	}
 	
-	@RequestMapping(value = "/module/cohort/addcohortattributestype.form", method = RequestMethod.POST)
+	@RequestMapping(value = "/module/cohort/addCohortAttributesType.form", method = RequestMethod.POST)
 	public String onSubmit(WebRequest request, HttpSession httpSession, ModelMap model,
 			@RequestParam(required = false, value = "name") String attribute_type,
 			@RequestParam(required = false, value = "description") String description,
@@ -95,7 +95,7 @@ public class AddCohortAttributesTypeController {
 			formats.add("java.lang.Float");
 			formats.add("java.lang.Boolean");
 			model.addAttribute("formats", formats);
-			return "/module/cohort/addcohortattributestype";
+			return "/module/cohort/addCohortAttributesType";
 		}
 		if (attribute_type.length() > 20) {
 			httpSession.setAttribute(WebConstants.OPENMRS_MSG_ATTR, "attribute type cannot be greater than 20");

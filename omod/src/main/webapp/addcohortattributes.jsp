@@ -3,7 +3,7 @@
     <title>Add Cohort Attributes</title> <!--set page title-->
 </head>
 <openmrs:htmlInclude file="/moduleResources/cohort/styles/genericPageStyle.css" />
-<openmrs:htmlInclude file="/moduleResources/cohort/styles/pages/addCohortAttributes.css" />
+<openmrs:htmlInclude file="/moduleResources/cohort/styles/pages/genericAddPageStyling.css"/>
 <%@ include file="template/navbar.jsp" %>
 
 <body>
@@ -14,7 +14,8 @@
             <form class="form-container" method="post" id="form1">
                 <ul>
                     <li>
-                        <h4>Cohort Name:</h4> ${cohortmodule.name}
+                        <h4>Cohort Name:</h4> <br/>
+                        <h5 class="attribute-name-header">${cohortmodule.name}</h5>
                         <br/>
                         <br/>
                     </li>
@@ -34,18 +35,20 @@
                                 </c:if>
                             </select>
                         </fieldset>
-                        <br/><br/>
+                        <br/>
                     </li>
 
+                    <input type="hidden" name="ca" value="${cohortatt.cohort.cohortId}"/>
+                    
                     <li class="list-unstyled">
-                        <input type="hidden" name="ca" value="${cohortatt.cohort.cohortId}"/>
-                        <h4>Value:
+                        <h4 style="padding-bottom: 5px;">Value:<br/>
                             <spring:bind path="cohortatt.value">
                                 <openmrs:fieldGen
                                         type="${cohortatt.cohortAttributeType.format}"
                                         formFieldName="selectedvalue"
                                         val="${selectedvalue}"
-                                        parameters="optionHeader=[blank]|showAnswers=${attrType.foreignKey}|isNullable=false"/> <%-- isNullable=false so booleans don't have 'unknown' radiobox --%>
+                                        parameters="optionHeader=[blank]|showAnswers=${attrType.foreignKey}|isNullable=false"
+                                /> <%-- isNullable=false so booleans don't have 'unknown' radiobox --%>
                             </spring:bind> </h4>
                         <br/>
                         <br/>
@@ -71,5 +74,6 @@
 <script type="text/javascript">
     $(document).ready(function () {
         $('#management-label-nav').css({color: '#007aff'});
+        $('#selectedvalue').addClass('form-control');
     });
 </script>

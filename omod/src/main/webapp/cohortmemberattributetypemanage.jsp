@@ -6,7 +6,7 @@
 
 <%@ include file="template/localHeader.jsp" %>
 <h3>Manage Cohort Member Attributes Type</h3>
-<a href="addcohortmemberattributetype.form">Create Cohort Member Attribute Type</a>
+<a href="addCohortMemberAttributeType.form">Create Cohort Member Attribute Type</a>
 <br/>
 <div>
     <b class="boxHeader">Find Cohort Member Attribute Type</b>

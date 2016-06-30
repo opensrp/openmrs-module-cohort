@@ -60,7 +60,7 @@ public class AddCohortMemberAttributeTypeController {
 	protected final Log log = LogFactory.getLog(getClass());
 	private SessionStatus status;
 	
-	@RequestMapping(value = "/module/cohort/addcohortmemberattributetype", method = RequestMethod.GET)
+	@RequestMapping(value = "/module/cohort/addCohortMemberAttributeType", method = RequestMethod.GET)
 	public void manage(ModelMap model) {
 		model.addAttribute("cohortattributes", new CohortMemberAttributeType());
 		List<String> formats = new ArrayList<String>(FieldGenHandlerFactory.getSingletonInstance().getHandlers().keySet());
@@ -71,7 +71,7 @@ public class AddCohortMemberAttributeTypeController {
 		model.addAttribute("formats", formats);
 	}
 	
-	@RequestMapping(value = "/module/cohort/addcohortmemberattributetype.form", method = RequestMethod.POST)
+	@RequestMapping(value = "/module/cohort/addCohortMemberAttributeType.form", method = RequestMethod.POST)
 	public ModelAndView onSubmit(WebRequest request, HttpSession httpSession, ModelMap model,
 			@RequestParam(required = false, value = "name") String attribute_type,
 			@RequestParam(required = false, value = "description") String description,

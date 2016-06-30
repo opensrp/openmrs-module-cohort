@@ -278,7 +278,7 @@ public class EditCohortController {
 		}
 	}
 	
-	@RequestMapping(value = "/module/cohort/editcohortattributes", method = RequestMethod.GET)
+	@RequestMapping(value = "/module/cohort/editCohortAttributes", method = RequestMethod.GET)
 	public void manageEditCohortAttribute(ModelMap model, HttpServletRequest request, @RequestParam("ca") Integer id, @ModelAttribute("cohortatt") CohortAttribute cohort) {
 		CohortService s = Context.getService(CohortService.class);
 		List<String> cohorta = new ArrayList<String>();
@@ -302,7 +302,7 @@ public class EditCohortController {
 		}
 	}
 	
-	@RequestMapping(value = "/module/cohort/editcohortattributes.form", method = RequestMethod.POST)
+	@RequestMapping(value = "/module/cohort/editCohortAttributes.form", method = RequestMethod.POST)
 	public void manageEditCohortAttribute1(ModelMap model, HttpSession httpSession, HttpServletRequest request, @RequestParam("ca") Integer id, @RequestParam(required = false, value = "voidReason") String voidReason, @ModelAttribute("cohortatt") CohortAttribute cohort) {
 		CohortService service1 = Context.getService(CohortService.class);
 		List<String> cohorta = new ArrayList<String>();

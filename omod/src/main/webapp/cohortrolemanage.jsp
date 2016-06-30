@@ -2,7 +2,7 @@
 <%@ include file="/WEB-INF/template/header.jsp" %>
 <%@ include file="template/localHeader.jsp" %>
 <h3>Manage Cohort Role</h3>
-<a href="arole.form">Add Role </a>
+<a href="addRole.form">Add Role </a>
 <br/>
 <br/>
 <div>

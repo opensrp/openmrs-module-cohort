@@ -69,7 +69,7 @@
                     <input class="btn btn-primary" type="submit" value="Add Cohort Member" id="add" name="add"/><br/><br/>
 
 
-                    <a class="btn btn-default" href="addcohortmemberattribute.form?cma=${cpatient.cohortMemberId}">
+                    <a class="btn btn-default" href="addCohortMemberAttribute.form?cma=${cpatient.cohortMemberId}">
                         <i class="fa fa-plus fa-2x" aria-hidden="true"></i>
                         <span>Add Cohort Member Attribute</span>
                     </a>

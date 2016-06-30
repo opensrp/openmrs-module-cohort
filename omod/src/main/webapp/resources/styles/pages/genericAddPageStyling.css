@@ -1,12 +1,15 @@
-
 .form-container {
     margin-bottom: 20px;
     background: white;
     padding: 20px 20px 20px 20px;
     border: 1px solid #ccc;
     border-radius: 2px;
-    color: #555;
+    color: #0f0f0f;
     width: 100%;
+}
+
+h4 {
+    display: inline-block;
 }
 
 .form-group {
@@ -14,13 +17,27 @@
     width: 85% !important;
 }
 
-.button-container {
-    margin: 0 10px 20px 40px;
+.heading span {
+    font-size: 18px;
+    color: #f1f5f3;
+    background-color: #373a3c;
+    font-weight: 700;
+    padding: 10px 30px 10px 20px;
 }
 
-.submit-button {
-    width: 90%;
+.attribute-name-header {
+    display: inline;
+    background: #f4f5f4;
+    border: 1px solid #949695;
+    border-radius: 2px;
+    padding: 5px 10px 5px 10px;
+    font-weight: 700;
 }
+
+#name, #description, #format, #format1{
+    width: 85%;
+}
+
 
 #startDate {
     width: 35%;
@@ -32,27 +49,6 @@
 
 #location {
     width: 60%;
-}
-
-.heading {
-    padding-top: 40px;
-}
-
-.heading span {
-    color: #f1f5f3;
-    background-color: #373a3c;
-    font-weight: 700;
-    padding: 10px 30px 10px 20px;
-}
-
-#submit {
-    font-size: 18px;
-}
-
-#next {
-    font-size: 16px;
-    padding-left: 30px;
-    padding-right: 30px;
 }
 
 .error {

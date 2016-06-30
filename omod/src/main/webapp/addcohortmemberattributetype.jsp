@@ -1,45 +1,66 @@
 <%@ include file="/WEB-INF/template/include.jsp" %>
-<%@ include file="/WEB-INF/template/header.jsp" %>
+<%@ include file="template/header.jsp" %>
+<title>Add Cohort Attributes Type</title>
+</head>
+<openmrs:htmlInclude file="/moduleResources/cohort/styles/genericPageStyle.css" />
+<openmrs:htmlInclude file="/moduleResources/cohort/styles/pages/genericAddPageStyling.css"/>
+<%@ include file="template/navbar.jsp" %>
 
-<%@ include file="template/localHeader.jsp" %>
 
-<openmrs:htmlInclude file="/scripts/calendar/calendar.js"/>
-<openmrs:htmlInclude file="/scripts/jquery/jquery-1.3.2.min.js"/>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4">
+            <h4 class="heading"><span>Add Cohort Member Attributes Type</span></h4>
+            <form class="form-container" method="post" id="form1">
+                <ul>
+                    <li>
+                        <fieldset>
+                            <spring:bind path="cohortattributes.name">
+                                <h4><spring:message code="cohort.cohorttypename"/> </h4><br/>
+                                <input class="form-control" type="text" name="name" id="name" size="25" value="${status.value}"/> <br/> <br/>
+                                <c:if test="${status.errorMessage != ''}"><span class="error">${status.errorMessage}</span></c:if>
+                            </spring:bind>
+                        </fieldset>
+                    </li>
+                    <li>
+                        <fieldset>
+                            <spring:bind path="cohortattributes.description">
+                                <h4><spring:message code="cohort.cohorttypedescription"/> </h4><br/>
+                                 <textarea class="form-control" rows="4" name="description" id="description" value="${status.value}"></textarea><br/><br/>
+                                <c:if test="${status.errorMessage != ''}"><span class="error">${status.errorMessage}</span></c:if>
+                            </spring:bind>
+                        </fieldset>
+                    </li> 
+                    <li>
+                        <fieldset>
+                            <spring:bind path="cohortattributes.format">
+                                <h4><spring:message code="cohort.format"/> </h4><br/>
+                                <select class="form-control" name="format">
+                                    <option value=""></option>
+                                    <c:forEach var="format" items="${formats}">
+                                        <option value="${format}"
+                                                <c:if test="${format == status.value}">selected</c:if>>${format}</option>
+                                    </c:forEach>
+                                    <c:if test="${status.errorMessage != ''}"><span
+                                            class="error">${status.errorMessage}</span></c:if>
+                                </select>
+                            </spring:bind>
+                        </fieldset>
+                    </li>
+                    <br/><br/>
+                    <input class="btn btn-primary" type="submit" value="submit" id="submit"/>
 
-<script type="text/javascript" charset="utf-8"></script>
-<h3>Add Cohort Member Attribute Type</h3>
-<form method="post">
-    <table>
-        <spring:bind path="cohortattributes.name">
-            <spring:message code="cohort.cohorttypename"/> :<br/>
-            <input type="text" name="name" id="name" size="25" value="${status.value}"/> <br/> <br/>
-            <c:if test="${status.errorMessage != ''}"><span class="error">${status.errorMessage}</span></c:if>
-        </spring:bind>
+                </ul>
 
-        <spring:bind path="cohortattributes.description">
-            <spring:message code="cohort.cohorttypedescription"/> :<br/>
-            <textarea rows="4" name="description" id="description" cols="50"
-                      value="${status.value}"></textarea><br/><br/>
-            <c:if test="${status.errorMessage != ''}"><span class="error">${status.errorMessage}</span></c:if>
-        </spring:bind>
-        <tr>
-            <td>
-                <spring:bind path="cohortattributes.format">
-                    <spring:message code="cohort.format"/> :<br/>
-                    <select name="format">
-                        <option value=""></option>
-                        <c:forEach var="format" items="${formats}">
-                            <option value="${format}"
-                                    <c:if test="${format == status.value}">selected</c:if>>${format}</option>
-                        </c:forEach>
-                        <c:if test="${status.errorMessage != ''}"><span
-                                class="error">${status.errorMessage}</span></c:if>
-                    </select>
-                </spring:bind>
-            </td>
-        </tr>
-    </table>
-    <input type="submit" value="submit" id="submit"/>
-</form>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
 
-<%@ include file="/WEB-INF/template/footer.jsp" %>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#management-label-nav').css({color: '#007aff'});
+    });
+</script>

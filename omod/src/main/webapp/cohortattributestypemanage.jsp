@@ -3,7 +3,7 @@
 
 <%@ include file="template/localHeader.jsp" %>
 <h3>Manage Cohort Attributes Type</h3>
-<a href="addcohortattributestype.form">Create Cohort Attributes Type</a>
+<a href="addCohortAttributesType.form">Create Cohort Attributes Type</a>
 <br/>
 <div>
     <b class="boxHeader">Find Cohort Member Attribute Type</b>

@@ -3,7 +3,7 @@
     <title>**********</title> <!--set page title-->
 </head>
 <openmrs:htmlInclude file="/moduleResources/cohort/styles/genericPageStyle.css" />
-<%--<openmrs:htmlInclude file="/moduleResources/cohort/styles/pages/addCohortAttributes.css" />--%>
+<%--<openmrs:htmlInclude file="/moduleResources/cohort/styles/pages/genericAddPageStyling.css" />--%>
 <%@ include file="template/navbar.jsp" %>
 
 

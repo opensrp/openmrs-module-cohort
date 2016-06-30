@@ -55,12 +55,12 @@ public class AddCohortProgramController {
 	@Qualifier("addCohortProgramValidator")
 	private Validator validator;
 	
-	@RequestMapping(value = "/module/cohort/addcohortprogram", method = RequestMethod.GET)
+	@RequestMapping(value = "/module/cohort/addCohortProgram", method = RequestMethod.GET)
 	public void manage(ModelMap model) {
 		model.addAttribute("cohortprogram", new CohortProgram());
 	}
 	
-	@RequestMapping(value = "/module/cohort/addcohortprogram.form", method = RequestMethod.POST)
+	@RequestMapping(value = "/module/cohort/addCohortProgram.form", method = RequestMethod.POST)
 	public String onSearch(WebRequest request, HttpSession httpSession, ModelMap model,
 			@RequestParam(required = false, value = "name") String cohort_name,
 			@RequestParam(required = false, value = "description") String description,
@@ -74,7 +74,7 @@ public class AddCohortProgramController {
 		if (errors.hasErrors()) {
 			System.out.println("BR has errors: " + errors.getErrorCount());
 			System.out.println(errors.getAllErrors());
-			return "/module/cohort/addcohortprogram";
+			return "/module/cohort/addCohortProgram";
 		}
 		if (cohort_name.length() > 20) {
 			httpSession.setAttribute(WebConstants.OPENMRS_MSG_ATTR, "name cannot be greater than 20");

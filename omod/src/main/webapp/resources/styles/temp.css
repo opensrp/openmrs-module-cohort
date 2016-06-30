@@ -1,0 +1,128 @@
+
+.navbar {
+    background: rgba(255, 255, 255, 0.94);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
+    min-height: 40px;
+    height: 110px;
+    border: 0;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+.navbar .container-fluid.top-bar {
+    height: 44px;
+    border-bottom: 1px solid #e6e6e6;
+    padding: 0 10px 0 20px;
+    width: 100%;
+    background-color: #00463f;
+}
+
+.navbar .container-fluid.top-bar .logo {
+    background: url(../images/openmrs_logo.png) no-repeat 0 0;
+    width: 10% !important;
+    height: 100%;
+    float: left;
+    text-indent: -9999em;
+    margin: 0 0 0 0 !important;
+}
+
+.navbar .container-fluid.top-bar .nav > li > a {
+    height: 20px;
+    font-size: 20px;
+}
+
+.navbar .container-fluid.main-nav .nav .item-1 {
+    font-size: 18px;
+    display: inline-block;
+    text-align: center;
+    margin-left: 25px;
+    padding-right: 45px;
+}
+
+.navbar .container-fluid.main-nav .nav .item-2 {
+    font-size: 18px;
+    display: inline-block;
+    text-align: center;
+    padding-right: 45px;
+    padding-left: 45px;
+}
+
+.navbar .container-fluid.main-nav .nav .item-3 {
+    font-size: 18px;
+    display: inline-block;
+    text-align: center;
+    padding-left: 45px;
+}
+
+.nav .admin-back {
+    font-size: 18px;
+    display: inline-block;
+    text-align: center;
+    padding-left: 5px;
+}
+
+.fa {
+    padding-bottom: 5px;
+    font-size: 20px;
+}
+
+.nav > li > a, .nav > li > i {
+    color: #333;
+}
+
+.current {
+    color: #007aff !important;
+}
+
+.nav > li > a > i {
+    display: block;
+}
+
+.nav .module-label > li {
+    background-color: #C0C0C0;
+    padding: 4px 10px 8px 05px;
+    margin-left: 10px;
+}
+
+.nav .module-label > li > i{
+    display: block;
+    padding-top: 8px;
+    margin-left: 5px;
+}
+
+.nav .module-label > li > span{
+    color: #2a2a2a;
+}
+
+.navbar .navbar-options-header ul li{
+    padding: 12px 20px 0px 10px;
+    list-style-type: none;
+}
+
+.navbar .navbar-nav  li a {
+    color: #CCC;
+}
+
+.navbar-nav .open .dropdown-menu > li > a, .navbar-nav .open .dropdown-menu {
+    background-color: #5B57A6;
+    color:#ffffff;
+}
+
+.dropdown-toggle {
+    text-decoration: none!important;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0;
+}
+
+.item-2 a:hover {
+    color: #007aff !important;
+}
+
+.item-3 a:hover {
+    color: #007aff !important;
+}
+

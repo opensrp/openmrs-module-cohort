@@ -1,126 +1,121 @@
 .navbar {
-    background: rgba(255, 255, 255, 0.94);
+    background-color: #00463f;
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
-    min-height: 40px;
-    height: 110px;
     border: 0;
     -webkit-transition: all 0.3s;
     -moz-transition: all 0.3s;
     transition: all 0.3s;
 }
 
-.navbar .container-fluid.top-bar {
-    height: 44px;
-    border-bottom: 1px solid #e6e6e6;
-    padding: 0 10px 0 20px;
+
+.color-wrapper {
+    background-color: white;
+}
+.navbar-form {
+    width: 250px;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    border: none;
+}
+@media (max-width: 767px) {
+    .navbar-form {
+        width: auto;
+        margin: 0 -15px;
+    }
+}
+.navbar-form .form-group {
     width: 100%;
-    background-color: #00463f;
+    margin: 0;
 }
 
-.navbar .container-fluid.top-bar .logo {
-    background: url(../images/openmrs_logo.png) no-repeat 0 0;
-    width: 10% !important;
-    height: 100%;
-    float: left;
-    text-indent: -9999em;
-    margin: 0 0 0 0 !important;
+.navbar-nav li a{
+    color: #0f0f0f !important;
 }
 
-.navbar .container-fluid.top-bar .nav > li > a {
-    height: 20px;
-    font-size: 20px;
+
+.navbar-nav li a:hover {
+    background-color: #e5e5e5 !important;
+    color: #007fff !important;
+    cursor: pointer;
 }
 
-.navbar .container-fluid.main-nav .nav .item-1 {
+.logo {
+    background: url(../images/openmrs_logo.png) no-repeat  -5px -7px;
+    padding: 5px 5px 5px 5px;
+    margin-top: 8px;
+    width: 500%;
+}
+
+.navbar-right-up li p {
+    color: white;
+    padding: 15px 15px 0 15px;
+}
+
+.navbar-right-up li a{
+    color: white !important;
+}
+
+.navbar-right-up li ul a{
+    color: black !important;
+}
+
+.navbar-right-up li a i{
+    padding: 0 5px 0 5px;
+}
+
+.navbar-header {
+    font-size: 22px;
+    margin-top: 16px;
+    padding-bottom: 0 !important;
+}
+
+@media (max-width: 1200px) {
+    .navbar-header {
+        font-size: 15px;
+        margin-top: 16px;
+        padding-bottom: 0 !important;
+    }
+}
+
+.navbar-header p {
+    background: #b4b4b4;
+    border: 1px solid #9b9b9b;
+    border-radius: 10px;
+    padding: 0 10px 0 10px;
+}
+
+.navbar-navx {
+    padding-left: 27.5%;
+}
+
+.navbar-navx > ul > li {
+    padding: 0 20px 0 20px;
+}
+
+.navbar-navx > ul > li i{
+    padding: 8px 0 8px 0;
+}
+
+.navbar-navx > ul > li a{
     font-size: 18px;
-    display: inline-block;
-    text-align: center;
-    margin-left: 25px;
-    padding-right: 45px;
 }
 
-.navbar .container-fluid.main-nav .nav .item-2 {
-    font-size: 18px;
-    display: inline-block;
-    text-align: center;
-    padding-right: 45px;
-    padding-left: 45px;
+@media (max-width: 1200px) {
+    .navbar-navx > ul > li a{
+        font-size: 12px;
+    }
+    .navbar-navx {
+        padding-left: 15%;
+    }
 }
 
-.navbar .container-fluid.main-nav .nav .item-3 {
-    font-size: 18px;
-    display: inline-block;
-    text-align: center;
-    padding-left: 45px;
+.admin-button a {
+    margin-left: 50px !important;
 }
 
-.nav .admin-back {
-    font-size: 18px;
-    display: inline-block;
-    text-align: center;
-    padding-left: 5px;
-}
-
-.fa {
-    padding-bottom: 5px;
-    font-size: 20px;
-}
-
-.nav > li > a, .nav > li > i {
-    color: #333;
-}
-
-.current {
-    color: #007aff !important;
-}
-
-.nav > li > a > i {
-    display: block;
-}
-
-.nav .module-label > li {
-    background-color: #C0C0C0;
-    padding: 4px 10px 8px 05px;
-    margin-left: 10px;
-}
-
-.nav .module-label > li > i{
-    display: block;
-    padding-top: 8px;
-    margin-left: 5px;
-}
-
-.nav .module-label > li > span{
-    color: #2a2a2a;
-}
-
-.navbar .navbar-options-header ul li{
-    padding: 12px 20px 0px 10px;
-    list-style-type: none;
-}
-
-.navbar .navbar-nav  li a {
-    color: #CCC;
-}
-
-.navbar-nav .open .dropdown-menu > li > a, .navbar-nav .open .dropdown-menu {
-    background-color: #5B57A6;
-    color:#ffffff;
-}
-
-.dropdown-toggle {
-    text-decoration: none!important;
-}
-
-.dropdown:hover .dropdown-menu {
-    display: block;
-    margin-top: 0;
-}
-
-.item-2 a:hover {
-    color: #007aff !important;
-}
-
-.item-3 a:hover {
-    color: #007aff !important;
+@media (max-width: 1200px) {
+    .admin-button a {
+        padding-left: 0 !important;
+    }
 }
