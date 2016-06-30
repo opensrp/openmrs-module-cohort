@@ -219,8 +219,8 @@
 <c:if test="${cohortExists == 'false'}">
     <div class="container">
         <div class="row">
-            <div class="col-sm-12">
-                <h3 class="not-found">No cohorts currently exist with this name!</h3>            
+            <div class="col-sm-10 col-sm-offset-1 not-found-container">
+                <h4 class="not-found">No cohorts currently exist with this name!</h4>
             </div>
         </div>
     </div>
