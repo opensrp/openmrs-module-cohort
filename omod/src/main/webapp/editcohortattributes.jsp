@@ -3,7 +3,7 @@
 <title>Edit Cohort Attributes</title> <!--set page title-->
 </head>
 <openmrs:htmlInclude file="/moduleResources/cohort/styles/genericPageStyle.css" />
-<openmrs:htmlInclude file="/moduleResources/cohort/styles/pages/genericManagePageStyling.css" />
+<openmrs:htmlInclude file="/moduleResources/cohort/styles/pages/genericEditPageStyling.css" />
 <%@ include file="template/navbar.jsp" %>
 
 <body>
@@ -48,8 +48,11 @@
                             <c:if test="${status.errorMessage != ''}"><span class="error">${status.errorMessage}</span></c:if>
                         </spring:bind>
                     </li>
-    
-                    <input class="btn btn-primary" type="submit" value="Edit Cohort Attributes" id="submit"/>
+                    
+                    <div class="button-container">
+                        <input class="btn btn-primary" type="submit" value="Edit Cohort Attributes" id="submit"/>
+                    </div>
+                
                     <br/>
                     <br/>
                     <hr/>

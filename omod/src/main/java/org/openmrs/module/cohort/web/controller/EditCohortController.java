@@ -125,7 +125,7 @@ public class EditCohortController {
 		}
 	}
 	
-	@RequestMapping(value = "/module/cohort/editcohorttype", method = RequestMethod.GET)
+	@RequestMapping(value = "/module/cohort/editCohortType", method = RequestMethod.GET)
 	public void manageEditCohortType(ModelMap model, HttpServletRequest request, @RequestParam(required = false, value = "voidReason") String voidReason, @RequestParam("ctypeid") Integer id, @ModelAttribute("cohorttype") CohortType cohort) {
 		CohortService service1 = Context.getService(CohortService.class);
 		List<CohortType> cohort1 = service1.findCohortType(id);
@@ -135,7 +135,7 @@ public class EditCohortController {
 		}
 	}
 	
-	@RequestMapping(value = "/module/cohort/editcohorttype.form", method = RequestMethod.POST)
+	@RequestMapping(value = "/module/cohort/editCohortType.form", method = RequestMethod.POST)
 	public void manageEditCohortType1(ModelMap model, HttpSession httpSession, HttpServletRequest request, @RequestParam("ctypeid") Integer id, @RequestParam(required = false, value = "voidReason") String voidReason, @ModelAttribute("cohorttype") CohortType cohort) {
 		CohortService service1 = Context.getService(CohortService.class);
 		List<CohortType> cohort1 = service1.findCohortType(id);
@@ -157,7 +157,7 @@ public class EditCohortController {
 		}
 	}
 	
-	@RequestMapping(value = "/module/cohort/editcohortprogram", method = RequestMethod.GET)
+	@RequestMapping(value = "/module/cohort/editCohortProgram", method = RequestMethod.GET)
 	public void manageEditCohortProgram(ModelMap model, HttpServletRequest request, @RequestParam("cpid") Integer id, @ModelAttribute("cohortprogram") CohortProgram cp) {
 		CohortService service1 = Context.getService(CohortService.class);
 		List<CohortProgram> cohort1 = service1.findCohortProgram(id);
@@ -167,7 +167,7 @@ public class EditCohortController {
 		}
 	}
 	
-	@RequestMapping(value = "/module/cohort/editcohortprogram.form", method = RequestMethod.POST)
+	@RequestMapping(value = "/module/cohort/editCohortProgram.form", method = RequestMethod.POST)
 	public void manageEditCohortProgram1(ModelMap model, HttpSession httpSession, HttpServletRequest request, @RequestParam("cpid") Integer id, @RequestParam(required = false, value = "voidReason") String voidReason, @ModelAttribute("cohortprogram") CohortProgram cohort) {
 		CohortService service1 = Context.getService(CohortService.class);
 		List<CohortProgram> cohort1 = service1.findCohortProgram(id);
@@ -189,7 +189,7 @@ public class EditCohortController {
 		}
 	}
 	
-	@RequestMapping(value = "/module/cohort/editcohortattributestype", method = RequestMethod.GET)
+	@RequestMapping(value = "/module/cohort/editCohortAttributesType", method = RequestMethod.GET)
 	public void manageEditCohortAttributeType(ModelMap model, HttpServletRequest request, @RequestParam("cat") Integer id, @ModelAttribute("cohortattributes") CohortAttributeType cohort) {
 		CohortService service1 = Context.getService(CohortService.class);
 		List<CohortAttributeType> cohort1 = service1.findCohortAttType(id);
@@ -205,7 +205,7 @@ public class EditCohortController {
 		}
 	}
 	
-	@RequestMapping(value = "/module/cohort/editcohortattributestype.form", method = RequestMethod.POST)
+	@RequestMapping(value = "/module/cohort/editCohortAttributesType.form", method = RequestMethod.POST)
 	public void manageEditCohortAttributeType1(ModelMap model, HttpSession httpSession, HttpServletRequest request, @RequestParam("cat") Integer id, @RequestParam(required = false, value = "voidReason") String voidReason, @ModelAttribute("cohortattributes") CohortAttributeType cohort) {
 		CohortService service1 = Context.getService(CohortService.class);
 		List<CohortAttributeType> cohort1 = service1.findCohortAttType(id);
@@ -234,7 +234,7 @@ public class EditCohortController {
 	}
 	
 	
-	@RequestMapping(value = "/module/cohort/editcohortmemberattributetype", method = RequestMethod.GET)
+	@RequestMapping(value = "/module/cohort/editCohortMemberAttributeType", method = RequestMethod.GET)
 	public void manageEditCohortMemberAttributeType(ModelMap model, HttpServletRequest request, @RequestParam("cmat") Integer id, @ModelAttribute("cohortattributes") CohortMemberAttributeType cohort) {
 		CohortService service1 = Context.getService(CohortService.class);
 		List<CohortMemberAttributeType> cohort1 = service1.findCohortMemAttType(id);
@@ -250,7 +250,7 @@ public class EditCohortController {
 		}
 	}
 	
-	@RequestMapping(value = "/module/cohort/editcohortmemberattributetype.form", method = RequestMethod.POST)
+	@RequestMapping(value = "/module/cohort/editCohortMemberAttributeType.form", method = RequestMethod.POST)
 	public void manageEditCohortMemberAttributeType1(ModelMap model, HttpSession httpSession, HttpServletRequest request, @RequestParam("cmat") Integer id, @RequestParam(required = false, value = "voidReason") String voidReason, @ModelAttribute("cohortattributes") CohortMemberAttributeType cohort) {
 		CohortService service1 = Context.getService(CohortService.class);
 		List<CohortMemberAttributeType> cohort1 = service1.findCohortMemAttType(id);
@@ -338,7 +338,7 @@ public class EditCohortController {
 		}
 	}
 	
-	@RequestMapping(value = "/module/cohort/editcohortmemberattribute", method = RequestMethod.GET)
+	@RequestMapping(value = "/module/cohort/editCohortMemberAttribute", method = RequestMethod.GET)
 	public void manageEditCohortMemberAttribute(ModelMap model, HttpServletRequest request, @RequestParam("cma") Integer id, @ModelAttribute("cohortatt") CohortMemberAttribute cohort) {
 		CohortService s = Context.getService(CohortService.class);
 		List<CohortMember> cm = s.findCohortMember();
@@ -363,7 +363,7 @@ public class EditCohortController {
 		}
 	}
 	
-	@RequestMapping(value = "/module/cohort/editcohortmemberattribute.form", method = RequestMethod.POST)
+	@RequestMapping(value = "/module/cohort/editCohortMemberAttribute.form", method = RequestMethod.POST)
 	public void manageEditCohortMemberAttribute1(ModelMap model, HttpSession httpSession, HttpServletRequest request, @RequestParam("cma") Integer id, @RequestParam(required = false, value = "voidReason") String voidReason, @ModelAttribute("cohortatt") CohortMemberAttribute cohort) {
 		CohortService s = Context.getService(CohortService.class);
 		List<CohortMember> cm = s.findCohortMember();
@@ -643,7 +643,7 @@ public class EditCohortController {
 		}
 	}
 	
-	@RequestMapping(value = "/module/cohort/editcohortrole", method = RequestMethod.GET)
+	@RequestMapping(value = "/module/cohort/editCohortRole", method = RequestMethod.GET)
 	public void manageEditRoles(ModelMap model, HttpServletRequest request, @RequestParam("croleid") Integer id, @ModelAttribute("cohortrole") CohortRole crole) {
 		
 		model.addAttribute("cohortrole", new CohortRole());
@@ -662,7 +662,7 @@ public class EditCohortController {
 		}
 	}
 	
-	@RequestMapping(value = "/module/cohort/editcohortrole.form", method = RequestMethod.POST)
+	@RequestMapping(value = "/module/cohort/editCohortRole.form", method = RequestMethod.POST)
 	public void manageEditRoles1(ModelMap model, HttpSession httpSession, HttpServletRequest request, @RequestParam("croleid") Integer id, @ModelAttribute("cohortrole") CohortRole cohort) {
 		List<String> cohorttype = new ArrayList<String>();
 		CohortService service1 = Context.getService(CohortService.class);

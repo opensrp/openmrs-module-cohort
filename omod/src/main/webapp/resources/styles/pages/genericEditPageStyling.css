@@ -1,0 +1,77 @@
+.form-container {
+    margin-bottom: 20px;
+    background: white;
+    padding: 20px 20px 20px 20px;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    color: #0f0f0f;
+}
+
+h4 {
+    display: inline-block;
+}
+
+.form-group {
+    padding: 8px 0 8px 0;
+    width: 85% !important;
+}
+
+.heading span {
+    font-size: 18px;
+    color: #f1f5f3;
+    background-color: #373a3c;
+    font-weight: 700;
+    padding: 10px 30px 10px 20px;
+}
+.error {
+    color: #ff0000;
+}
+
+.errorblock {
+    color: #000;
+    background-color: #ffEEEE;
+    border: 3px solid #ff0000;
+    padding: 8px;
+    margin: 16px;
+}
+.attribute-name-header {
+    display: inline;
+    background: #f4f5f4;
+    border: 1px solid #949695;
+    border-radius: 2px;
+    padding: 5px 10px 5px 10px;
+    font-weight: 700;
+}
+
+#name, #names, #description, #format, #format1, #value, .generic-dropdown{
+    width: 85%;
+}
+
+#startDate {
+    width: 35%;
+}
+
+#endDate {
+    width: 35%;
+}
+
+#location {
+    width: 60%;
+}
+
+.alert-warning, .alert-danger {
+    padding: 5px 10px 5px 10px;
+    border-radius: 5px;
+}
+
+.btn-warning, .btn-danger {
+    width: 25%;
+}
+
+#void {
+    border: 1px solid orange;
+}
+
+#submit{
+    width: 85% !important;
+}

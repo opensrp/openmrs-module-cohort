@@ -1,46 +1,58 @@
 <%@ include file="/WEB-INF/template/include.jsp" %>
-<%@ include file="/WEB-INF/template/header.jsp" %>
+<%@ include file="template/header.jsp" %>
+<title>Edit Cohort Role</title> <!--set page title-->
+</head>
+<openmrs:htmlInclude file="/moduleResources/cohort/styles/genericPageStyle.css" />
+<openmrs:htmlInclude file="/moduleResources/cohort/styles/pages/genericEditPageStyling.css" />
+<%@ include file="template/navbar.jsp" %>
 
-<%@ include file="template/localHeader.jsp" %>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4">
+            <h4 class="heading"><span>Edit Cohort Role</span></h4>
+            <form id="form1" class="form-container" method="post">
+                <form:errors path="*" cssClass="errorblock" element="div"/>
+                <br>
+
+                <li>
+                    <h4>Cohort Type </h4>
+                    <select class="form-control generic-dropdown" name="format">
+                        <option value=""></option>
+                        <c:forEach var="format" items="${formats}">
+                            <option value="${format}" <c:if test="${format == cohortrole.cohortType}">selected</c:if>>${format}</option>
+                        </c:forEach>
+                        <c:if test="${status.errorMessage != ''}"><span class="error">${status.errorMessage}</span></c:if>
+                    </select>
+                    <br/><br/>
+                </li>
+
+                <li>
+
+                    <spring:bind path="cohortrole.name">
+                        <h4><spring:message code="cohort.cohortname"/> </h4>
+                        <input class="form-control" type="text" name="name" id="name" size="25" value="${status.value}"/> <br/> <br/>
+                        <c:if test="${status.errorMessage != ''}"><span class="error">${status.errorMessage}</span></c:if>
+                    </spring:bind>
+                </li>
+
+                <br/>
+                <div class="button-container">
+                    <input class="btn btn-primary" type="submit" value="Edit Role" id="submit"/><br/>
+                </div>
+
+                <br/>
+                <hr/>
+                <h4 class="alert-danger">Delete Role</h4> <br><br/>
+                <input class="btn btn-danger" type="submit" value="delete" id="delete" name="delete"/><br/>
+                </ul>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
 
 
-<openmrs:htmlInclude file="/scripts/calendar/calendar.js"/>
-<style>
-    .error {
-        color: #ff0000;
-    }
-
-    .errorblock {
-        color: #000;
-        background-color: #ffEEEE;
-        border: 3px solid #ff0000;
-        padding: 8px;
-        margin: 16px;
-    }
-</style>
-<h3>Edit Role</h3>
-<form id="form1" method="post">
-    <form:errors path="*" cssClass="errorblock" element="div"/>
-    Cohort Type:
-    <select name="format">
-        <option value=""></option>
-        <c:forEach var="format" items="${formats}">
-            <option value="${format}" <c:if test="${format == cohortrole.cohortType}">selected</c:if>>${format}</option>
-        </c:forEach>
-        <c:if test="${status.errorMessage != ''}"><span class="error">${status.errorMessage}</span></c:if>
-    </select>
-    </td>
-    </tr>
-    </table>
-    <br/>
-    <br/>
-    <spring:bind path="cohortrole.name">
-        <spring:message code="cohort.cohortname"/> :<br/>
-        <input type="text" name="name" id="name" size="25" value="${status.value}"/> <br/> <br/>
-        <c:if test="${status.errorMessage != ''}"><span class="error">${status.errorMessage}</span></c:if>
-    </spring:bind>
-    <input type="submit" value="Edit Role" id="submit"/><br/><br/>
-    Delete Role<br/><br/>
-    <input type="submit" value="delete" id="delete" name="delete"/><br/><br/>
-</form>
-<%@ include file="/WEB-INF/template/footer.jsp" %>
+<!--Script includes for new UI -->
+<%--<openmrs:htmlInclude file="/moduleResources/cohort/scripts/pages/patientSearch.js" />--%>
+<!--END-->

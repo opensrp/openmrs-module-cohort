@@ -33,7 +33,7 @@
             <c:forEach var="ls" items="${CohortTypeList}" varStatus="status">
                 <tr class='${status.index % 2 == 0 ? "oddRow" : "evenRow" }'>
                     <td class="tdStyle">
-                        <a href="${pageContext.request.contextPath}/module/cohort/editcohortprogram.form?cpid=${ls.cohortProgramId}">${ls.name}</a>
+                        <a href="${pageContext.request.contextPath}/module/cohort/editCohortProgram.form?cpid=${ls.cohortProgramId}">${ls.name}</a>
                     </td>
                     <td class="tdStyle">
                             ${ls.description}

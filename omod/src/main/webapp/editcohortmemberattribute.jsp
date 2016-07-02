@@ -1,55 +1,76 @@
 <%@ include file="/WEB-INF/template/include.jsp" %>
-<%@ include file="/WEB-INF/template/header.jsp" %>
+<%@ include file="template/header.jsp" %>
+<title>Edit Cohort Member Attribute</title> <!--set page title-->
+</head>
+<openmrs:htmlInclude file="/moduleResources/cohort/styles/genericPageStyle.css" />
+<openmrs:htmlInclude file="/moduleResources/cohort/styles/pages/genericEditPageStyling.css" />
+<%@ include file="template/navbar.jsp" %>
 
-<%@ include file="template/localHeader.jsp" %>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4">
+            <h4 class="heading"><span>Edit Cohort Member Attribute</span></h4>
+            <form class="form-container" method="post">
+                <br>
+                <li>
+                    <spring:bind path="cohortatt.cohortMember">
+                        <h4>Cohort Member Names</h4>
+                        <select class="form-control generic-dropdown" name="names">
+                            <c:forEach var="names" items="${formats1}">
+                                <option value="${names}"
+                                        <c:if test="${names ==cohortatt.cohortMember}">selected</c:if>>${names}</option>
+                            </c:forEach>
+                        </select>
+                        <c:if test="${status.errorMessage != ''}"><span class="error">${status.errorMessage}</span></c:if>
+                    </spring:bind>
+                    <br>
+                </li>
+                <li>
+                    <fieldset>
+                        <spring:bind path="cohortatt.cohortMemberAttributeType">
+                            <h4>Cohort Member Attribute Type </h4>
+                            <select class="form-control generic-dropdown" name="format">
+                                <c:forEach var="format" items="${formats}">
+                                    <option value="${format}"
+                                            <c:if test="${format ==cohortatt.cohortMemberAttributeType}">selected</c:if>>${format}</option>
+                                </c:forEach>
+                            </select>
+                            <c:if test="${status.errorMessage != ''}"><span class="error">${status.errorMessage}</span></c:if>
+                        </spring:bind>
+                    </fieldset>
+                    <br/>
+                </li>
 
-<openmrs:htmlInclude file="/scripts/calendar/calendar.js"/>
-<openmrs:htmlInclude file="/scripts/jquery/jquery-1.3.2.min.js"/>
+                <li>
+                    <spring:bind path="cohortatt.value">
+                        <h4><spring:message code="cohort.cohorttypedescription"/> </h4>
+                        <input class="form-control" type="text" name="value" id="value" size="25" value="${status.value}"/> <br/> <br/>
+                        <c:if test="${status.errorMessage != ''}"><span class="error">${status.errorMessage}</span></c:if>
+                    </spring:bind>
+                </li>
 
-<script type="text/javascript" charset="utf-8"></script>
-<form method="post">
-    <spring:bind path="cohortatt.cohortMember">
-        Cohort Names:<br/>
-        <select name="names">
-            <c:forEach var="names" items="${formats1}">
-                <option value="${names}"
-                        <c:if test="${names ==cohortatt.cohortMember}">selected</c:if>>${names}</option>
-            </c:forEach>
-        </select>
-        <c:if test="${status.errorMessage != ''}"><span class="error">${status.errorMessage}</span></c:if>
-    </spring:bind>
-    <br/>
-    <br/>
-    <spring:bind path="cohortatt.cohortMemberAttributeType">
-        Cohort Member Attribute Type:<br/>
-        <select name="format">
-            <c:forEach var="format" items="${formats}">
-                <option value="${format}"
-                        <c:if test="${format ==cohortatt.cohortMemberAttributeType}">selected</c:if>>${format}</option>
-            </c:forEach>
-        </select>
-        <c:if test="${status.errorMessage != ''}"><span class="error">${status.errorMessage}</span></c:if>
-    </spring:bind>
-    </td>
-    </tr>
-    </table>
-    <br/>
-    <br/>
-    <spring:bind path="cohortatt.value">
-        <spring:message code="cohort.cohorttypedescription"/> :<br/>
-        <input type="text" name="value" id="value" size="25" value="${status.value}"/> <br/> <br/>
-        <c:if test="${status.errorMessage != ''}"><span class="error">${status.errorMessage}</span></c:if>
-    </spring:bind>
-    <tr>
-        <td>
-            <br/>
-            <br/>
-            <input type="submit" value="edit" id="submit"/> <br/><br/>
-            Void Cohort Member Attribute<br/><br/>
-            Reason:<input type="text" name="voidReason" id="voidReason" size="25" value="${status.value}"/> <br/> <br/>
-            <input type="submit" value="void" id="void" name="void"/><br/><br/>
-            Delete Cohort Member Attribute<br/><br/>
-            <input type="submit" value="delete" id="delete" name="delete"/><br/><br/>
-</form>
+                <div class="button-container">
+                    <input class="btn btn-primary" type="submit" value="edit" id="submit"/>
+                </div>
 
-<%@ include file="/WEB-INF/template/footer.jsp" %>
+                <br/>
+                <br/>
+                <hr/>
+                <h4 class="alert-warning">Void Cohort Member Attribute</h4> <br>
+                <h4>Reason</h4>:<input class="form-control" type="text" name="voidReason" id="voidReason" size="25" value="${status.value}"/> <br/>
+                <input class="btn btn-warning" type="submit" value="void" id="void" name="void"/>
+                <hr/>
+                <h4 class="alert-danger">Delete Cohort Member Attribute</h4> <br><br/>
+                <input class="btn btn-danger" type="submit" value="delete" id="delete" name="delete"/><br/>
+                </ul>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+
+
+<!--Script includes for new UI -->
+<%--<openmrs:htmlInclude file="/moduleResources/cohort/scripts/pages/patientSearch.js" />--%>
+<!--END-->
