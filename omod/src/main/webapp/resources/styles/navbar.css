@@ -35,7 +35,7 @@
 
 
 .navbar-nav li a:hover {
-    background-color: #e5e5e5 !important;
+    background-color: #e5e5e5;
     color: #007fff !important;
     cursor: pointer;
 }
@@ -45,6 +45,10 @@
     padding: 5px 5px 5px 5px;
     margin-top: 8px;
     width: 500%;
+}
+
+.logo:hover{
+    text-decoration: none!important;
 }
 
 .navbar-right-up li p {
@@ -68,30 +72,21 @@
     font-size: 22px;
     margin-top: 16px;
     padding-bottom: 0 !important;
+    padding-left: 80px !important;
 }
 
-@media (max-width: 1200px) {
-    .navbar-header {
-        font-size: 15px;
-        margin-top: 16px;
-        padding-bottom: 0 !important;
-    }
-}
 
 .navbar-header p {
     background: #b4b4b4;
     border: 1px solid #9b9b9b;
     border-radius: 10px;
-    padding: 0 10px 0 10px;
-}
-
-.navbar-navx {
-    padding-left: 27.5%;
+    padding: 0 10px 0 10px !important;
 }
 
 .navbar-navx > ul > li {
-    padding: 0 20px 0 20px;
+    padding: 0 10px 0 40px;
 }
+
 
 .navbar-navx > ul > li i{
     padding: 8px 0 8px 0;
@@ -101,21 +96,7 @@
     font-size: 18px;
 }
 
-@media (max-width: 1200px) {
-    .navbar-navx > ul > li a{
-        font-size: 12px;
-    }
-    .navbar-navx {
-        padding-left: 15%;
-    }
+.dropdown-header :hover, .dropdown-header :hover  {
+    text-decoration: none !important;
 }
 
-.admin-button a {
-    margin-left: 50px !important;
-}
-
-@media (max-width: 1200px) {
-    .admin-button a {
-        padding-left: 0 !important;
-    }
-}

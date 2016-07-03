@@ -1,7 +1,7 @@
+
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container top-nav">
-
-
+        
         <ul class="nav navbar-nav navbar-left">
             <li>
                 <a class="logo" href="index.html"></a>
@@ -41,69 +41,74 @@
         </ul>
     </div>
     <div class="color-wrapper">
-        <div class="container">
-            <div class="container-fluid">
+        <div class="container-fluid">
+            <div class="col-sm-3">
                 <div class="navbar-header">
                     <p><i class="fa fa-users" aria-hidden="true"> </i> <span>Cohort Module </span>
                     </p>
                 </div>
-                <div class="navbar-navx">
-                    <ul class="nav navbar-nav">
-                        <li class="main-links">
-                            <a class="btn-default" id="cohort-dashboard-link"
-                                              href="${pageContext.request.contextPath}/module/cohort/cohortDashboard.form">
-                                <i id="cohort-dashboard-icon" class="fa fa-dashboard fa-lg" aria-hidden="true"> </i>
+            </div>
+
+            <div class="col-sm-6 navbar-navx">
+                <ul class="nav navbar-nav">
+                    <li class="main-links">
+                        <a class="btn-default" id="cohort-dashboard-link"
+                           href="${pageContext.request.contextPath}/module/cohort/cohortDashboard.form">
+                            <i id="cohort-dashboard-icon" class="fa fa-dashboard fa-lg" aria-hidden="true"> </i>
                                 <span
-                                    class="navbar-label">Dashboard
+                                        class="navbar-label">Dashboard
                                 </span>
-                            </a>
-                        </li>
-                        
-                        <li class="main-links">
-                            <a class="btn-default" id="search-label-nav"
-                               type="button" data-toggle="dropdown">
-                                <i class="fa fa-search fa-lg" aria-hidden="true"> </i>
+                        </a>
+                    </li>
+
+                    <li class="main-links">
+                        <a class="btn-default" id="search-label-nav"
+                           type="button" data-toggle="dropdown">
+                            <i class="fa fa-search fa-lg" aria-hidden="true"> </i>
                                 <span class="navbar-label">
                                         <span class="navbar-label"> Search <span class="caret"></span></span>
                                 </span>
-                                <ul class="dropdown-menu">
-                                    <li><a href="patientSearch.form"><h4>Patients</h4></a></li>
-                                    <li><a href="cohortSearch.form"><h4>Cohorts</h4></a></li>
-                                </ul>
-                            </a>
-                        </li>
+                            <ul class="dropdown-menu">
+                                <li><a href="patientSearch.form"><h4>Patients</h4></a></li>
+                                <li><a href="cohortSearch.form"><h4>Cohorts</h4></a></li>
+                            </ul>
+                        </a>
+                    </li>
 
-                        <li class="main-links">
-                            <a class="btn-default" id="management-label-nav"
-                               type="button" data-toggle="dropdown">
-                                <i class="fa fa-indent fa-lg" aria-hidden="true"> </i>
+                    <li class="main-links">
+                        <a class="btn-default" id="management-label-nav"
+                           type="button" data-toggle="dropdown">
+                            <i class="fa fa-indent fa-lg" aria-hidden="true"> </i>
                                 <span class="navbar-label">
                                         <span class="navbar-label"> Management <span class="caret"></span></span>
                                 </span>
-                                <ul class="dropdown-menu">
-                                    <li><a href="patientSearch.form"><h4>Cohort Metadata</h4></a></li>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li class="dropdown-header"><h4>Manage Metadata</h4></li>
+                            <li><a href="manageCohortType.form"><h5>Cohort Type</h5></a></li>
+                            <li><a href="manageCohortAttributesType.form"><h5>Cohort Attribute Type</h5></a></li>
+                            <li><a href="manageCohortMemberAttributeType.form"><h5>Cohort Member Attribute Type</h5></a></li>
+                            <li><a href="manageCohortProgram.form"><h5>Cohort Programs</h5></a></li>
+                            <li><a href="manageCohortRole.form"><h5>Cohort Role</h5></a></li>
+                            <li class="divider">
+                        </ul>
+                    </li>
+                </ul>
+            </div>
 
-                                    <li role="separator" class="divider"></li>
 
-                                    <li><a href="patientSearch.form"><h4>Cohort Encounters</h4></a></li>
-                                    <li><a href="patientSearch.form"><h4>Cohort Observations</h4></a></li>
-                                </ul>
-                            </a>
-                        </li>
-
-                        <li class="main-nav admin-button">
-                            <a class="btn-default" id="back-label-nav"
-                               type="button" data-toggle="dropdown">
-                                <i class="fa fa-arrow-left fa-lg" aria-hidden="true"> </i>
-                                <span
-                                        class="navbar-label">Admin
-                                </span>
-                            </a>
-                        </li>
-                        
-                    </ul>
-                </div>
-                
+            <div class="col-sm-2 navbar-navx">
+                <ul class="nav navbar-nav">
+                    <li class="main-nav admin-button">
+                        <a href="admin.htm" class="btn-default" id="back-label-nav"
+                           type="button" data-toggle="dropdown">
+                            <i class="fa fa-arrow-left fa-lg" aria-hidden="true"> </i>
+                            <span
+                                    class="navbar-label">Admin
+                            </span>
+                        </a>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>

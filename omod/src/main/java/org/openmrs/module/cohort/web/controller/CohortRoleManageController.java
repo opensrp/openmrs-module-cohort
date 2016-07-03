@@ -23,6 +23,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.openmrs.api.context.Context;
 import org.openmrs.api.context.UserContext;
+import org.openmrs.module.cohort.CohortProgram;
 import org.openmrs.module.cohort.CohortRole;
 import org.openmrs.module.cohort.CohortType;
 import org.openmrs.module.cohort.api.CohortService;
@@ -41,20 +42,20 @@ import org.springframework.web.servlet.ModelAndView;
  * The main controller.
  */
 @Controller
-public class CohortTypeManageController {
-	
-	protected final Log log = LogFactory.getLog(getClass());
-	
-	@RequestMapping(value = "/module/cohort/manageCohortType", method = RequestMethod.GET)
-	public void manage(HttpSession httpSession, HttpServletRequest request, ModelMap model, @RequestParam(required = false, value = "name") String cohort_name, @ModelAttribute("cohorttype") CohortType cohort) {
-		CohortService service = Context.getService(CohortService.class);
-		if ("search".equals(request.getParameter("search"))) {
-			List<CohortType> list1 = service.findCohortType(cohort_name);
-			for (int i = 0; i < list1.size(); i++) {
-				CohortType c = (CohortType) list1.get(i);
-				model.addAttribute("CohortTypeList", list1);
-			}
-		}
-	}
+public class CohortRoleManageController {
+
+    protected final Log log = LogFactory.getLog(getClass());
+
+    @RequestMapping(value = "/module/cohort/manageCohortRole", method = RequestMethod.GET)
+    public void manage(HttpSession httpSession, HttpServletRequest request, ModelMap model, @RequestParam(required = false, value = "name") String cohort_name, @ModelAttribute("cohortrole") CohortRole cohort) {
+        CohortService service = Context.getService(CohortService.class);
+        if ("search".equals(request.getParameter("search"))) {
+            List<CohortRole> list1 = service.findCohortRole(cohort_name);
+            for (int i = 0; i < list1.size(); i++) {
+                CohortRole c = (CohortRole) list1.get(i);
+                model.addAttribute("CohortRoleList", list1);
+            }
+        }
+    }
 }
 	

@@ -1,4 +1,4 @@
-.form-container {
+.main-container {
     margin-bottom: 20px;
     background: white;
     padding: 20px 20px 20px 20px;
@@ -45,27 +45,6 @@ h4 {
     font-weight: 700;
 }
 
-#names, #description, #format, #format1, #value{
-    width: 85%;
-}
-
-#startDate {
-    width: 35%;
-}
-
-#endDate {
-    width: 35%;
-}
-
-#location {
-    width: 60%;
-}
-
-.alert-warning, .alert-danger {
-    padding: 5px 10px 5px 10px;
-    border-radius: 5px;
-}
-
-#void {
-    border: 1px solid orange;
+#name, #search {
+    height: 40px;
 }

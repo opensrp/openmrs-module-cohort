@@ -1,30 +1,44 @@
 <%@ include file="/WEB-INF/template/include.jsp" %>
 <%@ include file="/WEB-INF/template/header.jsp" %>
-
 <%@ include file="template/localHeader.jsp" %>
-
-<openmrs:htmlInclude file="/scripts/calendar/calendar.js"/>
-<openmrs:htmlInclude file="/scripts/jquery/jquery-1.3.2.min.js"/>
-
-<script type="text/javascript" charset="utf-8"></script>
-<form method="post">
-    <spring:bind path="cohorttype.name">
-        <spring:message code="cohort.cohorttypename"/> :<br/>
-        <input type="text" name="name" id="name" size="25" value="${status.value}"/> <br/> <br/>
-        <c:if test="${status.errorMessage != ''}"><span class="error">${status.errorMessage}</span></c:if>
-    </spring:bind>
-    <spring:bind path="cohorttype.description">
-        <spring:message code="cohort.cohorttypedescription"/> : <br/>
-        <textarea rows="4" name="description" id="description" cols="50" value="${status.value}"></textarea><br/><br/>
-        <c:if test="${status.errorMessage != ''}"><span class="error">${status.errorMessage}</span></c:if>
-    </spring:bind>
-    <input type="submit" value="edit" id="submit"/>
-    <br/>
-    <br/>
-    Void Cohort Type<br/><br/>
-    Reason:<input type="text" name="voidReason" id="voidReason" size="25" value="${status.value}"/> <br/> <br/>
-    <input type="submit" value="void" id="void" name="void"/><br/><br/>
-    Delete Cohort Type<br/><br/>
-    <input type="submit" value="delete" id="delete" name="delete"/><br/><br/>
-</form>
+<h3>Manage Cohort Member Attributes</h3>
+<a href="addCohortMemberAttribute.form"><spring:message code="cohort.createcohortatt"/></a>
+<br/>
+<div>
+    <b class="boxHeader"><spring:message code="cohort.findcohortatt"/></b>
+    <div class="box">
+        <!--   <div class="searchWidgetContainer" id="createCohort">
+        </div>
+-->
+        <form id="login" method="get">
+            <spring:bind path="cohortatt.value">
+                <spring:message
+                        code="cohort.searchcohortattributes"/> :<input type="text" id="value" name="value" value="${status.value}" placeholder="Search..."
+                required>
+                <c:if test="${status.errorMessage != ''}"><span class="error">${status.errorMessage}</span></c:if>
+            </spring:bind>
+            <input type="submit" id="search" name="search" value="search">
+        </form>
+    </div>
+</div>
+<div class="box">
+    <div>
+        <table class="tableStlye">
+            <thead>
+            <tr>
+                <th class="thStyle" id="thStyle">Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <c:forEach var="ls" items="${CohortAttributesList}" varStatus="status">
+                <tr class='${status.index % 2 == 0 ? "oddRow" : "evenRow" }'>
+                    <td class="tdStyle">
+                        <a href="${pageContext.request.contextPath}/module/cohort/editCohortMemberAttribute.form?cma=${ls.cohortMemberAttributeId}">${ls.value}</a>
+                    </td>
+                </tr>
+            </c:forEach>
+            </tbody>
+        </table>
+    </div>
+</div>
 <%@ include file="/WEB-INF/template/footer.jsp" %>

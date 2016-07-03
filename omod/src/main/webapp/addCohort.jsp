@@ -26,7 +26,6 @@
                                 </spring:bind>
                             </fieldset>
                         </li>
-                        <br/>
                         
                         <li>
                             <fieldset class="form-group">
@@ -41,7 +40,6 @@
                                 </select>
                             </fieldset>
                         </li>
-                        <br/>
 
                         <li>
                             <fieldset class="form-group">
@@ -58,7 +56,6 @@
                                 </spring:bind>
                             </fieldset>
                         </li>
-                        <br/>
 
                         <li>
                             <fieldset class="form-group">
@@ -69,7 +66,6 @@
                                 </spring:bind>
                             </fieldset>
                         </li>
-                        <br/>
 
                         <li>
                             <fieldset class="form-group">
@@ -82,7 +78,6 @@
                                 </spring:bind>
                             </fieldset>
                         </li>
-                        <br/>
 
                         <li>
                             <fieldset class="form-group">
@@ -95,7 +90,6 @@
                                 </spring:bind>
                             </fieldset>
                         </li>
-                        <br/>
 
 
                         <li>
@@ -114,7 +108,6 @@
                             </fieldset>
                         </li>
                         
-                        <br/>
                         <div class="button-container">
                             <input class="btn btn-primary" type="submit" value="Save and Skip" id="submit"/><br/><br/>
                         </div>

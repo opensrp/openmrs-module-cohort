@@ -44,7 +44,7 @@ public class CohortAttributesTypeManageController {
 	
 	protected final Log log = LogFactory.getLog(getClass());
 	
-	@RequestMapping(value = "/module/cohort/cohortattributestypemanage", method = RequestMethod.GET)
+	@RequestMapping(value = "/module/cohort/manageCohortAttributesType", method = RequestMethod.GET)
 	public void manage(HttpSession httpSession, HttpServletRequest request, ModelMap model, @RequestParam(required = false, value = "name") String attribute_type_name, @ModelAttribute("cohortattributes") CohortAttributeType attributes) {
 		if ("search".equals(request.getParameter("search"))) {
 			CohortService service = Context.getService(CohortService.class);
