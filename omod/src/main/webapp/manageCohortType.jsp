@@ -76,7 +76,9 @@
 </div>
 </body>
 
-
+<script type="text/javascript">
+    $('#management-label-nav').addClass('active')
+</script>
 <!--Code Body-->
 
 

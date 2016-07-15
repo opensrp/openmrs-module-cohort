@@ -72,19 +72,17 @@
     font-size: 22px;
     margin-top: 16px;
     padding-bottom: 0 !important;
-    padding-left: 80px !important;
+    padding-left: 65px !important;
 }
 
 
 .navbar-header p {
-    background: #b4b4b4;
-    border: 1px solid #9b9b9b;
-    border-radius: 10px;
-    padding: 0 10px 0 10px !important;
+    border-right: 1px solid #9b9b9b;
+    padding: 0 50px 0 5px !important;
 }
 
 .navbar-navx > ul > li {
-    padding: 0 10px 0 40px;
+    padding: 0 35px 0 10px;
 }
 
 

@@ -70,6 +70,10 @@
 </div>
 </body>
 
+<script type="text/javascript">
+    $('#management-label-nav').addClass('active')
+</script>
+
 
 <!--Script includes for new UI -->
 <%--<openmrs:htmlInclude file="/moduleResources/cohort/scripts/pages/patientSearch.js" />--%>

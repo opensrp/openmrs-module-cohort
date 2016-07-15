@@ -45,9 +45,7 @@
 </body>
 
 <script type="text/javascript">
-    $(document).ready(function () {
-        $('#management-label-nav').css({color: '#007aff !important'});
-    });
+    $('#management-label-nav').addClass('active')
 </script>
 
 

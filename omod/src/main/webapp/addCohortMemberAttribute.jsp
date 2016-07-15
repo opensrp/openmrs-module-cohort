@@ -59,8 +59,5 @@
 </body>
 
 <script type="text/javascript">
-    $(document).ready(function () {
-        $('#management-label-nav').css({color: '#007aff'});
-        $('#selectedvalue').addClass('form-control');
-    });
+    $('#management-label-nav').addClass('active')
 </script>

@@ -1,13 +1,13 @@
-$(function () {
-    $("#startDate").datepicker({
+jQuery(function () {
+    jQuery("#startDate").datepicker({
         changeMonth: true,
         changeYear: true,
         dateFormat: 'dd/mm/yy'
     });
 });
 
-$(function () {
-    $("#endDate").datepicker({
+jQuery(function () {
+    jQuery("#endDate").datepicker({
         changeMonth: true,
         changeYear: true,
         dateFormat: 'dd/mm/yy'

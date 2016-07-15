@@ -18,7 +18,7 @@
                      column="form" not-null="true" cascade="all"/>
         <many-to-one name="visit" class="org.openmrs.module.cohort.CohortVisit"
                      column="visit" not-null="true" cascade="all"/>
-        <property name="encounterDateTime" type="java.util.Date"/>
+        <property name="encounterDatetime" type="java.util.Date"/>
         <property name="uuid" type="java.lang.String"
                   length="38" unique="true"/>
         <property name="voided" type="java.lang.Boolean" column="voided" length="1" not-null="true"/>

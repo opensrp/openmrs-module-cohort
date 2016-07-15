@@ -58,9 +58,6 @@
     </div>
 </div>
 </body>
-
 <script type="text/javascript">
-    $(document).ready(function () {
-        $('#management-label-nav').css({color: '#007aff'});
-    });
+    $('#management-label-nav').addClass('active')
 </script>

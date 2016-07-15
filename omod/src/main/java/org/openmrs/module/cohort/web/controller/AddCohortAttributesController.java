@@ -130,6 +130,6 @@ public class AddCohortAttributesController {
 			String redirectUrl = "/module/cohort/cPatients.form?cpid=" + cohortattribute.getCohort().getCohortId();
 			return "redirect:" + redirectUrl;
 		}
-		return null;
+		return "redirect:" + "/module/cohort/addCohortAttributes.form?ca=" + cohortattribute.getCohort().getCohortId();
 	}
 }

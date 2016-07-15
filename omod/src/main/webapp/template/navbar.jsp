@@ -97,15 +97,15 @@
             </div>
 
 
-            <div class="col-sm-2 navbar-navx">
+            <div class="col-sm-3 navbar-navx">
                 <ul class="nav navbar-nav">
-                    <li class="main-nav admin-button">
-                        <a href="admin.htm" class="btn-default" id="back-label-nav"
-                           type="button" data-toggle="dropdown">
+                    <li class="main-links">
+                        <a class="btn-default" id="admin-button"
+                           href="${pageContext.request.contextPath}/admin">
                             <i class="fa fa-arrow-left fa-lg" aria-hidden="true"> </i>
-                            <span
-                                    class="navbar-label">Admin
-                            </span>
+                                <span
+                                        class="navbar-label">Admin
+                                </span>
                         </a>
                     </li>
                 </ul>

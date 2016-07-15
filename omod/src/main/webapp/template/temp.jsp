@@ -1,44 +1,88 @@
 <%@ include file="/WEB-INF/template/include.jsp" %>
 <%@ include file="/WEB-INF/template/header.jsp" %>
+
 <%@ include file="template/localHeader.jsp" %>
-<h3>Manage Cohort Member Attributes</h3>
-<a href="addCohortMemberAttribute.form"><spring:message code="cohort.createcohortatt"/></a>
-<br/>
-<div>
-    <b class="boxHeader"><spring:message code="cohort.findcohortatt"/></b>
-    <div class="box">
-        <!--   <div class="searchWidgetContainer" id="createCohort">
-        </div>
--->
-        <form id="login" method="get">
-            <spring:bind path="cohortatt.value">
-                <spring:message
-                        code="cohort.searchcohortattributes"/> :<input type="text" id="value" name="value" value="${status.value}" placeholder="Search..."
-                required>
-                <c:if test="${status.errorMessage != ''}"><span class="error">${status.errorMessage}</span></c:if>
-            </spring:bind>
-            <input type="submit" id="search" name="search" value="search">
-        </form>
-    </div>
-</div>
-<div class="box">
-    <div>
-        <table class="tableStlye">
-            <thead>
-            <tr>
-                <th class="thStyle" id="thStyle">Value</th>
-            </tr>
-            </thead>
-            <tbody>
-            <c:forEach var="ls" items="${CohortAttributesList}" varStatus="status">
-                <tr class='${status.index % 2 == 0 ? "oddRow" : "evenRow" }'>
-                    <td class="tdStyle">
-                        <a href="${pageContext.request.contextPath}/module/cohort/editCohortMemberAttribute.form?cma=${ls.cohortMemberAttributeId}">${ls.value}</a>
-                    </td>
-                </tr>
+
+<openmrs:htmlInclude file="/scripts/calendar/calendar.js"/>
+<style>
+    .error {
+        color: #ff0000;
+    }
+
+    .errorblock {
+        color: #000;
+        background-color: #ffEEEE;
+        border: 3px solid #ff0000;
+        padding: 8px;
+        margin: 16px;
+    }
+</style>
+<form method="post">
+    <form:errors path="*" cssClass="errorblock" element="div"/>
+    Cohort Program:
+    <select name="format1">
+        <c:forEach var="format1" items="${formats1}">
+            <option value="${format1}"
+                    <c:if test="${format1==cohortmodule.cohortProgram}">selected</c:if>>${format1}</option>
+        </c:forEach>
+    </select>
+    <br/>
+    <br/>
+    Cohort Type:
+    <select name="format">
+        <c:forEach var="format" items="${formats}">
+            <option value="${format}" <c:if test="${format==cohortmodule.cohortType}">selected</c:if>>${format}</option>
+        </c:forEach>
+    </select>
+    </td>
+    </tr>
+    </table>
+    <spring:bind path="cohortmodule.name">
+        <spring:message code="cohort.cohortname"/> :<br/>
+        <input type="text" name="name" id="name" size="25" value="${status.value}"/> <br/> <br/>
+        <c:if test="${status.errorMessage != ''}"><span class="error">${status.errorMessage}</span></c:if>
+    </spring:bind>
+    <spring:bind path="cohortmodule.description">
+        <spring:message code="cohort.cohortdescription"/> :<br/>
+        <textarea rows="4" name="description" id="description" cols="50" value="${status.value}"></textarea><br/><br/>
+        <c:if test="${status.errorMessage != ''}"><span class="error">${status.errorMessage}</span></c:if>
+    </spring:bind>
+    <spring:bind path="cohortmodule.startDate">
+        <spring:message code="cohort.startdate"/> :<br/>
+        <input type="text" name="startDate" size="10" onFocus="showCalendar(this,60)"
+               id="startDate" value="${status.value}"/><i
+            style="font-weight: normal; font-size: 0.8em;">(<openmrs:message code="general.format"/>:
+        <openmrs:datePattern/>)</i><br/><br/>
+
+        <c:if test="${status.errorMessage != ''}"><span class="error">${status.errorMessage}</span></c:if>
+    </spring:bind>
+    <spring:bind path="cohortmodule.endDate">
+        <spring:message code="cohort.enddate"/> :<br/>
+        <input type="text" name="endDate" size="10" onFocus="showCalendar(this,60)"
+               id="endDate" value="${status.value}"/><i style="font-weight: normal; font-size: 0.8em;">(<openmrs:message
+            code="general.format"/>: <openmrs:datePattern/>)</i><br/><br/>
+        <c:if test="${status.errorMessage != ''}"><span class="error">${status.errorMessage}</span></c:if>
+    </spring:bind>
+    <spring:bind path="cohortmodule.clocation">
+        <spring:message code="cohort.location"/> :<br/>
+        <select id="location" name="location">
+            <c:forEach var="location" items="${locations}">
+                <option value="${location}"
+                        <c:if test="${location == cohortmodule.clocation}">selected</c:if>>${location}</option>
             </c:forEach>
-            </tbody>
-        </table>
-    </div>
-</div>
+        </select>
+        <c:if test="${status.errorMessage != ''}"><span class="error">${status.errorMessage}</span></c:if>
+    </spring:bind>
+    </td>
+    </tr>
+    <br/>
+    <br/>
+    <input type="submit" value="EditCohort" id="submit"/><br/><br/>
+    <a href="cPatients.form?cpid=${cohortmodule.cohortId}">Add Patients</a><br/> <br/>
+    Void Cohort<br/><br/>
+    Reason:<input type="text" name="voidReason" id="voidReason" size="25" value="${status.value}"/> <br/> <br/>
+    <input type="submit" value="void" id="void" name="void"/><br/><br/>
+    Delete Cohort<br/><br/>
+    <input type="submit" value="delete" id="delete" name="delete"/><br/><br/>
+</form>
 <%@ include file="/WEB-INF/template/footer.jsp" %>

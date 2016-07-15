@@ -4,6 +4,7 @@
 </head>
 <openmrs:htmlInclude file="/moduleResources/cohort/styles/genericPageStyle.css" />
 <openmrs:htmlInclude file="/moduleResources/cohort/styles/pages/cPatients.css" />
+<openmrs:htmlInclude file="/moduleResources/cohort/styles/libraries/jquery-ui.css" />
 <%--<openmrs:htmlInclude file="/moduleResources/cohort/styles/libraries/jquery.typeahead.css" />--%>
 <%--<openmrs:htmlInclude file="/moduleResources/cohort/styles/libraries/jquery-ui.css" />--%>
 <%@ include file="template/navbar.jsp" %>
@@ -71,7 +72,7 @@
 
                     <a class="btn btn-default" href="addCohortMemberAttribute.form?cma=${cpatient.cohortMemberId}">
                         <i class="fa fa-plus fa-2x" aria-hidden="true"></i>
-                        <span>Add Cohort Member Attribute</span>
+                        <span style="ver">Add Cohort Member Attribute</span>
                     </a>
 
                 </ul>
@@ -87,6 +88,4 @@
 <openmrs:htmlInclude file="/moduleResources/cohort/scripts/libraries/jquery-ui.js" />
 
 <openmrs:htmlInclude file="/moduleResources/cohort/scripts/pages/cPatients.js" />
-
-
 

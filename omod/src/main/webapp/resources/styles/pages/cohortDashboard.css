@@ -19,7 +19,8 @@
 }
 
 .create-cohort-button {
-    width: 225px;
+    padding-left: 0 !important;
+    width: 220px;
 }
 
 .create-cohort-button a {
@@ -123,8 +124,9 @@ tr td {
 }
 
 .box-right {
+    margin-left: 20px;
     margin-right: 10px;
-    margin-top: 50px;
+    margin-bottom: 45px;
     border: 1px solid #e6e6e6;
 }
 
@@ -151,94 +153,13 @@ tr td {
     margin-right: 13px;
 }
 
-/******************************* USER MEDIA CAROUSEL *******************************/
-
-
-.users-heading {
-    padding-top: 20px ;
-}
-
-.jumbotron {
-    padding: 40px 20px 15px 40px !important;
-    background-color: white; !important;
-}
-
-/* Previous button  */
-.media-carousel .carousel-control.left
-{
-    left: -12px !important;
-    background-image: none;
-    height: 40px;
-    width : 40px;
-    margin-top: 90px
-}
-
-.media-carousel .carousel-control.left i {
-    font-size: 75px;
-}
-
-/* Next button  */
-.media-carousel .carousel-control.right
-{
-    right: 12px !important;
-    background-image: none;
-    height: 40px;
-    width : 40px;
-    margin-top: 90px
-}
-
-.media-carousel .carousel-control.right i {
-    font-size: 75px;
-}
-
-/* Changes the position of the indicators */
-.media-carousel .carousel-indicators
-{
-    right: -12px !important;
-    top: auto;
-    bottom: 0px;
-    margin-right: -19px;
-}
-/* Changes the colour of the indicators */
-
-.carousel  a {
-    color: gray!important;
-}
-
-.carousel a:hover {
-    color: #007aff !important;
-}
-
-.carousel .male {
-    background-image: url(../../images/male_avatar.png);
-}
-
-
-.carousel .female {
-    background-image: url(../../images/female_avatar.png);
-}
-
-
-.thumbnail
-{
-    width: 185px !important;
-    height: 200px !important;
-}
-
-.carousel-inner.onebyone-carosel { margin: auto; width: 90%; }
-.onebyone-carosel .active.left { left: -25%; }
-.onebyone-carosel .active.right { left: 25%; }
-.onebyone-carosel .next { left: 25%; }
-.onebyone-carosel .prev { left: -25%; }
-/* End carousel */
-
 .person-attribute-label{
-    padding-left: 8px;
+    padding: 5px 2px 5px 2px;
 }
 
 .person-detail-label {
-    padding-left: 3px;
-    padding-right: 8px;
+    padding-left: 2px;
+    padding-right: 2px;
 }
 
 .member-name {
