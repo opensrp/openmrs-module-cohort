@@ -111,8 +111,8 @@ public class AddRoleController {
 			System.out.println(errors.getAllErrors());
 			return "/module/cohort/addRole";
 		}
-		if (cohort_name.length() > 20) {
-			httpSession.setAttribute(WebConstants.OPENMRS_MSG_ATTR, "name cannot be greater than 20");
+		if (cohort_name.length() > 255) {
+			httpSession.setAttribute(WebConstants.OPENMRS_MSG_ATTR, "name cannot be greater than 255");
 		} else {
 			List<CohortType> cohorttype1 = departmentService.findCohortType(cohort_type_name);
 			for (int i = 0; i < cohorttype1.size(); i++) {

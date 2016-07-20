@@ -55,7 +55,7 @@
     <br/>
     <spring:bind path="cohortmodule.description">
         <spring:message code="cohort.cohortdescription"/> :<br/>
-        <textarea rows="4" name="description" id="description" cols="50" value="${status.value}"></textarea>
+        <textarea rows="4" name="description" id="description" cols="50">${status.value}</textarea>
         <c:if test="${status.errorMessage != ''}"><span class="error">${status.errorMessage}</span></c:if>
     </spring:bind>
     <br/>

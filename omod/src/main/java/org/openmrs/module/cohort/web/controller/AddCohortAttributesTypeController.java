@@ -97,8 +97,8 @@ public class AddCohortAttributesTypeController {
 			model.addAttribute("formats", formats);
 			return "/module/cohort/addCohortAttributesType";
 		}
-		if (attribute_type.length() > 20) {
-			httpSession.setAttribute(WebConstants.OPENMRS_MSG_ATTR, "attribute type cannot be greater than 20");
+		if (attribute_type.length() > 255) {
+			httpSession.setAttribute(WebConstants.OPENMRS_MSG_ATTR,  "attribute type cannot be greater than 255");
 		} else {
 			cohortattributes.setFormat(format);
 			departmentService.saveCohort(cohortattributes);

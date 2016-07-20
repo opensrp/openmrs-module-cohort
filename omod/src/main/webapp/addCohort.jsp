@@ -61,7 +61,7 @@
                             <fieldset class="form-group">
                                 <spring:bind path="cohortmodule.description">
                                     <h4><spring:message code="cohort.cohortdescription"/> </h4>
-                                    <textarea class="form-control" rows="4" name="description" id="description" cols="50" value="${status.value}"></textarea>
+                                    <textarea class="form-control" rows="4" name="description" id="description" cols="50">${status.value}</textarea>
                                     <c:if test="${status.errorMessage != ''}"><span class="error">${status.errorMessage}</span></c:if>
                                 </spring:bind>
                             </fieldset>

@@ -76,8 +76,8 @@ public class AddCohortProgramController {
 			System.out.println(errors.getAllErrors());
 			return "/module/cohort/addCohortProgram";
 		}
-		if (cohort_name.length() > 20) {
-			httpSession.setAttribute(WebConstants.OPENMRS_MSG_ATTR, "name cannot be greater than 20");
+		if (cohort_name.length() > 255) {
+			httpSession.setAttribute(WebConstants.OPENMRS_MSG_ATTR, "name cannot be greater than 255");
 		} else {
 			departmentService.saveCohortProgram(cp);
 			httpSession.setAttribute(WebConstants.OPENMRS_MSG_ATTR, "insertion success");

@@ -75,14 +75,14 @@ import org.springframework.web.servlet.view.RedirectView;
  */
 @Controller
 public class AddCohortController {
-	
+
 	@Autowired(required = true)
 	@Qualifier("addCohortValidator")
 	private Validator validator;
 	List<Patient> list1 = new ArrayList();
 	Set set1 = new HashSet();
-	
-	
+
+
 	@RequestMapping(value = "/module/cohort/addCohort", method = RequestMethod.GET)
 	public void manage(ModelMap model) {
 		model.addAttribute("cohortmodule", new CohortM());
@@ -105,14 +105,14 @@ public class AddCohortController {
 		model.addAttribute("formats", cohorttype);
 		model.addAttribute("formats1", cohortprg);
 	}
-	
+
 	@RequestMapping(value = "module/cohort/addCohort.form", method = RequestMethod.POST)
 	public String onSubmit(WebRequest request, HttpSession httpSession, HttpServletRequest request1,
-			@RequestParam(required = false, value = "name") String cohort_name,
-			@RequestParam(required = false, value = "description") String description,
-			@RequestParam(required = false, value = "startDate") String start_date,
-			@RequestParam(required = false, value = "endDate") String end_date,
-			@ModelAttribute("cohortmodule") CohortM cohortmodule, BindingResult errors, ModelMap model) {
+						   @RequestParam(required = false, value = "name") String cohort_name,
+						   @RequestParam(required = false, value = "description") String description,
+						   @RequestParam(required = false, value = "startDate") String start_date,
+						   @RequestParam(required = false, value = "endDate") String end_date,
+						   @ModelAttribute("cohortmodule") CohortM cohortmodule, BindingResult errors, ModelMap model) {
 		CohortType cohort1 = new CohortType();
 		CohortProgram prg = new CohortProgram();
 		Location loc = new Location();
@@ -163,7 +163,7 @@ public class AddCohortController {
 				String redirectUrl = "/module/cohort/addCohortAttributes.form?ca=" + cohortmodule.getCohortId();
 				return "redirect:" + redirectUrl;
 			}
-			
+
 		}
 		//}
 	        	/*catch (ParseException e) {
@@ -173,7 +173,7 @@ public class AddCohortController {
 	     }*/
 		return null;
 	}
-	
+
 	@RequestMapping(value = "/module/cohort/cPatients.form", method = RequestMethod.GET)
 	public void manage1(ModelMap model, HttpSession httpSession, HttpServletRequest request, @RequestParam("cpid") Integer id, @ModelAttribute("cpatient") CohortMember cohort) {
 		//model.addAttribute("cpatient",new CohortMember());
@@ -200,14 +200,14 @@ public class AddCohortController {
 			model.addAttribute("pnames",names);*/
 		model.addAttribute("formats", type);
 		model.addAttribute("cohort", cohort1.get(0));
-		
+
 	}
-	
+
 	@RequestMapping(value = "module/cohort/cPatients.form", method = RequestMethod.POST)
 	public void onClick(WebRequest request, HttpSession httpSession, ModelMap model,
-			@RequestParam(required = false, value = "type") String type,
-			@RequestParam(required = false, value = "startDate") String startDate,
-			@RequestParam("cpid") Integer id, @RequestParam("patient_id") Integer pid, @ModelAttribute("cpatient") CohortMember cpatient, @ModelAttribute("patient") Patient patient, BindingResult errors) {
+						@RequestParam(required = false, value = "type") String type,
+						@RequestParam(required = false, value = "startDate") String startDate,
+						@RequestParam("cpid") Integer id, @RequestParam("patient_id") Integer pid, @ModelAttribute("cpatient") CohortMember cpatient, @ModelAttribute("patient") Patient patient, BindingResult errors) {
 		CohortM cohort = new CohortM();
 		CohortRole c2 = new CohortRole();
 		List<String> names = new ArrayList<String>();
@@ -252,9 +252,9 @@ public class AddCohortController {
 		model.addAttribute("formats", crole);
 		model.addAttribute("cpatient", cpatient);
 		httpSession.setAttribute(WebConstants.OPENMRS_MSG_ATTR, "Insertion success");
-		
+
 	}
-	
+
 	@RequestMapping(value = "/module/cohort/groupcohort.form", method = RequestMethod.GET)
 	public void manage2(ModelMap model, HttpSession httpSession, HttpServletRequest request, @ModelAttribute("cpatient") CohortMember cohortmem, @ModelAttribute("cohortmodule") CohortM cohort) {
 		model.addAttribute("cohortmodule", new CohortM());
@@ -277,15 +277,15 @@ public class AddCohortController {
 		model.addAttribute("formats", cohortm);
 		model.addAttribute("formats1", type);
 	}
-	
+
 	@RequestMapping(value = "module/cohort/groupcohort.form", method = RequestMethod.POST)
 	public String onSubmit1(WebRequest request, HttpSession httpSession, HttpServletRequest request1,
-			@RequestParam(required = false, value = "name") String cohort_name,
-			@RequestParam(required = false, value = "description") String description,
-			@RequestParam(required = false, value = "startDate") String start_date,
-			@RequestParam(required = false, value = "endDate") String end_date,
-			@RequestParam(required = false, value = "patient_id") Integer pid,
-			@ModelAttribute("cohortmodule") CohortM cohortmodule, @ModelAttribute("cpatient") CohortMember cohortmember, @ModelAttribute("patient") Patient patient, BindingResult errors, ModelMap model) {
+							@RequestParam(required = false, value = "name") String cohort_name,
+							@RequestParam(required = false, value = "description") String description,
+							@RequestParam(required = false, value = "startDate") String start_date,
+							@RequestParam(required = false, value = "endDate") String end_date,
+							@RequestParam(required = false, value = "patient_id") Integer pid,
+							@ModelAttribute("cohortmodule") CohortM cohortmodule, @ModelAttribute("cpatient") CohortMember cohortmember, @ModelAttribute("patient") Patient patient, BindingResult errors, ModelMap model) {
 		CohortProgram cp1 = new CohortProgram();
 		CohortRole c2 = new CohortRole();
 		CohortType ct1 = new CohortType();
@@ -314,7 +314,7 @@ public class AddCohortController {
 			CohortM c1 = cc.get(j);
 			cp1 = c1.getCohortProgram();
 			ct1 = c1.getCohortType();
-			
+
 		}
 		String location = request.getParameter("location");
 		List<Location> loc1 = service.getLocations(location);
@@ -322,7 +322,7 @@ public class AddCohortController {
 			loc = loc1.get(k);
 		}
 		PatientService ps = Context.getPatientService();
-		
+
 		patient = ps.getPatient(pid);
 		String rolname = request.getParameter("format");
 		List<CohortRole> crole = service1.findCohortRoles(rolname);
@@ -349,6 +349,6 @@ public class AddCohortController {
 		}
 		return null;
 	}
-	
+
 }
 	

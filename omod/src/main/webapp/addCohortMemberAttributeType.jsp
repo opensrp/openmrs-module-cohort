@@ -27,7 +27,7 @@
                         <fieldset>
                             <spring:bind path="cohortattributes.description">
                                 <h4><spring:message code="cohort.cohorttypedescription"/> </h4><br/>
-                                 <textarea class="form-control" rows="4" name="description" id="description" value="${status.value}"></textarea><br/><br/>
+                                 <textarea class="form-control" rows="4" name="description" id="description" >${status.value}</textarea><br/><br/>
                                 <c:if test="${status.errorMessage != ''}"><span class="error">${status.errorMessage}</span></c:if>
                             </spring:bind>
                         </fieldset>

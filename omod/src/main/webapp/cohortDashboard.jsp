@@ -64,14 +64,6 @@
                                         </thead>
                                         <tbody>
                                         <tr>
-                                            <th scope="row"> Description</th>
-                                            <td>
-                                                <div style="max-height: 100px; overflow-y: scroll">
-                                                        ${cohort.description}
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
                                             <th scope="row">Program</th>
                                             <td>${cohort.cohortProgram.name}</td>
                                         </tr>
@@ -81,11 +73,20 @@
                                         </tr>
                                         <tr>
                                             <th scope="row">Start Date</th>
-                                            <td>${fn:substring(cohort.startDate, 0, 10)}</td>
+                                            <%--<td>${fn:substring(cohort.startDate, 0, 10)}</td>--%>
+                                            <td><openmrs:formatDate date="${cohort.startDate}"/></td>
                                         </tr>
                                         <tr>
                                             <th scope="row">End Date</th>
-                                            <td>${fn:substring(cohort.endDate, 0, 10)}</td>
+                                            <td><openmrs:formatDate date="${cohort.endDate}"/></td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row"> Description</th>
+                                            <td>
+                                                <div style="max-height: 100px; overflow-y: scroll">
+                                                        ${cohort.description}
+                                                </div>
+                                            </td>
                                         </tr>
                                         </tbody>
                                     </table>
@@ -129,14 +130,14 @@
 
                                                             <li>
                                                                 <span class="person-attribute-label"><strong>Start Date</strong>:</span>
-                                                                <span class="person-detail-label">${fn:substring(member.startDate, 0, 10)}</span>
+                                                                <span class="person-detail-label"><openmrs:formatDate date="${member.startDate}"/></span>
                                                             </li>
 
                                                             <li role="separator" class="divider"></li>
 
                                                             <li>
                                                                 <span class="person-attribute-label"><strong>End Date</strong>:</span>
-                                                                <span class="person-detail-label">${fn:substring(member.endDate, 0, 10)}</span>
+                                                                <span class="person-detail-label"><openmrs:formatDate date="${member.endDate}"/></span>
                                                             </li>
 
                                                             <li role="separator" class="divider"></li>
