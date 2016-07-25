@@ -10,27 +10,18 @@
 
 <body>
 <div class="container">
-    <div class="row">
-        <div class="col-sm-4 col-sm-offset-4">
-            <div class="jumbotron">
-                <div class="container">
-                    <h2 >Patient Search</h2>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-sm-6">
+    <div class="col-sm-5">
         <div class="patient-form-heading">
-            <h4>Patient Details</h4>
+            <h4>Enter Patient Details to Search</h4>
         </div>
-        <form class="form-container">
+        <form class="form-container" method="post">
             <ul class="list-styled">
                 <li>
                     <fieldset class="form-group">
                         <h4>Patient Name</h4>
                         <div class="typeahead__container">
                                 <span class="typeahead__query">
-                                   <input id="patientName" class="form-control js-typeahead-input" type="search" autofocus autocomplete="off" placeholder="Enter Patient Name">
+                                        <input name="patientName" id="patientName" class="form-control js-typeahead-input" type="search" autofocus autocomplete="off" placeholder="Enter Patient Name">
                                 </span>
                         </div>
                     </fieldset>
@@ -41,13 +32,13 @@
                         <h4>Gender</h4>
                         <div class="radio-inline">
                             <label>
-                                <input type="radio" name="optionsRadios" id="MRadio" value="option1" checked>
+                                <input type="radio" name="optionsRadios" id="MRadio" value="M" checked>
                                 Male
                             </label>
                         </div>
                         <div class="radio-inline">
                             <label>
-                                <input type="radio" name="optionsRadios" id="FRadio" value="option2">
+                                <input type="radio" name="optionsRadios" id="FRadio" value="F">
                                 Female
                             </label>
                         </div>
@@ -56,10 +47,10 @@
 
                 <li>
                     <fieldset class="form-group">
-                        <h4>Cohort Name</h4>
+                        <h4>Cohort Program</h4>
                         <div class="typeahead__container">
                                 <span class="typeahead__query">
-                                   <input id="cohortName" class="form-control js-typeahead-input" type="search" autofocus autocomplete="off" placeholder="Enter Cohort Program">
+                                   <input name="cohortProgram" id="cohortProgram" class="form-control js-typeahead-input" type="search" autofocus autocomplete="off" placeholder="Enter Cohort Program">
                                 </span>
                         </div>
                     </fieldset>
@@ -70,7 +61,7 @@
                         <h4>Location</h4>
                         <div class="typeahead__container">
                                 <span class="typeahead__query">
-                                   <input id="location" class="form-control js-typeahead-input" type="search" autofocus autocomplete="off" placeholder="Enter Location">
+                                   <input name="location" id="location" class="form-control js-typeahead-input" type="search" autofocus autocomplete="off" placeholder="Enter Location">
                                 </span>
                         </div>
                     </fieldset>
@@ -82,7 +73,7 @@
                         <div id="ageslider">
                             <p>
                             <h4>Age</h4>
-                            <input type="text" id="amount" style="border: 0; color: #f6931f; font-weight: bold;" readonly />
+                            <input name="amount" type="text" id="amount" style="border: 0; color: #f6931f; font-weight: bold;" readonly />
                             </p>
                             <div id="slider-range"></div>
                         </div>
@@ -96,6 +87,8 @@
         </form>
     </div>
 
+    <c:if test="${personsExist == true}">
+    
     <div class="col-sm-4 col-sm-offset-1">
         <div class="table-container details-container">
             <table class="table search-results-table">
@@ -113,59 +106,72 @@
                     <th scope="row">Details</th>
                 </tr>
 
-                <%--<c:forEach>--%>
+                <c:forEach var="member" items="${resultList}" varStatus="memberStatus">
                 <tr>
-                    <th> <h4>1</h4> </th>
-                    <td> <h4>Shreyans Sheth</h4> </td>
-                    <td>
-                        <div class="dropdown">
-                            <button class="btn dropdown-toggle" type="button" id="dropdownMenu1" aria-haspopup="true" aria-expanded="true">
-                                <i class="fa fa-info-circle" aria-hidden="true"></i> Details
-                                <span class="caret"></span>
-                            </button>
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                                <li>
-                                    <table class="table table-hover person-details-table">
-                                        <tbody>
-                                        <tr>
-                                            <span class="person-attribute-label"><strong>Name</strong>:</span>
-                                        </tr>
-                                <li role="separator" class="divider"></li>
+                    <td> <h4>${memberStatus.index + 1}</h4> </td>
+                    <td> <h4>${member.person.personName.fullName}</h4></td>
+                    <td> <div class="dropdown">
+                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                            Details
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-left" aria-labelledby="dropdownMenu1">
 
-                <tr>
-                    <span class="person-attribute-label"><strong>Member Id</strong>:</span>
-                    <span class="person-detail-label">2</span>
+                            <li>
+                                <span class="person-attribute-label"><strong>Cohort</strong>:</span>
+                                <span class="person-detail-label">${member.cohort.name}</span>
+                            </li>
+
+                            <li role="separator" class="divider"></li>
+                            
+                            <li>
+                                <span class="person-attribute-label"><strong>Member Id</strong>:</span>
+                                <span class="person-detail-label">${member.cohortMemberId}</span>
+                            </li>
+
+                            <li role="separator" class="divider"></li>
+
+
+                            <li>
+                                <span class="person-attribute-label"><strong>Start Date</strong>:</span>
+                                <span class="person-detail-label"><openmrs:formatDate date="${member.startDate}"/></span>
+                            </li>
+
+                            <li role="separator" class="divider"></li>
+
+                            <li>
+                                <span class="person-attribute-label"><strong>End Date</strong>:</span>
+                                <span class="person-detail-label"><openmrs:formatDate date="${member.endDate}"/></span>
+                            </li>
+
+                            <li role="separator" class="divider"></li>
+
+                            <li>
+                                <span class="person-attribute-label"><strong>Role</strong>:</span>
+                                <span class="person-detail-label">${member.role}</span>
+                            </li>
+
+                        </ul>
+                    </div>
+                    </td>
                 </tr>
-                <li role="separator" class="divider"></li>
-
-
-                <tr>
-                    <span class="person-attribute-label"><strong>Start Date</strong>:</span>
-                    <span class="person-detail-label">12/24/52</span>
-                </tr>
-                <li role="separator" class="divider"></li>
-
-                <tr>
-                    <span class="person-attribute-label"><strong>End Date</strong>:</span>
-                    <span class="person-detail-label">12/2/5</span>
-                </tr>
-                <li role="separator" class="divider"></li>
-
-                <tr>
-                    <span class="person-attribute-label"><strong>Role</strong>:</span>
-                    <span class="person-detail-label">Head</span>
-                </tr>
+                </c:forEach>
                 </tbody>
             </table>
-            </li>
-            </ul>
         </div>
-        </td>
-        </tr>
         <%--</c:forEach>--%>
-        </tbody>
-        </table>
     </div>
+    </c:if>
+
+    <c:if test="${personsExist == false}">
+
+        <div class="col-sm-4 col-sm-offset-1">
+            <div class="table-container details-container">
+                <h1>Sorry, No results</h1>
+            </div>
+        </div>
+    </c:if>
+    
 </div>
 </div>
 </div>

@@ -12,8 +12,8 @@
     background-color: #373a3c;
     color: white;
     text-align: left;
-    padding: 9px 10px 8px 10px;
     font-weight: 700;
+    padding: 15px 10px 15px 35px;
     margin-top: 30px;
     margin-bottom: 1px;
 }
@@ -66,7 +66,8 @@
 }
 
 .thead-inverse th h4 {
-    margin: 0 0 0 0;
+    padding: 8px 0 3px 0!important;
+    margin: 0 0 0 0 !important;
     font-weight: 700;
 }
 
@@ -118,4 +119,8 @@ tr td {
 .jumbotron h2{
     padding-bottom: 7px !important;
     color: #f6faf8;
+}
+
+#patientName, #cohortName, #location, #slider-range {
+    width: 92%;
 }
