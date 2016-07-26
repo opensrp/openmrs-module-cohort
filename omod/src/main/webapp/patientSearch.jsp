@@ -164,10 +164,12 @@
     </c:if>
 
     <c:if test="${personsExist == false}">
-
-        <div class="col-sm-4 col-sm-offset-1">
-            <div class="table-container details-container">
-                <h1>Sorry, No results</h1>
+        
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4 col-sm-offset-1 not-found-container">
+                    <h3 class="not-found">No patients found!</h3>
+                </div>
             </div>
         </div>
     </c:if>

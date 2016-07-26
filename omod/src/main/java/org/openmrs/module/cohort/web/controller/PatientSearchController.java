@@ -59,9 +59,9 @@ public class PatientSearchController {
 		List<CohortMember> resultList = new ArrayList<CohortMember>();
 		for (CohortMember member : memberList) {
 			Person memberPerson = member.getPerson();
-			if((patientName == null || (memberPerson.getPersonName().getFullName().equals(patientName))) && //compare name
+			if((patientName.equals("") || (memberPerson.getPersonName().getFullName().equals(patientName))) && //compare name
 					patientGender.equals(memberPerson.getGender()) && //compare gender 
-					(cohortProgram == null || member.getCohort().getCohortProgram().getName().equalsIgnoreCase(cohortProgram)) && //compare cohort program
+					(cohortProgram.equals("") || (member.getCohort().getCohortProgram().getName().equalsIgnoreCase(cohortProgram))) && //compare cohort program
 					member.getPerson().getAge() >= ageLimits[0] && member.getPerson().getAge() <= ageLimits[1]) { //compare age limits
 				resultList.add(member);
 			}
@@ -70,6 +70,8 @@ public class PatientSearchController {
 		if (resultList.size()!= 0) {
 			model.addAttribute("personsExist", true);
 			model.addAttribute("resultList", resultList);
+		} else {
+			model.addAttribute("personsExist", false);
 		}
 	}
 	

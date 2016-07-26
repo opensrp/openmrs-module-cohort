@@ -124,3 +124,14 @@ tr td {
 #patientName, #cohortName, #location, #slider-range {
     width: 92%;
 }
+
+.not-found {
+    font-style: italic;
+    color: rgba(190, 1, 11, 0.85);
+}
+
+.not-found-container {
+    padding-left: 0 !important;
+    padding-top: 22px;
+    text-align: center;
+}
