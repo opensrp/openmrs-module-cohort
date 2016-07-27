@@ -37,6 +37,8 @@
             <column name="uuid" type="char(38)">
                 <constraints nullable="false" unique="true"/>
             </column>
+            <column name="void_reason" type="varchar(38)"/>
+            <column defaultValueBoolean="false" name="voided" type="BOOLEAN"/>
         </createTable>
     </changeSet>
     <changeSet id="cohortprgm1065" author="sharon">

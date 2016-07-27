@@ -30,7 +30,7 @@
                     </div>
 
                     <div class="col-sm-3 ">
-                        <a class="btn btn-primary" href="addCohortAttributesType.form" style="padding-top: 0; padding-bottom: 0">
+                        <a class="btn btn-primary" href="addCohortMemberAttributeType.form" style="padding-top: 0; padding-bottom: 0">
                             <h4>
                                 <i class="fa fa-plus-square-o fa-lg"></i> Add Cohort Member Attribute Type
                             </h4>

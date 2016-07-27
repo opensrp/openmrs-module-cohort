@@ -82,6 +82,27 @@ public class AddCohortController {
 	List<Patient> list1 = new ArrayList();
 	Set set1 = new HashSet();
 
+	@ModelAttribute
+	private void addReferenceData(ModelMap model) {
+		List<String> cohorttype = new ArrayList<String>();
+		List<String> cohortprg = new ArrayList<String>();
+		LocationService service = Context.getLocationService();
+		List<Location> formats = service.getAllLocations();
+		model.addAttribute("locations", formats);
+		CohortService service1 = Context.getService(CohortService.class);
+		List<CohortType> list1 = service1.getAllCohortTypes();
+		for (int i = 0; i < list1.size(); i++) {
+			CohortType c = list1.get(i);
+			cohorttype.add(c.getName());
+		}
+		List<CohortProgram> list2 = service1.findCohortProg();
+		for (int j = 0; j < list2.size(); j++) {
+			CohortProgram a = list2.get(j);
+			cohortprg.add(a.getName());
+		}
+		model.addAttribute("formats", cohorttype);
+		model.addAttribute("formats1", cohortprg);
+	}
 
 	@RequestMapping(value = "/module/cohort/addCohort", method = RequestMethod.GET)
 	public void manage(ModelMap model) {

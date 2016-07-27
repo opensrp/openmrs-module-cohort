@@ -12,5 +12,8 @@
                      column="cohortType" not-null="true" cascade="all"/>
         <property name="uuid" type="java.lang.String"
                   length="38" unique="true"/>
+        <property name="voided" type="java.lang.Boolean" column="voided" length="1" not-null="true"/>
+        <property name="voidReason" type="java.lang.String"
+                  column="void_reason" length="255"/>
     </class>
 </hibernate-mapping>
