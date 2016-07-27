@@ -109,7 +109,7 @@
                                             <tr>
                                                 <td>
                                                     <strong><span>${memberStatus.index+1}.</span>
-                                                        ${member.person.givenName} ${member.person.familyName}
+                                                        <a href="/openmrs/patientDashboard.form?patientId=${member.person.personId}" target="_blank">${member.person.givenName} ${member.person.familyName}</a>
                                                     </strong>
                                                 </td>
                                                 
