@@ -4,7 +4,7 @@ $(document).ready(function () {
 
 
 $(function () {
-    $("#datepicker").datepicker({
+    $("#startDate").datepicker({
         changeMonth: true,
         changeYear: true
     });

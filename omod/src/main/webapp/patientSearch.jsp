@@ -58,7 +58,7 @@
 
                 <li>
                     <fieldset class="form-group">
-                        <h4>Location</h4>
+                        <h4>Cohort Location</h4>
                         <div class="typeahead__container">
                                 <span class="typeahead__query">
                                    <input name="location" id="location" class="form-control js-typeahead-input" type="search" autofocus autocomplete="off" placeholder="Enter Location">
@@ -109,7 +109,7 @@
                 <c:forEach var="member" items="${resultList}" varStatus="memberStatus">
                 <tr>
                     <td> <h4>${memberStatus.index + 1}</h4> </td>
-                    <td> <h4>${member.person.personName.fullName}</h4></td>
+                    <td> <h4> <a href="/openmrs/patientDashboard.form?patientId=${member.person.personId}" target="_blank">${member.person.personName.fullName}</a></h4></td>
                     <td> <div class="dropdown">
                         <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                             Details

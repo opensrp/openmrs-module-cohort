@@ -58,15 +58,14 @@ public class PatientSearchController {
 		List<CohortMember> memberList = cohortService.findCohortMember(); //returns all member
 		List<CohortMember> resultList = new ArrayList<CohortMember>();
 		for (CohortMember member : memberList) {
-			Person memberPerson = member.getPerson();
-			if((patientName.equals("") || (memberPerson.getPersonName().getFullName().equals(patientName))) && //compare name
-					patientGender.equals(memberPerson.getGender()) && //compare gender 
+			if((patientName.equals("") || (member.getPerson().getPersonName().getFullName().equals(patientName))) && //compare name
+					(patientGender.equals(member.getPerson().getGender())) && //compare gender 
 					(cohortProgram.equals("") || (member.getCohort().getCohortProgram().getName().equalsIgnoreCase(cohortProgram))) && //compare cohort program
-					member.getPerson().getAge() >= ageLimits[0] && member.getPerson().getAge() <= ageLimits[1]) { //compare age limits
+					(location.equals("") || (location.equals(member.getCohort().getClocation().toString()))) && //compare cohort location
+					(member.getPerson().getAge() >= ageLimits[0] && member.getPerson().getAge() <= ageLimits[1])) { //compare age limits
 				resultList.add(member);
 			}
 		}
-		System.out.println(resultList);
 		if (resultList.size()!= 0) {
 			model.addAttribute("personsExist", true);
 			model.addAttribute("resultList", resultList);

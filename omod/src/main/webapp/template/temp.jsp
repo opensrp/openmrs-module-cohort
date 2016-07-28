@@ -1,88 +1,177 @@
 <%@ include file="/WEB-INF/template/include.jsp" %>
-<%@ include file="/WEB-INF/template/header.jsp" %>
+<%@ include file="template/header.jsp" %>
+<title>Patient Search</title> <!--set page title-->
+</head>
+<openmrs:htmlInclude file="/moduleResources/cohort/styles/genericPageStyle.css" />
+<openmrs:htmlInclude file="/moduleResources/cohort/styles/libraries/jquery-ui.css" />
+<openmrs:htmlInclude file="/moduleResources/cohort/styles/pages/cohortSearch.css" />
+<openmrs:htmlInclude file="/moduleResources/cohort/styles/libraries/jquery.typeahead.css" />
+<%@ include file="template/navbar.jsp" %>
 
-<%@ include file="template/localHeader.jsp" %>
+<body>
+<div class="container">
+    <div class="row">
 
-<openmrs:htmlInclude file="/scripts/calendar/calendar.js"/>
-<style>
-    .error {
-        color: #ff0000;
-    }
 
-    .errorblock {
-        color: #000;
-        background-color: #ffEEEE;
-        border: 3px solid #ff0000;
-        padding: 8px;
-        margin: 16px;
-    }
-</style>
-<form method="post">
-    <form:errors path="*" cssClass="errorblock" element="div"/>
-    Cohort Program:
-    <select name="format1">
-        <c:forEach var="format1" items="${formats1}">
-            <option value="${format1}"
-                    <c:if test="${format1==cohortmodule.cohortProgram}">selected</c:if>>${format1}</option>
-        </c:forEach>
-    </select>
-    <br/>
-    <br/>
-    Cohort Type:
-    <select name="format">
-        <c:forEach var="format" items="${formats}">
-            <option value="${format}" <c:if test="${format==cohortmodule.cohortType}">selected</c:if>>${format}</option>
-        </c:forEach>
-    </select>
-    </td>
-    </tr>
-    </table>
-    <spring:bind path="cohortmodule.name">
-        <spring:message code="cohort.cohortname"/> :<br/>
-        <input type="text" name="name" id="name" size="25" value="${status.value}"/> <br/> <br/>
-        <c:if test="${status.errorMessage != ''}"><span class="error">${status.errorMessage}</span></c:if>
-    </spring:bind>
-    <spring:bind path="cohortmodule.description">
-        <spring:message code="cohort.cohortdescription"/> :<br/>
-        <textarea rows="4" name="description" id="description" cols="50" >${status.value}</textarea><br/><br/>
-        <c:if test="${status.errorMessage != ''}"><span class="error">${status.errorMessage}</span></c:if>
-    </spring:bind>
-    <spring:bind path="cohortmodule.startDate">
-        <spring:message code="cohort.startdate"/> :<br/>
-        <input type="text" name="startDate" size="10" onFocus="showCalendar(this,60)"
-               id="startDate" value="${status.value}"/><i
-            style="font-weight: normal; font-size: 0.8em;">(<openmrs:message code="general.format"/>:
-        <openmrs:datePattern/>)</i><br/><br/>
+        <div class="col-sm-4 col-sm-offset-4">
+            <div class="jumbotron">
+                <div class="container">
+                    <h2 >Cohort Search</h2>
+                </div>
+            </div>
+        </div>
 
-        <c:if test="${status.errorMessage != ''}"><span class="error">${status.errorMessage}</span></c:if>
-    </spring:bind>
-    <spring:bind path="cohortmodule.endDate">
-        <spring:message code="cohort.enddate"/> :<br/>
-        <input type="text" name="endDate" size="10" onFocus="showCalendar(this,60)"
-               id="endDate" value="${status.value}"/><i style="font-weight: normal; font-size: 0.8em;">(<openmrs:message
-            code="general.format"/>: <openmrs:datePattern/>)</i><br/><br/>
-        <c:if test="${status.errorMessage != ''}"><span class="error">${status.errorMessage}</span></c:if>
-    </spring:bind>
-    <spring:bind path="cohortmodule.clocation">
-        <spring:message code="cohort.location"/> :<br/>
-        <select id="location" name="location">
-            <c:forEach var="location" items="${locations}">
-                <option value="${location}"
-                        <c:if test="${location == cohortmodule.clocation}">selected</c:if>>${location}</option>
-            </c:forEach>
-        </select>
-        <c:if test="${status.errorMessage != ''}"><span class="error">${status.errorMessage}</span></c:if>
-    </spring:bind>
-    </td>
-    </tr>
-    <br/>
-    <br/>
-    <input type="submit" value="EditCohort" id="submit"/><br/><br/>
-    <a href="cPatients.form?cpid=${cohortmodule.cohortId}">Add Patients</a><br/> <br/>
-    Void Cohort<br/><br/>
-    Reason:<input type="text" name="voidReason" id="voidReason" size="25" value="${status.value}"/> <br/> <br/>
-    <input type="submit" value="void" id="void" name="void"/><br/><br/>
-    Delete Cohort<br/><br/>
-    <input type="submit" value="delete" id="delete" name="delete"/><br/><br/>
-</form>
-<%@ include file="/WEB-INF/template/footer.jsp" %>
+        <div class="col-sm-6">
+            <div class="patient-form-heading">
+                <h4>Cohort Details</h4>
+            </div>
+            <form class="form-container">
+                <ul class="list-styled">
+                    <li>
+                        <fieldset class="form-group">
+                            <h4>Cohort Name</h4>
+                            <div class="typeahead__container">
+                                <span class="typeahead__query">
+                                   <input id="cohortName" class="form-control js-typeahead-input" type="search" autofocus autocomplete="off" placeholder="Enter Cohort Name">
+                                </span>
+                            </div>
+                        </fieldset>
+                    </li>
+
+                    <li>
+                        <fieldset class="form-group">
+                            <h4>Cohort Program</h4>
+                            <div class="typeahead__container">
+                                <span class="typeahead__query">
+                                   <input id="cohortProgram" class="form-control js-typeahead-input" type="search" autofocus autocomplete="off" placeholder="Enter Cohort Program">
+                                </span>
+                            </div>
+                        </fieldset>
+                    </li>
+
+                    <li>
+                        <fieldset class="form-group">
+                            <h4>Cohort Head</h4>
+                            <div class="typeahead__container">
+                                <span class="typeahead__query">
+                                   <input id="cohortHead" class="form-control js-typeahead-input" type="search" autofocus autocomplete="off" placeholder="Enter Cohort Head">
+                                </span>
+                            </div>
+                        </fieldset>
+                    </li>
+
+                    <li>
+                        <fieldset class="form-group">
+                            <h4>Date Registered</h4>
+                                <span class="typeahead__query form-inline">
+                                    <label>
+                                        <input class="form-control" type="text" id="datepicker" style="width: 50%"/>
+                                    </label>
+                                </span>
+                        </fieldset>
+                    </li>
+
+                    <li>
+                        <fieldset class="form-group">
+                            <h4>Location</h4>
+                            <div class="typeahead__container">
+                                <span class="typeahead__query">
+                                   <input id="location" class="form-control js-typeahead-input" type="search" autofocus autocomplete="off" placeholder="Enter Location">
+                                </span>
+                            </div>
+                        </fieldset>
+                    </li>
+
+                </ul>
+                <div class="button-container">
+                    <button type="submit" class="submit-button btn btn-primary center-block"><h4>Submit Details</h4></button>
+                </div>
+            </form>
+        </div>
+
+        <div class="col-sm-4 col-sm-offset-1">
+            <div class="table-container details-container">
+                <table class="table search-results-table">
+                    <thead class="thead-inverse">
+                    <tr>
+                        <th><h4>Search</h4></th>
+                        <th class="second-header"><h4>Results</h4></th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <th scope="row">#</th>
+                        <th scope="row">Cohort Name</th>
+                        <th scope="row">Details</th>
+                    </tr>
+
+                    <%--<c:forEach>--%>
+                    <tr>
+                        <th> <h4>1</h4> </th>
+                        <td> <h4>Cohort-Name-A</h4> </td>
+                        <td>
+                            <div class="dropdown">
+                                <button class="btn dropdown-toggle" type="button" id="dropdownMenu1" aria-haspopup="true" aria-expanded="true">
+                                    <i class="fa fa-info-circle" aria-hidden="true"></i> Details
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                    <li>
+                                        <table class="table table-hover person-details-table">
+                                            <tbody>
+                                            <tr>
+                                                <span class="person-attribute-label"><strong>Name</strong>:</span>
+                                            </tr>
+                                    <li role="separator" class="divider"></li>
+
+                    <tr>
+                        <span class="person-attribute-label"><strong>Member Id</strong>:</span>
+                        <span class="person-detail-label">2</span>
+                    </tr>
+                    <li role="separator" class="divider"></li>
+
+
+                    <tr>
+                        <span class="person-attribute-label"><strong>Start Date</strong>:</span>
+                        <span class="person-detail-label">12/24/52</span>
+                    </tr>
+                    <li role="separator" class="divider"></li>
+
+                    <tr>
+                        <span class="person-attribute-label"><strong>End Date</strong>:</span>
+                        <span class="person-detail-label">12/2/5</span>
+                    </tr>
+                    <li role="separator" class="divider"></li>
+
+                    <tr>
+                        <span class="person-attribute-label"><strong>Role</strong>:</span>
+                        <span class="person-detail-label">Head</span>
+                    </tr>
+                    </tbody>
+                </table>
+                </li>
+                </ul>
+            </div>
+            </td>
+            </tr>
+            <%--</c:forEach>--%>
+            </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</div>
+
+</body>
+
+
+
+<!-- File JS -->
+<openmrs:htmlInclude file="/moduleResources/cohort/scripts/pages/cohortSearch.js" />
+<!--Typeahead JS -->
+<openmrs:htmlInclude file="/moduleResources/cohort/scripts/libraries/jquery.typeahead.js" />
+<!--jQuery UI -->
+<openmrs:htmlInclude file="/moduleResources/cohort/scripts/libraries/jquery-ui.js" />
+
+<!--END-->
