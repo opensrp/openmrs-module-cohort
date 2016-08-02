@@ -43,7 +43,6 @@ public class AdminList extends AdministrationSectionExt {
 		map.put("/module/cohort/cohortDashboard.form", "Cohort Dashboard");
 		map.put("/module/cohort/patientSearch.form", "Cohort Patient Search");
 		map.put("/module/cohort/cohortSearch.form", "Cohort Search");
-		map.put("/module/cohort/manageCohorts.form", "Manage Cohorts and Metadata");
 		return map;
 	}
 	
