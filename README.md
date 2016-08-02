@@ -1,1 +1,3 @@
-The purpose is to manage cohort related data cohorts, cohort types cohort attributes cohort attribute types cohort members cohort member attribute cohort member attribute type Using REST to allow external system integration with cohort module Cohort Management can be performed in two ways Simple Cohorts for single entities Cohorts including groups or collections like households
+The purpose of the [OpenMRS Cohort Module](https://wiki.openmrs.org/display/projects/Cohort+Module) is to manage Cohort related Data, Types, Attributes, Attribute Types and Members while using REST to allow external system integration. Cohort Management can be performed in two ways:
+1. Simple Cohorts for single entities.
+2. Group cohorts catering to collections like households.
