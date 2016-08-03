@@ -54,6 +54,9 @@
 }
 
 /*Search Details*/
+.table-container {
+    margin-top: 28px !important;
+}
 
 .table-container a {
     text-decoration: underline;
@@ -66,7 +69,6 @@
 }
 
 .thead-inverse th h4 {
-    margin: 0 0 0 0;
     font-weight: 700;
 }
 
