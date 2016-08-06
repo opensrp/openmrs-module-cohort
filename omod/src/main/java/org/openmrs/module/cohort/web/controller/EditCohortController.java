@@ -663,19 +663,42 @@ public class EditCohortController {
 	}
 	
 	@RequestMapping(value = "/module/cohort/editCohortRole.form", method = RequestMethod.POST)
-	public void manageEditRoles1(ModelMap model, HttpSession httpSession, HttpServletRequest request, @RequestParam("croleid") Integer id, @ModelAttribute("cohortrole") CohortRole cohort) {
-		List<String> cohorttype = new ArrayList<String>();
+	public void manageEditRoles1(ModelMap model, HttpSession httpSession, HttpServletRequest request, @RequestParam("croleid") Integer id, @ModelAttribute("cohortrole") CohortRole cohort, BindingResult errors) {
+		if (!Context.isAuthenticated()) {
+			errors.reject("Required");
+		}
 		CohortService service1 = Context.getService(CohortService.class);
-		List<CohortType> list1 = service1.getAllCohortTypes();
-		for (int i = 0; i < list1.size(); i++) {
-			CohortType c = list1.get(i);
-			cohorttype.add(c.getName());
+		List<CohortRole> cohortRolesPresent = service1.findCohortRole(id);
+		for (int a = 0; a < cohortRolesPresent.size(); a++) {
+			cohort = cohortRolesPresent.get(a);
 		}
-		model.addAttribute("formats", cohorttype);
-		List<CohortRole> visits = service1.findCohortRole(id);
-		for (int a = 0; a < visits.size(); a++) {
-			cohort = visits.get(a);
+		if("Edit Role".equals(request.getParameter("Edit Role"))) {
+			List<CohortRole> roles = service1.findCohortRole(id);
+			List<String> cohortTypeToSetInView = new ArrayList<String>();
+			//Someone coded everything as a list. The list is gonna return only 1 element. Why would anyone do that -.-
+			for (CohortRole role : roles) {
+				role.setName(request.getParameter("name"));
+				for(CohortType cohortType : service1.findCohortType(request.getParameter("format"))) {
+					role.setCohortType(cohortType);
+					//set the correct type
+					cohortTypeToSetInView.add(cohortType.getName());
+				}
+			}
+			//Find all the other types to choose from
+			List<CohortType> list1 = service1.getAllCohortTypes();
+			for (int i = 0; i < list1.size(); i++) {
+				CohortType c = list1.get(i);
+				if (!cohortTypeToSetInView.contains(c.getName())) {
+					cohortTypeToSetInView.add(c.getName());
+				}	
+			}
+			//Set this in the dropdown
+			model.addAttribute("formats", cohortTypeToSetInView);
+			httpSession.setAttribute(WebConstants.OPENMRS_MSG_ATTR, "Edit Success");
+			
+			// TODO Auto-generated catch block
 		}
+		
 		if ("delete".equals(request.getParameter("delete"))) {
 			service1.purgeCohortRole(cohort);
 			httpSession.setAttribute(WebConstants.OPENMRS_MSG_ATTR, "delete success");

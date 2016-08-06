@@ -17,8 +17,7 @@
 
                 <li>
                     <h4>Cohort Type </h4>
-                    <select class="form-control generic-dropdown" name="format">
-                        <option value=""></option>
+                    <select class="form-control generic-dropdown" name="format" id="format">
                         <c:forEach var="format" items="${formats}">
                             <option value="${format}" <c:if test="${format == cohortrole.cohortType}">selected</c:if>>${format}</option>
                         </c:forEach>
@@ -30,7 +29,7 @@
                 <li>
 
                     <spring:bind path="cohortrole.name">
-                        <h4><spring:message code="cohort.cohortname"/> </h4>
+                        <h4>Cohort Role Name </h4>
                         <input class="form-control" type="text" name="name" id="name" size="25" value="${status.value}"/> <br/> <br/>
                         <c:if test="${status.errorMessage != ''}"><span class="error">${status.errorMessage}</span></c:if>
                     </spring:bind>
@@ -38,7 +37,7 @@
 
                 <br/>
                 <div class="button-container">
-                    <input class="btn btn-primary" type="submit" value="Edit Role" id="submit"/><br/>
+                    <input class="btn btn-primary" type="submit" value="Edit Role" id="Edit Role" name="Edit Role"/><br/>
                 </div>
 
                 <br/>
