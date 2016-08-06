@@ -1,6 +1,6 @@
 <%@ include file="/WEB-INF/template/include.jsp" %>
 <%@ include file="template/header.jsp" %>
-<title>Edit Cohort Role</title> <!--set page title-->
+<title>Edit Cohort Type</title> <!--set page title-->
 </head>
 <openmrs:htmlInclude file="/moduleResources/cohort/styles/genericPageStyle.css" />
 <openmrs:htmlInclude file="/moduleResources/cohort/styles/pages/genericEditPageStyling.css" />
@@ -10,7 +10,7 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-4">
-            <h4 class="heading"><span>Edit Cohort Role</span></h4>
+            <h4 class="heading"><span>Edit Cohort Type</span></h4>
             <form class="form-container" method="post">
                 
                 <li>
