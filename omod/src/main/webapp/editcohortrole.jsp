@@ -18,9 +18,15 @@
                 <li>
                     <h4>Cohort Type </h4>
                     <select class="form-control generic-dropdown" name="format" id="format">
+                        
+                        <c:if test="${empty formats}">
+                            <option value=""></option>
+                        </c:if>
+                        
                         <c:forEach var="format" items="${formats}">
                             <option value="${format}" <c:if test="${format == cohortrole.cohortType}">selected</c:if>>${format}</option>
                         </c:forEach>
+                        
                         <c:if test="${status.errorMessage != ''}"><span class="error">${status.errorMessage}</span></c:if>
                     </select>
                     <br/><br/>
