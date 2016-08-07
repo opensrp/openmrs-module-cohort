@@ -48,7 +48,7 @@
                 </li>
 
                 <div class="button-container">
-                    <input class="btn btn-primary" type="submit" value="submit" id="submit"/>
+                    <input class="btn btn-primary" type="submit" value="edit" id="edit" name="edit"/>
                 </div>
         </div>
     </div>

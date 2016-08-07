@@ -273,7 +273,7 @@ public class EditCohortController {
 	}
 	
 	@RequestMapping(value = "/module/cohort/editCohortMemberAttributeType.form", method = RequestMethod.POST)
-	public void manageEditCohortMemberAttributeType1(ModelMap model, HttpSession httpSession, HttpServletRequest request, @RequestParam("cmat") Integer id, @RequestParam(required = false, value = "voidReason") String voidReason, @ModelAttribute("cohortattributes") CohortMemberAttributeType cohort) {
+	public void manageEditCohortMemberAttributeType1(ModelMap model, HttpSession httpSession, HttpServletRequest request, @RequestParam("cmat") Integer id, @RequestParam(required = false, value = "voidReason") String voidReason, @ModelAttribute("cohortattributes") CohortMemberAttributeType cohortMemberAttributeType) {
 		CohortService service1 = Context.getService(CohortService.class);
 		List<CohortMemberAttributeType> cohort1 = service1.findCohortMemAttType(id);
 		List<String> formats = new ArrayList<String>(FieldGenHandlerFactory.getSingletonInstance().getHandlers().keySet());
@@ -283,19 +283,33 @@ public class EditCohortController {
 		formats.add("java.lang.Boolean");
 		model.addAttribute("formats", formats);
 		for (int j = 0; j < cohort1.size(); j++) {
-			cohort = cohort1.get(j);
+			cohortMemberAttributeType = cohort1.get(j);
+		}
+		if ("edit".equals(request.getParameter("edit"))) {
+			String givenName = request.getParameter("name");
+			String givenDescription = request.getParameter("description");
+			String givenFormat = request.getParameter("format");
+			if (!givenName.equals("") && !givenDescription.equals("") && !givenFormat.equals("")) {
+				cohortMemberAttributeType.setName(givenName);
+				cohortMemberAttributeType.setDescription(givenDescription);
+				cohortMemberAttributeType.setFormat(givenFormat);
+				service1.saveCohortMemberAttributeType(cohortMemberAttributeType);
+				httpSession.setAttribute(WebConstants.OPENMRS_MSG_ATTR, "Edit Success");
+			} else {
+				httpSession.setAttribute(WebConstants.OPENMRS_ERROR_ATTR, "Fields cannot be left blank");
+			}
 		}
 		if ("void".equalsIgnoreCase(request.getParameter("void"))) {
-			if (voidReason == "") {
+			if (voidReason == "") { 
 				httpSession.setAttribute(WebConstants.OPENMRS_ERROR_ATTR, "void Reason cannot be null");
 			}
-			cohort.setVoided(true);
-			cohort.setVoidReason(voidReason);
-			service1.saveCohortMemberAttributeType(cohort);
+			cohortMemberAttributeType.setVoided(true);
+			cohortMemberAttributeType.setVoidReason(voidReason);
+			service1.saveCohortMemberAttributeType(cohortMemberAttributeType);
 			httpSession.setAttribute(WebConstants.OPENMRS_MSG_ATTR, "cohort voided success");
 		}
 		if ("delete".equals(request.getParameter("delete"))) {
-			service1.purgeCohortMemberAttributeType(cohort);
+			service1.purgeCohortMemberAttributeType(cohortMemberAttributeType);
 			httpSession.setAttribute(WebConstants.OPENMRS_MSG_ATTR, "delete success");
 		}
 	}
