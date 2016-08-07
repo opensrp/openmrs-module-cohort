@@ -7,9 +7,22 @@
 body {
     font-family: "Lato", sans-serif;
     background: #f5f5f5;
-    padding-top: 130px;
+    padding-top: 130px !important;
     position: relative;
 }
+
+@media(max-width: 1348px) and (min-width: 1290px) {
+    body{
+        padding-top: 175px !important;
+    }
+}
+
+@media(max-width: 1289px) {
+    body{
+        padding-top: 200px !important;
+    }
+}
+
 
 p {
     margin: 0 0 15px;
