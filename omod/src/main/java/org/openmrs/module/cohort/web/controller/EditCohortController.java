@@ -14,6 +14,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -90,7 +91,7 @@ public class EditCohortController {
 	
 	@RequestMapping(value = "/module/cohort/editCohort.form", method = RequestMethod.POST)
 	public void manageEditCohort1(ModelMap model, HttpSession httpSession, HttpServletRequest request, @RequestParam("cid") Integer id,
-			@RequestParam(required = false, value = "voidReason") String voidReason, @ModelAttribute("cohortmodule") CohortM cohort) {
+			@RequestParam(required = false, value = "voidReason") String voidReason, @ModelAttribute("cohortmodule") CohortM cohort) throws Exception {
 		CohortService service1 = Context.getService(CohortService.class);
 		List<String> cohorttype = new ArrayList<String>();
 		LocationService service = Context.getLocationService();
@@ -101,9 +102,47 @@ public class EditCohortController {
 			CohortType c = list1.get(i);
 			cohorttype.add(c.getName());
 		}
+		model.addAttribute("formats", cohorttype);
+		List<String> cohortprg = new ArrayList<String>();
+		List<CohortProgram> list2 = service1.findCohortProg();
+		for (int j = 0; j < list2.size(); j++) {
+			CohortProgram a = list2.get(j);
+			cohortprg.add(a.getName());
+		}
+		model.addAttribute("formats1", cohortprg);
 		List<CohortM> cohort1 = service1.findCohort(id);
 		for (int j = 0; j < cohort1.size(); j++) {
 			cohort = cohort1.get(j);
+		}
+		if ("Edit Cohort".equals(request.getParameter("Edit Cohort"))) {
+			String givenName = request.getParameter("name");
+			String givenDescription = request.getParameter("description");
+			String givenStartDate = request.getParameter("startDate");
+			String givenEndDate = request.getParameter("endDate");
+			String givenLocation = request.getParameter("location");
+			if (!givenName.equals("") && !givenDescription.equals("") && !givenStartDate.equals("") && !givenEndDate.equals("") && !givenLocation.equals("")) {
+				java.util.Date parsedStartDate = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH).parse(givenStartDate);
+				java.util.Date parsedEndDate = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH).parse(givenEndDate);
+				if (parsedEndDate.before(parsedStartDate)) {
+					httpSession.setAttribute(WebConstants.OPENMRS_ERROR_ATTR, "End date must be after Start date");
+				} else {
+					cohort.setName(givenName);
+					cohort.setDescription(givenDescription);
+					cohort.setStartDate(parsedStartDate);
+					cohort.setEndDate(parsedEndDate);
+					for (Location locations : service.getAllLocations()) {
+						if (locations.getName().equals(givenLocation)) {
+							cohort.setClocation(locations);
+							break;
+						}
+					}
+					service1.saveCohort(cohort);
+					httpSession.setAttribute(WebConstants.OPENMRS_MSG_ATTR, "Cohort Edit Success");
+				}
+			} else {
+				httpSession.setAttribute(WebConstants.OPENMRS_ERROR_ATTR, "Fields cannot be empty");
+			}
+			
 		}
 		if ("void".equalsIgnoreCase(request.getParameter("void"))) {
 			if (voidReason == "") {
@@ -176,23 +215,35 @@ public class EditCohortController {
 	}
 	
 	@RequestMapping(value = "/module/cohort/editCohortProgram.form", method = RequestMethod.POST)
-	public void manageEditCohortProgram1(ModelMap model, HttpSession httpSession, HttpServletRequest request, @RequestParam("cpid") Integer id, @RequestParam(required = false, value = "voidReason") String voidReason, @ModelAttribute("cohortprogram") CohortProgram cohort) {
+	public void manageEditCohortProgram1(ModelMap model, HttpSession httpSession, HttpServletRequest request, @RequestParam("cpid") Integer id, @RequestParam(required = false, value = "voidReason") String voidReason, @ModelAttribute("cohortprogram") CohortProgram cohortProgram) {
 		CohortService service1 = Context.getService(CohortService.class);
 		List<CohortProgram> cohort1 = service1.findCohortProgram(id);
 		for (int j = 0; j < cohort1.size(); j++) {
-			cohort = cohort1.get(j);
+			cohortProgram = cohort1.get(j);
+		}
+		if ("edit".equals(request.getParameter("edit"))) {
+			String givenName = request.getParameter("name");
+			String givenDescription = request.getParameter("description");
+			if (!givenName.equals("") && !givenDescription.equals("")) {
+				cohortProgram.setName(givenName);
+				cohortProgram.setDescription(givenDescription);
+				service1.saveCohortProgram(cohortProgram);
+				httpSession.setAttribute(WebConstants.OPENMRS_MSG_ATTR, "Edit Success");
+			} else {
+				httpSession.setAttribute(WebConstants.OPENMRS_ERROR_ATTR, "Fields cannot be left empty");
+			}
 		}
 		if ("void".equalsIgnoreCase(request.getParameter("void"))) {
 			if (voidReason == "") {
 				httpSession.setAttribute(WebConstants.OPENMRS_ERROR_ATTR, "void Reason cannot be null");
 			}
-			cohort.setVoided(true);
-			cohort.setVoidReason(voidReason);
-			service1.saveCohortProgram(cohort);
+			cohortProgram.setVoided(true);
+			cohortProgram.setVoidReason(voidReason);
+			service1.saveCohortProgram(cohortProgram);
 			httpSession.setAttribute(WebConstants.OPENMRS_MSG_ATTR, "cohort voided success");
 		}
 		if ("delete".equals(request.getParameter("delete"))) {
-			service1.purgeCohortProgram(cohort);
+			service1.purgeCohortProgram(cohortProgram);
 			httpSession.setAttribute(WebConstants.OPENMRS_MSG_ATTR, "delete success");
 		}
 	}

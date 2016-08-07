@@ -88,7 +88,7 @@
                 </li>
                 <br><br>
                 <div class="button-container">
-                    <input class="btn btn-primary" type="submit" value="EditCohort" id="submit"/>
+                    <input class="btn btn-primary" type="submit" value="Edit Cohort" id="Edit Cohort" name="Edit Cohort"/>
                 </div>
                 <hr/>
                 <h4 class="alert-warning">Void Cohort</h4> <br>

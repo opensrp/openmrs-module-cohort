@@ -46,11 +46,9 @@
         <section class="successful-search-body">
             <div class="container">
                 <div class="row">
-                    <div class="col-sm-2" style="padding-left: 0px; border: 1px solid #737373; background: #333">
-                        <div style="background: #333; padding: 0 5px 5px 25px;">
-                            <h4 style="color: white; padding: 5px 0 0 0!important;"><b style="font-size: 130%">${cohort.name}</b></h4>
-                        </div>
-                    </div>
+                    <h4 class="cohort-name">
+                        <b style="font-size: 130%">${cohort.name}</b>
+                    </h4>
                     <div class="col-sm-11" style="background: white; border: 1px solid #737373; padding: 30px 30px 30px 30px">
                         <div class="row">
                             <div class="col-sm-4">
@@ -170,9 +168,14 @@
                                     <a class="btn btn-default" href="${pageContext.request.contextPath}/module/cohort/cPatients.form?cpid=${cohort.cohortId}">
                                         <i class="fa fa-user-plus fa-2x" aria-hidden="true"></i><span class="desc-3"> Add Member</span></a>
                                 </div>
+
                                 <div class="box-right">
                                     <a class="btn btn-default" href="${pageContext.request.contextPath}/module/cohort/editCohort.form?cid=${cohort.cohortId}">
-                                        <i class="fa fa-edit fa-2x" aria-hidden="true"></i><span class="desc-3"> Edit Cohort</span></a>
+                                        <i class="fa fa-edit fa-2x" aria-hidden="true"></i><span class="desc-3">&nbsp;
+
+Edit Cohort &nbsp;
+
+</span></a>
                                 </div>
                             </div>
                         </div>

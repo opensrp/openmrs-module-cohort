@@ -33,7 +33,7 @@
                 </li>
                 
                 <div class="button-container">
-                    <input class="btn btn-primary" type="submit" value="edit" id="submit"/><br/>
+                    <input class="btn btn-primary" type="submit" value="edit" id="edit" name="edit"/><br/>
                 </div>
                 
                 <br/>
