@@ -4,7 +4,7 @@
         
         <ul class="nav navbar-nav navbar-left">
             <li>
-                <a class="logo" href="index.html"></a>
+                <a class="logo" href="/openmrs/index.htm"></a>
             </li>
         </ul>
         
