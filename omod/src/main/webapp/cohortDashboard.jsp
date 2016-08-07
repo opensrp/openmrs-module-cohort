@@ -171,7 +171,7 @@
                                         <i class="fa fa-user-plus fa-2x" aria-hidden="true"></i><span class="desc-3"> Add Member</span></a>
                                 </div>
                                 <div class="box-right">
-                                    <a class="btn btn-default" href="${pageContext.request.contextPath}/module/cohort/editcohort.form?cid=${cohort.cohortId}">
+                                    <a class="btn btn-default" href="${pageContext.request.contextPath}/module/cohort/editCohort.form?cid=${cohort.cohortId}">
                                         <i class="fa fa-edit fa-2x" aria-hidden="true"></i><span class="desc-3"> Edit Cohort</span></a>
                                 </div>
                             </div>

@@ -20,12 +20,7 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.openmrs.Concept;
-import org.openmrs.EncounterType;
-import org.openmrs.Form;
-import org.openmrs.Location;
-import org.openmrs.Person;
-import org.openmrs.VisitType;
+import org.openmrs.*;
 import org.openmrs.api.ConceptService;
 import org.openmrs.api.EncounterService;
 import org.openmrs.api.FormService;
@@ -66,7 +61,7 @@ public class EditCohortController {
 	
 	protected final Log log = LogFactory.getLog(getClass());
 	
-	@RequestMapping(value = "/module/cohort/editcohort", method = RequestMethod.GET)
+	@RequestMapping(value = "/module/cohort/editCohort", method = RequestMethod.GET)
 	public void manageEditCohort(ModelMap model, HttpServletRequest request, @RequestParam("cid") Integer id, @ModelAttribute("cohortmodule") CohortM cohort) {
 		CohortService service1 = Context.getService(CohortService.class);
 		List<String> cohorttype = new ArrayList<String>();
@@ -93,7 +88,7 @@ public class EditCohortController {
 		}
 	}
 	
-	@RequestMapping(value = "/module/cohort/editcohort.form", method = RequestMethod.POST)
+	@RequestMapping(value = "/module/cohort/editCohort.form", method = RequestMethod.POST)
 	public void manageEditCohort1(ModelMap model, HttpSession httpSession, HttpServletRequest request, @RequestParam("cid") Integer id,
 			@RequestParam(required = false, value = "voidReason") String voidReason, @ModelAttribute("cohortmodule") CohortM cohort) {
 		CohortService service1 = Context.getService(CohortService.class);
@@ -136,23 +131,36 @@ public class EditCohortController {
 	}
 	
 	@RequestMapping(value = "/module/cohort/editCohortType.form", method = RequestMethod.POST)
-	public void manageEditCohortType1(ModelMap model, HttpSession httpSession, HttpServletRequest request, @RequestParam("ctypeid") Integer id, @RequestParam(required = false, value = "voidReason") String voidReason, @ModelAttribute("cohorttype") CohortType cohort) {
+	public void manageEditCohortType1(ModelMap model, HttpSession httpSession, HttpServletRequest request, @RequestParam("ctypeid") Integer id, @RequestParam(required = false, value = "voidReason") String voidReason, @ModelAttribute("cohorttype") CohortType cohortType) {
 		CohortService service1 = Context.getService(CohortService.class);
 		List<CohortType> cohort1 = service1.findCohortType(id);
 		for (int j = 0; j < cohort1.size(); j++) {
-			cohort = cohort1.get(j);
+			cohortType = cohort1.get(j);
+		}
+		if ("edit".equals(request.getParameter("edit"))) {
+			String givenTypeName = request.getParameter("name");
+			String givenTypeDescription = request.getParameter("description");
+			if (!givenTypeName.equals("") && !givenTypeDescription.equals("")) {
+				System.out.println("FIRST: " + cohortType.getName());
+				cohortType.setName(givenTypeName);
+				cohortType.setDescription(givenTypeDescription);
+				service1.saveCohort(cohortType);
+				httpSession.setAttribute(WebConstants.OPENMRS_MSG_ATTR, "Edit Success");
+			} else {
+				httpSession.setAttribute(WebConstants.OPENMRS_ERROR_ATTR, "Fields cannot be blank");
+			}
 		}
 		if ("void".equalsIgnoreCase(request.getParameter("void"))) {
 			if (voidReason == "") {
 				httpSession.setAttribute(WebConstants.OPENMRS_ERROR_ATTR, "void Reason cannot be null");
 			}
-			cohort.setVoided(true);
-			cohort.setVoidReason(voidReason);
-			service1.saveCohort(cohort);
-			httpSession.setAttribute(WebConstants.OPENMRS_MSG_ATTR, "cohort voided success");
+			cohortType.setVoided(true);
+			cohortType.setVoidReason(voidReason);
+			service1.saveCohort(cohortType);
+			httpSession.setAttribute(WebConstants.OPENMRS_MSG_ATTR, "voided success");
 		}
 		if ("delete".equals(request.getParameter("delete"))) {
-			service1.purgeCohortType(cohort);
+			service1.purgeCohortType(cohortType);
 			httpSession.setAttribute(WebConstants.OPENMRS_MSG_ATTR, "delete success");
 		}
 	}
@@ -206,7 +214,7 @@ public class EditCohortController {
 	}
 	
 	@RequestMapping(value = "/module/cohort/editCohortAttributesType.form", method = RequestMethod.POST)
-	public void manageEditCohortAttributeType1(ModelMap model, HttpSession httpSession, HttpServletRequest request, @RequestParam("cat") Integer id, @RequestParam(required = false, value = "voidReason") String voidReason, @ModelAttribute("cohortattributes") CohortAttributeType cohort) {
+	public void manageEditCohortAttributeType1(ModelMap model, HttpSession httpSession, HttpServletRequest request, @RequestParam("cat") Integer id, @RequestParam(required = false, value = "voidReason") String voidReason, @ModelAttribute("cohortattributes") CohortAttributeType cohortAttributeType) {
 		CohortService service1 = Context.getService(CohortService.class);
 		List<CohortAttributeType> cohort1 = service1.findCohortAttType(id);
 		List<String> formats = new ArrayList<String>(FieldGenHandlerFactory.getSingletonInstance().getHandlers().keySet());
@@ -216,20 +224,34 @@ public class EditCohortController {
 		formats.add("java.lang.Boolean");
 		model.addAttribute("formats", formats);
 		for (int j = 0; j < cohort1.size(); j++) {
-			cohort = cohort1.get(j);
+			cohortAttributeType = cohort1.get(j);
+		}
+		if ("edit".equals(request.getParameter("edit"))) {
+			String givenName = request.getParameter("name");
+			String givenDescription = request.getParameter("description");
+			String givenFormat = request.getParameter("format");
+			if (!givenName.equals("") || !givenDescription.equals("") || !givenFormat.equals("")) {
+				cohortAttributeType.setName(givenName);
+				cohortAttributeType.setDescription(givenDescription);
+				cohortAttributeType.setFormat(givenFormat);
+				service1.saveCohort(cohortAttributeType);
+				httpSession.setAttribute(WebConstants.OPENMRS_MSG_ATTR, "Edit Success");
+			} else {
+				httpSession.setAttribute(WebConstants.OPENMRS_ERROR_ATTR, "Fields Cannot be blank");
+			}
 		}
 		if ("void".equalsIgnoreCase(request.getParameter("void"))) {
 			if (voidReason == "") {
-				httpSession.setAttribute(WebConstants.OPENMRS_ERROR_ATTR, "void Reason cannot be null");
+				httpSession.setAttribute(WebConstants.OPENMRS_ERROR_ATTR, "Void Reason cannot be null");
 			}
-			cohort.setVoided(true);
-			cohort.setVoidReason(voidReason);
-			service1.saveCohort(cohort);
-			httpSession.setAttribute(WebConstants.OPENMRS_MSG_ATTR, "cohort voided success");
+			cohortAttributeType.setVoided(true);
+			cohortAttributeType.setVoidReason(voidReason);
+			service1.saveCohort(cohortAttributeType);
+			httpSession.setAttribute(WebConstants.OPENMRS_MSG_ATTR, "Cohort Attribute Type Voided success");
 		}
 		if ("delete".equals(request.getParameter("delete"))) {
-			service1.purgeCohortAttributes(cohort);
-			httpSession.setAttribute(WebConstants.OPENMRS_MSG_ATTR, "delete success");
+			service1.purgeCohortAttributes(cohortAttributeType);
+			httpSession.setAttribute(WebConstants.OPENMRS_MSG_ATTR, "Delete success");
 		}
 	}
 	
@@ -667,41 +689,44 @@ public class EditCohortController {
 		if (!Context.isAuthenticated()) {
 			errors.reject("Required");
 		}
-		CohortService service1 = Context.getService(CohortService.class);
-		List<CohortRole> cohortRolesPresent = service1.findCohortRole(id);
-		for (int a = 0; a < cohortRolesPresent.size(); a++) {
-			cohort = cohortRolesPresent.get(a);
+		else if (request.getParameter("name").equals("") || request.getParameter("format").equals("")) {
+			errors.reject("Fields required");
 		}
-		if("Edit Role".equals(request.getParameter("Edit Role"))) {
-			List<CohortRole> roles = service1.findCohortRole(id);
-			List<String> cohortTypeToSetInView = new ArrayList<String>();
-			//Someone coded everything as a list. The list is gonna return only 1 element. Why would anyone do that -.-
-			for (CohortRole role : roles) {
-				role.setName(request.getParameter("name"));
-				for(CohortType cohortType : service1.findCohortType(request.getParameter("format"))) {
-					role.setCohortType(cohortType);
-					//set the correct type
-					cohortTypeToSetInView.add(cohortType.getName());
+		else {
+			CohortService service1 = Context.getService(CohortService.class);
+			List<CohortRole> cohortRolesPresent = service1.findCohortRole(id);
+			for (int a = 0; a < cohortRolesPresent.size(); a++) {
+				cohort = cohortRolesPresent.get(a);
+			}
+			if("Edit Role".equals(request.getParameter("Edit Role"))) {
+				List<CohortRole> roles = service1.findCohortRole(id);
+				List<String> cohortTypeToSetInView = new ArrayList<String>();
+				//Someone coded everything as a list. The list is gonna return only 1 element. Why would anyone do that -.-
+				for (CohortRole role : roles) {
+					role.setName(request.getParameter("name"));
+					for(CohortType cohortType : service1.findCohortType(request.getParameter("format"))) {
+						role.setCohortType(cohortType);
+						//set the correct type
+						cohortTypeToSetInView.add(cohortType.getName());
+					}
 				}
+				//Find all the other types to choose from
+				List<CohortType> list1 = service1.getAllCohortTypes();
+				for (int i = 0; i < list1.size(); i++) {
+					CohortType c = list1.get(i);
+					if (!cohortTypeToSetInView.contains(c.getName())) {
+						cohortTypeToSetInView.add(c.getName());
+					}
+				}
+				//Set this in the dropdown
+				model.addAttribute("formats", cohortTypeToSetInView);
+				httpSession.setAttribute(WebConstants.OPENMRS_MSG_ATTR, "Edit Success");
 			}
-			//Find all the other types to choose from
-			List<CohortType> list1 = service1.getAllCohortTypes();
-			for (int i = 0; i < list1.size(); i++) {
-				CohortType c = list1.get(i);
-				if (!cohortTypeToSetInView.contains(c.getName())) {
-					cohortTypeToSetInView.add(c.getName());
-				}	
+
+			if ("delete".equals(request.getParameter("delete"))) {
+				service1.purgeCohortRole(cohort);
+				httpSession.setAttribute(WebConstants.OPENMRS_MSG_ATTR, "delete success");
 			}
-			//Set this in the dropdown
-			model.addAttribute("formats", cohortTypeToSetInView);
-			httpSession.setAttribute(WebConstants.OPENMRS_MSG_ATTR, "Edit Success");
-			
-			// TODO Auto-generated catch block
-		}
-		
-		if ("delete".equals(request.getParameter("delete"))) {
-			service1.purgeCohortRole(cohort);
-			httpSession.setAttribute(WebConstants.OPENMRS_MSG_ATTR, "delete success");
 		}
 	}
 }

@@ -72,7 +72,7 @@ h4 {
     border: 1px solid orange;
 }
 
-#submit{
+#edit, #submit{
     width: 85% !important;
 }
 
