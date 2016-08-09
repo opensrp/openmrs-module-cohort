@@ -18,7 +18,7 @@
                         <fieldset>
                               <spring:bind path="cohortattributes.name">
                                 <h4><spring:message code="cohort.cohorttypename"/></h4>
-                                <input class="form-control" type="text" name="name" id="name" size="25" value="${status.value}"/>
+                                <input class="form-control" type="text" name="name" id="name" size="25" value="${status.value}" maxlength="100"/>
                                 <c:if test="${status.errorMessage != ''}"><span class="error">${status.errorMessage}</span></c:if>
                             </spring:bind>
                         </fieldset>
