@@ -17,9 +17,20 @@
             <form class="form-container" id="form1" method="post">
                 <ul>
                     <li>
-                        <h4>Cohort Name:</h4> ${cohort.name}
+                        <h4>Cohort Name:</h4> 
+                            <a href="/openmrs/module/cohort/cohortDashboard.form?search=search&name=${cohort.name}">
+                                <br><span class="attribute-name-header">${cohort.name}</span></a>
                         <br/>
                     </li>
+                    <br>
+                    <li>
+                        <fieldset>
+                            <h4>Patient:</h4>
+                            <br>
+                            <openmrs_tag:patientField formFieldName="patient_id" formFieldId="existingPatientId"/>
+                        </fieldset>
+                    </li>
+                    <br>
                     
                     <li>
                         <fieldset class="form-group">
@@ -60,11 +71,7 @@
                         </fieldset>
                     </li>
                     
-                    <li>
-                        <fieldset>
-                            <openmrs_tag:patientField formFieldName="patient_id" formFieldId="existingPatientId"/>
-                        </fieldset>
-                    </li>
+                    
                     <br>
                     
                     <input class="btn btn-primary" type="submit" value="Add Cohort Member" id="add" name="add"/><br/><br/>

@@ -1,3 +1,5 @@
+jQuery('#existingPatientId_selection').addClass('form-control')
+
 jQuery(function () {
     jQuery("#startDate").datepicker({
         changeMonth: true,

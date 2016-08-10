@@ -43,5 +43,8 @@ h4 {
 }
 
 #role-dropdown {
+    width: 80%;
+}
+#existingPatientId_selection {
     width: 70%;
 }
