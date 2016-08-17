@@ -1,6 +1,6 @@
 <%@ include file="/WEB-INF/template/include.jsp" %>
 <%@ include file="template/header.jsp" %>
-<title>Manage Cohort Role</title> <!--set page title-->
+<title>Manage Cohort Member Role</title> <!--set page title-->
 </head>
 <openmrs:htmlInclude file="/moduleResources/cohort/styles/genericPageStyle.css" />
 <openmrs:htmlInclude file="/moduleResources/cohort/styles/pages/genericManagePageStyling.css" />
@@ -10,7 +10,7 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-10">
-            <h4 class="heading"><span>Manage Cohort Role</span></h4>
+            <h4 class="heading"><span>Manage Cohort Member Role</span></h4>
             <div class="main-container">
 
                 <div class="row">
@@ -21,7 +21,7 @@
                                     <span class="input-group-btn">
                                         <input class="btn btn-default" type="submit" id="search" name="search" value="search">
                                     </span>
-                                    <input class="search form-control" type="text" id="name" name="name" value="${status.value}" placeholder="Search Cohort Role"
+                                    <input class="search form-control" type="text" id="name" name="name" value="${status.value}" placeholder="Search Cohort Member Role"
                                            required>
                                     <c:if test="${status.errorMessage != ''}"><span class="error">${status.errorMessage}</span></c:if>
                                 </spring:bind>
@@ -32,7 +32,7 @@
                     <div class="col-sm-3 ">
                         <a class="btn btn-primary" href="addRole.form" style="padding-top: 0; padding-bottom: 0">
                             <h4>
-                                <i class="fa fa-plus-square-o fa-lg"></i> Add Cohort Role
+                                <i class="fa fa-plus-square-o fa-lg"></i> Add Cohort Member Role
                             </h4>
                         </a>
                     </div>
@@ -46,7 +46,7 @@
                             <thead>
                             <tr>
                                 <th>#</th>
-                                <th class="col-md-5 col-xs-5">Cohort Role Name<span class="text-muted"> (click entry to edit)</span></th>
+                                <th class="col-md-5 col-xs-5">Cohort Member Role Name<span class="text-muted"> (click entry to edit)</span></th>
                             </tr>
                             </thead>
                             <tbody>

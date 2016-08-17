@@ -11,7 +11,7 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-4">
-            <h4 class="heading"><span>Add Cohort Role</span></h4>
+            <h4 class="heading"><span>Add Cohort Member Role</span></h4>
             <form class="form-container" method="post">
                 <ul>
                     <li>

@@ -89,7 +89,7 @@
                             <li><a href="manageCohortAttributesType.form"><h5>Cohort Attribute Type</h5></a></li>
                             <li><a href="manageCohortMemberAttributeType.form"><h5>Cohort Member Attribute Type</h5></a></li>
                             <li><a href="manageCohortProgram.form"><h5>Cohort Programs</h5></a></li>
-                            <li><a href="manageCohortRole.form"><h5>Cohort Role</h5></a></li>
+                            <li><a href="manageCohortRole.form"><h5>Cohort Member Role</h5></a></li>
                             <li class="divider">
                         </ul>
                     </li>
