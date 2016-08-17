@@ -9,39 +9,17 @@
  */
 package org.openmrs.module.cohort.web.controller;
 
-import java.sql.Date;
-import java.text.DateFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.openmrs.Location;
 import org.openmrs.Patient;
-import org.openmrs.PatientIdentifier;
-import org.openmrs.PatientIdentifierType;
-import org.openmrs.Person;
-import org.openmrs.PersonName;
-import org.openmrs.Relationship;
 import org.openmrs.api.LocationService;
 import org.openmrs.api.PatientService;
-import org.openmrs.api.PersonService;
-import org.openmrs.api.UserService;
 import org.openmrs.api.context.Context;
-import org.openmrs.api.context.UserContext;
-import org.openmrs.messagesource.MessageSourceService;
 import org.openmrs.module.cohort.CohortM;
 import org.openmrs.module.cohort.CohortMember;
 import org.openmrs.module.cohort.CohortProgram;
@@ -49,26 +27,17 @@ import org.openmrs.module.cohort.CohortRole;
 import org.openmrs.module.cohort.CohortType;
 import org.openmrs.module.cohort.api.CohortService;
 import org.openmrs.web.WebConstants;
-import org.openmrs.web.taglib.fieldgen.FieldGenHandlerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.validation.BindException;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.Errors;
-import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
-import org.springframework.web.bind.ServletRequestUtils;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.context.request.WebRequest;
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.view.RedirectView;
 
 /**
  * The main controller.
@@ -220,14 +189,14 @@ public class AddCohortController {
     public void onClick(WebRequest request, HttpSession httpSession, ModelMap model,
                         @RequestParam(required = false, value = "type") String type,
                         @RequestParam(required = false, value = "startDate") String startDate,
-                        @RequestParam("cpid") Integer id, @RequestParam("patient_id") Integer pid, @ModelAttribute("cpatient") CohortMember cpatient, @ModelAttribute("patient") Patient patient, BindingResult errors) {
+                        @RequestParam(required = false, value = "endDate") String endDate,
+                        @RequestParam("cpid") Integer id, @RequestParam("patient_id") Integer pid, @ModelAttribute("cpatient") CohortMember cpatient, @ModelAttribute("patient") Patient patient, BindingResult errors) throws Exception {
         CohortM cohort = new CohortM();
         CohortRole c2 = new CohortRole();
         List<String> names = new ArrayList<String>();
         List<String> type1 = new ArrayList<String>();
         CohortService departmentService = Context.getService(CohortService.class);
         PatientService ps = Context.getPatientService();
-		 /* List<Patient> pn=ps.getAllPatients();*/
         String cname;
         List<CohortM> cohort1 = departmentService.findCohort(id);
         for (int i = 0; i < cohort1.size(); i++) {
@@ -240,20 +209,37 @@ public class AddCohortController {
             }
         }
         model.addAttribute("formats", type1);
+        model.addAttribute("cohort", departmentService.findCohort(id).get(0));
         patient = ps.getPatient(pid);
         String rolname = request.getParameter("format");
         List<CohortRole> crole = departmentService.findCohortRoles(rolname);
         for (int g = 0; g < crole.size(); g++) {
             c2 = crole.get(g);
         }
-        cpatient.setPerson(patient);
-        cpatient.setCohort(cohort);
-        cpatient.setRole(c2);
-        departmentService.saveCPatient(cpatient);
-        model.addAttribute("formats", crole);
-        model.addAttribute("cpatient", cpatient);
-        httpSession.setAttribute(WebConstants.OPENMRS_MSG_ATTR, "Insertion success");
-
+        boolean repeatPatient = false;
+        for (CohortMember cohortMember: departmentService.findCohortMembersByCohortId(id)) {
+            if (cohortMember.getPerson().getPersonId().equals(patient.getPerson().getPersonId())) {
+                repeatPatient = true;
+                httpSession.setAttribute(WebConstants.OPENMRS_ERROR_ATTR, "A cohort cannot have duplicate patients");
+                break;
+            }
+        }
+        boolean badDate = false;
+        java.util.Date parsedStartDate = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH).parse(startDate);
+        java.util.Date parsedEndDate = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH).parse(endDate);
+        if (parsedStartDate.compareTo(parsedEndDate) > 0) {
+            badDate = true;
+            httpSession.setAttribute(WebConstants.OPENMRS_ERROR_ATTR, "Start Date must be before End Date");
+        }
+        if (!repeatPatient && !badDate) {
+            cpatient.setPerson(patient);
+            cpatient.setCohort(cohort);
+            cpatient.setRole(c2);
+            departmentService.saveCPatient(cpatient);
+            model.addAttribute("formats", crole);
+            model.addAttribute("cpatient", cpatient);
+            httpSession.setAttribute(WebConstants.OPENMRS_MSG_ATTR, "Insertion success");
+        }
     }
 
     @RequestMapping(value = "/module/cohort/groupcohort.form", method = RequestMethod.GET)

@@ -36,12 +36,15 @@ import org.openmrs.module.cohort.CohortType;
 import org.openmrs.module.cohort.api.CohortService;
 import org.openmrs.web.WebConstants;
 import org.openmrs.web.taglib.fieldgen.FieldGenHandlerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindException;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
+import org.springframework.validation.Validator;
 import org.springframework.web.bind.ServletRequestUtils;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -56,10 +59,14 @@ import org.springframework.web.servlet.ModelAndView;
  */
 @Controller
 public class AddCohortMemberAttributeTypeController {
-	
+
+	@Autowired(required = true)
+	@Qualifier("addCohortMemberAttributeTypeValidator")
+	private Validator validator;
+
 	protected final Log log = LogFactory.getLog(getClass());
 	private SessionStatus status;
-	
+
 	@RequestMapping(value = "/module/cohort/addCohortMemberAttributeType", method = RequestMethod.GET)
 	public void manage(ModelMap model) {
 		model.addAttribute("cohortattributes", new CohortMemberAttributeType());
@@ -70,27 +77,20 @@ public class AddCohortMemberAttributeTypeController {
 		formats.add("java.lang.Boolean");
 		model.addAttribute("formats", formats);
 	}
-	
+
 	@RequestMapping(value = "/module/cohort/addCohortMemberAttributeType.form", method = RequestMethod.POST)
-	public ModelAndView onSubmit(WebRequest request, HttpSession httpSession, ModelMap model,
-			@RequestParam(required = false, value = "name") String attribute_type,
-			@RequestParam(required = false, value = "description") String description,
-			@ModelAttribute("cohortattributes") CohortMemberAttributeType cohortattributes, BindingResult errors) {
+	public String onSubmit(WebRequest request, HttpSession httpSession, ModelMap model, @ModelAttribute("cohortattributes") CohortMemberAttributeType cohortMemberAttributeType, BindingResult errors) {
 		CohortService departmentService = Context.getService(CohortService.class);
 		String voided = request.getParameter("voided");
 		String format = request.getParameter("format");
-		if (attribute_type == "" && description == "") {
-			httpSession.setAttribute(WebConstants.OPENMRS_ERROR_ATTR, "Values cannot be null");
-			model.addAttribute("cohortattributes", new CohortMemberAttributeType());
-			List<String> formats = new ArrayList<String>(FieldGenHandlerFactory.getSingletonInstance().getHandlers().keySet());
-			formats.add("java.lang.Character");
-			formats.add("java.lang.Integer");
-			formats.add("java.lang.Float");
-			formats.add("java.lang.Boolean");
-			model.addAttribute("formats", formats);
+		this.validator.validate(cohortMemberAttributeType, errors);
+		if (errors.hasErrors()) {
+			System.out.println("BR has errors: " + errors.getErrorCount());
+			System.out.println(errors.getAllErrors());
+			return "/module/cohort/addCohortMemberAttributeType";
 		} else {
-			cohortattributes.setFormat(format);
-			departmentService.saveCohortMemberAttributeType(cohortattributes);
+			cohortMemberAttributeType.setFormat(format);
+			departmentService.saveCohortMemberAttributeType(cohortMemberAttributeType);
 			httpSession.setAttribute(WebConstants.OPENMRS_MSG_ATTR, "insertion success");
 		}
 		return null;
