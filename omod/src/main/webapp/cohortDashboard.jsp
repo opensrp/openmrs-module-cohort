@@ -28,13 +28,13 @@
             <div class="col-sm-2 create-cohort-button">
                 <a class="btn btn-primary" href="addCohort.form">
                     <i class="fa fa-plus fa-2x" aria-hidden="true"></i>
-                    <span><spring:message code="cohort.createcohort"/></span>
+                    <span>Create Cohort</span>
                 </a>
             </div>
             <div class="col-sm-3 create-group-cohort-button">
                 <a class="btn btn-primary" href="groupcohort.form">
                     <i class="fa fa-plus fa-2x" aria-hidden="true"></i>
-                    <span>Create Group Cohort</span>
+                    <span>Create Cohort Group</span>
                 </a>
             </div>
         </div>
