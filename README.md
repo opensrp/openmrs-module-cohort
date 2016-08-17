@@ -2,3 +2,5 @@ The purpose of the [OpenMRS Cohort Module](https://wiki.openmrs.org/display/proj
 
  1. Simple cohorts for single entities
  2. Group cohorts catering to collections like households.
+
+<b>The official documentation and all the relevant resources can be found [HERE](https://wiki.openmrs.org/display/projects/Cohort+Module) </b>
