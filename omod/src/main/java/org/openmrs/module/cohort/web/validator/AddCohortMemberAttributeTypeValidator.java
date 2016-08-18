@@ -2,12 +2,10 @@ package org.openmrs.module.cohort.web.validator;
 
 import org.openmrs.api.context.Context;
 import org.openmrs.module.cohort.CohortM;
-import org.openmrs.module.cohort.CohortMemberAttribute;
 import org.openmrs.module.cohort.CohortMemberAttributeType;
 import org.openmrs.module.cohort.api.CohortService;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
-import org.springframework.util.StringUtils;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
@@ -26,7 +24,7 @@ public class AddCohortMemberAttributeTypeValidator implements Validator {
     @Override
     public void validate(Object arg0, Errors arg1) {
         CohortService service = Context.getService(CohortService.class);
-        CohortMemberAttributeType current = (CohortMemberAttributeType)arg0;
+        CohortMemberAttributeType current = (CohortMemberAttributeType) arg0;
         ValidationUtils.rejectIfEmptyOrWhitespace(arg1, "name", "Name Required");
         ValidationUtils.rejectIfEmptyOrWhitespace(arg1, "description", "Description Required");
         ValidationUtils.rejectIfEmptyOrWhitespace(arg1, "format", "Format Required");
