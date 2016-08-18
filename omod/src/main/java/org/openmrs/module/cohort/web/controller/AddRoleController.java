@@ -73,13 +73,13 @@ import org.springframework.web.servlet.ModelAndView;
  */
 @Controller
 public class AddRoleController {
-	
+
 	@Autowired(required = true)
 	@Qualifier("addRoleValidator")
 	private Validator validator;
 	List<Patient> list1 = new ArrayList();
 	Set set1 = new HashSet();
-	
+
 	@RequestMapping(value = "/module/cohort/addRole", method = RequestMethod.GET)
 	public void manage(ModelMap model) {
 		model.addAttribute("cohortrole", new CohortRole());
@@ -92,11 +92,11 @@ public class AddRoleController {
 		}
 		model.addAttribute("formats", cohorttype);
 	}
-	
+
 	@RequestMapping(value = "module/cohort/addRole.form", method = RequestMethod.POST)
-	public String onSubmit(WebRequest request, HttpSession httpSession, HttpServletRequest request1,
-			@RequestParam(required = false, value = "name") String cohort_name,
-			@ModelAttribute("cohortrole") CohortRole cohortrole, BindingResult errors, ModelMap model) {
+	public void onSubmit(WebRequest request, HttpSession httpSession, HttpServletRequest request1,
+						 @RequestParam(required = false, value = "name") String cohort_name,
+						 @ModelAttribute("cohortrole") CohortRole cohortrole, BindingResult errors, ModelMap model) {
 		CohortRole cr = new CohortRole();
 		CohortType cohort1 = new CohortType();
 		String cohort_type_name = request.getParameter("format");
@@ -104,32 +104,21 @@ public class AddRoleController {
 		if (!Context.isAuthenticated()) {
 			errors.reject("Required");
 		}
+		List<CohortType> cohorttype1 = departmentService.findCohortType(cohort_type_name);
+		for (int i = 0; i < cohorttype1.size(); i++) {
+			cohort1 = cohorttype1.get(i);
+		}
+		cohortrole.setCohortType(cohort1);
+		departmentService.saveCohortRole(cohortrole);
+		model.addAttribute("formats", cohorttype1);
 		this.validator.validate(cohortrole, errors);
 		System.out.println("Before BR");
 		if (errors.hasErrors()) {
 			System.out.println("BR has errors: " + errors.getErrorCount());
 			System.out.println(errors.getAllErrors());
-			return "/module/cohort/addRole";
-		}
-		if (cohort_name.length() > 255) {
-			httpSession.setAttribute(WebConstants.OPENMRS_MSG_ATTR, "name cannot be greater than 255");
 		} else {
-			List<CohortType> cohorttype1 = departmentService.findCohortType(cohort_type_name);
-			for (int i = 0; i < cohorttype1.size(); i++) {
-				cohort1 = cohorttype1.get(i);
-			}
-			cohortrole.setCohortType(cohort1);
-			departmentService.saveCohortRole(cohortrole);
 			httpSession.setAttribute(WebConstants.OPENMRS_MSG_ATTR, "insertion success");
-			model.addAttribute("formats", cohorttype1);
 		}
-		//}
-				/*catch (ParseException e) {
-	 				// TODO Auto-generated catch block
-	 				e.printStackTrace();
-	 			}  	
-	     }*/
-		return null;
 	}
 }
 	

@@ -21,5 +21,6 @@ public class AddCohortAttributeTypeValidator implements Validator {
 	public void validate(Object arg0, Errors arg1) {
 		ValidationUtils.rejectIfEmptyOrWhitespace(arg1, "name", "required");
 		ValidationUtils.rejectIfEmptyOrWhitespace(arg1, "description", "required");
+		ValidationUtils.rejectIfEmptyOrWhitespace(arg1, "format", "required");
 	}
 }

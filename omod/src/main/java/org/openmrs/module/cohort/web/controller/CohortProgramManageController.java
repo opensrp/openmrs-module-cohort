@@ -48,6 +48,9 @@ public class CohortProgramManageController {
 	@RequestMapping(value = "/module/cohort/manageCohortProgram", method = RequestMethod.GET)
 	public void manage(HttpSession httpSession, HttpServletRequest request, ModelMap model, @RequestParam(required = false, value = "name") String cohort_name, @ModelAttribute("cohortprogram") CohortProgram cohort) {
 		CohortService service = Context.getService(CohortService.class);
+		if (request.getParameter("search") != null && !request.getParameter("search").equals("")) {
+			model.addAttribute("first", false);
+		}
 		if ("search".equals(request.getParameter("search"))) {
 			List<CohortProgram> list1 = service.findCohortProgram(cohort_name);
 			for (int i = 0; i < list1.size(); i++) {

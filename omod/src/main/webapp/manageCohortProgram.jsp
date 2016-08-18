@@ -43,6 +43,16 @@
                 <div class="row">
                     <div class="col-sm-11">
                         <table class="table table-hover table-bordered results">
+                        <c:if test="${first == false}">
+                            <c:if test="${fn:length(CohortTypeList) eq 0}">
+                                <tr class='${status.index % 2 == 0 ? "oddRow" : "evenRow" }'>
+                                    <p class="not-found-record">No record(s) found
+                                    </p>
+                                </tr>
+                            </c:if>
+                        </c:if>
+                            
+                        <c:if test="${fn:length(CohortTypeList) gt 0}">
                             <thead>
                             <tr>
                                 <th>#</th>
@@ -65,6 +75,7 @@
                             </c:forEach>
 
                             </tbody>
+                        </c:if>
                         </table>
 
                     </div>

@@ -43,6 +43,18 @@
                 <div class="row">
                     <div class="col-sm-10">
                         <table class="table table-hover table-bordered results">
+
+                            <c:if test="${first == false}">
+                                <c:if test="${fn:length(CohortAttributesList) eq 0}">
+                                    <tr class='${status.index % 2 == 0 ? "oddRow" : "evenRow" }'>
+                                        <p class="not-found-record">No record(s) found
+                                        </p>
+                                    </tr>
+                                </c:if>
+                            </c:if>
+                            
+                            <c:if test="${fn:length(CohortAttributesList) gt 0}">
+                            
                             <thead>
                             <tr>
                                 <th width="10%">#</th>
@@ -50,7 +62,7 @@
                             </tr>
                             </thead>
                             <tbody>
-
+                            
                             <c:forEach var="ls" items="${CohortAttributesList}" varStatus="status">
                                 <tr class='${status.index % 2 == 0 ? "oddRow" : "evenRow" }'>
                                     <th scope="row">${status.index+1}</th>
@@ -61,6 +73,7 @@
                             </c:forEach>
 
                             </tbody>
+                            </c:if>
                         </table>
 
                     </div>

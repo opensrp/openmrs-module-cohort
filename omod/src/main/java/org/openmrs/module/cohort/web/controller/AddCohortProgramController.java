@@ -61,7 +61,7 @@ public class AddCohortProgramController {
 	}
 	
 	@RequestMapping(value = "/module/cohort/addCohortProgram.form", method = RequestMethod.POST)
-	public String onSearch(WebRequest request, HttpSession httpSession, ModelMap model,
+	public void onSearch(WebRequest request, HttpSession httpSession, ModelMap model,
 			@RequestParam(required = false, value = "name") String cohort_name,
 			@RequestParam(required = false, value = "description") String description,
 			@ModelAttribute("cohortprogram") CohortProgram cp, BindingResult errors) {
@@ -74,14 +74,9 @@ public class AddCohortProgramController {
 		if (errors.hasErrors()) {
 			System.out.println("BR has errors: " + errors.getErrorCount());
 			System.out.println(errors.getAllErrors());
-			return "/module/cohort/addCohortProgram";
-		}
-		if (cohort_name.length() > 255) {
-			httpSession.setAttribute(WebConstants.OPENMRS_MSG_ATTR, "name cannot be greater than 255");
 		} else {
 			departmentService.saveCohortProgram(cp);
 			httpSession.setAttribute(WebConstants.OPENMRS_MSG_ATTR, "insertion success");
 		}
-		return null;
 	}
 }

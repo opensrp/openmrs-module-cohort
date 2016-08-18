@@ -48,7 +48,11 @@ public class CohortMemberAttributeManageController {
 	
 	@RequestMapping(value = "/module/cohort/manageCohortMemberAttribute", method = RequestMethod.GET)
 	public void manage(HttpSession httpSession, HttpServletRequest request, ModelMap model, @RequestParam(required = false, value = "value") String attribute_type_name, @ModelAttribute("cohortatt") CohortAttribute attributes) {
+		
 		CohortService service = Context.getService(CohortService.class);
+		if (request.getParameter("search") != null && !request.getParameter("search").equals("")) {
+			model.addAttribute("first", false);
+		}
 		if ("search".equals(request.getParameter("search"))) {
 			List<CohortMemberAttribute> list1 = service.findCohortMemberAttribute(attribute_type_name);
 			for (int i = 0; i < list1.size(); i++) {

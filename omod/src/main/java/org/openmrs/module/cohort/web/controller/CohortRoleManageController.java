@@ -49,6 +49,10 @@ public class CohortRoleManageController {
     @RequestMapping(value = "/module/cohort/manageCohortRole", method = RequestMethod.GET)
     public void manage(HttpSession httpSession, HttpServletRequest request, ModelMap model, @RequestParam(required = false, value = "name") String cohort_name, @ModelAttribute("cohortrole") CohortRole cohort) {
         CohortService service = Context.getService(CohortService.class);
+        System.out.println(request.getParameter("search"));
+        if (request.getParameter("search") != null && !request.getParameter("search").equals("")) {
+            model.addAttribute("first", false);
+        }
         if ("search".equals(request.getParameter("search"))) {
             List<CohortRole> list1 = service.findCohortRole(cohort_name);
             for (int i = 0; i < list1.size(); i++) {

@@ -74,36 +74,31 @@ public class AddCohortAttributesTypeController {
 	}
 	
 	@RequestMapping(value = "/module/cohort/addCohortAttributesType.form", method = RequestMethod.POST)
-	public String onSubmit(WebRequest request, HttpSession httpSession, ModelMap model,
+	public void onSubmit(WebRequest request, HttpSession httpSession, ModelMap model,
 			@RequestParam(required = false, value = "name") String attribute_type,
 			@RequestParam(required = false, value = "description") String description,
 			@ModelAttribute("cohortattributes") CohortAttributeType cohortattributes, BindingResult errors) {
 		CohortService departmentService = Context.getService(CohortService.class);
-		//PatientService patientService=Context.getService(PatientService.class);
 		String voided = request.getParameter("voided");
 		String format = request.getParameter("format");
+		model.addAttribute("cohortattributes", new CohortAttributeType());
+		List<String> formats = new ArrayList<String>(FieldGenHandlerFactory.getSingletonInstance().getHandlers().keySet());
+		formats.add("java.lang.Character");
+		formats.add("java.lang.Integer");
+		formats.add("java.lang.Float");
+		formats.add("java.lang.Boolean");
+		model.addAttribute("formats", formats);
+		cohortattributes.setName(attribute_type);
+		cohortattributes.setDescription(description);
 		this.validator.validate(cohortattributes, errors);
+		cohortattributes.setFormat(format);
 		System.out.println("Before BR");
 		if (errors.hasErrors()) {
 			System.out.println("BR has errors: " + errors.getErrorCount());
 			System.out.println(errors.getAllErrors());
-			
-			model.addAttribute("cohortattributes", new CohortAttributeType());
-			List<String> formats = new ArrayList<String>(FieldGenHandlerFactory.getSingletonInstance().getHandlers().keySet());
-			formats.add("java.lang.Character");
-			formats.add("java.lang.Integer");
-			formats.add("java.lang.Float");
-			formats.add("java.lang.Boolean");
-			model.addAttribute("formats", formats);
-			return "/module/cohort/addCohortAttributesType";
-		}
-		if (attribute_type.length() > 255) {
-			httpSession.setAttribute(WebConstants.OPENMRS_MSG_ATTR,  "attribute type cannot be greater than 255");
 		} else {
-			cohortattributes.setFormat(format);
 			departmentService.saveCohort(cohortattributes);
 			httpSession.setAttribute(WebConstants.OPENMRS_MSG_ATTR, "insertion success");
 		}
-		return null;
 	}
 }
