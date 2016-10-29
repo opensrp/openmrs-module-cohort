@@ -49,6 +49,7 @@
                     <h4 class="cohort-name">
                         <b style="font-size: 130%">${cohort.name}</b>
                     </h4>
+                    <br>
                     <div class="col-sm-11" style="background: white; border: 1px solid #737373; padding: 30px 30px 30px 30px">
                         <div class="row">
                             <div class="col-sm-4">
