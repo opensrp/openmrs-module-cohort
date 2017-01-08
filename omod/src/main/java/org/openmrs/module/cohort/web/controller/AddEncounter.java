@@ -152,7 +152,7 @@ public class AddEncounter {
             for (int j = 0; j < loc.size(); j++) {
                 l = loc.get(j);
             }
-            List<Form> fm = fs.findForms(f1, false, false);
+            List<Form> fm = fs.getForms(f1, false, null, false, null, null, null);
             for (int b = 0; b < fm.size(); b++) {
                 f = fm.get(b);
             }

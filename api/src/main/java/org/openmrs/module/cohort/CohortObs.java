@@ -1,5 +1,6 @@
 package org.openmrs.module.cohort;
 
+import java.lang.reflect.Method;
 import java.text.DateFormat;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
@@ -237,7 +238,7 @@ public class CohortObs extends BaseOpenmrsData {
 				} else {
 					if (getConcept() instanceof ConceptNumeric) {
 						ConceptNumeric cn = (ConceptNumeric) getConcept();
-						if (!cn.isPrecise()) {
+						if (!isAllowDecimal(cn)) {
 							double d = getValueNumeric();
 							int i = (int) d;
 							return Integer.toString(i);
@@ -491,6 +492,20 @@ public class CohortObs extends BaseOpenmrsData {
 	
 	public ComplexData getComplexData() {
 		return this.complexData;
+	}
+	
+	public static Boolean isAllowDecimal(ConceptNumeric cn) {
+		Boolean allowNumeric = false;
+		try {
+			allowNumeric = cn.isAllowDecimal();
+		} catch(NoSuchMethodError ex) {
+			try {
+				Method method = cn.getClass().getMethod("isAllowDecimal", null);
+				allowNumeric = (Boolean) method.invoke(cn, null);
+			}
+			catch (Exception e) {e.printStackTrace();}
+		}
+		return allowNumeric;
 	}
 }
 	

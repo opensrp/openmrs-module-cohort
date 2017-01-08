@@ -30,6 +30,11 @@
             org.openmrs.module.htmlformentry
         </require_module>
     </require_modules>
+    
+    <aware_of_modules>
+	    <aware_of_module>org.openmrs.module.legacyui</aware_of_module>
+	</aware_of_modules>
+	
     <!-- Adds link to admin page -->
     <extension>
         <point>org.openmrs.admin.list</point>
