@@ -13,6 +13,7 @@
  */
 package org.openmrs.module.cohort.api.db.hibernate;
 
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -85,33 +86,33 @@ public class HibernateCohortDAO implements CohortDAO {
 	
 	@Override
 	public CohortAttribute saveCohortAttributes(CohortAttribute att) {
-		sessionFactory.getCurrentSession().saveOrUpdate(att);
+		getCurrentSession().saveOrUpdate(att);
 		return att;
 	}
 	
 	@Override
 	public List<CohortAttribute> findCohortAtt(String name) {
-		Criteria criteria = (Criteria) sessionFactory.getCurrentSession().createCriteria(CohortAttribute.class);
+		Criteria criteria = (Criteria) getCurrentSession().createCriteria(CohortAttribute.class);
 		criteria.add(Restrictions.ilike("value", name, MatchMode.START));
 		return criteria.list();
 	}
 	
 	@Override
 	public CohortMember saveCPatient(CohortMember cohort) {
-		sessionFactory.getCurrentSession().saveOrUpdate(cohort);
+		getCurrentSession().saveOrUpdate(cohort);
 		return cohort;
 	}
 	
 	@Override
 	public CohortType saveCohortType(CohortType cohorttype) {
-		sessionFactory.getCurrentSession().saveOrUpdate(cohorttype);
+		getCurrentSession().saveOrUpdate(cohorttype);
 		return cohorttype;
 	}
 	
 	@Override
 	public List<CohortType> findCohortType() {
 		List<CohortType> cohort = null;
-		Session session = sessionFactory.getCurrentSession();
+		Session session = getCurrentSession();
 		Query queryResult = session.createQuery("from CohortType");
 		cohort = queryResult.list();
 		return cohort;
@@ -120,7 +121,7 @@ public class HibernateCohortDAO implements CohortDAO {
 	@Override
 	public List<CohortType> getAllCohortTypes() {
 		List<CohortType> cohort = null;
-		Session session = sessionFactory.getCurrentSession();
+		Session session = getCurrentSession();
 		Query queryResult = session.createQuery("from CohortType");
 		cohort = queryResult.list();
 		return cohort;
@@ -128,25 +129,25 @@ public class HibernateCohortDAO implements CohortDAO {
 	
 	@Override
 	public List<CohortType> findCohortType(String cohort_name) {
-		Criteria criteria = (Criteria) sessionFactory.getCurrentSession().createCriteria(CohortType.class);
+		Criteria criteria = (Criteria) getCurrentSession().createCriteria(CohortType.class);
 		criteria.add(Restrictions.ilike("name", cohort_name, MatchMode.START));
 		return criteria.list();
 	}
 	
 	@Override
 	public void purgeCohortType(CohortType cohort) {
-		sessionFactory.getCurrentSession().delete(cohort);
+		getCurrentSession().delete(cohort);
 	}
 	
 	@Override
 	public void purgeCohortAtt(CohortAttribute att) {
-		sessionFactory.getCurrentSession().delete(att);
+		getCurrentSession().delete(att);
 	}
 	
 	@Override
 	public List<CohortAttributeType> findCohortAttributes() {
 		List<CohortAttributeType> cohort = null;
-		Session session = sessionFactory.getCurrentSession();
+		Session session = getCurrentSession();
 		Query queryResult = session.createQuery("from CohortAttributeType");
 		cohort = queryResult.list();
 		return cohort;
@@ -155,49 +156,49 @@ public class HibernateCohortDAO implements CohortDAO {
 	@Override
 	public List<CohortAttributeType> findCohortAttributes(
 			String attribute_type_name) {
-		Criteria criteria = (Criteria) sessionFactory.getCurrentSession().createCriteria(CohortAttributeType.class);
+		Criteria criteria = (Criteria) getCurrentSession().createCriteria(CohortAttributeType.class);
 		criteria.add(Restrictions.ilike("name", attribute_type_name, MatchMode.START));
 		return criteria.list();
 	}
 	
 	@Override
 	public void purgeCohortAttributes(CohortAttributeType attributes) {
-		sessionFactory.getCurrentSession().delete(attributes);
+		getCurrentSession().delete(attributes);
 	}
 	
 	@Override
 	public void purgeCohortEncounters(CohortEncounter cencounters) {
-		sessionFactory.getCurrentSession().delete(cencounters);
+		getCurrentSession().delete(cencounters);
 	}
 	
 	@Override
 	public CohortType getCohortType(Integer id) {
-		return (CohortType) sessionFactory.getCurrentSession().get(CohortType.class, id);
+		return (CohortType) getCurrentSession().get(CohortType.class, id);
 	}
 	
 	@Override
 	public CohortAttributeType saveCohortAttributes(
 			CohortAttributeType attributes) {
-		sessionFactory.getCurrentSession().saveOrUpdate(attributes);
+		getCurrentSession().saveOrUpdate(attributes);
 		return attributes;
 	}
 	
 	@Override
 	public CohortAttributeType getCohortAttributes(
 			Integer cohort_attribute_type_id) {
-		return (CohortAttributeType) sessionFactory.getCurrentSession().get(CohortAttributeType.class, cohort_attribute_type_id);
+		return (CohortAttributeType) getCurrentSession().get(CohortAttributeType.class, cohort_attribute_type_id);
 	}
 	
 	@Override
 	public CohortEncounter saveCohortEncounters(CohortEncounter cencounters) {
-		sessionFactory.getCurrentSession().saveOrUpdate(cencounters);
+		getCurrentSession().saveOrUpdate(cencounters);
 		return cencounters;
 	}
 	
 	@Override
 	public List<CohortEncounter> findCohortEncounters() {
 		List<CohortEncounter> cohort = null;
-		Session session = sessionFactory.getCurrentSession();
+		Session session = getCurrentSession();
 		Query queryResult = session.createQuery("from CohortEncounter");
 		cohort = queryResult.list();
 		return cohort;
@@ -205,19 +206,19 @@ public class HibernateCohortDAO implements CohortDAO {
 	
 	@Override
 	public CohortM saveCohort(CohortM cohort) {
-		sessionFactory.getCurrentSession().saveOrUpdate(cohort);
+		getCurrentSession().saveOrUpdate(cohort);
 		return cohort;
 	}
 	
 	@Override
 	public void purgeCohort(CohortM cohort) {
-		sessionFactory.getCurrentSession().delete(cohort);
+		getCurrentSession().delete(cohort);
 	}
 	
 	@Override
 	public List<CohortM> getCohort(Integer id) {
 		List<CohortM> cohort = null;
-		Session session = sessionFactory.getCurrentSession();
+		Session session = getCurrentSession();
 		Query queryResult = session.createQuery("from CohortM where cohortId='" + id + "'");
 		cohort = queryResult.list();
 		return cohort;
@@ -226,7 +227,7 @@ public class HibernateCohortDAO implements CohortDAO {
 	@Override
 	public List<CohortM> findCohorts() {
 		List<CohortM> cohort = null;
-		Session session = sessionFactory.getCurrentSession();
+		Session session = getCurrentSession();
 		Query queryResult = session.createQuery("from CohortM");
 		cohort = queryResult.list();
 		return cohort;
@@ -234,7 +235,7 @@ public class HibernateCohortDAO implements CohortDAO {
 	
 	@Override
 	public List<CohortM> findCohorts(String cohort_module) {
-		Criteria criteria = (Criteria) sessionFactory.getCurrentSession().createCriteria(CohortM.class);
+		Criteria criteria = (Criteria) getCurrentSession().createCriteria(CohortM.class);
 		criteria.add(Restrictions.ilike("name", cohort_module, MatchMode.START));
 		criteria.add(Restrictions.eq("voided", false));
 		return criteria.list();
@@ -243,31 +244,31 @@ public class HibernateCohortDAO implements CohortDAO {
 	@Override
 	public CohortMemberAttribute saveCohortMemberAttribute(
 			CohortMemberAttribute att) {
-		sessionFactory.getCurrentSession().saveOrUpdate(att);
+		getCurrentSession().saveOrUpdate(att);
 		return att;
 	}
 	
 	@Override
 	public void purgeCohortMemberAttribute(CohortMemberAttribute att) {
-		sessionFactory.getCurrentSession().delete(att);
+		getCurrentSession().delete(att);
 	}
 	
 	@Override
 	public CohortMemberAttributeType saveCohortMemberAttributeType(
 			CohortMemberAttributeType at) {
-		sessionFactory.getCurrentSession().saveOrUpdate(at);
+		getCurrentSession().saveOrUpdate(at);
 		return at;
 	}
 	
 	@Override
 	public void purgeCohortMemberAttributeType(CohortMemberAttributeType at) {
-		sessionFactory.getCurrentSession().delete(at);
+		getCurrentSession().delete(at);
 	}
 	
 	@Override
 	public List<CohortMemberAttributeType> findCohortMemberAttributeType() {
 		List<CohortMemberAttributeType> cohort = null;
-		Session session = sessionFactory.getCurrentSession();
+		Session session = getCurrentSession();
 		Query queryResult = session.createQuery("from CohortMemberAttributeType");
 		cohort = queryResult.list();
 		return cohort;
@@ -277,7 +278,7 @@ public class HibernateCohortDAO implements CohortDAO {
 	public List<CohortMemberAttributeType> findCohortMemberAttributes(
 			String attribute_type_name) {
 		List<CohortMemberAttributeType> cohort = null;
-		Session session = sessionFactory.getCurrentSession();
+		Session session = getCurrentSession();
 		Query queryResult = session.createQuery("from CohortMemberAttributeType where name='" + attribute_type_name + "'");
 		cohort = queryResult.list();
 		return cohort;
@@ -285,19 +286,19 @@ public class HibernateCohortDAO implements CohortDAO {
 	
 	@Override
 	public CohortVisit saveCohortVisit(CohortVisit cvisit) {
-		sessionFactory.getCurrentSession().saveOrUpdate(cvisit);
+		getCurrentSession().saveOrUpdate(cvisit);
 		return cvisit;
 	}
 	
 	@Override
 	public void purgeCohortVisit(CohortVisit cvisit) {
-		sessionFactory.getCurrentSession().delete(cvisit);
+		getCurrentSession().delete(cvisit);
 	}
 	
 	@Override
 	public List<CohortVisit> findCohortVisit() {
 		List<CohortVisit> cohort = null;
-		Session session = sessionFactory.getCurrentSession();
+		Session session = getCurrentSession();
 		Query queryResult = session.createQuery("from CohortVisit");
 		cohort = queryResult.list();
 		return cohort;
@@ -305,13 +306,13 @@ public class HibernateCohortDAO implements CohortDAO {
 	
 	@Override
 	public CohortM getCohortId(Integer id) {
-		return (CohortM) sessionFactory.getCurrentSession().get(CohortM.class, id);
+		return (CohortM) getCurrentSession().get(CohortM.class, id);
 	}
 	
 	@Override
 	public List<CohortMemberAttributeType> findCohortMemberAttributeType(
 			String name) {
-		Criteria criteria = (Criteria) sessionFactory.getCurrentSession().createCriteria(CohortMemberAttributeType.class);
+		Criteria criteria = (Criteria) getCurrentSession().createCriteria(CohortMemberAttributeType.class);
 		criteria.add(Restrictions.ilike("name", name, MatchMode.START));
 		criteria.add(Restrictions.eq("voided", false));
 		return criteria.list();
@@ -319,7 +320,7 @@ public class HibernateCohortDAO implements CohortDAO {
 	
 	@Override
 	public List<CohortMemberAttribute> findCohortMemberAttribute(String name) {
-		Criteria criteria = (Criteria) sessionFactory.getCurrentSession().createCriteria(CohortMemberAttribute.class);
+		Criteria criteria = (Criteria) getCurrentSession().createCriteria(CohortMemberAttribute.class);
 		criteria.add(Restrictions.ilike("value", name, MatchMode.START));
 		criteria.add(Restrictions.eq("voided", false));
 		return criteria.list();
@@ -327,12 +328,12 @@ public class HibernateCohortDAO implements CohortDAO {
 	
 	@Override
 	public CohortM getCohortUuid(String uuid) {
-		return (CohortM) sessionFactory.getCurrentSession().createQuery("from CohortM t where t.uuid = :uuid").setString("uuid", uuid).uniqueResult();
+		return (CohortM) getCurrentSession().createQuery("from CohortM t where t.uuid = :uuid").setString("uuid", uuid).uniqueResult();
 	}
 	
 	@Override
 	public List<CohortEncounter> findCohortEncounters(String name) {
-		Criteria criteria = (Criteria) sessionFactory.getCurrentSession().createCriteria(CohortEncounter.class);
+		Criteria criteria = (Criteria) getCurrentSession().createCriteria(CohortEncounter.class);
 		criteria.add(Restrictions.ilike("encounterType", name, MatchMode.START));
 		criteria.add(Restrictions.eq("voided", false));
 		return criteria.list();
@@ -340,7 +341,7 @@ public class HibernateCohortDAO implements CohortDAO {
 	
 	@Override
 	public List<CohortVisit> findCohortVisit(String name) {
-		Criteria criteria = (Criteria) sessionFactory.getCurrentSession().createCriteria(CohortVisit.class);
+		Criteria criteria = (Criteria) getCurrentSession().createCriteria(CohortVisit.class);
 		criteria.add(Restrictions.ilike("visitType", name, MatchMode.START));
 		criteria.add(Restrictions.eq("voided", false));
 		return criteria.list();
@@ -348,48 +349,48 @@ public class HibernateCohortDAO implements CohortDAO {
 	
 	@Override
 	public CohortAttribute getCohortAttributeUuid(String uuid) {
-		return (CohortAttribute) sessionFactory.getCurrentSession().createQuery("from CohortAttribute t where t.uuid = :uuid").setString("uuid", uuid).uniqueResult();
+		return (CohortAttribute) getCurrentSession().createQuery("from CohortAttribute t where t.uuid = :uuid").setString("uuid", uuid).uniqueResult();
 	}
 	
 	@Override
 	public CohortEncounter getCohortEncounterUuid(String uuid) {
-		return (CohortEncounter) sessionFactory.getCurrentSession().createQuery("from CohortEncounter t where t.uuid = :uuid").setString("uuid", uuid).uniqueResult();
+		return (CohortEncounter) getCurrentSession().createQuery("from CohortEncounter t where t.uuid = :uuid").setString("uuid", uuid).uniqueResult();
 	}
 	
 	@Override
 	public CohortMember getCohortMemUuid(String uuid) {
-		return (CohortMember) sessionFactory.getCurrentSession().createQuery("from CohortMember t where t.uuid = :uuid").setString("uuid", uuid).uniqueResult();
+		return (CohortMember) getCurrentSession().createQuery("from CohortMember t where t.uuid = :uuid").setString("uuid", uuid).uniqueResult();
 	}
 	
 	@Override
 	public CohortMemberAttribute getCohortMemberAttributeUuid(String uuid) {
-		return (CohortMemberAttribute) sessionFactory.getCurrentSession().createQuery("from CohortMemberAttribute t where t.uuid = :uuid").setString("uuid", uuid).uniqueResult();
+		return (CohortMemberAttribute) getCurrentSession().createQuery("from CohortMemberAttribute t where t.uuid = :uuid").setString("uuid", uuid).uniqueResult();
 	}
 	
 	@Override
 	public CohortType getCohortTypeUuid(String uuid) {
-		return (CohortType) sessionFactory.getCurrentSession().createQuery("from CohortType t where t.uuid = :uuid").setString("uuid", uuid).uniqueResult();
+		return (CohortType) getCurrentSession().createQuery("from CohortType t where t.uuid = :uuid").setString("uuid", uuid).uniqueResult();
 	}
 	
 	@Override
 	public CohortVisit getCohortVisitUuid(String uuid) {
-		return (CohortVisit) sessionFactory.getCurrentSession().createQuery("from CohortVisit t where t.uuid = :uuid").setString("uuid", uuid).uniqueResult();
+		return (CohortVisit) getCurrentSession().createQuery("from CohortVisit t where t.uuid = :uuid").setString("uuid", uuid).uniqueResult();
 	}
 	
 	@Override
 	public CohortAttributeType getCohortAttributeTypeUuid(String uuid) {
-		return (CohortAttributeType) sessionFactory.getCurrentSession().createQuery("from CohortAttributeType t where t.uuid = :uuid").setString("uuid", uuid).uniqueResult();
+		return (CohortAttributeType) getCurrentSession().createQuery("from CohortAttributeType t where t.uuid = :uuid").setString("uuid", uuid).uniqueResult();
 	}
 	
 	@Override
 	public CohortMemberAttributeType getCohortMemberAttributeType(String uuid) {
-		return (CohortMemberAttributeType) sessionFactory.getCurrentSession().createQuery("from CohortMemberAttributeType t where t.uuid = :uuid").setString("uuid", uuid).uniqueResult();
+		return (CohortMemberAttributeType) getCurrentSession().createQuery("from CohortMemberAttributeType t where t.uuid = :uuid").setString("uuid", uuid).uniqueResult();
 	}
 	
 	@Override
 	public List<CohortMember> findCohortMember() {
 		List<CohortMember> cohort = null;
-		Session session = sessionFactory.getCurrentSession();
+		Session session = getCurrentSession();
 		Query queryResult = session.createQuery("from CohortMember");
 		cohort = queryResult.list();
 		return cohort;
@@ -399,7 +400,7 @@ public class HibernateCohortDAO implements CohortDAO {
 	@Override
 	public List<CohortVisit> findCohortVisit(Integer id) {
 		List<CohortVisit> cohort = null;
-		Session session = sessionFactory.getCurrentSession();
+		Session session = getCurrentSession();
 		Query queryResult = session.createQuery("from CohortVisit where cohortVisitId='" + id + "'");
 		cohort = queryResult.list();
 		return cohort;
@@ -408,7 +409,7 @@ public class HibernateCohortDAO implements CohortDAO {
 	@Override
 	public List<CohortM> findCohort(Integer id) {
 		List<CohortM> cohort = null;
-		Session session = sessionFactory.getCurrentSession();
+		Session session = getCurrentSession();
 		Query queryResult = session.createQuery("from CohortM where cohortId='" + id + "'");
 		cohort = queryResult.list();
 		return cohort;
@@ -417,7 +418,7 @@ public class HibernateCohortDAO implements CohortDAO {
 	@Override
 	public List<CohortType> findCohortType(Integer id) {
 		List<CohortType> cohort = null;
-		Session session = sessionFactory.getCurrentSession();
+		Session session = getCurrentSession();
 		Query queryResult = session.createQuery("from CohortType where cohortTypeId='" + id + "'");
 		cohort = queryResult.list();
 		return cohort;
@@ -426,7 +427,7 @@ public class HibernateCohortDAO implements CohortDAO {
 	@Override
 	public List<CohortAttribute> findCohortAtt(Integer id) {
 		List<CohortAttribute> cohort = null;
-		Session session = sessionFactory.getCurrentSession();
+		Session session = getCurrentSession();
 		Query queryResult = session.createQuery("from CohortAttribute where cohortAttributeId='" + id + "'");
 		cohort = queryResult.list();
 		return cohort;
@@ -435,7 +436,7 @@ public class HibernateCohortDAO implements CohortDAO {
 	@Override
 	public List<CohortAttributeType> findCohortAttType(Integer id) {
 		List<CohortAttributeType> cohort = null;
-		Session session = sessionFactory.getCurrentSession();
+		Session session = getCurrentSession();
 		Query queryResult = session.createQuery("from CohortAttributeType where cohortAttributeTypeId='" + id + "'");
 		cohort = queryResult.list();
 		return cohort;
@@ -444,7 +445,7 @@ public class HibernateCohortDAO implements CohortDAO {
 	@Override
 	public List<CohortMemberAttributeType> findCohortMemAttType(Integer id) {
 		List<CohortMemberAttributeType> cohort = null;
-		Session session = sessionFactory.getCurrentSession();
+		Session session = getCurrentSession();
 		Query queryResult = session.createQuery("from CohortMemberAttributeType where cohortMemberAttributeTypeId='" + id + "'");
 		cohort = queryResult.list();
 		return cohort;
@@ -453,7 +454,7 @@ public class HibernateCohortDAO implements CohortDAO {
 	@Override
 	public List<CohortMemberAttribute> findCohortMemAtt(Integer id) {
 		List<CohortMemberAttribute> cohort = null;
-		Session session = sessionFactory.getCurrentSession();
+		Session session = getCurrentSession();
 		Query queryResult = session.createQuery("from CohortMemberAttribute where cohortMemberAttributeId='" + id + "'");
 		cohort = queryResult.list();
 		return cohort;
@@ -462,7 +463,7 @@ public class HibernateCohortDAO implements CohortDAO {
 	@Override
 	public List<CohortEncounter> findCohortEnc(Integer id) {
 		List<CohortEncounter> cohort = null;
-		Session session = sessionFactory.getCurrentSession();
+		Session session = getCurrentSession();
 		Query queryResult = session.createQuery("from CohortEncounter where encounterId='" + id + "'");
 		cohort = queryResult.list();
 		return cohort;
@@ -470,19 +471,19 @@ public class HibernateCohortDAO implements CohortDAO {
 	
 	@Override
 	public CohortProgram saveCohortProgram(CohortProgram cohort) {
-		sessionFactory.getCurrentSession().saveOrUpdate(cohort);
+		getCurrentSession().saveOrUpdate(cohort);
 		return cohort;
 	}
 	
 	@Override
 	public void purgeCohortProgram(CohortProgram cvisit) {
-		sessionFactory.getCurrentSession().delete(cvisit);
+		getCurrentSession().delete(cvisit);
 	}
 	
 	@Override
 	public List<CohortProgram> findCohortProg() {
 		List<CohortProgram> cohort = null;
-		Session session = sessionFactory.getCurrentSession();
+		Session session = getCurrentSession();
 		Query queryResult = session.createQuery("from CohortProgram");
 		cohort = queryResult.list();
 		return cohort;
@@ -490,7 +491,7 @@ public class HibernateCohortDAO implements CohortDAO {
 	
 	@Override
 	public List<CohortProgram> findCohortProgram(String name) {
-		Criteria criteria = (Criteria) sessionFactory.getCurrentSession().createCriteria(CohortProgram.class);
+		Criteria criteria = (Criteria) getCurrentSession().createCriteria(CohortProgram.class);
 		criteria.add(Restrictions.ilike("name", name, MatchMode.START));
 		criteria.add(Restrictions.eq("voided", false));
 		return criteria.list();
@@ -498,13 +499,13 @@ public class HibernateCohortDAO implements CohortDAO {
 	
 	@Override
 	public CohortProgram getCohortProgramUuid(String uuid) {
-		return (CohortProgram) sessionFactory.getCurrentSession().createQuery("from CohortProgram t where t.uuid = :uuid").setString("uuid", uuid).uniqueResult();
+		return (CohortProgram) getCurrentSession().createQuery("from CohortProgram t where t.uuid = :uuid").setString("uuid", uuid).uniqueResult();
 	}
 	
 	@Override
 	public List<CohortProgram> findCohortProgram(Integer id) {
 		List<CohortProgram> cohort = null;
-		Session session = sessionFactory.getCurrentSession();
+		Session session = getCurrentSession();
 		Query queryResult = session.createQuery("from CohortProgram where cohortProgramId='" + id + "'");
 		cohort = queryResult.list();
 		return cohort;
@@ -512,19 +513,19 @@ public class HibernateCohortDAO implements CohortDAO {
 	
 	@Override
 	public CohortObs saveCohortObs(CohortObs cobs) {
-		sessionFactory.getCurrentSession().saveOrUpdate(cobs);
+		getCurrentSession().saveOrUpdate(cobs);
 		return cobs;
 	}
 	
 	@Override
 	public void purgeCohortObs(CohortObs cobs) {
-		sessionFactory.getCurrentSession().delete(cobs);
+		getCurrentSession().delete(cobs);
 	}
 	
 	@Override
 	public List<CohortObs> findCohortObs() {
 		List<CohortObs> cohort = null;
-		Session session = sessionFactory.getCurrentSession();
+		Session session = getCurrentSession();
 		Query queryResult = session.createQuery("from CohortObs");
 		cohort = queryResult.list();
 		return cohort;
@@ -533,7 +534,7 @@ public class HibernateCohortDAO implements CohortDAO {
 	@Override
 	public List<CohortObs> findCohortObs(Integer id) {
 		List<CohortObs> cohort = null;
-		Session session = sessionFactory.getCurrentSession();
+		Session session = getCurrentSession();
 		Query queryResult = session.createQuery("from CohortObs where obsId='" + id + "'");
 		cohort = queryResult.list();
 		return cohort;
@@ -541,19 +542,19 @@ public class HibernateCohortDAO implements CohortDAO {
 	
 	@Override
 	public CohortObs getCohortObsUuid(String uuid) {
-		return (CohortObs) sessionFactory.getCurrentSession().createQuery("from CohortObs t where t.uuid = :uuid").setString("uuid", uuid).uniqueResult();
+		return (CohortObs) getCurrentSession().createQuery("from CohortObs t where t.uuid = :uuid").setString("uuid", uuid).uniqueResult();
 	}
 	
 	@Override
 	public CohortRole saveCohortRole(CohortRole cohort) {
-		sessionFactory.getCurrentSession().saveOrUpdate(cohort);
+		getCurrentSession().saveOrUpdate(cohort);
 		return cohort;
 	}
 	
 	@Override
 	public List<CohortRole> findRoles(String name) {
 		List<CohortRole> cohort = null;
-		Session session = sessionFactory.getCurrentSession();
+		Session session = getCurrentSession();
 		Query queryResult = session.createQuery("from CohortRole r where r.cohortType=(select m.cohortType from CohortM m where m.name='" + name + "')");
 		cohort = queryResult.list();
 		return cohort;
@@ -562,7 +563,7 @@ public class HibernateCohortDAO implements CohortDAO {
 	@Override
 	public List<CohortRole> findCohortRoles(String name) {
 		List<CohortRole> cohort = null;
-		Session session = sessionFactory.getCurrentSession();
+		Session session = getCurrentSession();
 		Query queryResult = session.createQuery("from CohortRole where name='" + name + "'");
 		cohort = queryResult.list();
 		return cohort;
@@ -570,19 +571,19 @@ public class HibernateCohortDAO implements CohortDAO {
 	
 	@Override
 	public CohortRole getCohortRoleUuid(String uuid) {
-		return (CohortRole) sessionFactory.getCurrentSession().createQuery("from CohortRole t where t.uuid = :uuid").setString("uuid", uuid).uniqueResult();
+		return (CohortRole) getCurrentSession().createQuery("from CohortRole t where t.uuid = :uuid").setString("uuid", uuid).uniqueResult();
 	}
 	
 	@Override
 	public CohortEncounter getCohortEncounter(Integer id) {
 		
-		return (CohortEncounter) sessionFactory.getCurrentSession().get(CohortEncounter.class, id);
+		return (CohortEncounter) getCurrentSession().get(CohortEncounter.class, id);
 		
 	}
 	
 	@Override
 	public List<CohortEncounter> getEncounters(EncounterSearchCriteria searchCriteria) {
-		Criteria crit = sessionFactory.getCurrentSession().createCriteria(CohortEncounter.class);
+		Criteria crit = getCurrentSession().createCriteria(CohortEncounter.class);
 		
 		if (searchCriteria.getCohort() != null && searchCriteria.getCohort().getCohortId() != null) {
 			crit.add(Restrictions.eq("cohort", searchCriteria.getCohort()));
@@ -631,7 +632,7 @@ public class HibernateCohortDAO implements CohortDAO {
 	
 	private Criteria createEncounterByQueryCriteria(String query, Integer cohortId, boolean includeVoided,
 			boolean orderByNames) {
-		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(CohortEncounter.class, "enc");
+		Criteria criteria = getCurrentSession().createCriteria(CohortEncounter.class, "enc");
 		if (!includeVoided) {
 			criteria.add(Restrictions.eq("enc.voided", false));
 		}
@@ -702,7 +703,7 @@ public class HibernateCohortDAO implements CohortDAO {
 	
 	@Override
 	public List<CohortRole> findCohortRole(String cohort_name) {
-		Criteria criteria = (Criteria) sessionFactory.getCurrentSession().createCriteria(CohortRole.class);
+		Criteria criteria = (Criteria) getCurrentSession().createCriteria(CohortRole.class);
 		criteria.add(Restrictions.ilike("name", cohort_name, MatchMode.START));
 		criteria.add(Restrictions.eq("voided", false));
 		return criteria.list();
@@ -711,7 +712,7 @@ public class HibernateCohortDAO implements CohortDAO {
 	@Override
 	public List<CohortRole> findCohortRole(Integer id) {
 		List<CohortRole> cohort = null;
-		Session session = sessionFactory.getCurrentSession();
+		Session session = getCurrentSession();
 		Query queryResult = session.createQuery("from CohortRole where cohortRoleId='" + id + "'");
 		cohort = queryResult.list();
 		return cohort;
@@ -719,12 +720,12 @@ public class HibernateCohortDAO implements CohortDAO {
 	
 	@Override
 	public void purgeCohortRole(CohortRole crole) {
-		sessionFactory.getCurrentSession().delete(crole);
+		getCurrentSession().delete(crole);
 	}
 	
 	@Override
 	public Long getCount(String name) {
-		return ((Long) sessionFactory.getCurrentSession().createQuery("select count(*) from CohortMember c left outer join c.cohort m where m.name='" + name + "'").iterate().next()).longValue();
+		return ((Long) getCurrentSession().createQuery("select count(*) from CohortMember c left outer join c.cohort m where m.name='" + name + "'").iterate().next()).longValue();
 	}
 	
 	@Override
@@ -740,7 +741,7 @@ public class HibernateCohortDAO implements CohortDAO {
 			}
 		}
 		
-		sessionFactory.getCurrentSession().saveOrUpdate(obs);
+		getCurrentSession().saveOrUpdate(obs);
 		
 		return obs;
 	}
@@ -748,7 +749,7 @@ public class HibernateCohortDAO implements CohortDAO {
 	@Override
 	public List<CohortMember> getCohortMember(Integer id) {
 		List<CohortMember> cohort = null;
-		Session session = sessionFactory.getCurrentSession();
+		Session session = getCurrentSession();
 		Query queryResult = session.createQuery("from CohortMember where cohortMemberId='" + id + "'");
 		cohort = queryResult.list();
 		return cohort;
@@ -757,8 +758,8 @@ public class HibernateCohortDAO implements CohortDAO {
 	@Override
 	public List<CohortMember> findCohortMember(String name) {
 		List<CohortMember> cohort = null;
-		Session session = sessionFactory.getCurrentSession();
-		/*Criteria criteria=(Criteria) sessionFactory.getCurrentSession().createCriteria(Person.class);
+		Session session = getCurrentSession();
+		/*Criteria criteria=(Criteria) getCurrentSession().createCriteria(Person.class);
     	criteria.add(Restrictions.ilike("names",name, MatchMode.START));*/
 		Query queryResult = session.createQuery("from CohortMember where person=(select personId from Person where names='" + name + "'");
 		cohort = queryResult.list();
@@ -767,7 +768,7 @@ public class HibernateCohortDAO implements CohortDAO {
 	
 	@Override
 	public List<CohortEncounter> findCohortEncounter(String cohort, String location) {
-		Criteria criteria = (Criteria) sessionFactory.getCurrentSession().createCriteria(CohortEncounter.class);
+		Criteria criteria = (Criteria) getCurrentSession().createCriteria(CohortEncounter.class);
 		criteria.add(Restrictions.ilike("cohort", cohort, MatchMode.START));
 		criteria.add(Restrictions.ilike("location", location, MatchMode.START));
 		return criteria.list();
@@ -775,11 +776,31 @@ public class HibernateCohortDAO implements CohortDAO {
 	
 	@Override
 	public List<CohortMember> findCohortMembersByCohortId (Integer cohortId) {
-		Session session = sessionFactory.getCurrentSession();
+		Session session = getCurrentSession();
 		return session.createQuery("from CohortMember where cohort ='" +cohortId+ "'").list();
 //		List<CohortMember> cohortMembers = null;
-//		Criteria criteria = (Criteria) sessionFactory.getCurrentSession().createCriteria(CohortMember.class);
+//		Criteria criteria = (Criteria) getCurrentSession().createCriteria(CohortMember.class);
 //		criteria.add(Restrictions.ilike("cohort", cohortId.toString(), MatchMode.START));
 //		return criteria.list();
+	}
+	
+	/**
+	 * Gets the current hibernate session while taking care of the hibernate 3 and 4 differences.
+	 * 
+	 * @return the current hibernate session.
+	 */
+	private org.hibernate.Session getCurrentSession() {
+		try {
+			return sessionFactory.getCurrentSession();
+		}
+		catch (NoSuchMethodError ex) {
+			try {
+				Method method = sessionFactory.getClass().getMethod("getCurrentSession", null);
+				return (org.hibernate.Session)method.invoke(sessionFactory, null);
+			}
+			catch (Exception e) {
+				throw new RuntimeException("Failed to get the current hibernate session", e);
+			}
+		}
 	}
 }

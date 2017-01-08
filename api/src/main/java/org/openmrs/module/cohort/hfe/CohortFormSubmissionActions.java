@@ -318,7 +318,7 @@ public class CohortFormSubmissionActions extends FormSubmissionActions {
 		String oldString = existingObs.getValueAsString(Context.getLocale());
 		String newString = newObs.getValueAsString(Context.getLocale());
 		if (log.isDebugEnabled() && concept != null) {
-			log.debug("For concept " + concept.getBestName(Context.getLocale()) + ": " + oldString + " -> " + newString);
+			log.debug("For concept " + concept.getName(Context.getLocale(), false) + ": " + oldString + " -> " + newString);
 		}
 		boolean valueChanged = !newString.equals(oldString);
 		// TODO: handle dates that may equal encounter date
@@ -370,7 +370,7 @@ public class CohortFormSubmissionActions extends FormSubmissionActions {
 	}
 	
 	private String printObsHelper(Obs obs) {
-		return obs.getConcept().getBestName(Context.getLocale()) + " = " + obs.getValueAsString(Context.getLocale());
+		return obs.getConcept().getName(Context.getLocale(), false) + " = " + obs.getValueAsString(Context.getLocale());
 	}
 	
 	/**

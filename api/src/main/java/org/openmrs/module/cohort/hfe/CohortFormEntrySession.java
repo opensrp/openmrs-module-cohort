@@ -25,7 +25,6 @@ import org.openmrs.module.htmlformentry.CustomFormSubmissionAction;
 import org.openmrs.module.htmlformentry.FormEntryContext.Mode;
 import org.openmrs.module.htmlformentry.FormEntrySession;
 import org.openmrs.module.htmlformentry.HtmlForm;
-import org.openmrs.module.htmlformentry.HtmlFormEntryConstants;
 import org.openmrs.module.htmlformentry.HtmlFormEntryUtil;
 import org.openmrs.module.htmlformentry.InvalidActionException;
 import org.springframework.util.StringUtils;
@@ -140,7 +139,7 @@ public class CohortFormEntrySession extends FormEntrySession {
 					o.setObsDatetime(o.getEncounter().getEncounterDatetime());
 					if (log.isDebugEnabled()) {
 						log.debug("Set obsDatetime to " + o.getObsDatetime() + " for "
-								+ o.getConcept().getBestName(Context.getLocale()));
+								+ o.getConcept().getName(Context.getLocale(), false));
 					}
 				}
 				if (o.getLocation() == null && o.getEncounter() != null) {
@@ -181,7 +180,7 @@ public class CohortFormEntrySession extends FormEntrySession {
 				cohortEncounter.setForm(e.getForm());
 				cohortEncounter.setEncounterDatetime(e.getEncounterDatetime());
 				cohortEncounter.setLocation(e.getLocation());
-				cohortEncounter.setProvider(e.getProvider());
+				cohortEncounter.setEncounterProviders(e.getEncounterProviders());
 				cohortEncounter.setVisit(cvisit.get(0));
 				//TODO SAVE COHORT ENCOUNTER
 				System.out.println("SAVE COHORT ENC");

@@ -9,16 +9,32 @@
  */
 package org.openmrs.module.cohort.web.controller;
 
+import java.io.PrintWriter;
+import java.io.StringWriter;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.WeakHashMap;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.openmrs.Form;
+import org.openmrs.User;
+import org.openmrs.api.APIAuthenticationException;
 import org.openmrs.api.context.Context;
 import org.openmrs.module.cohort.CohortEncounter;
 import org.openmrs.module.cohort.CohortM;
 import org.openmrs.module.cohort.api.CohortService;
 import org.openmrs.module.cohort.hfe.CohortFormEntrySession;
-import org.openmrs.module.htmlformentry.*;
+import org.openmrs.module.htmlformentry.BadFormDesignException;
 import org.openmrs.module.htmlformentry.FormEntryContext.Mode;
+import org.openmrs.module.htmlformentry.FormSubmissionError;
+import org.openmrs.module.htmlformentry.HtmlForm;
+import org.openmrs.module.htmlformentry.HtmlFormEntryUtil;
+import org.openmrs.module.htmlformentry.ValidationException;
 import org.openmrs.util.OpenmrsUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,12 +46,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
-
-import javax.servlet.http.HttpServletRequest;
-import java.io.PrintWriter;
-import java.io.StringWriter;
-import java.util.Collections;
-import java.util.List;
 
 /**
  * The controller for entering/viewing a form.
@@ -51,6 +61,8 @@ public class HtmlFormEmbedEntryController {
     public final static String FORM_IN_PROGRESS_KEY = "HTML_FORM_IN_PROGRESS_KEY";
     public final static String FORM_IN_PROGRESS_VALUE = "HTML_FORM_IN_PROGRESS_VALUE";
     public final static String FORM_PATH = "/module/cohort/htmlFormEntry";
+    
+ 	private static Map<User, Map<String, Object>> volatileUserData = new WeakHashMap<User, Map<String, Object>>();
 
     @RequestMapping(method = RequestMethod.GET, value = FORM_PATH)
     public void showForm() {
@@ -172,7 +184,7 @@ public class HtmlFormEmbedEntryController {
         if (hasChangedInd != null) {
             session.setHasChangedInd(hasChangedInd);
         }
-        Context.setVolatileUserData(FORM_IN_PROGRESS_KEY, session);
+        setVolatileUserData(FORM_IN_PROGRESS_KEY, session);
         log.info("Took " + (System.currentTimeMillis() - ts) + " ms");
         session.getHtmlToDisplay();
         return session;
@@ -239,4 +251,25 @@ public class HtmlFormEmbedEntryController {
     protected String getQueryPrameters(HttpServletRequest request, CohortFormEntrySession formEntrySession) {
         return "?cid=" + formEntrySession.getCohort().getCohortId();
     }
+    
+    /**
+	 * Set a piece of information for the currently authenticated user. This information is stored
+	 * only temporarily. When a new module is loaded or the server is restarted, this information
+	 * will disappear
+	 *
+	 * @param key identifying string for this information
+	 * @param value information to be stored
+	 */
+	public static void setVolatileUserData(String key, Object value) {
+		User u = Context.getAuthenticatedUser();
+		if (u == null) {
+			throw new APIAuthenticationException();
+		}
+		Map<String, Object> myData = volatileUserData.get(u);
+		if (myData == null) {
+			myData = new HashMap<String, Object>();
+			volatileUserData.put(u, myData);
+		}
+		myData.put(key, value);
+	}
 }
