@@ -59,5 +59,7 @@
 </body>
 
 <script type="text/javascript">
-    $('#management-label-nav').addClass('active')
+    $('#management-label-nav').addClass('active');
+    $('#selectedvalue').addClass('form-control');
+    $('#selectedvalue').attr({ maxLength : 30 });
 </script>
