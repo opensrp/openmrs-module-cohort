@@ -5,11 +5,11 @@
     border: 1px solid #ccc;
     border-radius: 2px;
     color: #0f0f0f;
+    width: 100%;
 }
 
 h4 {
     display: inline-block;
-    vertical-align: -3px;
 }
 
 .form-group {
@@ -24,17 +24,7 @@ h4 {
     font-weight: 700;
     padding: 10px 30px 10px 20px;
 }
-.error {
-    color: #ff0000;
-}
 
-.errorblock {
-    color: #000;
-    background-color: #ffEEEE;
-    border: 3px solid #ff0000;
-    padding: 8px;
-    margin: 16px;
-}
 .attribute-name-header {
     display: inline;
     background: #f4f5f4;
@@ -44,9 +34,10 @@ h4 {
     font-weight: 700;
 }
 
-#name, #names, #description, #format, #format1, #value, .generic-dropdown{
+#name, #description, #format, #format1, .eighty-five-width{
     width: 85%;
 }
+
 
 #startDate {
     width: 35%;
@@ -60,23 +51,14 @@ h4 {
     width: 60%;
 }
 
-.alert-warning, .alert-danger {
-    padding: 5px 10px 5px 10px;
-    border-radius: 5px;
+.error {
+    color: #ff0000;
 }
 
-.btn-warning, .btn-danger {
-    width: 25%;
-}
-
-#void {
-    border: 1px solid orange;
-}
-
-#edit, #submit{
-    width: 85% !important;
-}
-
-.generic-label {
-    width: 85% !important;
+.errorblock {
+    color: #000;
+    background-color: #ffEEEE;
+    border: 3px solid #ff0000;
+    padding: 8px;
+    margin: 16px;
 }
