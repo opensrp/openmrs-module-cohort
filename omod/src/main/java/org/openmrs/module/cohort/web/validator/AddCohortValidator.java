@@ -28,9 +28,13 @@ public class AddCohortValidator implements Validator {
         ValidationUtils.rejectIfEmptyOrWhitespace(arg1, "startDate", "Cohort Start Date Required");
         ValidationUtils.rejectIfEmptyOrWhitespace(arg1, "endDate", "Cohort End Date Required");
         CohortM cohort = (CohortM) arg0;
-        if (cohort.getStartDate().compareTo(cohort.getEndDate()) > 0) {
-            arg1.rejectValue("startDate", "Start date should be less than End date");
+        
+        if (cohort.getStartDate() != null && cohort.getEndDate() != null) {
+	        if (cohort.getStartDate().compareTo(cohort.getEndDate()) > 0) {
+	            arg1.rejectValue("startDate", "Start date should be less than End date");
+	        }
         }
+        
         List<CohortM> allCohorts = service.findCohorts();
         for (CohortM checkCohort : allCohorts) {
             if (checkCohort.getName().equals(cohort.getName())) {
