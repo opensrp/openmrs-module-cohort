@@ -74,3 +74,4 @@ nb-configuration.xml
 /webapp/src/main/webapp/WEB-INF/module_messages*
 /web/WEB-INF/dwr-modules.xml
 #############
+!/.travis.yml
