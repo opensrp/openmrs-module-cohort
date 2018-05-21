@@ -34,9 +34,9 @@
     </organization>
 
     <scm>
-        <connection>scm:svn:https://svn.openmrs.org/openmrs-modules/cohort/trunk/</connection>
-        <developerConnection>scm:svn:https://svn.openmrs.org/openmrs-modules/cohort/trunk/</developerConnection>
-        <url>https://svn.openmrs.org/openmrs-modules/cohort/trunk/</url>
+        <connection>scm:git:git@github.com:openmrs/openmrs-module-cohort.git</connection>
+        <developerConnection>scm:git:git@github.com:openmrs/openmrs-module-cohort.git</developerConnection>
+        <url>https://github.com/openmrs/openmrs-module-cohort.git</url>
     </scm>
 
     <modules>
@@ -135,6 +135,20 @@
             </plugins>
         </pluginManagement>
     </build>
+         
+    <distributionManagement>
+         <repository>
+                  <id>openmrs-repo-modules</id>
+                  <name>OpenMRS Nexus Modules</name>
+                  <url>http://mavenrepo.openmrs.org/nexus/content/repositories/modules</url>
+         </repository>
+         <snapshotRepository>
+                  <id>openmrs-repo-snapshots</id>
+                  <name>OpenMRS Nexus Snapshots</name>
+                  <url>http://mavenrepo.openmrs.org/nexus/content/repositories/snapshots</url>
+         </snapshotRepository>
+    </distributionManagement>
+
 
     <repositories>
         <repository>
