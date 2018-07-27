@@ -1,3 +1,4 @@
+
 package org.openmrs.module.cohort;
 
 import java.util.ArrayDeque;
@@ -33,10 +34,9 @@ public class CohortEncounter extends BaseOpenmrsData {
 	private Location location;
 	private Date encounterDatetime;
 	private Form form;
+	private Date encounterDateTime;
 	private CohortVisit visit;
-	
 	private Set<CohortObs> obs;
-	
 	private Set<EncounterProvider> encounterProviders = new LinkedHashSet<EncounterProvider>();
 	
 	public Form getForm() {
@@ -54,8 +54,6 @@ public class CohortEncounter extends BaseOpenmrsData {
 	public void setVisit(CohortVisit visit) {
 		this.visit = visit;
 	}
-	
-	private Date encounterDateTime;
 	
 	@Override
 	public Integer getId() {

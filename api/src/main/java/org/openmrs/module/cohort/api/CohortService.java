@@ -198,7 +198,7 @@ public interface CohortService extends OpenmrsService {
 	
 	public List<CohortType> findCohortType(Integer id);
 	
-	public List<CohortAttribute> findCohortAtt(Integer id);
+	public List<CohortAttribute> findCohortAttribute(Integer id);
 	
 	public List<CohortAttributeType> findCohortAttType(Integer id);
 	

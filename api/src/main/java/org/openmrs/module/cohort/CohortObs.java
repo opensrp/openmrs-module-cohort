@@ -37,29 +37,30 @@ import org.openmrs.util.Format.FORMAT_TYPE;
 
 public class CohortObs extends BaseOpenmrsData {
 	
-	private Integer obsId;
+	private Integer cohortObsId;
 	private CohortM cohort;
 	protected Concept concept;
 	private CohortEncounter encounterId;
 	private Location location;
 	private Date obsDateTime;
-	
-	protected Set<CohortObs> groupMembers;
-	
 	private static final Log log = LogFactory.getLog(CohortObs.class);
-	
-	protected Obs obsGroup;
-	
-	protected String comment;
-	
-	protected Concept valueCoded;
-	
-	protected ConceptName valueCodedName;
-	
 	private static DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-	
+	protected Set<CohortObs> groupMembers;
+	protected Obs obsGroup;
+	protected String comment;
+	protected Concept valueCoded;
+	protected ConceptName valueCodedName;
 	protected Integer valueGroupId;
-	
+	protected Date valueDatetime;	
+	protected Double valueNumeric;
+	protected String valueModifier;
+	protected String valueText;
+	protected transient ComplexData complexData;
+	protected String valueComplex;
+	protected String accessionNumber;
+	private static DateFormat timeFormat = new SimpleDateFormat("HH:mm");
+	private static DateFormat datetimeFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+
 	public Integer getValueGroupId() {
 		return valueGroupId;
 	}
@@ -75,24 +76,6 @@ public class CohortObs extends BaseOpenmrsData {
 	public void setValueModifier(String valueModifier) {
 		this.valueModifier = valueModifier;
 	}
-	
-	protected Date valueDatetime;
-	
-	protected Double valueNumeric;
-	
-	protected String valueModifier;
-	
-	protected String valueText;
-	
-	protected transient ComplexData complexData;
-	
-	protected String valueComplex;
-	
-	protected String accessionNumber;
-	
-	private static DateFormat timeFormat = new SimpleDateFormat("HH:mm");
-	
-	private static DateFormat datetimeFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 	
 	@Override
 	public Integer getId() {
@@ -121,11 +104,11 @@ public class CohortObs extends BaseOpenmrsData {
 	}
 	
 	public Integer getObsId() {
-		return obsId;
+		return cohortObsId;
 	}
 	
 	public void setObsId(Integer obsId) {
-		this.obsId = obsId;
+		this.cohortObsId = obsId;
 	}
 	
 	public CohortEncounter getEncounterId() {

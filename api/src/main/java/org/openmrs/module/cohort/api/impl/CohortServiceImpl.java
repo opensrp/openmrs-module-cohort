@@ -181,7 +181,7 @@ public class CohortServiceImpl extends BaseOpenmrsService implements
 	
 	@Override
 	public List<CohortAttribute> findCohortAtt(String name) {
-		return dao.findCohortAtt(name);
+		return dao.findCohortAttribute(name);
 	}
 	
 	@Override
@@ -332,7 +332,7 @@ public class CohortServiceImpl extends BaseOpenmrsService implements
 	}
 	
 	@Override
-	public List<CohortAttribute> findCohortAtt(Integer id) {
+	public List<CohortAttribute> findCohortAttribute(Integer id) {
 		// TODO Auto-generated method stub
 		return dao.findCohortAtt(id);
 	}

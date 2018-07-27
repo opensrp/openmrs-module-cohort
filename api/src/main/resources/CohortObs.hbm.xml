@@ -5,7 +5,7 @@
 
 <hibernate-mapping>
     <class name="org.openmrs.module.cohort.CohortObs" table="cohort_obs">
-        <id name="obsId" type="int" column="obs_id" unsaved-value="0">
+        <id name="cohortObsId" type="int" column="obs_id" unsaved-value="0">
             <generator class="native"/>
         </id>
         <many-to-one name="cohort" class="org.openmrs.module.cohort.CohortM"
@@ -52,5 +52,12 @@
             <key column="obs_group_id"/>
             <one-to-many class="org.openmrs.module.cohort.CohortObs"/>
         </set>
+        
+        <property name="dateCreated" column="date_created" type="java.util.Date" not-null="true"/>
+		<many-to-one name="creator" column ="creator" class="org.openmrs.User" not-null="true"/>
+		<many-to-one name="changedBy" column="changed_by" class="org.openmrs.User" />
+		<property name="dateChanged" column="date_changed" type="java.util.Date" />
+		<many-to-one name="voidedBy" column="voided_by" class="org.openmrs.User" />
+		<property name="dateVoided" column="date_voided" type="java.util.Date" />
     </class>
 </hibernate-mapping>
