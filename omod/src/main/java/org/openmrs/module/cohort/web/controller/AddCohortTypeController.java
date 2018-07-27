@@ -9,6 +9,8 @@
  */
 package org.openmrs.module.cohort.web.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.openmrs.api.context.Context;
 import org.openmrs.module.cohort.CohortType;
 import org.openmrs.module.cohort.api.CohortService;
@@ -24,8 +26,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.context.request.WebRequest;
-
-import javax.servlet.http.HttpSession;
 
 /**
  * The main controller.

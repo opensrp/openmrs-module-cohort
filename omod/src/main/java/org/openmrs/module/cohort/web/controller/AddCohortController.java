@@ -9,12 +9,26 @@
  */
 package org.openmrs.module.cohort.web.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Locale;
+import java.util.Set;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.openmrs.Location;
 import org.openmrs.Patient;
 import org.openmrs.api.LocationService;
 import org.openmrs.api.PatientService;
 import org.openmrs.api.context.Context;
-import org.openmrs.module.cohort.*;
+import org.openmrs.module.cohort.CohortM;
+import org.openmrs.module.cohort.CohortMember;
+import org.openmrs.module.cohort.CohortProgram;
+import org.openmrs.module.cohort.CohortRole;
+import org.openmrs.module.cohort.CohortType;
 import org.openmrs.module.cohort.api.CohortService;
 import org.openmrs.web.WebConstants;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,11 +42,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.context.request.WebRequest;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-import java.text.SimpleDateFormat;
-import java.util.*;
 
 /**
  * The main controller.

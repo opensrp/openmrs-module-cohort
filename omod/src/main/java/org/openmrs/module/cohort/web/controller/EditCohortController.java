@@ -9,12 +9,40 @@
  */
 package org.openmrs.module.cohort.web.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.openmrs.*;
-import org.openmrs.api.*;
+import org.openmrs.Concept;
+import org.openmrs.EncounterType;
+import org.openmrs.Form;
+import org.openmrs.Location;
+import org.openmrs.Person;
+import org.openmrs.VisitType;
+import org.openmrs.api.ConceptService;
+import org.openmrs.api.EncounterService;
+import org.openmrs.api.FormService;
+import org.openmrs.api.LocationService;
+import org.openmrs.api.VisitService;
 import org.openmrs.api.context.Context;
-import org.openmrs.module.cohort.*;
+import org.openmrs.module.cohort.CohortAttribute;
+import org.openmrs.module.cohort.CohortAttributeType;
+import org.openmrs.module.cohort.CohortEncounter;
+import org.openmrs.module.cohort.CohortM;
+import org.openmrs.module.cohort.CohortMember;
+import org.openmrs.module.cohort.CohortMemberAttribute;
+import org.openmrs.module.cohort.CohortMemberAttributeType;
+import org.openmrs.module.cohort.CohortObs;
+import org.openmrs.module.cohort.CohortProgram;
+import org.openmrs.module.cohort.CohortRole;
+import org.openmrs.module.cohort.CohortType;
+import org.openmrs.module.cohort.CohortVisit;
 import org.openmrs.module.cohort.api.CohortService;
 import org.openmrs.web.WebConstants;
 import org.openmrs.web.taglib.fieldgen.FieldGenHandlerFactory;
@@ -25,13 +53,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
 
 /**
  * The main controller.
