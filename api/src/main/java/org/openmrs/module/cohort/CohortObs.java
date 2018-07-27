@@ -497,7 +497,7 @@ public class CohortObs extends BaseOpenmrsData {
 	public static Boolean isAllowDecimal(ConceptNumeric cn) {
 		Boolean allowNumeric = false;
 		try {
-			allowNumeric = cn.isPrecise();
+			allowNumeric = cn.isNumeric();
 		} catch(NoSuchMethodError ex) {
 			try {
 				Method method = cn.getClass().getMethod("isAllowDecimal", null);

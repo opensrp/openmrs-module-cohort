@@ -1,7 +1,6 @@
 package org.openmrs.module.cohort;
 
 import org.openmrs.BaseOpenmrsData;
-import org.openmrs.BaseOpenmrsObject;
 
 public class CohortAttributeType extends BaseOpenmrsData {
 	private Integer cohortAttributeTypeId;

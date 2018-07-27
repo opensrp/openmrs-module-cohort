@@ -110,21 +110,9 @@ public class HibernateCohortDAO implements CohortDAO {
 	}
 	
 	@Override
-	public List<CohortType> findCohortType() {
-		List<CohortType> cohort = null;
-		Session session = getCurrentSession();
-		Query queryResult = session.createQuery("from CohortType");
-		cohort = queryResult.list();
-		return cohort;
-	}
-	
-	@Override
 	public List<CohortType> getAllCohortTypes() {
-		List<CohortType> cohort = null;
-		Session session = getCurrentSession();
-		Query queryResult = session.createQuery("from CohortType");
-		cohort = queryResult.list();
-		return cohort;
+		Query queryResult = getCurrentSession().createQuery("from CohortType");
+		return queryResult.list();
 	}
 	
 	@Override

@@ -3,6 +3,9 @@ package org.openmrs.module.cohort;
 import org.openmrs.BaseOpenmrsData;
 
 public class CohortAttribute extends BaseOpenmrsData {
+
+	private static final long serialVersionUID = 1L;
+	
 	private Integer cohortAttributeId;
 	private CohortM cohort;
 	private String value;

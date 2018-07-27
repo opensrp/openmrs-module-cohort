@@ -10,19 +10,17 @@
         </id>
         <property name="name" type="java.lang.String" length="40"/>
         <property name="description" type="java.lang.String" length="200"/>
-        <many-to-one name="clocation" class="org.openmrs.Location"
-                     column="clocation" not-null="true" cascade="all"/>
+        <many-to-one name="location" class="org.openmrs.Location"
+                     column="location" not-null="true" cascade="all"/>
         <property name="startDate" type="java.util.Date"/>
         <property name="endDate" type="java.util.Date"/>
-        <property name="uuid" type="java.lang.String"
-                  length="38" unique="true"/>
+        <property name="uuid" type="java.lang.String" length="38" unique="true"/>
         <many-to-one name="cohortType" class="org.openmrs.module.cohort.CohortType"
                      column="cohortType" not-null="true" cascade="all"/>
         <many-to-one name="cohortProgram" class="org.openmrs.module.cohort.CohortProgram"
                      column="cohortProgram" not-null="true" cascade="all"/>
         <property name="voided" type="java.lang.Boolean" column="voided" length="1" not-null="true"/>
-        <property name="voidReason" type="java.lang.String"
-                  column="void_reason" length="255"/>
+        <property name="voidReason" type="java.lang.String" column="void_reason" length="255"/>
         <property name="groupCohort" type="java.lang.Boolean" column="isGroupCohort" length="1" not-null="true"/>
     </class>
 </hibernate-mapping>
