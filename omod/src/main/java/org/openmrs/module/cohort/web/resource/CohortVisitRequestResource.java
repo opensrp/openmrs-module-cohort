@@ -63,15 +63,13 @@ public class CohortVisitRequestResource extends DataDelegatingCrudResource<Cohor
     }
 
     @Override
-    protected void delete(CohortVisit arg0, String arg1, RequestContext arg2)
-            throws ResponseException {
+    protected void delete(CohortVisit arg0, String arg1, RequestContext arg2) throws ResponseException {
         Context.getService(CohortService.class).purgeCohortVisit(arg0);
 
     }
 
     @Override
-    public void purge(CohortVisit arg0, RequestContext arg1)
-            throws ResponseException {
+    public void purge(CohortVisit arg0, RequestContext arg1) throws ResponseException {
         // TODO Auto-generated method stub
 
     }

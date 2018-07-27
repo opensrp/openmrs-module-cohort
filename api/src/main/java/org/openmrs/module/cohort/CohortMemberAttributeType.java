@@ -4,10 +4,6 @@ import org.openmrs.BaseOpenmrsData;
 import org.openmrs.BaseOpenmrsObject;
 
 public class CohortMemberAttributeType extends BaseOpenmrsData {
-	@Override
-	public String toString() {
-		return this.name;
-	}
 	
 	private Integer cohortMemberAttributeTypeId;
 	private String name;
@@ -55,5 +51,10 @@ public class CohortMemberAttributeType extends BaseOpenmrsData {
 	
 	public void setCohortMemberAttributeTypeId(Integer cohortMemberAttributeTypeId) {
 		this.cohortMemberAttributeTypeId = cohortMemberAttributeTypeId;
+	}
+	
+	@Override
+	public String toString() {
+		return this.name;
 	}
 }

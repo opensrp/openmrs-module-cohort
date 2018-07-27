@@ -107,7 +107,7 @@ public interface CohortDAO {
 	
 	public CohortAttribute saveCohortAttributes(CohortAttribute att);
 	
-	public List<CohortAttribute> findCohortAtt(String name);
+	public List<CohortAttribute> findCohortAttribute(String name);
 	
 	public List<CohortM> getCohort(Integer id);
 	
@@ -213,4 +213,55 @@ public interface CohortDAO {
 			boolean includeVoided);
 	
 	public List<CohortMember> findCohortMembersByCohortId (Integer cohortId);
+
+	/**
+	 * New
+	 */
+	public CohortAttribute getCohortAttributeById(Integer id);
+	
+	public CohortAttribute getCohortAttributeByUuid(String uuid);
+	
+	public CohortAttributeType getCohortAttributeTypeById(Integer id);
+	
+	public CohortAttributeType getCohortAttributeTypeByUuid(String uuid);
+	
+	public CohortEncounter getCohortEncounterById(Integer id);
+	
+	public CohortEncounter getCohortEncounterByUuid(String uuid);
+	
+	public CohortM getCohortMById(Integer id);
+	
+	public CohortM getCohortMByUuid(String uuid);
+	
+	public CohortMember getCohortMemberById(Integer id);
+	
+	public CohortMember getCohortMemberByUuid(String uuid);
+	
+	public CohortMemberAttribute getCohortMemberAttributeById(Integer id);
+	
+	public CohortMemberAttribute getCohortMemberAttributeByUuid(String uuid);
+	
+	public CohortMemberAttributeType getCohortMemberAttributeTypeById(Integer id);
+	
+	public CohortMemberAttributeType getCohortMemberAttributeTypeByUuid(String uuid);
+
+	public CohortObs getCohortObsById(Integer id);
+	
+	public CohortObs getCohortObsByUuid(String uuid);
+	
+	public CohortProgram getCohortProgramById(Integer id);
+	
+	public CohortProgram getCohortProgramByUuid(String uuid);
+	
+	public CohortRole getCohortRoleById(Integer id);
+	
+	public CohortRole getCohortRoleByUuid(String uuid);
+	
+	public CohortType getCohortTypeById(Integer id);
+	
+	public CohortType getCohortTypeByUuid(String uuid);
+	
+	public CohortVisit getCohortVisitById(Integer id);
+	
+	public CohortVisit getCohortVisitByUuid(String uuid);
 }

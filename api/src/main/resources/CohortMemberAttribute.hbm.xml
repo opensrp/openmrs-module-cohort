@@ -19,5 +19,12 @@
         <property name="voided" type="java.lang.Boolean" column="voided" length="1" not-null="true"/>
         <property name="voidReason" type="java.lang.String"
                   column="void_reason" length="255"/>
+
+		<property name="dateCreated" column="date_created" type="java.util.Date" not-null="true"/>
+		<many-to-one name="creator" column ="creator" class="org.openmrs.User" not-null="true"/>
+		<many-to-one name="changedBy" column="changed_by" class="org.openmrs.User" />
+		<property name="dateChanged" column="date_changed" type="java.util.Date" />
+		<many-to-one name="voidedBy" column="voided_by" class="org.openmrs.User" />
+		<property name="dateVoided" column="date_voided" type="java.util.Date" />
     </class>
 </hibernate-mapping>

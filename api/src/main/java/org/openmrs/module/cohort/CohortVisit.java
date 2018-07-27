@@ -17,7 +17,7 @@ import org.openmrs.VisitType;
 public class CohortVisit extends BaseOpenmrsData {
 	
 	private Integer cohortVisitId;
-	private CohortM cohort;
+	private CohortM cohort;// TODO remove
 	private VisitType visitType;
 	private Location location;
 	private Date startDate;

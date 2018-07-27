@@ -15,9 +15,7 @@ package org.openmrs.module.cohort.api.db.hibernate;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
-import java.util.Date;
 import java.util.List;
 
 import org.apache.commons.lang.StringUtils;
@@ -27,25 +25,12 @@ import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.cfg.AnnotationConfiguration;
 import org.hibernate.criterion.Conjunction;
 import org.hibernate.criterion.Disjunction;
-import org.hibernate.criterion.Expression;
 import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
-import org.hibernate.tool.hbm2ddl.SchemaExport;
-import org.openmrs.Encounter;
-import org.openmrs.EncounterType;
-import org.openmrs.Form;
-import org.openmrs.Location;
-import org.openmrs.Obs;
-import org.openmrs.Patient;
 import org.openmrs.PatientIdentifierType;
-import org.openmrs.Person;
-import org.openmrs.PersonName;
-import org.openmrs.api.db.DAOException;
-import org.openmrs.api.db.hibernate.HibernateUtil;
 import org.openmrs.api.db.hibernate.PatientSearchCriteria;
 import org.openmrs.module.cohort.CohortAttribute;
 import org.openmrs.module.cohort.CohortAttributeType;
@@ -91,7 +76,7 @@ public class HibernateCohortDAO implements CohortDAO {
 	}
 	
 	@Override
-	public List<CohortAttribute> findCohortAtt(String name) {
+	public List<CohortAttribute> findCohortAttribute(String name) {
 		Criteria criteria = (Criteria) getCurrentSession().createCriteria(CohortAttribute.class);
 		criteria.add(Restrictions.ilike("value", name, MatchMode.START));
 		return criteria.list();
@@ -111,20 +96,14 @@ public class HibernateCohortDAO implements CohortDAO {
 	
 	@Override
 	public List<CohortType> findCohortType() {
-		List<CohortType> cohort = null;
-		Session session = getCurrentSession();
-		Query queryResult = session.createQuery("from CohortType");
-		cohort = queryResult.list();
-		return cohort;
+		Query queryResult = getCurrentSession().createQuery("from CohortType");
+		return queryResult.list();
 	}
 	
 	@Override
 	public List<CohortType> getAllCohortTypes() {
-		List<CohortType> cohort = null;
-		Session session = getCurrentSession();
-		Query queryResult = session.createQuery("from CohortType");
-		cohort = queryResult.list();
-		return cohort;
+		Query queryResult = getCurrentSession().createQuery("from CohortType");
+		return queryResult.list();
 	}
 	
 	@Override
@@ -146,11 +125,8 @@ public class HibernateCohortDAO implements CohortDAO {
 	
 	@Override
 	public List<CohortAttributeType> findCohortAttributes() {
-		List<CohortAttributeType> cohort = null;
-		Session session = getCurrentSession();
-		Query queryResult = session.createQuery("from CohortAttributeType");
-		cohort = queryResult.list();
-		return cohort;
+		Query queryResult = getCurrentSession().createQuery("from CohortAttributeType");
+		return queryResult.list();
 	}
 	
 	@Override
@@ -197,11 +173,8 @@ public class HibernateCohortDAO implements CohortDAO {
 	
 	@Override
 	public List<CohortEncounter> findCohortEncounters() {
-		List<CohortEncounter> cohort = null;
-		Session session = getCurrentSession();
-		Query queryResult = session.createQuery("from CohortEncounter");
-		cohort = queryResult.list();
-		return cohort;
+		Query queryResult = getCurrentSession().createQuery("from CohortEncounter");
+		return queryResult.list();
 	}
 	
 	@Override
@@ -217,20 +190,14 @@ public class HibernateCohortDAO implements CohortDAO {
 	
 	@Override
 	public List<CohortM> getCohort(Integer id) {
-		List<CohortM> cohort = null;
-		Session session = getCurrentSession();
-		Query queryResult = session.createQuery("from CohortM where cohortId='" + id + "'");
-		cohort = queryResult.list();
-		return cohort;
+		Query queryResult = getCurrentSession().createQuery("from CohortM where cohortId='" + id + "'");
+		return queryResult.list();
 	}
 	
 	@Override
 	public List<CohortM> findCohorts() {
-		List<CohortM> cohort = null;
-		Session session = getCurrentSession();
-		Query queryResult = session.createQuery("from CohortM");
-		cohort = queryResult.list();
-		return cohort;
+		Query queryResult = getCurrentSession().createQuery("from CohortM");
+		return queryResult.list();
 	}
 	
 	@Override
@@ -267,21 +234,14 @@ public class HibernateCohortDAO implements CohortDAO {
 	
 	@Override
 	public List<CohortMemberAttributeType> findCohortMemberAttributeType() {
-		List<CohortMemberAttributeType> cohort = null;
-		Session session = getCurrentSession();
-		Query queryResult = session.createQuery("from CohortMemberAttributeType");
-		cohort = queryResult.list();
-		return cohort;
+		Query queryResult = getCurrentSession().createQuery("from CohortMemberAttributeType");
+		return queryResult.list();
 	}
 	
 	@Override
-	public List<CohortMemberAttributeType> findCohortMemberAttributes(
-			String attribute_type_name) {
-		List<CohortMemberAttributeType> cohort = null;
-		Session session = getCurrentSession();
-		Query queryResult = session.createQuery("from CohortMemberAttributeType where name='" + attribute_type_name + "'");
-		cohort = queryResult.list();
-		return cohort;
+	public List<CohortMemberAttributeType> findCohortMemberAttributes(String attribute_type_name) {
+		Query queryResult = getCurrentSession().createQuery("from CohortMemberAttributeType where name='" + attribute_type_name + "'");
+		return queryResult.list();
 	}
 	
 	@Override
@@ -297,11 +257,8 @@ public class HibernateCohortDAO implements CohortDAO {
 	
 	@Override
 	public List<CohortVisit> findCohortVisit() {
-		List<CohortVisit> cohort = null;
-		Session session = getCurrentSession();
-		Query queryResult = session.createQuery("from CohortVisit");
-		cohort = queryResult.list();
-		return cohort;
+		Query queryResult = getCurrentSession().createQuery("from CohortVisit");
+		return queryResult.list();
 	}
 	
 	@Override
@@ -802,5 +759,125 @@ public class HibernateCohortDAO implements CohortDAO {
 				throw new RuntimeException("Failed to get the current hibernate session", e);
 			}
 		}
+	}
+
+	@Override
+	public CohortAttribute getCohortAttributeById(Integer id) {
+		return (CohortAttribute) getCurrentSession().get(CohortAttribute.class, id);
+	}
+
+	@Override
+	public CohortAttribute getCohortAttributeByUuid(String uuid) {
+		return (CohortAttribute) getCurrentSession().createQuery("from CohortAttribute t where t.uuid = :uuid").setString("uuid", uuid).uniqueResult();
+	}
+
+	@Override
+	public CohortAttributeType getCohortAttributeTypeById(Integer id) {
+		return (CohortAttributeType) getCurrentSession().get(CohortAttributeType.class, id);
+	}
+
+	@Override
+	public CohortAttributeType getCohortAttributeTypeByUuid(String uuid) {
+		return (CohortAttributeType) getCurrentSession().createQuery("from CohortAttributeType t where t.uuid = :uuid").setString("uuid", uuid).uniqueResult();
+	}
+
+	@Override
+	public CohortEncounter getCohortEncounterById(Integer id) {
+		return (CohortEncounter) getCurrentSession().get(CohortEncounter.class, id);
+	}
+
+	@Override
+	public CohortEncounter getCohortEncounterByUuid(String uuid) {
+		return (CohortEncounter) getCurrentSession().createQuery("from CohortEncounter t where t.uuid = :uuid").setString("uuid", uuid).uniqueResult();
+	}
+
+	@Override
+	public CohortM getCohortMById(Integer id) {
+		return (CohortM) getCurrentSession().get(CohortM.class, id);
+	}
+
+	@Override
+	public CohortM getCohortMByUuid(String uuid) {
+		return (CohortM) getCurrentSession().createQuery("from CohortM t where t.uuid = :uuid").setString("uuid", uuid).uniqueResult();
+	}
+
+	@Override
+	public CohortMember getCohortMemberById(Integer id) {
+		return (CohortMember) getCurrentSession().get(CohortMember.class, id);
+	}
+
+	@Override
+	public CohortMember getCohortMemberByUuid(String uuid) {
+		return (CohortMember) getCurrentSession().createQuery("from CohortMember t where t.uuid = :uuid").setString("uuid", uuid).uniqueResult();
+	}
+
+	@Override
+	public CohortMemberAttribute getCohortMemberAttributeById(Integer id) {
+		return (CohortMemberAttribute) getCurrentSession().get(CohortMemberAttribute.class, id);
+	}
+
+	@Override
+	public CohortMemberAttribute getCohortMemberAttributeByUuid(String uuid) {
+		return (CohortMemberAttribute) getCurrentSession().createQuery("from CohortMemberAttribute t where t.uuid = :uuid").setString("uuid", uuid).uniqueResult();
+	}
+
+	@Override
+	public CohortMemberAttributeType getCohortMemberAttributeTypeById(Integer id) {
+		return (CohortMemberAttributeType) getCurrentSession().get(CohortMemberAttributeType.class, id);
+	}
+
+	@Override
+	public CohortMemberAttributeType getCohortMemberAttributeTypeByUuid(String uuid) {
+		return (CohortMemberAttributeType) getCurrentSession().createQuery("from CohortMemberAttributeType t where t.uuid = :uuid").setString("uuid", uuid).uniqueResult();
+	}
+
+	@Override
+	public CohortObs getCohortObsById(Integer id) {
+		return (CohortObs) getCurrentSession().get(CohortObs.class, id);	
+	}
+
+	@Override
+	public CohortObs getCohortObsByUuid(String uuid) {
+		return (CohortObs) getCurrentSession().createQuery("from CohortObs t where t.uuid = :uuid").setString("uuid", uuid).uniqueResult();
+	}
+
+	@Override
+	public CohortProgram getCohortProgramById(Integer id) {
+		return (CohortProgram) getCurrentSession().get(CohortProgram.class, id);
+	}
+
+	@Override
+	public CohortProgram getCohortProgramByUuid(String uuid) {
+		return (CohortProgram) getCurrentSession().createQuery("from CohortProgram t where t.uuid = :uuid").setString("uuid", uuid).uniqueResult();
+	}
+
+	@Override
+	public CohortRole getCohortRoleById(Integer id) {
+		return (CohortRole) getCurrentSession().get(CohortRole.class, id);
+	}
+
+	@Override
+	public CohortRole getCohortRoleByUuid(String uuid) {
+		return (CohortRole) getCurrentSession().createQuery("from CohortRole t where t.uuid = :uuid").setString("uuid", uuid).uniqueResult();
+	}
+
+	@Override
+	public CohortType getCohortTypeById(Integer id) {
+		return (CohortType) getCurrentSession().get(CohortType.class, id);
+	}
+
+	@Override
+	public CohortType getCohortTypeByUuid(String uuid) {
+		return (CohortType) getCurrentSession().createQuery("from CohortType t where t.uuid = :uuid").setString("uuid", uuid).uniqueResult();
+	}
+
+	@Override
+	public CohortVisit getCohortVisitById(Integer id) {
+		return (CohortVisit) getCurrentSession().get(CohortVisit.class, id);
+	}
+
+	@Override
+	public CohortVisit getCohortVisitByUuid(String uuid) {
+		return (CohortVisit) getCurrentSession().createQuery("from CohortVisit t where t.uuid = :uuid").setString("uuid", uuid).uniqueResult();
 	}
 }

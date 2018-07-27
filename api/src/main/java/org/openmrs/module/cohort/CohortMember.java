@@ -9,7 +9,6 @@ import org.openmrs.Person;
 public class CohortMember extends BaseOpenmrsData {
 	private Integer cohortMemberId;
 	private Person person;
-	private Integer personId;
 	private CohortM cohort;
 	private CohortRole role;
 	private Date startDate;
@@ -26,17 +25,7 @@ public class CohortMember extends BaseOpenmrsData {
 	public CohortMember() {
 		
 	}
-	
-	public CohortMember(Person person) {
-		person = new Person();
-		if (person != null) {
-			this.personId = person.getPersonId();
-			if (person.getUuid() != null) {
-				this.setUuid(person.getUuid());
-			}
-		}
-	}
-	
+		
 	public Date getStartDate() {
 		return startDate;
 	}

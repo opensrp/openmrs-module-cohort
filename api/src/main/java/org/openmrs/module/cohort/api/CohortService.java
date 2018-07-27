@@ -57,10 +57,6 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public interface CohortService extends OpenmrsService {
 	
-	/*
-	 * Add service methods here
-	 * 
-	 */
 	public CohortM saveCohort(CohortM cohort);
 	
 	public List<CohortEncounter> findCohortEncounter(String cohort, String location);
@@ -202,7 +198,7 @@ public interface CohortService extends OpenmrsService {
 	
 	public List<CohortType> findCohortType(Integer id);
 	
-	public List<CohortAttribute> findCohortAtt(Integer id);
+	public List<CohortAttribute> findCohortAttribute(Integer id);
 	
 	public List<CohortAttributeType> findCohortAttType(Integer id);
 	
