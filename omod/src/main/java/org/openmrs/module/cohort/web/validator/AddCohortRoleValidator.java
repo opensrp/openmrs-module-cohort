@@ -1,7 +1,9 @@
 package org.openmrs.module.cohort.web.validator;
 
+import java.util.List;
+
 import org.openmrs.api.context.Context;
-import org.openmrs.module.cohort.CohortProgram;
+import org.openmrs.module.cohort.CohortRole;
 import org.openmrs.module.cohort.api.CohortService;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
@@ -10,26 +12,26 @@ import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
 @Component
-@Qualifier("addCohortProgramValidator")
-public class AddCohortProgramValidator implements Validator {
+@Qualifier("addCohortRoleValidator")
+public class AddCohortRoleValidator implements Validator {
 
     @Override
     public boolean supports(Class<?> clazz) {
-        return clazz.equals(CohortProgram.class);
+        return clazz.equals(CohortRole.class);
     }
 
     @Override
     public void validate(Object command, Errors errors) {
-    	CohortService cohortService = Context.getService(CohortService.class);
-
-    	ValidationUtils.rejectIfEmptyOrWhitespace(errors, "name", "required");
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "description", "required");
+        CohortService cohortService = Context.getService(CohortService.class);
         
-        CohortProgram program = (CohortProgram) command;
+        CohortRole currentRole = (CohortRole) command;
+        List<CohortRole> allRoles = cohortService.findRoles(currentRole.getName());
+        
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "name", "required");
 
         // TODO change it to find by name and then reject
-        for (CohortProgram programs : cohortService.findCohortProg()) {
-            if (program.getName().equals(programs.getName())) {
+        for (CohortRole roles : allRoles) {
+            if (roles.getName().equals(currentRole.getName())) {
             	errors.rejectValue("name", "An entry with this name already exists");
             }
         }

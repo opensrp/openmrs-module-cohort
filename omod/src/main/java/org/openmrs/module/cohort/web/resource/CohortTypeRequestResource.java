@@ -1,5 +1,7 @@
 package org.openmrs.module.cohort.web.resource;
 
+import java.util.List;
+
 import org.openmrs.api.context.Context;
 import org.openmrs.module.cohort.CohortType;
 import org.openmrs.module.cohort.api.CohortService;
@@ -15,8 +17,6 @@ import org.openmrs.module.webservices.rest.web.resource.impl.DataDelegatingCrudR
 import org.openmrs.module.webservices.rest.web.resource.impl.DelegatingResourceDescription;
 import org.openmrs.module.webservices.rest.web.resource.impl.NeedsPaging;
 import org.openmrs.module.webservices.rest.web.response.ResponseException;
-
-import java.util.List;
 
 @Resource(name = RestConstants.VERSION_1 + CohortRest.COHORT_NAMESPACE + "/testcohorttype", supportedClass = CohortType.class, supportedOpenmrsVersions = {"1.8.*", "1.9.*, 1.10.*, 1.11.*", "1.12.*"})
 public class CohortTypeRequestResource extends DataDelegatingCrudResource<CohortType> {

@@ -9,6 +9,14 @@
  */
 package org.openmrs.module.cohort.web.controller;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.openmrs.Patient;
 import org.openmrs.api.context.Context;
 import org.openmrs.module.cohort.CohortRole;
@@ -27,13 +35,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.context.request.WebRequest;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
 /**
  * The main controller.
  */
@@ -41,7 +42,7 @@ import java.util.Set;
 public class AddRoleController {
 
     @Autowired(required = true)
-    @Qualifier("addRoleValidator")
+    @Qualifier("addCohortRoleValidator")
     private Validator validator;
     List<Patient> list1 = new ArrayList();
     Set set1 = new HashSet();
