@@ -13,20 +13,19 @@ import java.util.List;
 import java.util.Set;
 
 import org.openmrs.BaseOpenmrsData;
-import org.openmrs.BaseOpenmrsObject;
 import org.openmrs.EncounterProvider;
 import org.openmrs.EncounterRole;
 import org.openmrs.EncounterType;
 import org.openmrs.Form;
 import org.openmrs.Location;
-import org.openmrs.Obs;
-import org.openmrs.Patient;
 import org.openmrs.Person;
 import org.openmrs.Provider;
 import org.openmrs.User;
 import org.openmrs.api.context.Context;
 
 public class CohortEncounter extends BaseOpenmrsData {
+	
+	private static final long serialVersionUID = 1L;
 	
 	private Integer encounterId;
 	private CohortM cohort;
@@ -39,22 +38,78 @@ public class CohortEncounter extends BaseOpenmrsData {
 	private Set<CohortObs> obs;
 	private Set<EncounterProvider> encounterProviders = new LinkedHashSet<EncounterProvider>();
 	
+	public Integer getEncounterId() {
+		return encounterId;
+	}
+
+	public void setEncounterId(Integer encounterId) {
+		this.encounterId = encounterId;
+	}
+
+	public CohortM getCohort() {
+		return cohort;
+	}
+
+	public void setCohort(CohortM cohort) {
+		this.cohort = cohort;
+	}
+
+	public EncounterType getEncounterType() {
+		return encounterType;
+	}
+
+	public void setEncounterType(EncounterType encounterType) {
+		this.encounterType = encounterType;
+	}
+
+	public Location getLocation() {
+		return location;
+	}
+
+	public void setLocation(Location location) {
+		this.location = location;
+	}
+
+	public Date getEncounterDatetime() {
+		return encounterDatetime;
+	}
+
+	public void setEncounterDatetime(Date encounterDatetime) {
+		this.encounterDatetime = encounterDatetime;
+	}
+
 	public Form getForm() {
 		return form;
 	}
-	
+
 	public void setForm(Form form) {
 		this.form = form;
 	}
-	
+
+	public Date getEncounterDateTime() {
+		return encounterDateTime;
+	}
+
+	public void setEncounterDateTime(Date encounterDateTime) {
+		this.encounterDateTime = encounterDateTime;
+	}
+
 	public CohortVisit getVisit() {
 		return visit;
 	}
-	
+
 	public void setVisit(CohortVisit visit) {
 		this.visit = visit;
 	}
-	
+
+	public Set<EncounterProvider> getEncounterProviders() {
+		return encounterProviders;
+	}
+
+	public void setEncounterProviders(Set<EncounterProvider> encounterProviders) {
+		this.encounterProviders = encounterProviders;
+	}
+
 	@Override
 	public Integer getId() {
 		return getEncounterId();
@@ -63,46 +118,6 @@ public class CohortEncounter extends BaseOpenmrsData {
 	@Override
 	public void setId(Integer id) {
 		setEncounterId(id);
-	}
-	
-	public Integer getEncounterId() {
-		return encounterId;
-	}
-	
-	public void setEncounterId(Integer encounterId) {
-		this.encounterId = encounterId;
-	}
-	
-	public Location getLocation() {
-		return location;
-	}
-	
-	public void setLocation(Location location) {
-		this.location = location;
-	}
-	
-	public Date getEncounterDateTime() {
-		return encounterDateTime;
-	}
-	
-	public void setEncounterDateTime(Date encounterDateTime) {
-		this.encounterDateTime = encounterDateTime;
-	}
-	
-	public EncounterType getEncounterType() {
-		return encounterType;
-	}
-	
-	public void setEncounterType(EncounterType encounterType) {
-		this.encounterType = encounterType;
-	}
-	
-	public CohortM getCohort() {
-		return cohort;
-	}
-	
-	public void setCohort(CohortM cohort) {
-		this.cohort = cohort;
 	}
 	
 	public void setProvider(EncounterRole role, Provider provider) {
@@ -273,22 +288,6 @@ public class CohortEncounter extends BaseOpenmrsData {
 		if (obs != null) {
 			obs.remove(observation);
 		}
-	}
-	
-	public Date getEncounterDatetime() {
-		return encounterDatetime;
-	}
-	
-	public void setEncounterDatetime(Date encounterDatetime) {
-		this.encounterDatetime = encounterDatetime;
-	}
-	
-	public Set<EncounterProvider> getEncounterProviders() {
-		return encounterProviders;
-	}
-	
-	public void setEncounterProviders(Set<EncounterProvider> encounterProviders) {
-		this.encounterProviders = encounterProviders;
 	}
 	
 	@Deprecated

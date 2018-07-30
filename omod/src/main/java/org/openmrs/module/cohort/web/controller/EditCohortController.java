@@ -370,7 +370,7 @@ public class EditCohortController {
         CohortService s = Context.getService(CohortService.class);
         List<String> cohorta = new ArrayList<String>();
         List<String> cohortm = new ArrayList<String>();
-        List<CohortM> m = s.findCohorts();
+        List<CohortM> m = s.getAllCohorts();
         for (int j = 0; j < m.size(); j++) {
             CohortM c = m.get(j);
             cohortm.add(c.getName());
@@ -394,7 +394,7 @@ public class EditCohortController {
         CohortService service1 = Context.getService(CohortService.class);
         List<String> cohorta = new ArrayList<String>();
         List<String> cohortm = new ArrayList<String>();
-        List<CohortM> m = service1.findCohorts();
+        List<CohortM> m = service1.getAllCohorts();
         for (int j = 0; j < m.size(); j++) {
             CohortM c = m.get(j);
             cohortm.add(c.getName());
@@ -491,7 +491,7 @@ public class EditCohortController {
     public void manageEditEncounter(ModelMap model, HttpServletRequest request, @RequestParam("encid") Integer id, @ModelAttribute("cohortencounters") CohortEncounter cohort) {
         List<String> cohortnames = new ArrayList<String>();
         CohortService cservice = Context.getService(CohortService.class);
-        List<CohortM> list1 = cservice.findCohorts();
+        List<CohortM> list1 = cservice.getAllCohorts();
         for (int i = 0; i < list1.size(); i++) {
             CohortM c = list1.get(i);
             cohortnames.add(c.getName());
@@ -535,7 +535,7 @@ public class EditCohortController {
     public void manageEditEncounter1(ModelMap model, HttpSession httpSession, HttpServletRequest request, @RequestParam("encid") Integer id, @RequestParam(required = false, value = "voidReason") String voidReason, @ModelAttribute("cohortencounters") CohortEncounter cohort) {
         List<String> cohortnames = new ArrayList<String>();
         CohortService cservice = Context.getService(CohortService.class);
-        List<CohortM> list1 = cservice.findCohorts();
+        List<CohortM> list1 = cservice.getAllCohorts();
         for (int i = 0; i < list1.size(); i++) {
             CohortM c = list1.get(i);
             cohortnames.add(c.getName());
@@ -593,7 +593,7 @@ public class EditCohortController {
         List<String> etype = new ArrayList<String>();
         List<VisitType> enctypes = enctype.getAllVisitTypes();
         CohortService cservice = Context.getService(CohortService.class);
-        List<CohortM> list1 = cservice.findCohorts();
+        List<CohortM> list1 = cservice.getAllCohorts();
         for (int i = 0; i < list1.size(); i++) {
             CohortM c = list1.get(i);
             cohortnames.add(c.getName());
@@ -621,7 +621,7 @@ public class EditCohortController {
         List<String> etype = new ArrayList<String>();
         List<VisitType> enctypes = enctype.getAllVisitTypes();
         CohortService cservice = Context.getService(CohortService.class);
-        List<CohortM> list1 = cservice.findCohorts();
+        List<CohortM> list1 = cservice.getAllCohorts();
         for (int i = 0; i < list1.size(); i++) {
             CohortM c = list1.get(i);
             cohortnames.add(c.getName());
@@ -658,7 +658,7 @@ public class EditCohortController {
     public void manageEditObs(ModelMap model, HttpServletRequest request, @RequestParam("obid") Integer id, @ModelAttribute("cohortobs") CohortObs cobs) {
         List<String> cohortnames = new ArrayList<String>();
         CohortService cservice = Context.getService(CohortService.class);
-        List<CohortM> list1 = cservice.findCohorts();
+        List<CohortM> list1 = cservice.getAllCohorts();
         for (int i = 0; i < list1.size(); i++) {
             CohortM c = list1.get(i);
             cohortnames.add(c.getName());
@@ -690,7 +690,7 @@ public class EditCohortController {
     public void manageEditObs1(ModelMap model, HttpSession httpSession, HttpServletRequest request, @RequestParam("obid") Integer id, @RequestParam(required = false, value = "voidReason") String voidReason, @ModelAttribute("cohortobs") CohortObs cohort) {
         List<String> cohortnames = new ArrayList<String>();
         CohortService cservice = Context.getService(CohortService.class);
-        List<CohortM> list1 = cservice.findCohorts();
+        List<CohortM> list1 = cservice.getAllCohorts();
         for (int i = 0; i < list1.size(); i++) {
             CohortM c = list1.get(i);
             cohortnames.add(c.getName());

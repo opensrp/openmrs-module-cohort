@@ -1,4 +1,4 @@
-package org.openmrs.module.cohort;
+package org.openmrs.module.cohort.api.db;
 /**
  * This Source Code Form is subject to the terms of the Mozilla Public License,
  * v. 2.0. If a copy of the MPL was not distributed with this file, You can
@@ -20,6 +20,7 @@ import org.openmrs.Patient;
 import org.openmrs.Provider;
 import org.openmrs.Visit;
 import org.openmrs.VisitType;
+import org.openmrs.module.cohort.CohortM;
 
 /**
  * The search parameter object for encounters. A convenience interface for building

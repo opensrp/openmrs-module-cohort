@@ -127,7 +127,7 @@ public class HtmlFormEmbedEntryController {
         } else { // no encounter specified
             // get person from patientId/personId (register module uses patientId, htmlformentry uses personId)
             if (cohortId != null) {
-                cohort = Context.getService(CohortService.class).getCohortId(cohortId);
+                cohort = Context.getService(CohortService.class).getCohortById(cohortId);
             }
             // determine form
             if (htmlFormId != null) {

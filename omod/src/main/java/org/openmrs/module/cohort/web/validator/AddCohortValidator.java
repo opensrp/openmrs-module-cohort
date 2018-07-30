@@ -35,7 +35,7 @@ public class AddCohortValidator implements Validator {
         }
         
         // TODO change it to find by name and then reject
-        List<CohortM> allCohorts = service.findCohorts();
+        List<CohortM> allCohorts = service.getAllCohorts();
         for (CohortM checkCohort : allCohorts) {
             if (checkCohort.getName().equals(cohort.getName())) {
             	errors.rejectValue("name", "A cohort with this name already exists");

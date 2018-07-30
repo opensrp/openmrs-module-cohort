@@ -103,7 +103,7 @@ public class CohortRequestResource extends DataDelegatingCrudResource<CohortM> {
 
     @Override
     public CohortM getByUniqueId(String id) {
-        CohortM obj = Context.getService(CohortService.class).getCohortUuid(id);
+        CohortM obj = Context.getService(CohortService.class).getCohortByUuid(id);
         
         if(obj == null) {
         	// TODO add to API
@@ -115,13 +115,13 @@ public class CohortRequestResource extends DataDelegatingCrudResource<CohortM> {
 
     @Override
     public SimpleObject getAll(RequestContext request) throws ResponseException {
-        List<CohortM> cohort = Context.getService(CohortService.class).findCohorts();
+        List<CohortM> cohort = Context.getService(CohortService.class).getAllCohorts();
         return new NeedsPaging<CohortM>(cohort, request).toSimpleObject(this);
     }
     
     @Override
     protected PageableResult doSearch(RequestContext context) {
-        List<CohortM> cohort = Context.getService(CohortService.class).findCohorts(context.getParameter("q"));
+        List<CohortM> cohort = Context.getService(CohortService.class).findCohortsMatching(context.getParameter("q"));
         return new NeedsPaging<CohortM>(cohort, context);
     }
 }

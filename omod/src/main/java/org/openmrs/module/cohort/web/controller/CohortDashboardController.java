@@ -41,7 +41,7 @@ public class CohortDashboardController {
         //Long a=0L;
         CohortService service = Context.getService(CohortService.class);
         if ("search".equals(request.getParameter("search"))) {
-            List<CohortM> cohortsFound = service.findCohorts(cohort_name);
+            List<CohortM> cohortsFound = service.findCohortsMatching(cohort_name);
             if (cohortsFound.size() != 0) {
                 model.addAttribute("cohortExists", "true");
             } else {
@@ -52,7 +52,7 @@ public class CohortDashboardController {
             model.addAttribute("cohortList", cohortsFound);
             for (int i = 0; i < cohortsFound.size(); i++) {
                 CohortM currentCohort = cohortsFound.get(i);
-                cohortMembers.add(service.findCohortMembersByCohortId(currentCohort.getCohortId()));
+                cohortMembers.add(service.findCohortMembersByCohort(currentCohort.getCohortId()));
 //				cohortEncounters.add(service.getEncountersByCohort(currentCohort));
             }
             model.addAttribute("memberList", cohortMembers);

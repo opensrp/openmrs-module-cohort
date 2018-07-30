@@ -1,28 +1,40 @@
 package org.openmrs.module.cohort;
 
 import org.openmrs.BaseOpenmrsData;
-import org.openmrs.BaseOpenmrsObject;
 
 public class CohortProgram extends BaseOpenmrsData {
 	
-	@Override
-	public String toString() {
-		return this.name;
-	}
-	
+	private static final long serialVersionUID = 1L;
+
 	private int cohortProgramId;
 	private String name;
 	private String description;
 	
 	
+	public int getCohortProgramId() {
+		return cohortProgramId;
+	}
+
+	public void setCohortProgramId(int cohortProgramId) {
+		this.cohortProgramId = cohortProgramId;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
 	public String getDescription() {
 		return description;
 	}
-	
+
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	
+
 	@Override
 	public Integer getId() {
 		return getCohortProgramId();
@@ -31,21 +43,5 @@ public class CohortProgram extends BaseOpenmrsData {
 	@Override
 	public void setId(Integer id) {
 		setCohortProgramId(id);
-	}
-	
-	public String getName() {
-		return name;
-	}
-	
-	public void setName(String name) {
-		this.name = name;
-	}
-	
-	public int getCohortProgramId() {
-		return cohortProgramId;
-	}
-	
-	public void setCohortProgramId(int cohortProgramId) {
-		this.cohortProgramId = cohortProgramId;
 	}
 }

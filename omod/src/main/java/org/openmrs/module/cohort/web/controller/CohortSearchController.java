@@ -51,7 +51,7 @@ public class CohortSearchController {
                                  @RequestParam(required = false, value = "startDate") String startDate,
                                  @ModelAttribute("cohorttype") CohortType cohort) throws Exception {
         CohortService cohortService = Context.getService(CohortService.class);
-        List<CohortM> cohortList = cohortService.findCohorts(); //returns all cohorts
+        List<CohortM> cohortList = cohortService.getAllCohorts(); //returns all cohorts
         List<CohortM> resultList = new ArrayList<CohortM>();
         for (CohortM cohorts : cohortList) {
             System.out.println(getParsedDate(cohorts.getStartDate().toString()));

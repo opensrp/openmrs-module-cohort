@@ -221,7 +221,7 @@ public class AddCohortController {
             c2 = crole.get(g);
         }
         boolean repeatPatient = false;
-        for (CohortMember cohortMember : departmentService.findCohortMembersByCohortId(id)) {
+        for (CohortMember cohortMember : departmentService.findCohortMembersByCohort(id)) {
             if (cohortMember.getPerson().getPersonId().equals(patient.getPerson().getPersonId())) {
                 repeatPatient = true;
                 httpSession.setAttribute(WebConstants.OPENMRS_ERROR_ATTR, "A cohort cannot have duplicate patients");
@@ -239,7 +239,7 @@ public class AddCohortController {
             cpatient.setPerson(patient);
             cpatient.setCohort(cohort);
             cpatient.setRole(c2);
-            departmentService.saveCPatient(cpatient);
+            departmentService.saveCohortMember(cpatient);
             model.addAttribute("formats", crole);
             model.addAttribute("cpatient", cpatient);
             httpSession.setAttribute(WebConstants.OPENMRS_MSG_ATTR, "Insertion success");
@@ -255,7 +255,7 @@ public class AddCohortController {
         List<Location> formats = service.getAllLocations();
         model.addAttribute("locations", formats);
         CohortService service1 = Context.getService(CohortService.class);
-        List<CohortM> cp = service1.findCohorts();
+        List<CohortM> cp = service1.getAllCohorts();
         for (int i = 0; i < cp.size(); i++) {
             CohortM c = cp.get(i);
             cohortm.add(c.getName());
@@ -287,7 +287,7 @@ public class AddCohortController {
         Location loc = new Location();
         model.addAttribute("locations", formats);
         CohortService service1 = Context.getService(CohortService.class);
-        List<CohortM> cp = service1.findCohorts();
+        List<CohortM> cp = service1.getAllCohorts();
         for (int i = 0; i < cp.size(); i++) {
             CohortM c = cp.get(i);
             cohortm.add(c.getName());
@@ -300,7 +300,7 @@ public class AddCohortController {
         model.addAttribute("formats", cohortm);
         model.addAttribute("formats1", type);
         String cohort_name1 = request.getParameter("format");
-        List<CohortM> cc = service1.findCohorts(cohort_name1);
+        List<CohortM> cc = service1.findCohortsMatching(cohort_name1);
         for (int j = 0; j < cc.size(); j++) {
             CohortM c1 = cc.get(j);
             cp1 = c1.getCohortProgram();
@@ -329,11 +329,11 @@ public class AddCohortController {
         cohortmember.setPerson(patient);
         cohortmember.setHead(true);
         service1.saveCohort(cohortmodule);
-        service1.saveCPatient(cohortmember);
+        service1.saveCohortMember(cohortmember);
         httpSession.setAttribute(WebConstants.OPENMRS_MSG_ATTR, "insertion success");
         if ("Next".equalsIgnoreCase(request.getParameter("next"))) {
             service1.saveCohort(cohortmodule);
-            service1.saveCPatient(cohortmember);
+            service1.saveCohortMember(cohortmember);
             httpSession.setAttribute(WebConstants.OPENMRS_MSG_ATTR, "insertion success");
             String redirectUrl = "/module/cohort/addCohortAttributes.form?cpid=" + cohortmodule.getCohortId();
             return "redirect:" + redirectUrl;

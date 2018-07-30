@@ -19,6 +19,14 @@ public class CohortAttribute extends BaseOpenmrsData {
 		this.cohortAttributeId = cohortAttributeId;
 	}
 	
+	public CohortM getCohort() {
+		return cohort;
+	}
+	
+	public void setCohort(CohortM cohort) {
+		this.cohort = cohort;
+	}
+	
 	public String getValue() {
 		return value;
 	}
@@ -46,11 +54,4 @@ public class CohortAttribute extends BaseOpenmrsData {
 		
 	}
 	
-	public CohortM getCohort() {
-		return cohort;
-	}
-	
-	public void setCohort(CohortM cohort) {
-		this.cohort = cohort;
-	}
 }

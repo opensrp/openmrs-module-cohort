@@ -7,7 +7,7 @@
  * Copyright (C) OpenMRS Inc. OpenMRS is a registered trademark and the OpenMRS
  * graphic logo is a trademark of OpenMRS Inc.
  */
-package org.openmrs.module.cohort;
+package org.openmrs.module.cohort.api.db;
 
 import java.util.Collection;
 import java.util.Date;
@@ -19,6 +19,7 @@ import org.openmrs.Patient;
 import org.openmrs.Provider;
 import org.openmrs.Visit;
 import org.openmrs.VisitType;
+import org.openmrs.module.cohort.CohortM;
 
 /**
  * A convenience builder for {@link EncounterSearchCriteria}. Create a builder, set

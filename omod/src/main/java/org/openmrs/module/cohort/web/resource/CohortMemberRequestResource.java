@@ -108,7 +108,7 @@ public class CohortMemberRequestResource extends DataDelegatingCrudResource<Coho
 
     @Override
     public CohortMember save(CohortMember arg0) {
-        return Context.getService(CohortService.class).saveCPatient(arg0);
+        return Context.getService(CohortService.class).saveCohortMember(arg0);
     }
 
     @Override
@@ -120,7 +120,7 @@ public class CohortMemberRequestResource extends DataDelegatingCrudResource<Coho
 
     @Override
     public CohortMember getByUniqueId(String uuid) {
-        return Context.getService(CohortService.class).getCohortMemUuid(uuid);
+        return Context.getService(CohortService.class).getCohortMemberByUuid(uuid);
     }
 
     @Override
@@ -137,7 +137,7 @@ public class CohortMemberRequestResource extends DataDelegatingCrudResource<Coho
 
     @Override
     public SimpleObject search(RequestContext context) throws ResponseException {
-        List<CohortMember> cohort = Context.getService(CohortService.class).findCohortMember(context.getRequest().getParameter("h"));
+        List<CohortMember> cohort = Context.getService(CohortService.class).findCohortMemberByName(context.getRequest().getParameter("h"));
         return new NeedsPaging<CohortMember>(cohort, context).toSimpleObject(this);
     }
 

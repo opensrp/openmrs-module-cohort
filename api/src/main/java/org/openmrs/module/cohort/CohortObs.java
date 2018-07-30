@@ -10,41 +10,38 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
-import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
-
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.openmrs.BaseOpenmrsData;
-import org.openmrs.BaseOpenmrsObject;
 import org.openmrs.Concept;
 import org.openmrs.ConceptName;
 import org.openmrs.ConceptNumeric;
-import org.openmrs.Drug;
-import org.openmrs.EncounterType;
 import org.openmrs.Location;
 import org.openmrs.Obs;
-import org.openmrs.Patient;
-import org.openmrs.Person;
 import org.openmrs.api.context.Context;
 import org.openmrs.obs.ComplexData;
 import org.openmrs.util.Format;
 import org.openmrs.util.Format.FORMAT_TYPE;
 
 public class CohortObs extends BaseOpenmrsData {
+	private static final long serialVersionUID = 1L;
+	private static final Log log = LogFactory.getLog(CohortObs.class);
 	
+	private static DateFormat timeFormat = new SimpleDateFormat("HH:mm");
+	private static DateFormat datetimeFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+	private static DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+
 	private Integer cohortObsId;
 	private CohortM cohort;
 	protected Concept concept;
 	private CohortEncounter encounterId;
 	private Location location;
 	private Date obsDateTime;
-	private static final Log log = LogFactory.getLog(CohortObs.class);
-	private static DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 	protected Set<CohortObs> groupMembers;
 	protected Obs obsGroup;
 	protected String comment;
@@ -55,76 +52,176 @@ public class CohortObs extends BaseOpenmrsData {
 	protected Double valueNumeric;
 	protected String valueModifier;
 	protected String valueText;
-	protected transient ComplexData complexData;
 	protected String valueComplex;
 	protected String accessionNumber;
-	private static DateFormat timeFormat = new SimpleDateFormat("HH:mm");
-	private static DateFormat datetimeFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+
+	protected transient ComplexData complexData;
+
+	public Integer getCohortObsId() {
+		return cohortObsId;
+	}
+
+	public void setCohortObsId(Integer cohortObsId) {
+		this.cohortObsId = cohortObsId;
+	}
+
+	public CohortM getCohort() {
+		return cohort;
+	}
+
+	public void setCohort(CohortM cohort) {
+		this.cohort = cohort;
+	}
+
+	public Concept getConcept() {
+		return concept;
+	}
+
+	public void setConcept(Concept concept) {
+		this.concept = concept;
+	}
+
+	public CohortEncounter getEncounterId() {
+		return encounterId;
+	}
+
+	public void setEncounterId(CohortEncounter encounterId) {
+		this.encounterId = encounterId;
+	}
+
+	public Location getLocation() {
+		return location;
+	}
+
+	public void setLocation(Location location) {
+		this.location = location;
+	}
+
+	public Date getObsDateTime() {
+		return obsDateTime;
+	}
+
+	public void setObsDateTime(Date obsDateTime) {
+		this.obsDateTime = obsDateTime;
+	}
+
+	public Obs getObsGroup() {
+		return obsGroup;
+	}
+
+	public void setObsGroup(Obs obsGroup) {
+		this.obsGroup = obsGroup;
+	}
+
+	public String getComment() {
+		return comment;
+	}
+
+	public void setComment(String comment) {
+		this.comment = comment;
+	}
+
+	public Concept getValueCoded() {
+		return valueCoded;
+	}
+
+	public void setValueCoded(Concept valueCoded) {
+		this.valueCoded = valueCoded;
+	}
+
+	public ConceptName getValueCodedName() {
+		return valueCodedName;
+	}
+
+	public void setValueCodedName(ConceptName valueCodedName) {
+		this.valueCodedName = valueCodedName;
+	}
 
 	public Integer getValueGroupId() {
 		return valueGroupId;
 	}
-	
+
 	public void setValueGroupId(Integer valueGroupId) {
 		this.valueGroupId = valueGroupId;
 	}
-	
+
+	public Date getValueDatetime() {
+		return valueDatetime;
+	}
+
+	public void setValueDatetime(Date valueDatetime) {
+		this.valueDatetime = valueDatetime;
+	}
+
+	public Double getValueNumeric() {
+		return valueNumeric;
+	}
+
+	public void setValueNumeric(Double valueNumeric) {
+		this.valueNumeric = valueNumeric;
+	}
+
 	public String getValueModifier() {
 		return valueModifier;
 	}
-	
+
 	public void setValueModifier(String valueModifier) {
 		this.valueModifier = valueModifier;
 	}
+
+	public String getValueText() {
+		return valueText;
+	}
+
+	public void setValueText(String valueText) {
+		this.valueText = valueText;
+	}
+
+	public ComplexData getComplexData() {
+		return complexData;
+	}
+
+	public void setComplexData(ComplexData complexData) {
+		this.complexData = complexData;
+	}
 	
+	public String getValueComplex() {
+		return this.valueComplex;
+	}
+	
+	/**
+	 * Set the value for the ComplexData. This method is used by the ComplexObsHandler. The
+	 * valueComplex has two parts separated by a bar '|' character: part A) the title; and part B)
+	 * the URI. The title is the readable description of the valueComplex that is returned by
+	 * Obs.getValueAsString(). The URI is the location where the ComplexData is stored.
+	 *
+	 * @param valueComplex readable title and URI for the location of the ComplexData binary object.
+	 * @since 1.5
+	 */
+	public void setValueComplex(String valueComplex) {
+		this.valueComplex = valueComplex;
+	}
+	
+	public String getAccessionNumber() {
+		return accessionNumber;
+	}
+
+	public void setAccessionNumber(String accessionNumber) {
+		this.accessionNumber = accessionNumber;
+	}
+
+	public void setGroupMembers(Set<CohortObs> groupMembers) {
+		this.groupMembers = groupMembers;
+	}
+
 	@Override
 	public Integer getId() {
-		return getObsId();
+		return getCohortObsId();
 	}
 	
 	@Override
 	public void setId(Integer id) {
-		setObsId(id);
-	}
-	
-	public Location getLocation() {
-		return location;
-	}
-	
-	public void setLocation(Location location) {
-		this.location = location;
-	}
-	
-	public CohortM getCohort() {
-		return cohort;
-	}
-	
-	public void setCohort(CohortM cohort) {
-		this.cohort = cohort;
-	}
-	
-	public Integer getObsId() {
-		return cohortObsId;
-	}
-	
-	public void setObsId(Integer obsId) {
-		this.cohortObsId = obsId;
-	}
-	
-	public CohortEncounter getEncounterId() {
-		return encounterId;
-	}
-	
-	public void setEncounterId(CohortEncounter encounterId) {
-		this.encounterId = encounterId;
-	}
-	
-	public Date getObsDateTime() {
-		return obsDateTime;
-	}
-	
-	public void setObsDateTime(Date obsDateTime) {
-		this.obsDateTime = obsDateTime;
+		setCohortObsId(id);
 	}
 	
 	public boolean hasGroupMembers(boolean includeVoided) {
@@ -140,16 +237,8 @@ public class CohortObs extends BaseOpenmrsData {
 		return getGroupMembers(false); //same as just returning groupMembers
 	}
 	
-	public Obs getObsGroup() {
-		return obsGroup;
-	}
-	
 	public boolean isObsGrouping() {
 		return hasGroupMembers(true);
-	}
-	
-	public void setObsGroup(Obs obsGroup) {
-		this.obsGroup = obsGroup;
 	}
 	
 	public Set<CohortObs> getGroupMembers(boolean includeVoided) {
@@ -165,27 +254,11 @@ public class CohortObs extends BaseOpenmrsData {
 		Iterator<CohortObs> i = nonVoided.iterator();
 		while (i.hasNext()) {
 			CohortObs obs = i.next();
-			if (obs.isVoided()) {
+			if (obs.getVoided() != null && obs.getVoided()) {
 				i.remove();
 			}
 		}
 		return nonVoided;
-	}
-	
-	public void setComment(String comment) {
-		this.comment = comment;
-	}
-	
-	public String getComment() {
-		return comment;
-	}
-	
-	public Concept getConcept() {
-		return concept;
-	}
-	
-	public void setConcept(Concept concept) {
-		this.concept = concept;
 	}
 	
 	public String getValueAsString(Locale locale) {
@@ -326,100 +399,6 @@ public class CohortObs extends BaseOpenmrsData {
 		return null;
 	}
 	
-	/**
-	 * @return Returns the valueCoded.
-	 */
-	public Concept getValueCoded() {
-		return valueCoded;
-	}
-	
-	/**
-	 * @param valueCoded The valueCoded to set.
-	 */
-	public void setValueCoded(Concept valueCoded) {
-		this.valueCoded = valueCoded;
-	}
-	
-	/**
-	 * Gets the specific name used for the coded value.
-	 *
-	 * @return the name of the coded value
-	 */
-	public ConceptName getValueCodedName() {
-		return valueCodedName;
-	}
-	
-	/**
-	 * Sets the specific name used for the coded value.
-	 *
-	 * @param valueCodedName the name of the coded value
-	 */
-	public void setValueCodedName(ConceptName valueCodedName) {
-		this.valueCodedName = valueCodedName;
-	}
-	
-	public Double getValueNumeric() {
-		return valueNumeric;
-	}
-	
-	/**
-	 * @param valueNumeric The valueNumeric to set.
-	 */
-	public void setValueNumeric(Double valueNumeric) {
-		this.valueNumeric = valueNumeric;
-	}
-	
-	public String getValueComplex() {
-		return this.valueComplex;
-	}
-	
-	/**
-	 * Set the value for the ComplexData. This method is used by the ComplexObsHandler. The
-	 * valueComplex has two parts separated by a bar '|' character: part A) the title; and part B)
-	 * the URI. The title is the readable description of the valueComplex that is returned by
-	 * Obs.getValueAsString(). The URI is the location where the ComplexData is stored.
-	 *
-	 * @param valueComplex readable title and URI for the location of the ComplexData binary object.
-	 * @since 1.5
-	 */
-	public void setValueComplex(String valueComplex) {
-		this.valueComplex = valueComplex;
-	}
-	
-	public Date getValueDatetime() {
-		return valueDatetime;
-	}
-	
-	/**
-	 * @param valueDatetime The valueDatetime to set.
-	 */
-	public void setValueDatetime(Date valueDatetime) {
-		this.valueDatetime = valueDatetime;
-	}
-	
-	public String getValueText() {
-		return valueText;
-	}
-	
-	/**
-	 * @param valueText The valueText to set.
-	 */
-	public void setValueText(String valueText) {
-		this.valueText = valueText;
-	}
-	
-	public String getAccessionNumber() {
-		return accessionNumber;
-	}
-	
-	/**
-	 * @param accessionNumber The accessionNumber to set.
-	 */
-	public void setAccessionNumber(String accessionNumber) {
-		this.accessionNumber = accessionNumber;
-		
-	}
-	
 	public void setValueAsString(String s) throws ParseException {
 		if (log.isDebugEnabled()) {
 			log.debug("getConcept() == " + getConcept());
@@ -467,14 +446,6 @@ public class CohortObs extends BaseOpenmrsData {
 		} else if (valueBoolean == null) {
 			setValueCoded(null);
 		}
-	}
-	
-	public void setComplexData(ComplexData complexData) {
-		this.complexData = complexData;
-	}
-	
-	public ComplexData getComplexData() {
-		return this.complexData;
 	}
 	
 	public static Boolean isAllowDecimal(ConceptNumeric cn) {

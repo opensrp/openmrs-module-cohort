@@ -13,33 +13,18 @@
  */
 package org.openmrs.module.cohort.api.db;
 
-import java.util.Collection;
-import java.util.Date;
 import java.util.List;
-
-import org.openmrs.Encounter;
-import org.openmrs.EncounterType;
-import org.openmrs.Form;
-import org.openmrs.Location;
-import org.openmrs.Obs;
-import org.openmrs.Patient;
-import org.openmrs.PersonName;
-import org.openmrs.api.db.DAOException;
 
 import org.openmrs.module.cohort.CohortAttribute;
 import org.openmrs.module.cohort.CohortAttributeType;
+import org.openmrs.module.cohort.CohortEncounter;
 import org.openmrs.module.cohort.CohortM;
 import org.openmrs.module.cohort.CohortMember;
-import org.openmrs.module.cohort.CohortMemberAttribute;
-import org.openmrs.module.cohort.CohortMemberAttributeType;
 import org.openmrs.module.cohort.CohortObs;
 import org.openmrs.module.cohort.CohortProgram;
 import org.openmrs.module.cohort.CohortRole;
 import org.openmrs.module.cohort.CohortType;
-import org.openmrs.module.cohort.CohortEncounter;
 import org.openmrs.module.cohort.CohortVisit;
-import org.openmrs.module.cohort.api.CohortService;
-import org.openmrs.module.cohort.EncounterSearchCriteria;
 
 /**
  * Database methods for {@link cohortService}.
@@ -93,18 +78,6 @@ public interface CohortDAO {
 	
 	public List<CohortVisit> findCohortVisit();
 	
-	public CohortMemberAttribute saveCohortMemberAttribute(CohortMemberAttribute att);
-	
-	public List<CohortMemberAttributeType> findCohortMemberAttributes(String attribute_type_name);
-	
-	public CohortMemberAttributeType saveCohortMemberAttributeType(CohortMemberAttributeType at);
-	
-	public List<CohortMemberAttributeType> findCohortMemberAttributeType();
-	
-	public void purgeCohortMemberAttribute(CohortMemberAttribute att);
-	
-	public void purgeCohortMemberAttributeType(CohortMemberAttributeType at);
-	
 	public CohortAttribute saveCohortAttributes(CohortAttribute att);
 	
 	public List<CohortAttribute> findCohortAttribute(String name);
@@ -151,10 +124,6 @@ public interface CohortDAO {
 	
 	public CohortM getCohortId(Integer id);
 	
-	public List<CohortMemberAttributeType> findCohortMemberAttributeType(String name);
-	
-	public List<CohortMemberAttribute> findCohortMemberAttribute(String name);
-	
 	public CohortM getCohortUuid(String uuid);
 	
 	public CohortEncounter getCohortEncounterUuid(String uuid);
@@ -166,8 +135,6 @@ public interface CohortDAO {
 	public List<CohortVisit> findCohortVisit(String name);
 	
 	public CohortMember getCohortMemUuid(String uuid);
-	
-	public CohortMemberAttribute getCohortMemberAttributeUuid(String uuid);
 	
 	public CohortType getCohortTypeUuid(String uuid);
 	
@@ -181,17 +148,11 @@ public interface CohortDAO {
 	
 	public List<CohortAttributeType> findCohortAttType(Integer id);
 	
-	public List<CohortMemberAttributeType> findCohortMemAttType(Integer id);
-	
-	public List<CohortMemberAttribute> findCohortMemAtt(Integer id);
-	
 	public List<CohortEncounter> findCohortEnc(Integer id);
 	
 	public List<CohortVisit> findCohortVisit(Integer id);
 	
 	public CohortAttributeType getCohortAttributeTypeUuid(String uuid);
-	
-	public CohortMemberAttributeType getCohortMemberAttributeType(String uuid);
 	
 	public List<CohortMember> findCohortMember();
 	
@@ -236,14 +197,6 @@ public interface CohortDAO {
 	public CohortMember getCohortMemberById(Integer id);
 	
 	public CohortMember getCohortMemberByUuid(String uuid);
-	
-	public CohortMemberAttribute getCohortMemberAttributeById(Integer id);
-	
-	public CohortMemberAttribute getCohortMemberAttributeByUuid(String uuid);
-	
-	public CohortMemberAttributeType getCohortMemberAttributeTypeById(Integer id);
-	
-	public CohortMemberAttributeType getCohortMemberAttributeTypeByUuid(String uuid);
 
 	public CohortObs getCohortObsById(Integer id);
 	

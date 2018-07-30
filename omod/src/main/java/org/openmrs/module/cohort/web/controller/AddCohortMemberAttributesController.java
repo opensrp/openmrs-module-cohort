@@ -58,7 +58,7 @@ public class AddCohortMemberAttributesController {
         if (cat.size() > 0) {
             coat = cat.get(0);
         }
-        List<CohortMember> c = s.getCohortMember(id);
+        List<CohortMember> c = s.getCohortMemberById(id);
         if (c.size() > 0) {
             cohort = c.get(0);
         }
@@ -77,7 +77,7 @@ public class AddCohortMemberAttributesController {
         CohortService departmentService = Context.getService(CohortService.class);
         CohortMemberAttributeType a = null;
         Integer id = Integer.parseInt(request.getParameter("cma"));
-        List<CohortMember> cohort1 = departmentService.getCohortMember(id);
+        List<CohortMember> cohort1 = departmentService.getCohortMemberById(id);
         if (description == "") {
             httpSession.setAttribute(WebConstants.OPENMRS_ERROR_ATTR, "Values cannot be null");
         } else {

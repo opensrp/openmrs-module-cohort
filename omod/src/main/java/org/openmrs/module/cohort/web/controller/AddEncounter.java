@@ -51,7 +51,7 @@ public class AddEncounter {
         map.addAttribute("cohortencounters", new CohortEncounter());
         List<String> cohortnames = new ArrayList<String>();
         CohortService cservice = Context.getService(CohortService.class);
-        List<CohortM> list1 = cservice.findCohorts();
+        List<CohortM> list1 = cservice.getAllCohorts();
         for (int i = 0; i < list1.size(); i++) {
             CohortM c = list1.get(i);
             cohortnames.add(c.getName());
@@ -120,7 +120,7 @@ public class AddEncounter {
         }
         model.addAttribute("forms", fo);
         model.addAttribute("visits", cvisit);
-        List<CohortM> list1 = cservice.findCohorts();
+        List<CohortM> list1 = cservice.getAllCohorts();
         for (int d = 0; d < list1.size(); d++) {
             CohortM c = list1.get(d);
             cohortnames.add(c.getName());
@@ -141,7 +141,7 @@ public class AddEncounter {
         if (date == "") {
             httpSession.setAttribute(WebConstants.OPENMRS_ERROR_ATTR, "Values cannot be null");
         } else {
-            List<CohortM> cohort2 = cservice.findCohorts(cohort);
+            List<CohortM> cohort2 = cservice.findCohortsMatching(cohort);
             for (int i = 0; i < cohort2.size(); i++) {
                 c1 = cohort2.get(i);
             }

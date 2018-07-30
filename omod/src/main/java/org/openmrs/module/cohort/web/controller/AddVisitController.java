@@ -49,7 +49,7 @@ public class AddVisitController {
         List<String> etype = new ArrayList<String>();
         List<VisitType> enctypes = enctype.getAllVisitTypes();
         CohortService cservice = Context.getService(CohortService.class);
-        List<CohortM> list1 = cservice.findCohorts();
+        List<CohortM> list1 = cservice.getAllCohorts();
         for (int i = 0; i < list1.size(); i++) {
             CohortM c = list1.get(i);
             cohortnames.add(c.getName());
@@ -85,7 +85,7 @@ public class AddVisitController {
         List<String> etype = new ArrayList<String>();
         CohortService cservice = Context.getService(CohortService.class);
         CohortM c1 = new CohortM();
-        List<CohortM> list1 = cservice.findCohorts();
+        List<CohortM> list1 = cservice.getAllCohorts();
         for (int i = 0; i < list1.size(); i++) {
             CohortM c = list1.get(i);
             cohortnames.add(c.getName());
@@ -105,7 +105,7 @@ public class AddVisitController {
         if (startDate == "" && endDate == "") {
             httpSession.setAttribute(WebConstants.OPENMRS_ERROR_ATTR, "Values cannot be null");
         } else {
-            List<CohortM> cohort2 = cservice.findCohorts(cohort);
+            List<CohortM> cohort2 = cservice.findCohortsMatching(cohort);
             for (int i = 0; i < cohort2.size(); i++) {
                 c1 = cohort2.get(i);
             }

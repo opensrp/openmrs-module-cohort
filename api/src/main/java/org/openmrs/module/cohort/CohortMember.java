@@ -7,6 +7,8 @@ import org.openmrs.Person;
 
 
 public class CohortMember extends BaseOpenmrsData {
+	private static final long serialVersionUID = 1L;
+	
 	private Integer cohortMemberId;
 	private Person person;
 	private CohortM cohort;

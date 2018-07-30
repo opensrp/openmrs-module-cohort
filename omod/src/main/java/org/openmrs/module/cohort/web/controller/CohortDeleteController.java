@@ -39,7 +39,7 @@ public class CohortDeleteController {
     public void manage(HttpSession httpSession, HttpServletRequest request, ModelMap model, @RequestParam(required = false, value = "name") String cohort_name, @ModelAttribute("cohortmodule") CohortM cohortmodule) {
         CohortService departmentService = Context.getService(CohortService.class);
         if ("delete".equals(request.getParameter("delete"))) {
-            List<CohortM> list1 = departmentService.findCohorts();
+            List<CohortM> list1 = departmentService.getAllCohorts();
             for (int i = 0; i < list1.size(); i++) {
                 CohortM c = (CohortM) list1.get(i);
                 if (c.getName().equals(cohort_name)) {
