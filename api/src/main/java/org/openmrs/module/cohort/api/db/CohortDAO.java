@@ -31,190 +31,115 @@ import org.openmrs.module.cohort.CohortVisit;
  */
 public interface CohortDAO {
 	
-	/*
-	 * Add DAO methods here
-	 */
-	public CohortM saveCohort(CohortM cohort);
-	
-	public List<CohortEncounter> findCohortEncounter(String cohort, String location);
-	
-	public List<CohortMember> findCohortMember(String name);
-	
-	public List<CohortMember> getCohortMember(Integer id);
-	
-	public CohortObs saveObs(CohortObs obs);
-	
-	public Long getCount(String name);
-	
-	public void purgeCohortRole(CohortRole crole);
-	
-	public List<CohortRole> findCohortRole(String cohort_name);
-	
-	public CohortEncounter getCohortEncounter(Integer id);
-	
-	public CohortRole getCohortRoleUuid(String uuid);
-	
-	public List<CohortRole> findRoles(String name);
-	
-	public List<CohortRole> findCohortRoles(String name);
-	
-	public CohortRole saveCohortRole(CohortRole cohort);
-	
-	public List<CohortProgram> findCohortProgram(Integer id);
-	
-	public CohortProgram getCohortProgramUuid(String uuid);
-	
-	public List<CohortProgram> findCohortProgram(String name);
-	
-	public List<CohortProgram> findCohortProg();
-	
-	public CohortProgram saveCohortProgram(CohortProgram cohort);
-	
-	public void purgeCohortProgram(CohortProgram cvisit);
-	
-	public CohortVisit saveCohortVisit(CohortVisit cvisit);
-	
-	public void purgeCohortVisit(CohortVisit cvisit);
-	
-	public List<CohortVisit> findCohortVisit();
-	
-	public CohortAttribute saveCohortAttributes(CohortAttribute att);
-	
-	public List<CohortAttribute> findCohortAttribute(String name);
-	
-	public List<CohortM> getCohort(Integer id);
-	
-	public CohortMember saveCPatient(CohortMember cohort);
-	
-	public List<CohortM> findCohorts();
-	
-	public List<CohortM> findCohorts(String cohort_module);
-	
-	public void purgeCohort(CohortM cohort);
-	
-	public CohortType saveCohortType(CohortType cohorttype);
-	
-	public List<CohortType> findCohortType();
-	
-	public List<CohortType> getAllCohortTypes();
-	
-	public List<CohortType> findCohortType(String cohort_name);
-	
-	public void purgeCohortType(CohortType cohort);
-	
-	public void purgeCohortAtt(CohortAttribute att);
-	
-	public List<CohortAttributeType> findCohortAttributes();
-	
-	public List<CohortAttributeType> findCohortAttributes(String attribute_type_name);
-	
-	public void purgeCohortAttributes(CohortAttributeType attributes);
-	
-	public void purgeCohortEncounters(CohortEncounter cencounters);
-	
-	public CohortType getCohortType(Integer id);
-	
-	public CohortAttributeType saveCohortAttributes(CohortAttributeType attributes);
-	
-	public CohortAttributeType getCohortAttributes(Integer cohort_attribute_type_id);
-	
-	public CohortEncounter saveCohortEncounters(CohortEncounter cencounters);
-	
-	public List<CohortEncounter> findCohortEncounters();
-	
-	public CohortM getCohortId(Integer id);
-	
-	public CohortM getCohortUuid(String uuid);
-	
-	public CohortEncounter getCohortEncounterUuid(String uuid);
-	
-	public CohortAttribute getCohortAttributeUuid(String uuid);
-	
-	public List<CohortEncounter> findCohortEncounters(String name);
-	
-	public List<CohortVisit> findCohortVisit(String name);
-	
-	public CohortMember getCohortMemUuid(String uuid);
-	
-	public CohortType getCohortTypeUuid(String uuid);
-	
-	public CohortVisit getCohortVisitUuid(String uuid);
-	
-	public List<CohortM> findCohort(Integer id);
-	
-	public List<CohortType> findCohortType(Integer id);
-	
-	public List<CohortAttribute> findCohortAtt(Integer id);
-	
-	public List<CohortAttributeType> findCohortAttType(Integer id);
-	
-	public List<CohortEncounter> findCohortEnc(Integer id);
-	
-	public List<CohortVisit> findCohortVisit(Integer id);
-	
-	public CohortAttributeType getCohortAttributeTypeUuid(String uuid);
-	
-	public List<CohortMember> findCohortMember();
-	
-	public CohortObs saveCohortObs(CohortObs cobs);
-	
-	public void purgeCohortObs(CohortObs cobs);
-	
-	public List<CohortObs> findCohortObs();
-	
-	public List<CohortObs> findCohortObs(Integer id);
-	
-	public List<CohortRole> findCohortRole(Integer id);
-	
-	public CohortObs getCohortObsUuid(String uuid);
-	
-	public List<CohortEncounter> getEncounters(EncounterSearchCriteria searchCriteria);
-	
-	public List<CohortEncounter> getEncounters(String query, Integer cohortId, Integer start, Integer length,
-			boolean includeVoided);
-	
-	public List<CohortMember> findCohortMembersByCohortId (Integer cohortId);
-
-	/**
-	 * New
-	 */
-	public CohortAttribute getCohortAttributeById(Integer id);
-	
-	public CohortAttribute getCohortAttributeByUuid(String uuid);
-	
-	public CohortAttributeType getCohortAttributeTypeById(Integer id);
-	
-	public CohortAttributeType getCohortAttributeTypeByUuid(String uuid);
-	
-	public CohortEncounter getCohortEncounterById(Integer id);
-	
-	public CohortEncounter getCohortEncounterByUuid(String uuid);
-	
-	public CohortM getCohortMById(Integer id);
-	
-	public CohortM getCohortMByUuid(String uuid);
-	
-	public CohortMember getCohortMemberById(Integer id);
-	
-	public CohortMember getCohortMemberByUuid(String uuid);
-
-	public CohortObs getCohortObsById(Integer id);
-	
-	public CohortObs getCohortObsByUuid(String uuid);
-	
-	public CohortProgram getCohortProgramById(Integer id);
-	
-	public CohortProgram getCohortProgramByUuid(String uuid);
-	
-	public CohortRole getCohortRoleById(Integer id);
-	
-	public CohortRole getCohortRoleByUuid(String uuid);
-	
-	public CohortType getCohortTypeById(Integer id);
-	
-	public CohortType getCohortTypeByUuid(String uuid);
-	
-	public CohortVisit getCohortVisitById(Integer id);
-	
-	public CohortVisit getCohortVisitByUuid(String uuid);
+	CohortAttribute getCohortAttributeById(Integer id);
+	CohortAttribute getCohortAttributeByUuid(String uuid);
+	CohortAttribute getCohortAttributeUuid(String uuid);
+	CohortAttribute saveCohortAttributes(CohortAttribute att);
+	
+	CohortAttributeType getCohortAttributeTypeById(Integer id);
+	CohortAttributeType getCohortAttributeTypeByUuid(String uuid);
+	CohortAttributeType getCohortAttributeTypeUuid(String uuid);
+	CohortAttributeType getCohortAttributes(Integer cohort_attribute_type_id);
+	CohortAttributeType saveCohortAttributes(CohortAttributeType attributes);
+	
+	CohortEncounter getCohortEncounter(Integer id);
+	CohortEncounter getCohortEncounterById(Integer id);
+	CohortEncounter getCohortEncounterByUuid(String uuid);
+	CohortEncounter getCohortEncounterUuid(String uuid);
+	CohortEncounter saveCohortEncounters(CohortEncounter cencounters);
+	
+	CohortM getCohortId(Integer id);
+	CohortM getCohortMById(Integer id);
+	CohortM getCohortMByUuid(String uuid);
+	CohortM getCohortUuid(String uuid);
+	CohortM saveCohort(CohortM cohort);
+	
+	CohortMember getCohortMemUuid(String uuid);
+	CohortMember getCohortMemberById(Integer id);
+	CohortMember getCohortMemberByUuid(String uuid);
+	CohortMember saveCPatient(CohortMember cohort);
+	
+	CohortObs getCohortObsById(Integer id);
+	CohortObs getCohortObsByUuid(String uuid);
+	CohortObs getCohortObsUuid(String uuid);
+	CohortObs saveCohortObs(CohortObs cobs);
+	CohortObs saveObs(CohortObs obs);
+	
+	CohortProgram getCohortProgramById(Integer id);
+	CohortProgram getCohortProgramByUuid(String uuid);
+	CohortProgram getCohortProgramUuid(String uuid);
+	CohortProgram saveCohortProgram(CohortProgram cohort);
+	
+	CohortRole getCohortRoleById(Integer id);
+	CohortRole getCohortRoleByUuid(String uuid);
+	CohortRole getCohortRoleUuid(String uuid);
+	CohortRole saveCohortRole(CohortRole cohort);
+	
+	CohortType getCohortType(Integer id);
+	CohortType getCohortTypeById(Integer id);
+	CohortType getCohortTypeByUuid(String uuid);
+	CohortType getCohortTypeUuid(String uuid);
+	CohortType saveCohortType(CohortType cohorttype);
+	
+	CohortVisit getCohortVisitById(Integer id);
+	CohortVisit getCohortVisitByUuid(String uuid);
+	CohortVisit getCohortVisitUuid(String uuid);
+	CohortVisit saveCohortVisit(CohortVisit cvisit);
+	
+	List<CohortAttribute> findCohortAtt(Integer id);
+	List<CohortAttribute> findCohortAttribute(String name);
+	
+	List<CohortAttributeType> findCohortAttType(Integer id);
+	List<CohortAttributeType> findCohortAttributes();
+	List<CohortAttributeType> findCohortAttributes(String attribute_type_name);
+	
+	List<CohortEncounter> findCohortEnc(Integer id);
+	List<CohortEncounter> findCohortEncounter(String cohort, String location);
+	List<CohortEncounter> findCohortEncounters();
+	List<CohortEncounter> findCohortEncounters(String name);
+	List<CohortEncounter> getEncounters(EncounterSearchCriteria searchCriteria);
+	List<CohortEncounter> getEncounters(String query, Integer cohortId, Integer start, Integer length, boolean includeVoided);
+	
+	List<CohortM> findCohort(Integer id);
+	List<CohortM> findCohorts();
+	List<CohortM> findCohorts(String cohort_module);
+	List<CohortM> getCohort(Integer id);
+	List<CohortM> getCohortsByLocation(Integer id);
+	
+	List<CohortMember> findCohortMember();
+	List<CohortMember> findCohortMember(String name);
+	List<CohortMember> findCohortMembersByCohortId (Integer cohortId);
+	List<CohortMember> getCohortMember(Integer id);
+	
+	List<CohortObs> findCohortObs();
+	List<CohortObs> findCohortObs(Integer id);
+	
+	List<CohortProgram> findCohortProg();
+	List<CohortProgram> findCohortProgram(Integer id);
+	List<CohortProgram> findCohortProgram(String name);
+	
+	List<CohortRole> findCohortRole(Integer id);
+	List<CohortRole> findCohortRole(String cohort_name);
+	List<CohortRole> findCohortRoles(String name);
+	List<CohortRole> findRoles(String name);
+	
+	List<CohortType> findCohortType();
+	List<CohortType> findCohortType(Integer id);
+	List<CohortType> findCohortType(String cohort_name);
+	List<CohortType> getAllCohortTypes();
+	
+	List<CohortVisit> findCohortVisit();
+	List<CohortVisit> findCohortVisit(Integer id);
+	List<CohortVisit> findCohortVisit(String name);
+	
+	Long getCount(String name);
+	void purgeCohort(CohortM cohort);
+	void purgeCohortAtt(CohortAttribute att);
+	void purgeCohortAttributes(CohortAttributeType attributes);
+	void purgeCohortEncounters(CohortEncounter cencounters);
+	void purgeCohortObs(CohortObs cobs);
+	void purgeCohortProgram(CohortProgram cvisit);
+	void purgeCohortRole(CohortRole crole);
+	void purgeCohortType(CohortType cohort);
+	void purgeCohortVisit(CohortVisit cvisit);	
 }
