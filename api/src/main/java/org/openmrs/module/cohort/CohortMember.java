@@ -7,13 +7,15 @@ import org.openmrs.Person;
 
 
 public class CohortMember extends BaseOpenmrsData {
-	private static final long serialVersionUID = 1L;
 	
+	private static final long serialVersionUID = 1L;
 	private Integer cohortMemberId;
 	private Person person;
+	private Integer personId;
 	private CohortM cohort;
 	private CohortRole role;
 	private Date startDate;
+	private Date endDate;
 	private boolean head;
 	
 	public boolean isHead() {
@@ -27,7 +29,17 @@ public class CohortMember extends BaseOpenmrsData {
 	public CohortMember() {
 		
 	}
-		
+	
+	public CohortMember(Person person) {
+		person = new Person();
+		if (person != null) {
+			this.personId = person.getPersonId();
+			if (person.getUuid() != null) {
+				this.setUuid(person.getUuid());
+			}
+		}
+	}
+	
 	public Date getStartDate() {
 		return startDate;
 	}
@@ -43,8 +55,6 @@ public class CohortMember extends BaseOpenmrsData {
 	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
 	}
-	
-	private Date endDate;
 	
 	@Override
 	public Integer getId() {

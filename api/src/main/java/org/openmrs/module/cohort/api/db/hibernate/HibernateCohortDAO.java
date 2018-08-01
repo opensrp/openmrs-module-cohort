@@ -777,4 +777,9 @@ public class HibernateCohortDAO implements CohortDAO {
 	public CohortVisit getCohortVisitByUuid(String uuid) {
 		return (CohortVisit) getCurrentSession().createQuery("from CohortVisit t where t.uuid = :uuid").setString("uuid", uuid).uniqueResult();
 	}
+
+	@Override
+	public List<CohortM> getCohortsByLocation(Integer id) {
+		return null;
+	}
 }

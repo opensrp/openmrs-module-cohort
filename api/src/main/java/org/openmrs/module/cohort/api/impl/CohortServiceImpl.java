@@ -158,10 +158,10 @@ public class CohortServiceImpl extends BaseOpenmrsService implements
 		return dao.findCohorts(nameMatching);
 	}
 	
-	@Override
+	/*@Override
 	public List<CohortM> getCohort(Integer id) {
 		return dao.getCohort(id);
-	}
+	}*/
 	
 	@Override
 	public CohortAttribute saveCohortAttributes(CohortAttribute att) {
@@ -243,20 +243,20 @@ public class CohortServiceImpl extends BaseOpenmrsService implements
 		return dao.getCohortAttributeTypeUuid(uuid);
 	}
 	
-	@Override
+	/*@Override
 	public List<CohortMember> findCohortMember() {
 		return dao.findCohortMember();
-	}
+	}*/
 	
 	@Override
 	public List<CohortVisit> findCohortVisit(Integer id) {
 		return dao.findCohortVisit(id);
 	}
 	
-	@Override
+	/*@Override
 	public List<CohortM> findCohort(Integer id) {
 		return dao.findCohort(id);
-	}
+	}*/
 	
 	@Override
 	public List<CohortType> findCohortType(Integer id) {

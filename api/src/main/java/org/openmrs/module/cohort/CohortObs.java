@@ -30,6 +30,7 @@ import org.openmrs.util.Format.FORMAT_TYPE;
 
 public class CohortObs extends BaseOpenmrsData {
 	private static final long serialVersionUID = 1L;
+	
 	private static final Log log = LogFactory.getLog(CohortObs.class);
 	
 	private static DateFormat timeFormat = new SimpleDateFormat("HH:mm");
