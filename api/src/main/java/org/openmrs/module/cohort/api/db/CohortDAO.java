@@ -104,12 +104,15 @@ public interface CohortDAO {
 	List<CohortM> findCohorts();
 	List<CohortM> findCohorts(String cohort_module);
 	List<CohortM> getCohort(Integer id);
-	List<CohortM> getCohortsByLocation(Integer id);
+	List<CohortM> getCohortsByLocationId(Integer id);
+	List<CohortM> getCohortByCohortTypeId(Integer id);
+	List<CohortM> getCohortByCohortProgramId(Integer id);
 	
 	List<CohortMember> findCohortMember();
 	List<CohortMember> findCohortMember(String name);
 	List<CohortMember> findCohortMembersByCohortId (Integer cohortId);
 	List<CohortMember> getCohortMember(Integer id);
+	List<CohortMember> getCohortMembersByCohortRoleId(Integer id);
 	
 	List<CohortObs> findCohortObs();
 	List<CohortObs> findCohortObs(Integer id);

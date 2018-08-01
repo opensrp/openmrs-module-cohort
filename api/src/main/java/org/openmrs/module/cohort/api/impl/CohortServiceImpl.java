@@ -522,6 +522,26 @@ public class CohortServiceImpl extends BaseOpenmrsService implements
 	public List<CohortMember> findCohortMembersByCohort (Integer cohortId) {
 		return dao.findCohortMembersByCohortId(cohortId);
 	}
+
+	@Override
+	public List<CohortM> getCohortsByLocationId(Integer id) {
+		return dao.getCohortsByLocationId(id);
+	}
+
+	@Override
+	public List<CohortM> getCohortByCohortTypeId(Integer id) {
+		return dao.getCohortByCohortTypeId(id);
+	}
+
+	@Override
+	public List<CohortM> getCohortByCohortProgramId(Integer id) {
+		return dao.getCohortByCohortProgramId(id);
+	}
+
+	@Override
+	public List<CohortMember> getCohortMembersByCohortRoleId(Integer id) {
+		return dao.getCohortMembersByCohortRoleId(id);
+	}
 }
 
 	

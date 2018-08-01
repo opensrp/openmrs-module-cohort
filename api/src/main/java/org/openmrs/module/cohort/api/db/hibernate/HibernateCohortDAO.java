@@ -650,8 +650,7 @@ public class HibernateCohortDAO implements CohortDAO {
 	
 	@Override
 	public List<CohortMember> findCohortMembersByCohortId (Integer cohortId) {
-		Session session = getCurrentSession();
-		return session.createQuery("from CohortMember where cohort ='" +cohortId+ "'").list();
+		return getCurrentSession().createQuery("from CohortMember where cohort ='" +cohortId+ "'").list();
 //		List<CohortMember> cohortMembers = null;
 //		Criteria criteria = (Criteria) getCurrentSession().createCriteria(CohortMember.class);
 //		criteria.add(Restrictions.ilike("cohort", cohortId.toString(), MatchMode.START));
@@ -779,7 +778,22 @@ public class HibernateCohortDAO implements CohortDAO {
 	}
 
 	@Override
-	public List<CohortM> getCohortsByLocation(Integer id) {
-		return null;
+	public List<CohortM> getCohortsByLocationId(Integer id) {
+		return (List<CohortM>) getCurrentSession().createQuery("from CohortM t where t.location.locationId = :id").setString("id", id.toString()).list();
+	}
+
+	@Override
+	public List<CohortM> getCohortByCohortTypeId(Integer id) {
+		return (List<CohortM>) getCurrentSession().createQuery("from CohortM t where t.cohortType.cohortTypeId = :id").setString("id", id.toString()).list();
+	}
+	
+	@Override
+	public List<CohortM> getCohortByCohortProgramId(Integer id) {
+		return (List<CohortM>) getCurrentSession().createQuery("from CohortM t where t.cohortProgram.cohortProgramId = :id").setString("id", id.toString()).list();
+	}
+	
+	@Override
+	public List<CohortMember> getCohortMembersByCohortRoleId(Integer id) {
+		return (List<CohortMember>) getCurrentSession().createQuery("from CohortM t where t.role.cohortProgramId = :id").setString("id", id.toString()).list();
 	}
 }
