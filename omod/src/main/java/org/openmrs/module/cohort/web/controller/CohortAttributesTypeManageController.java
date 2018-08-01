@@ -38,7 +38,7 @@ public class CohortAttributesTypeManageController {
     public void manage(HttpSession httpSession, HttpServletRequest request, ModelMap model, @RequestParam(required = false, value = "name") String attribute_type_name, @ModelAttribute("cohortattributes") CohortAttributeType attributes) {
         if ("search".equals(request.getParameter("search"))) {
             CohortService service = Context.getService(CohortService.class);
-            List<CohortAttributeType> list1 = service.findCohortAttributes();
+            List<CohortAttributeType> list1 = service.getAllCohortAttributes();
             for (int i = 0; i < list1.size(); i++) {
                 CohortAttributeType c = (CohortAttributeType) list1.get(i);
                 model.addAttribute("CohortAttributesList", list1);

@@ -54,20 +54,19 @@ public interface CohortService extends OpenmrsService {
 	List<CohortM> findCohortsMatching(String nameMatching);
 	CohortM saveCohort(CohortM cohort);
 	void purgeCohort(CohortM cohort);
-	List<CohortM> getCohortsByLocationId(Integer id);
-	List<CohortM> getCohortByCohortTypeId(Integer id);
-	List<CohortM> getCohortByCohortProgramId(Integer id);
+	CohortM getCohort(Integer loationId, Integer programId, Integer typeId);
 	
 	CohortMember getCohortMemberByUuid(String uuid);
 	List<CohortMember> findCohortMemberByName(String name);
 	List<CohortMember> findCohortMembersByCohort (Integer cohortId);
-	List<CohortMember> getCohortMemberById(Integer id);
+	CohortMember getCohortMemberById(Integer id);
+	List<CohortMember> getCohortMembersByCohortId(Integer id);
 	List<CohortMember> getCohortMembersByCohortRoleId(Integer id);
 	CohortMember saveCohortMember(CohortMember cohortmember);
 
-	List<CohortAttributeType> findCohortAttType(Integer id);
-	List<CohortAttributeType> findCohortAttributes();
-	List<CohortAttributeType> findCohortAttributes(String attribute_type_name);
+	CohortAttributeType findCohortAttributeType(Integer id);
+	List<CohortAttributeType> getAllCohortAttributeTypes();
+	CohortAttributeType findCohortAttributeTypeByName(String attribute_type_name);
 	CohortAttributeType getCohortAttributeTypeUuid(String uuid);
 	CohortAttributeType saveCohort(CohortAttributeType a);
 	void purgeCohortAttributes(CohortAttributeType attributes);
@@ -102,7 +101,7 @@ public interface CohortService extends OpenmrsService {
 	List<CohortProgram> findCohortProgram(String name);
 	void purgeCohortProgram(CohortProgram cvisit);
 	
-	List<CohortVisit> findCohortVisit();
+//	List<CohortVisit> findCohortVisit();
 	List<CohortVisit> findCohortVisit(Integer id);
 	List<CohortVisit> findCohortVisit(String name);
 	CohortVisit getCohortVisitUuid(String uuid);
@@ -112,9 +111,9 @@ public interface CohortService extends OpenmrsService {
 	CohortEncounter getCohortEncUuid(String uuid);
 	CohortEncounter getCohortEncounter(Integer id);
 	List<CohortEncounter> filterEncountersByViewPermissions(List<CohortEncounter> encounters, User user);
-	List<CohortEncounter> findCohortEnc(Integer id);
+	//List<CohortEncounter> findCohortEnc(Integer id);
 	List<CohortEncounter> findCohortEncounter(String cohort, String location);
-	List<CohortEncounter> findCohortEncounters();
+//	List<CohortEncounter> findCohortEncounters();
 	List<CohortEncounter> findCohortEncounters(String name);
 	List<CohortEncounter> getEncounters(CohortM who, Location loc,
 			Date fromDate, Date toDate, Collection<Form> enteredViaForms,
@@ -129,7 +128,7 @@ public interface CohortService extends OpenmrsService {
 	void purgeCohortEncounters(CohortEncounter cencounters);
 	
 	CohortObs getCohortObsUuid(String uuid);
-	List<CohortObs> findCohortObs();
+//	List<CohortObs> findCohortObs();
 	List<CohortObs> findCohortObs(Integer id);
 	List<CohortObs> getObservations(List<CohortM> whom,
 			List<CohortEncounter> encounters, List<Concept> questions,

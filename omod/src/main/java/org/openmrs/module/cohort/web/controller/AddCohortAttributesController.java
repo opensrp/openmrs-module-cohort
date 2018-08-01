@@ -49,13 +49,13 @@ public class AddCohortAttributesController {
         CohortM cohort = null;
         CohortAttributeType coat = null;
         CohortService s = Context.getService(CohortService.class);
-        List<CohortAttributeType> att = s.findCohortAttributes();
+        List<CohortAttributeType> att = s.getAllCohortAttributes();
         model.addAttribute("attypes", att);
         String atype = request.getParameter("cohortAttributeTypeId");
         if (StringUtils.hasText(atype)) {
             a = Integer.parseInt(atype);
         }
-        List<CohortAttributeType> cat = s.findCohortAttType(a);
+        List<CohortAttributeType> cat = s.findCohortAttributeType(a);
         if (cat.size() > 0) {
             coat = cat.get(0);
         }
@@ -93,7 +93,7 @@ public class AddCohortAttributesController {
         if (description == "") {
             httpSession.setAttribute(WebConstants.OPENMRS_ERROR_ATTR, "Values cannot be null");
         }
-        List<CohortAttributeType> att = departmentService.findCohortAttType(cohort_attribute_type);
+        List<CohortAttributeType> att = departmentService.findCohortAttributeType(cohort_attribute_type);
         for (int i = 0; i < att.size(); i++) {
             a = att.get(i);
         }
