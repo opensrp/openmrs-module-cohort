@@ -75,6 +75,9 @@ public interface CohortDAO {
 	CohortRole getCohortRoleByUuid(String uuid);
 	CohortRole getCohortRoleUuid(String uuid);
 	CohortRole saveCohortRole(CohortRole cohort);
+	List<CohortRole> getAllCohortRoles();
+	CohortRole getCohortRoleByName(String name);
+	void deleteCohortRoleById(Integer id);
 	
 	CohortType getCohortType(Integer id);
 	CohortType getCohortTypeById(Integer id);

@@ -551,6 +551,21 @@ public class CohortServiceImpl extends BaseOpenmrsService implements
 	public List<CohortMember> getCohortMembersByCohortId(Integer id) {
 		return dao.getCohortMembersByCohortId(id);
 	}
+
+	@Override
+	public List<CohortRole> getAllCohortRoles() {
+		return dao.getAllCohortRoles();
+	}
+
+	@Override
+	public CohortRole getCohortRoleByName(String name) {
+		return dao.getCohortRoleByName(name);
+	}
+
+	@Override
+	public void deleteCohortRoleById(Integer id) {
+		dao.deleteCohortRoleById(id);
+	}
 }
 
 	

@@ -84,6 +84,9 @@ public interface CohortService extends OpenmrsService {
 	List<CohortRole> findRoles(String name);
 	CohortRole saveCohortRole(CohortRole cohort);
 	void purgeCohortRole(CohortRole crole);
+	List<CohortRole> getAllCohortRoles();
+	CohortRole getCohortRoleByName(String name);
+	void deleteCohortRoleById(Integer id);
 	
 	CohortType getCohortType(Integer id);
 	CohortType getCohortTypeUuid(String uuid);
