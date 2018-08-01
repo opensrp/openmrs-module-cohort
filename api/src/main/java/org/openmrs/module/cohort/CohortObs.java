@@ -40,7 +40,7 @@ public class CohortObs extends BaseOpenmrsData {
 	private Integer cohortObsId;
 	private CohortM cohort;
 	protected Concept concept;
-	private CohortEncounter encounterId;
+	private CohortEncounter encounter;
 	private Location location;
 	private Date obsDateTime;
 	protected Set<CohortObs> groupMembers;
@@ -83,11 +83,11 @@ public class CohortObs extends BaseOpenmrsData {
 	}
 
 	public CohortEncounter getEncounterId() {
-		return encounterId;
+		return encounter;
 	}
 
 	public void setEncounterId(CohortEncounter encounterId) {
-		this.encounterId = encounterId;
+		this.encounter = encounterId;
 	}
 
 	public Location getLocation() {

@@ -54,11 +54,15 @@ public interface CohortService extends OpenmrsService {
 	List<CohortM> findCohortsMatching(String nameMatching);
 	CohortM saveCohort(CohortM cohort);
 	void purgeCohort(CohortM cohort);
+	List<CohortM> getCohortsByLocationId(Integer id);
+	List<CohortM> getCohortByCohortTypeId(Integer id);
+	List<CohortM> getCohortByCohortProgramId(Integer id);
 	
 	CohortMember getCohortMemberByUuid(String uuid);
 	List<CohortMember> findCohortMemberByName(String name);
 	List<CohortMember> findCohortMembersByCohort (Integer cohortId);
 	List<CohortMember> getCohortMemberById(Integer id);
+	List<CohortMember> getCohortMembersByCohortRoleId(Integer id);
 	CohortMember saveCohortMember(CohortMember cohortmember);
 
 	List<CohortAttributeType> findCohortAttType(Integer id);
