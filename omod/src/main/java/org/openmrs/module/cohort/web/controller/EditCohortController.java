@@ -251,7 +251,7 @@ public class EditCohortController {
     @RequestMapping(value = "/module/cohort/editCohortAttributesType", method = RequestMethod.GET)
     public void manageEditCohortAttributeType(ModelMap model, HttpServletRequest request, @RequestParam("cat") Integer id, @ModelAttribute("cohortattributes") CohortAttributeType cohort) {
         CohortService service1 = Context.getService(CohortService.class);
-        List<CohortAttributeType> cohort1 = service1.findCohortAttType(id);
+        List<CohortAttributeType> cohort1 = service1.findCohortAttributeType(id);
         List<String> formats = new ArrayList<String>(FieldGenHandlerFactory.getSingletonInstance().getHandlers().keySet());
         formats.add("java.lang.Character");
         formats.add("java.lang.Integer");
@@ -267,7 +267,7 @@ public class EditCohortController {
     @RequestMapping(value = "/module/cohort/editCohortAttributesType.form", method = RequestMethod.POST)
     public void manageEditCohortAttributeType1(ModelMap model, HttpSession httpSession, HttpServletRequest request, @RequestParam("cat") Integer id, @RequestParam(required = false, value = "voidReason") String voidReason, @ModelAttribute("cohortattributes") CohortAttributeType cohortAttributeType) {
         CohortService service1 = Context.getService(CohortService.class);
-        List<CohortAttributeType> cohort1 = service1.findCohortAttType(id);
+        List<CohortAttributeType> cohort1 = service1.findCohortAttributeType(id);
         List<String> formats = new ArrayList<String>(FieldGenHandlerFactory.getSingletonInstance().getHandlers().keySet());
         formats.add("java.lang.Character");
         formats.add("java.lang.Integer");
@@ -375,7 +375,7 @@ public class EditCohortController {
             CohortM c = m.get(j);
             cohortm.add(c.getName());
         }
-        List<CohortAttributeType> att = s.findCohortAttributes();
+        List<CohortAttributeType> att = s.getAllCohortAttributes();
         for (int i = 0; i < att.size(); i++) {
             CohortAttributeType a = att.get(i);
             cohorta.add(a.getName());
@@ -399,7 +399,7 @@ public class EditCohortController {
             CohortM c = m.get(j);
             cohortm.add(c.getName());
         }
-        List<CohortAttributeType> att = service1.findCohortAttributes();
+        List<CohortAttributeType> att = service1.getAllCohortAttributes();
         for (int i = 0; i < att.size(); i++) {
             CohortAttributeType a = att.get(i);
             cohorta.add(a.getName());

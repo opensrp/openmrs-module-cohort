@@ -41,6 +41,7 @@ public interface CohortDAO {
 	CohortAttributeType getCohortAttributeTypeUuid(String uuid);
 	CohortAttributeType getCohortAttributes(Integer cohort_attribute_type_id);
 	CohortAttributeType saveCohortAttributes(CohortAttributeType attributes);
+	List<CohortAttribute> getCohortAttributesByCohortId(Integer id);
 	
 	CohortEncounter getCohortEncounter(Integer id);
 	CohortEncounter getCohortEncounterById(Integer id);
@@ -53,6 +54,7 @@ public interface CohortDAO {
 	CohortM getCohortMByUuid(String uuid);
 	CohortM getCohortUuid(String uuid);
 	CohortM saveCohort(CohortM cohort);
+	CohortM getCohort(Integer locationId, Integer ProgramId, Integer TypeId);
 	
 	CohortMember getCohortMemUuid(String uuid);
 	CohortMember getCohortMemberById(Integer id);
@@ -74,6 +76,9 @@ public interface CohortDAO {
 	CohortRole getCohortRoleByUuid(String uuid);
 	CohortRole getCohortRoleUuid(String uuid);
 	CohortRole saveCohortRole(CohortRole cohort);
+	List<CohortRole> getAllCohortRoles();
+	CohortRole getCohortRoleByName(String name);
+	void deleteCohortRoleById(Integer id);
 	
 	CohortType getCohortType(Integer id);
 	CohortType getCohortTypeById(Integer id);
@@ -89,9 +94,9 @@ public interface CohortDAO {
 	List<CohortAttribute> findCohortAtt(Integer id);
 	List<CohortAttribute> findCohortAttribute(String name);
 	
-	List<CohortAttributeType> findCohortAttType(Integer id);
-	List<CohortAttributeType> findCohortAttributes();
-	List<CohortAttributeType> findCohortAttributes(String attribute_type_name);
+	CohortAttributeType findCohortAttributeType(Integer id);
+	List<CohortAttributeType> getAllCohortAttributes();
+	CohortAttributeType findCohortAttributes(String attribute_type_name);
 	
 	List<CohortEncounter> findCohortEnc(Integer id);
 	List<CohortEncounter> findCohortEncounter(String cohort, String location);
@@ -111,7 +116,8 @@ public interface CohortDAO {
 	List<CohortMember> findCohortMember();
 	List<CohortMember> findCohortMember(String name);
 	List<CohortMember> findCohortMembersByCohortId (Integer cohortId);
-	List<CohortMember> getCohortMember(Integer id);
+	List<CohortMember> getCohortMembersByCohortId(Integer id);
+	CohortMember getCohortMember(Integer id);
 	List<CohortMember> getCohortMembersByCohortRoleId(Integer id);
 	
 	List<CohortObs> findCohortObs();
@@ -131,7 +137,7 @@ public interface CohortDAO {
 	List<CohortType> findCohortType(String cohort_name);
 	List<CohortType> getAllCohortTypes();
 	
-	List<CohortVisit> findCohortVisit();
+//	List<CohortVisit> findCohortVisit();
 	List<CohortVisit> findCohortVisit(Integer id);
 	List<CohortVisit> findCohortVisit(String name);
 	

@@ -38,7 +38,7 @@ public class CohortAttributesTypeDeleteController {
     @RequestMapping(value = "/module/cohort/deletecohortattributestype", method = RequestMethod.GET)
     public void manage(HttpSession httpSession, HttpServletRequest request, ModelMap model, @RequestParam(required = false, value = "name") String attribute_type, @ModelAttribute("cohortattributes") CohortAttributeType attributes) {
         CohortService departmentService = Context.getService(CohortService.class);
-        List<CohortAttributeType> list1 = departmentService.findCohortAttributes();
+        List<CohortAttributeType> list1 = departmentService.getAllCohortAttributes();
         for (int i = 0; i < list1.size(); i++) {
             CohortAttributeType c = (CohortAttributeType) list1.get(i);
             if ("delete".equals(request.getParameter("delete")) && c.getName().equalsIgnoreCase(attribute_type)) {

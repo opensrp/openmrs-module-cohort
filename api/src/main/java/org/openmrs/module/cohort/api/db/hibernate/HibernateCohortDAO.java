@@ -122,17 +122,16 @@ public class HibernateCohortDAO implements CohortDAO {
 	}
 	
 	@Override
-	public List<CohortAttributeType> findCohortAttributes() {
+	public List<CohortAttributeType> getAllCohortAttributes() {
 		Query queryResult = getCurrentSession().createQuery("from CohortAttributeType");
 		return queryResult.list();
 	}
 	
 	@Override
-	public List<CohortAttributeType> findCohortAttributes(
-			String attribute_type_name) {
+	public CohortAttributeType findCohortAttributes(String attribute_type_name) {
 		Criteria criteria = (Criteria) getCurrentSession().createCriteria(CohortAttributeType.class);
-		criteria.add(Restrictions.ilike("name", attribute_type_name, MatchMode.START));
-		return criteria.list();
+		criteria.add(Restrictions.eq("name", attribute_type_name));
+		return (CohortAttributeType) criteria.uniqueResult();
 	}
 	
 	@Override
@@ -217,11 +216,11 @@ public class HibernateCohortDAO implements CohortDAO {
 		getCurrentSession().delete(cvisit);
 	}
 	
-	@Override
+/*	@Override
 	public List<CohortVisit> findCohortVisit() {
 		Query queryResult = getCurrentSession().createQuery("from CohortVisit");
 		return queryResult.list();
-	}
+	}*/
 	
 	@Override
 	public CohortM getCohortId(Integer id) {
@@ -326,12 +325,9 @@ public class HibernateCohortDAO implements CohortDAO {
 	}
 	
 	@Override
-	public List<CohortAttributeType> findCohortAttType(Integer id) {
-		List<CohortAttributeType> cohort = null;
-		Session session = getCurrentSession();
-		Query queryResult = session.createQuery("from CohortAttributeType where cohortAttributeTypeId='" + id + "'");
-		cohort = queryResult.list();
-		return cohort;
+	public CohortAttributeType findCohortAttributeType(Integer id) {
+		Query queryResult = getCurrentSession().createQuery("from CohortAttributeType where cohortAttributeTypeId='" + id + "'");
+		return (CohortAttributeType) queryResult.uniqueResult();
 	}
 	
 	@Override
@@ -621,12 +617,9 @@ public class HibernateCohortDAO implements CohortDAO {
 	}
 	
 	@Override
-	public List<CohortMember> getCohortMember(Integer id) {
-		List<CohortMember> cohort = null;
-		Session session = getCurrentSession();
-		Query queryResult = session.createQuery("from CohortMember where cohortMemberId='" + id + "'");
-		cohort = queryResult.list();
-		return cohort;
+	public CohortMember getCohortMember(Integer id) {
+		Query queryResult = getCurrentSession().createQuery("from CohortMember where cohortMemberId='" + id + "'");
+		return (CohortMember) queryResult.uniqueResult();
 	}
 	
 	@Override
@@ -795,5 +788,52 @@ public class HibernateCohortDAO implements CohortDAO {
 	@Override
 	public List<CohortMember> getCohortMembersByCohortRoleId(Integer id) {
 		return (List<CohortMember>) getCurrentSession().createQuery("from CohortM t where t.role.cohortProgramId = :id").setString("id", id.toString()).list();
+	}
+
+	@Override
+	public CohortM getCohort(Integer locationId, Integer programId, Integer typeId) {
+		Criteria criteria = getCurrentSession().createCriteria(CohortM.class, "cohort");
+		if(locationId != null){
+			criteria.createAlias("cohort.location", "loc");
+			criteria.add(Restrictions.eq("loc.locationId", locationId));
+		}
+		if(programId != null){
+			criteria.createAlias("cohort.cohortProgram", "program");
+			criteria.add(Restrictions.eq("program.programId", programId));			
+		}
+		if(typeId != null){
+			criteria.createAlias("cohort.cohortType", "type");
+			criteria.add(Restrictions.eq("type.cohortTypeId", typeId));
+		}
+		return (CohortM) criteria.uniqueResult();
+	}
+
+	@Override
+	public List<CohortMember> getCohortMembersByCohortId(Integer id) {
+		Criteria criteria = getCurrentSession().createCriteria(CohortMember.class,"cohortMember").createAlias("cohortMember.cohort", "cohort");
+		criteria.add(Restrictions.eq("cohort.cohortId", id));
+		return criteria.list();
+	}
+
+	@Override
+	public List<CohortRole> getAllCohortRoles() {
+		return getCurrentSession().createCriteria(CohortRole.class).list();
+	}
+
+	@Override
+	public CohortRole getCohortRoleByName(String name) {
+		return (CohortRole) getCurrentSession().createCriteria(CohortRole.class).add(Restrictions.eq("name", name)).uniqueResult();
+	}
+
+	@Override
+	public void deleteCohortRoleById(Integer id) {
+		CohortRole cr = (CohortRole) getCurrentSession().createCriteria(CohortRole.class).add(Restrictions.eq("cohortRoleId",id)).uniqueResult();
+		getCurrentSession().delete(cr);
+	}
+
+	@Override
+	public List<CohortAttribute> getCohortAttributesByCohortId(Integer id) {
+		return getCurrentSession().createCriteria(CohortAttribute.class,"cohortAttribute").createAlias("cohortAttribute.cohort", "cohort").add(Restrictions.eq("cohort.cohortId", id)).list();
+		
 	}
 }
