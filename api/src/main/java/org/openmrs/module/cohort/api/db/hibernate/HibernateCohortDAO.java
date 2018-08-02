@@ -830,4 +830,10 @@ public class HibernateCohortDAO implements CohortDAO {
 		CohortRole cr = (CohortRole) getCurrentSession().createCriteria(CohortRole.class).add(Restrictions.eq("cohortRoleId",id)).uniqueResult();
 		getCurrentSession().delete(cr);
 	}
+
+	@Override
+	public List<CohortAttribute> getCohortAttributesByCohortId(Integer id) {
+		return getCurrentSession().createCriteria(CohortAttribute.class,"cohortAttribute").createAlias("cohortAttribute.cohort", "cohort").add(Restrictions.eq("cohort.cohortId", id)).list();
+		
+	}
 }

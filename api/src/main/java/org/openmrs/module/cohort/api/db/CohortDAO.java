@@ -41,6 +41,7 @@ public interface CohortDAO {
 	CohortAttributeType getCohortAttributeTypeUuid(String uuid);
 	CohortAttributeType getCohortAttributes(Integer cohort_attribute_type_id);
 	CohortAttributeType saveCohortAttributes(CohortAttributeType attributes);
+	List<CohortAttribute> getCohortAttributesByCohortId(Integer id);
 	
 	CohortEncounter getCohortEncounter(Integer id);
 	CohortEncounter getCohortEncounterById(Integer id);

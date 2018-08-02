@@ -566,6 +566,11 @@ public class CohortServiceImpl extends BaseOpenmrsService implements
 	public void deleteCohortRoleById(Integer id) {
 		dao.deleteCohortRoleById(id);
 	}
+
+	@Override
+	public List<CohortAttribute> getCohortAttributesByCohortId(Integer id) {
+		return dao.getCohortAttributesByCohortId(id);
+	}
 }
 
 	
