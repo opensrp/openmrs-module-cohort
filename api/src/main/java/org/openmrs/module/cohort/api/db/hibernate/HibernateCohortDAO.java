@@ -16,6 +16,7 @@ package org.openmrs.module.cohort.api.db.hibernate;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 
 import org.apache.commons.lang.StringUtils;
@@ -247,12 +248,7 @@ public class HibernateCohortDAO implements CohortDAO {
 		criteria.add(Restrictions.eq("voided", false));
 		return criteria.list();
 	}
-	
-	@Override
-	public CohortAttribute getCohortAttributeUuid(String uuid) {
-		return (CohortAttribute) getCurrentSession().createQuery("from CohortAttribute t where t.uuid = :uuid").setString("uuid", uuid).uniqueResult();
-	}
-	
+		
 	@Override
 	public CohortEncounter getCohortEncounterUuid(String uuid) {
 		return (CohortEncounter) getCurrentSession().createQuery("from CohortEncounter t where t.uuid = :uuid").setString("uuid", uuid).uniqueResult();
@@ -825,5 +821,25 @@ public class HibernateCohortDAO implements CohortDAO {
 	public List<CohortAttribute> getCohortAttributesByCohortId(Integer id) {
 		return getCurrentSession().createCriteria(CohortAttribute.class,"cohortAttribute").createAlias("cohortAttribute.cohort", "cohort").add(Restrictions.eq("cohort.cohortId", id)).list();
 		
+	}
+
+	@Override
+	public CohortVisit getCohortVisitByLocationId(Integer id) {
+		return (CohortVisit) getCurrentSession().createCriteria(CohortVisit.class,"cv").createAlias("cv.location", "location").add(Restrictions.eq("location.locationId", id)).uniqueResult();
+	}
+
+	@Override
+	public List<CohortMember> getAllHeadCohortMembers() {
+		return getCurrentSession().createCriteria(CohortMember.class).add(Restrictions.eq("head", true)).list();
+	}
+
+	@Override
+	public List<CohortObs> getCohortObsByEncounterId(Integer id) {
+		return getCurrentSession().createCriteria(CohortObs.class,"cohortObs").createAlias("cohortObs.encounter", "encounter").add(Restrictions.eq("encounter.encounterId", id)).list();
+	}
+
+	@Override
+	public List<CohortVisit> getCohortVisitsByDate(Date startDate, Date endDate) {
+		return getCurrentSession().createCriteria(CohortVisit.class).add(Restrictions.ge("startDate", startDate)).add(Restrictions.le("endDate", endDate)).list();
 	}
 }

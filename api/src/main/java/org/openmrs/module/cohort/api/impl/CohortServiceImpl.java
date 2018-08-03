@@ -183,7 +183,7 @@ public class CohortServiceImpl extends BaseOpenmrsService implements CohortServi
 	
 	@Override
 	public CohortAttribute getCohortAttributeByUuid(String uuid) {
-		return dao.getCohortAttributeUuid(uuid);
+		return dao.getCohortAttributeByUuid(uuid);
 	}
 	
 	@Override
@@ -472,6 +472,26 @@ public class CohortServiceImpl extends BaseOpenmrsService implements CohortServi
 	@Override
 	public CohortM getCohortByName(String name) {
 		return dao.getCohortByName(name);
+	}
+
+	@Override
+	public CohortVisit getCohortVisitByLocation(Integer id) {
+		return dao.getCohortVisitByLocationId(id);
+	}
+
+	@Override
+	public List<CohortMember> getAllHeadCohortMembers() {
+		return dao.getAllHeadCohortMembers();
+	}
+
+	@Override
+	public List<CohortObs> getCohortObsByEncounterId(Integer id) {
+		return dao.getCohortObsByEncounterId(id);
+	}
+
+	@Override
+	public List<CohortVisit> getCohortVisitsByDate(Date startDate, Date endDate) {
+		return dao.getCohortVisitsByDate(startDate, endDate);
 	}
 }
 

@@ -13,6 +13,7 @@
  */
 package org.openmrs.module.cohort.api.db;
 
+import java.util.Date;
 import java.util.List;
 
 import org.openmrs.module.cohort.CohortAttribute;
@@ -33,15 +34,14 @@ public interface CohortDAO {
 	
 	CohortAttribute getCohortAttributeById(Integer id);
 	CohortAttribute getCohortAttributeByUuid(String uuid);
-	CohortAttribute getCohortAttributeUuid(String uuid);
 	CohortAttribute saveCohortAttributes(CohortAttribute att);
+	List<CohortAttribute> getCohortAttributesByCohortId(Integer id);
 	
 	CohortAttributeType getCohortAttributeTypeById(Integer id);
 	CohortAttributeType getCohortAttributeTypeByUuid(String uuid);
 	CohortAttributeType getCohortAttributeTypeUuid(String uuid);
 	CohortAttributeType getCohortAttributes(Integer cohort_attribute_type_id);
 	CohortAttributeType saveCohortAttributes(CohortAttributeType attributes);
-	List<CohortAttribute> getCohortAttributesByCohortId(Integer id);
 	
 	CohortEncounter getCohortEncounter(Integer id);
 	CohortEncounter getCohortEncounterById(Integer id);
@@ -65,6 +65,7 @@ public interface CohortDAO {
 	CohortObs getCohortObsByUuid(String uuid);
 	CohortObs getCohortObsUuid(String uuid);
 	CohortObs saveCohortObs(CohortObs cobs);
+	List<CohortObs> getCohortObsByEncounterId(Integer id);
 	CohortObs saveObs(CohortObs obs);
 	
 	CohortProgram getCohortProgramById(Integer id);
@@ -89,6 +90,8 @@ public interface CohortDAO {
 	CohortVisit getCohortVisitById(Integer id);
 	CohortVisit getCohortVisitByUuid(String uuid);
 	CohortVisit getCohortVisitUuid(String uuid);
+	CohortVisit getCohortVisitByLocationId(Integer id);
+	List<CohortVisit> getCohortVisitsByDate(Date startDate, Date endDate);
 	CohortVisit saveCohortVisit(CohortVisit cvisit);
 	
 	CohortAttribute findCohortAtt(Integer id);
@@ -118,6 +121,7 @@ public interface CohortDAO {
 	List<CohortMember> findCohortMembersByCohortId (Integer cohortId);
 	List<CohortMember> getCohortMembersByCohortId(Integer id);
 	CohortMember getCohortMember(Integer id);
+	List<CohortMember> getAllHeadCohortMembers();
 	List<CohortMember> getCohortMembersByCohortRoleId(Integer id);
 	
 	List<CohortObs> findCohortObs();
