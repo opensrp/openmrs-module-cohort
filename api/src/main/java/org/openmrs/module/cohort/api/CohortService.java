@@ -50,6 +50,7 @@ public interface CohortService extends OpenmrsService {
 	
 	CohortM getCohortById(Integer id);
 	CohortM getCohortByUuid(String uuid);
+	CohortM getCohortByName(String name);
 	List<CohortM> getAllCohorts();
 	List<CohortM> findCohortsMatching(String nameMatching);
 	CohortM saveCohort(CohortM cohort);
@@ -64,76 +65,62 @@ public interface CohortService extends OpenmrsService {
 	List<CohortMember> getCohortMembersByCohortRoleId(Integer id);
 	CohortMember saveCohortMember(CohortMember cohortmember);
 
-	CohortAttributeType findCohortAttributeType(Integer id);
+	CohortAttributeType getCohortAttributeType(Integer id);
 	List<CohortAttributeType> getAllCohortAttributeTypes();
-	CohortAttributeType findCohortAttributeTypeByName(String attribute_type_name);
-	CohortAttributeType getCohortAttributeTypeUuid(String uuid);
+	CohortAttributeType getCohortAttributeTypeByName(String attribute_type_name);
+	CohortAttributeType getCohortAttributeTypeByUuid(String uuid);
 	CohortAttributeType saveCohort(CohortAttributeType a);
 	void purgeCohortAttributes(CohortAttributeType attributes);
 
-	CohortAttribute getCohortAttributeUuid(String uuid);
-	List<CohortAttribute> findCohortAtt(String name);
-	List<CohortAttribute> findCohortAttribute(Integer id);
-	CohortAttribute saveCohortAttributes(CohortAttribute att);
+	CohortAttribute getCohortAttributeByUuid(String uuid);
+	CohortAttribute getCohortAttributeById(Integer id);
+	CohortAttribute saveCohortAttribute(CohortAttribute att);
 	void purgeCohortAtt(CohortAttribute att);
 	List<CohortAttribute> getCohortAttributesByCohortId(Integer id);
 	
-	CohortRole getCohortRoleUuid(String uuid);
-	List<CohortRole> findCohortRole(Integer id);
-	List<CohortRole> findCohortRole(String cohort_name);
-	List<CohortRole> findCohortRoles(String name);
-	List<CohortRole> findRoles(String name);
+	CohortRole getCohortRoleByUuid(String uuid);
+	CohortRole getCohortRoleByName(String name);
+	CohortRole getCohortRoleById(Integer id);
+	List<CohortRole> getAllCohortRoles();
 	CohortRole saveCohortRole(CohortRole cohort);
 	void purgeCohortRole(CohortRole crole);
-	List<CohortRole> getAllCohortRoles();
-	CohortRole getCohortRoleByName(String name);
-	void deleteCohortRoleById(Integer id);
 	
-	CohortType getCohortType(Integer id);
-	CohortType getCohortTypeUuid(String uuid);
-	List<CohortType> findCohortType();
-	List<CohortType> findCohortType(Integer id);
-	List<CohortType> findCohortType(String cohort_name);
+	CohortType getCohortTypeById(Integer id);
+	CohortType getCohortTypeByUuid(String uuid);
+	CohortType getCohortTypeByName(String name);
 	List<CohortType> getAllCohortTypes();
 	CohortType saveCohort(CohortType cohort);
 	void purgeCohortType(CohortType type);
 	
-	CohortProgram getCohortProgramUuid(String uuid);
+	CohortProgram getCohortProgramByUuid(String uuid);
+	CohortProgram getCohortProgramById(Integer id);
+	CohortProgram getCohortProgramByName(String name);
+	List<CohortProgram> getAllCohortPrograms();
 	CohortProgram saveCohortProgram(CohortProgram cohort);
-	List<CohortProgram> findCohortProg();
-	List<CohortProgram> findCohortProgram(Integer id);
-	List<CohortProgram> findCohortProgram(String name);
 	void purgeCohortProgram(CohortProgram cvisit);
 	
-//	List<CohortVisit> findCohortVisit();
-	List<CohortVisit> findCohortVisit(Integer id);
-	List<CohortVisit> findCohortVisit(String name);
-	CohortVisit getCohortVisitUuid(String uuid);
+	CohortVisit getCohortVisitById(Integer id);
+	List<CohortVisit> getCohortVisitByType(Integer visitType);
+	CohortVisit getCohortVisitByUuid(String uuid);
 	CohortVisit saveCohortVisit(CohortVisit cvisit);
 	void purgeCohortVisit(CohortVisit cvisit);
 
-	CohortEncounter getCohortEncUuid(String uuid);
-	CohortEncounter getCohortEncounter(Integer id);
+	CohortEncounter getCohortEncounterByUuid(String uuid);
+	CohortEncounter getCohortEncounterById(Integer id);
 	List<CohortEncounter> filterEncountersByViewPermissions(List<CohortEncounter> encounters, User user);
-	//List<CohortEncounter> findCohortEnc(Integer id);
 	List<CohortEncounter> findCohortEncounter(String cohort, String location);
-//	List<CohortEncounter> findCohortEncounters();
-	List<CohortEncounter> findCohortEncounters(String name);
 	List<CohortEncounter> getEncounters(CohortM who, Location loc,
 			Date fromDate, Date toDate, Collection<Form> enteredViaForms,
 			Collection<EncounterType> encounterTypes, boolean includeVoided);
 	List<CohortEncounter> getEncounters(CohortM who, Location loc, Date fromDate, Date toDate,
 			Collection<Form> enteredViaForms, Collection<EncounterType> encounterTypes, Collection<User> providers,
 			boolean includeVoided);
-	List<CohortEncounter> getEncountersByCohort(CohortM cohort);
-	List<CohortEncounter> getEncountersByCohort(String query, boolean includeVoided);
-	CohortEncounter saveCohortEncounters(CohortEncounter cencounters);
-	CohortEncounter voidEncounter(CohortEncounter encounter, String reason);
-	void purgeCohortEncounters(CohortEncounter cencounters);
+	List<CohortEncounter> getEncountersByCohort(String query, Integer cohortId, boolean includeVoided);
+	CohortEncounter saveCohortEncounter(CohortEncounter cencounters);
+	void purgeCohortEncounter(CohortEncounter cencounters);
 	
-	CohortObs getCohortObsUuid(String uuid);
-//	List<CohortObs> findCohortObs();
-	List<CohortObs> findCohortObs(Integer id);
+	CohortObs getCohortObsByUuid(String uuid);
+	CohortObs getCohortObsById(Integer id);
 	List<CohortObs> getObservations(List<CohortM> whom,
 			List<CohortEncounter> encounters, List<Concept> questions,
 			List<Concept> answers, List<Location> locations, List<String> sort,

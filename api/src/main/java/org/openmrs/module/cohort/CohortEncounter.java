@@ -24,16 +24,14 @@ import org.openmrs.User;
 import org.openmrs.api.context.Context;
 
 public class CohortEncounter extends BaseOpenmrsData {
-	
 	private static final long serialVersionUID = 1L;
 	
 	private Integer encounterId;
 	private CohortM cohort;
 	private EncounterType encounterType;
 	private Location location;
-	private Date encounterDatetime;
-	private Form form;
 	private Date encounterDateTime;
+	private Form form;
 	private CohortVisit visit;
 	private Set<CohortObs> obs;
 	private Set<EncounterProvider> encounterProviders = new LinkedHashSet<EncounterProvider>();
@@ -70,12 +68,12 @@ public class CohortEncounter extends BaseOpenmrsData {
 		this.location = location;
 	}
 
-	public Date getEncounterDatetime() {
-		return encounterDatetime;
+	public Date getEncounterDateTime() {
+		return encounterDateTime;
 	}
 
-	public void setEncounterDatetime(Date encounterDatetime) {
-		this.encounterDatetime = encounterDatetime;
+	public void setEncounterDateTime(Date encounterDatetime) {
+		this.encounterDateTime = encounterDatetime;
 	}
 
 	public Form getForm() {
@@ -84,14 +82,6 @@ public class CohortEncounter extends BaseOpenmrsData {
 
 	public void setForm(Form form) {
 		this.form = form;
-	}
-
-	public Date getEncounterDateTime() {
-		return encounterDateTime;
-	}
-
-	public void setEncounterDateTime(Date encounterDateTime) {
-		this.encounterDateTime = encounterDateTime;
 	}
 
 	public CohortVisit getVisit() {
@@ -259,12 +249,6 @@ public class CohortEncounter extends BaseOpenmrsData {
 				//if not, inherit the values sfrom the encounter
 				if (o.getObsDateTime() == null) {
 					o.setObsDateTime(getEncounterDateTime());
-				}
-				if (o.getCohort() == null) {
-					o.setCohort(getCohort());
-				}
-				if (o.getLocation() == null) {
-					o.setLocation(getLocation());
 				}
 				
 				//propagate attributes to  all group members as well

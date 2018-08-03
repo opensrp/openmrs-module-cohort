@@ -21,7 +21,6 @@ import org.openmrs.BaseOpenmrsData;
 import org.openmrs.Concept;
 import org.openmrs.ConceptName;
 import org.openmrs.ConceptNumeric;
-import org.openmrs.Location;
 import org.openmrs.Obs;
 import org.openmrs.api.context.Context;
 import org.openmrs.obs.ComplexData;
@@ -38,10 +37,8 @@ public class CohortObs extends BaseOpenmrsData {
 	private static DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
 	private Integer cohortObsId;
-	private CohortM cohort;
 	protected Concept concept;
 	private CohortEncounter encounter;
-	private Location location;
 	private Date obsDateTime;
 	protected Set<CohortObs> groupMembers;
 	protected Obs obsGroup;
@@ -66,14 +63,6 @@ public class CohortObs extends BaseOpenmrsData {
 		this.cohortObsId = cohortObsId;
 	}
 
-	public CohortM getCohort() {
-		return cohort;
-	}
-
-	public void setCohort(CohortM cohort) {
-		this.cohort = cohort;
-	}
-
 	public Concept getConcept() {
 		return concept;
 	}
@@ -88,14 +77,6 @@ public class CohortObs extends BaseOpenmrsData {
 
 	public void setEncounterId(CohortEncounter encounterId) {
 		this.encounter = encounterId;
-	}
-
-	public Location getLocation() {
-		return location;
-	}
-
-	public void setLocation(Location location) {
-		this.location = location;
 	}
 
 	public Date getObsDateTime() {

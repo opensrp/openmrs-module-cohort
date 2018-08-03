@@ -18,7 +18,6 @@ import org.openmrs.api.context.Context;
 import org.openmrs.module.cohort.CohortEncounter;
 import org.openmrs.module.cohort.CohortM;
 import org.openmrs.module.cohort.CohortObs;
-import org.openmrs.module.cohort.CohortVisit;
 import org.openmrs.module.cohort.api.CohortService;
 import org.openmrs.module.htmlformentry.BadFormDesignException;
 import org.openmrs.module.htmlformentry.CustomFormSubmissionAction;
@@ -106,7 +105,6 @@ public class CohortFormEntrySession extends FormEntrySession {
 		if (cobs != null) {
 			Obs e = new Obs();
 			e.setConcept(cobs.getConcept());
-			e.setLocation(cobs.getLocation());
 			e.setAccessionNumber(cobs.getAccessionNumber());
 		}
 		return null;
@@ -173,18 +171,18 @@ public class CohortFormEntrySession extends FormEntrySession {
 						e.setEncounterType(htmlForm.getForm().getEncounterType());
 					}
 				}
-				List<CohortVisit> cvisit = Context.getService(CohortService.class).findCohortVisit();
 				cohortEncounter = new CohortEncounter();
 				cohortEncounter.setCohort(cohort);
 				cohortEncounter.setEncounterType(e.getEncounterType());
 				cohortEncounter.setForm(e.getForm());
-				cohortEncounter.setEncounterDatetime(e.getEncounterDatetime());
+				cohortEncounter.setEncounterDateTime(e.getEncounterDatetime());
 				cohortEncounter.setLocation(e.getLocation());
 				cohortEncounter.setEncounterProviders(e.getEncounterProviders());
-				cohortEncounter.setVisit(cvisit.get(0));
+				//TODO add visit somehow
+				// cohortEncounter.setVisit(cvisit.get(0));
 				//TODO SAVE COHORT ENCOUNTER
 				System.out.println("SAVE COHORT ENC");
-				Context.getService(CohortService.class).saveCohortEncounters(cohortEncounter);
+				Context.getService(CohortService.class).saveCohortEncounter(cohortEncounter);
 			}
 		}
 		
@@ -207,10 +205,8 @@ public class CohortFormEntrySession extends FormEntrySession {
 			for (Obs o : submissionActions.getObsToCreate()) {
 				cohortobs = new CohortObs();
 				cohortobs.setAccessionNumber(o.getAccessionNumber());
-				cohortobs.setLocation(o.getLocation());
 				cohortobs.setObsDateTime(o.getObsDatetime());
 				cohortobs.setEncounterId(cohortEncounter);
-				cohortobs.setCohort(cohort);
 				cohortobs.setChangedBy(o.getChangedBy());
 				cohortobs.setComment(o.getComment());
 				cohortobs.setConcept(o.getConcept());
@@ -229,7 +225,7 @@ public class CohortFormEntrySession extends FormEntrySession {
 		if (getContext().getMode() == Mode.EDIT) {
 			if (cohortEncounter != null) {
 				System.out.println("SAVE COHORT ENCOUNTER");
-				Context.getService(CohortService.class).saveCohortEncounters(cohortEncounter);
+				Context.getService(CohortService.class).saveCohortEncounter(cohortEncounter);
 			} else if (getSubmissionActions().getObsToCreate() != null) {
 				// this may not work right due to savehandlers (similar error to HTML-135) but this branch is
 				// unreachable until html forms are allowed to edit data without an encounter
@@ -237,10 +233,8 @@ public class CohortFormEntrySession extends FormEntrySession {
 					System.out.println("SAVE COHORT OBS");
 					
 					cohortobs.setAccessionNumber(o.getAccessionNumber());
-					cohortobs.setLocation(o.getLocation());
 					cohortobs.setObsDateTime(o.getObsDatetime());
 					cohortobs.setEncounterId(cohortEncounter);
-					cohortobs.setCohort(cohort);
 					//TODO obsService.saveObs(o, null);
 					Context.getService(CohortService.class).saveCohortObs(cohortobs);
 				}

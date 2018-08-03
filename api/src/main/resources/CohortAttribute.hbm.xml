@@ -9,21 +9,19 @@
             <generator class="native"></generator>
         </id>
         <many-to-one name="cohort" class="org.openmrs.module.cohort.CohortM"
-                     column="cohort" not-null="true" cascade="all"/>
-        <property name="value" type="java.lang.String" length="40"/>
+                     column="cohort_id" not-null="true" cascade="all"/>
+        <property name="value" type="java.lang.String"/>
         <many-to-one name="cohortAttributeType" class="org.openmrs.module.cohort.CohortAttributeType"
-                     column="cohortAttributeType" not-null="true" cascade="all"/>
-        <property name="uuid" type="java.lang.String"
-                  length="38" unique="true"/>
-        <property name="voided" type="java.lang.Boolean" column="voided" length="1" not-null="true"/>
-        <property name="voidReason" type="java.lang.String"
-                  column="void_reason" length="255"/>
-                  
-		<property name="dateCreated" column="date_created" type="java.util.Date" not-null="true"/>
+                     column="cohort_attribute_type" not-null="true" cascade="all"/>
+                     
+        <property name="uuid" type="java.lang.String" length="38" unique="true"/>
+    	<property name="dateCreated" column="date_created" type="java.util.Date" not-null="true"/>
 		<many-to-one name="creator" column ="creator" class="org.openmrs.User" not-null="true"/>
-		<many-to-one name="changedBy" column="changed_by" class="org.openmrs.User" />
 		<property name="dateChanged" column="date_changed" type="java.util.Date" />
-		<many-to-one name="voidedBy" column="voided_by" class="org.openmrs.User" />
+		<many-to-one name="changedBy" column="changed_by" class="org.openmrs.User" />
+        <property name="voided" type="java.lang.Boolean" column="voided" length="1" not-null="true"/>
 		<property name="dateVoided" column="date_voided" type="java.util.Date" />
+		<many-to-one name="voidedBy" column="voided_by" class="org.openmrs.User" />
+        <property name="voidReason" type="java.lang.String" column="void_reason"/>
     </class>
 </hibernate-mapping>

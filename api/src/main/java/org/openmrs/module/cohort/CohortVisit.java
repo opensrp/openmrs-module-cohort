@@ -11,6 +11,7 @@ public class CohortVisit extends BaseOpenmrsData {
 	private static final long serialVersionUID = 1L;
 	
 	private Integer cohortVisitId;
+	private CohortM cohort;
 	private VisitType visitType;
 	private Location location;
 	private Date startDate;
@@ -22,6 +23,14 @@ public class CohortVisit extends BaseOpenmrsData {
 
 	public void setCohortVisitId(Integer cohortVisitId) {
 		this.cohortVisitId = cohortVisitId;
+	}
+
+	public CohortM getCohort() {
+		return cohort;
+	}
+
+	public void setCohort(CohortM cohort) {
+		this.cohort = cohort;
 	}
 
 	public VisitType getVisitType() {

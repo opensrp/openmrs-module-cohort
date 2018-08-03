@@ -49,7 +49,7 @@ public interface CohortDAO {
 	CohortEncounter getCohortEncounterUuid(String uuid);
 	CohortEncounter saveCohortEncounters(CohortEncounter cencounters);
 	
-	CohortM getCohortId(Integer id);
+	CohortM getCohortByName(String name);
 	CohortM getCohortMById(Integer id);
 	CohortM getCohortMByUuid(String uuid);
 	CohortM getCohortUuid(String uuid);
@@ -83,7 +83,7 @@ public interface CohortDAO {
 	CohortType getCohortType(Integer id);
 	CohortType getCohortTypeById(Integer id);
 	CohortType getCohortTypeByUuid(String uuid);
-	CohortType getCohortTypeUuid(String uuid);
+	CohortType getCohortTypeByName(String name);
 	CohortType saveCohortType(CohortType cohorttype);
 	
 	CohortVisit getCohortVisitById(Integer id);
@@ -91,7 +91,7 @@ public interface CohortDAO {
 	CohortVisit getCohortVisitUuid(String uuid);
 	CohortVisit saveCohortVisit(CohortVisit cvisit);
 	
-	List<CohortAttribute> findCohortAtt(Integer id);
+	CohortAttribute findCohortAtt(Integer id);
 	List<CohortAttribute> findCohortAttribute(String name);
 	
 	CohortAttributeType findCohortAttributeType(Integer id);
@@ -121,13 +121,13 @@ public interface CohortDAO {
 	List<CohortMember> getCohortMembersByCohortRoleId(Integer id);
 	
 	List<CohortObs> findCohortObs();
-	List<CohortObs> findCohortObs(Integer id);
+	CohortObs findCohortObs(Integer id);
 	
 	List<CohortProgram> findCohortProg();
-	List<CohortProgram> findCohortProgram(Integer id);
-	List<CohortProgram> findCohortProgram(String name);
+	CohortProgram findCohortProgram(Integer id);
+	CohortProgram findCohortProgram(String name);
 	
-	List<CohortRole> findCohortRole(Integer id);
+	CohortRole findCohortRole(Integer id);
 	List<CohortRole> findCohortRole(String cohort_name);
 	List<CohortRole> findCohortRoles(String name);
 	List<CohortRole> findRoles(String name);
@@ -137,8 +137,8 @@ public interface CohortDAO {
 	List<CohortType> findCohortType(String cohort_name);
 	List<CohortType> getAllCohortTypes();
 	
-//	List<CohortVisit> findCohortVisit();
-	List<CohortVisit> findCohortVisit(Integer id);
+	List<CohortVisit> findCohortVisitByVisitType(Integer visitType);
+	CohortVisit findCohortVisit(Integer id);
 	List<CohortVisit> findCohortVisit(String name);
 	
 	Long getCount(String name);

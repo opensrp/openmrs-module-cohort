@@ -9,27 +9,25 @@
             <generator class="native"/>
         </id>
         <many-to-one name="cohort" class="org.openmrs.module.cohort.CohortM"
-                     column="ecohort" not-null="true" cascade="all"/>
+                     column="cohort_id" not-null="true" cascade="all"/>
         <many-to-one name="encounterType" class="org.openmrs.EncounterType"
-                     column="encounterType" not-null="true" cascade="all"/>
+                     column="encounter_type_id" not-null="true" cascade="all"/>
         <many-to-one name="location" class="org.openmrs.Location"
-                     column="location" not-null="true" cascade="all"/>
+                     column="location_id" not-null="true" cascade="all"/>
         <many-to-one name="form" class="org.openmrs.Form"
-                     column="form" not-null="true" cascade="all"/>
+                     column="form_id" not-null="true" cascade="all"/>
         <many-to-one name="visit" class="org.openmrs.module.cohort.CohortVisit"
-                     column="visit" not-null="true" cascade="all"/>
-        <property name="encounterDatetime" type="java.util.Date"/>
-        <property name="uuid" type="java.lang.String"
-                  length="38" unique="true"/>
-        <property name="voided" type="java.lang.Boolean" column="voided" length="1" not-null="true"/>
-        <property name="voidReason" type="java.lang.String"
-                  column="void_reason" length="255"/>
-                  
-		<property name="dateCreated" column="date_created" type="java.util.Date" not-null="true"/>
+                     column="visit_id" not-null="true" cascade="all"/>
+        <property name="encounterDatetime" column="encounter_datetime" type="java.util.Date"/>
+        
+        <property name="uuid" type="java.lang.String" length="38" unique="true"/>
+    	<property name="dateCreated" column="date_created" type="java.util.Date" not-null="true"/>
 		<many-to-one name="creator" column ="creator" class="org.openmrs.User" not-null="true"/>
-		<many-to-one name="changedBy" column="changed_by" class="org.openmrs.User" />
 		<property name="dateChanged" column="date_changed" type="java.util.Date" />
-		<many-to-one name="voidedBy" column="voided_by" class="org.openmrs.User" />
+		<many-to-one name="changedBy" column="changed_by" class="org.openmrs.User" />
+        <property name="voided" type="java.lang.Boolean" column="voided" length="1" not-null="true"/>
 		<property name="dateVoided" column="date_voided" type="java.util.Date" />
+		<many-to-one name="voidedBy" column="voided_by" class="org.openmrs.User" />
+        <property name="voidReason" type="java.lang.String" column="void_reason"/>
     </class>
 </hibernate-mapping>
